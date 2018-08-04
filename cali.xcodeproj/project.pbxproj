@@ -18,6 +18,14 @@
 		6F668646211410710047D752 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668645211410710047D752 /* CalendarView.swift */; };
 		6F668648211410880047D752 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668647211410880047D752 /* EventListView.swift */; };
 		6F66864A211410B00047D752 /* Layouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668649211410B00047D752 /* Layouts.swift */; };
+		6F66864C211427B20047D752 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66864B211427B20047D752 /* Settings.swift */; };
+		6F66864F21142EB30047D752 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66864D21142EB30047D752 /* CalendarCollectionViewCell.swift */; };
+		6F66865021142EB30047D752 /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F66864E21142EB30047D752 /* CalendarCollectionViewCell.xib */; };
+		6F66865221150E170047D752 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66865121150E170047D752 /* EventService.swift */; };
+		6F668656211510A20047D752 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668655211510A20047D752 /* Event.swift */; };
+		6F668658211510AB0047D752 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668657211510AB0047D752 /* Person.swift */; };
+		6F66866D2115147A0047D752 /* Faker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66866C2115147A0047D752 /* Faker.swift */; };
+		6F66866F211514AF0047D752 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66866E211514AF0047D752 /* Random.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +63,14 @@
 		6F668645211410710047D752 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		6F668647211410880047D752 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		6F668649211410B00047D752 /* Layouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layouts.swift; sourceTree = "<group>"; };
+		6F66864B211427B20047D752 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		6F66864D21142EB30047D752 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		6F66864E21142EB30047D752 /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
+		6F66865121150E170047D752 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		6F668655211510A20047D752 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		6F668657211510AB0047D752 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		6F66866C2115147A0047D752 /* Faker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faker.swift; sourceTree = "<group>"; };
+		6F66866E211514AF0047D752 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,16 +121,15 @@
 		6F4EA6A22113E3860096B9E9 /* cali */ = {
 			isa = PBXGroup;
 			children = (
-				6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */,
-				6F4EA6A52113E3860096B9E9 /* ViewController.swift */,
+				6F66866B2115146E0047D752 /* Utils */,
+				6F66866A211513EE0047D752 /* Models */,
+				6F668667211513D40047D752 /* Services */,
+				6F668661211513870047D752 /* Screens */,
+				6F6686602115136C0047D752 /* Core */,
 				6F4EA6A72113E3860096B9E9 /* Main.storyboard */,
 				6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */,
 				6F4EA6AC2113E3860096B9E9 /* LaunchScreen.storyboard */,
 				6F4EA6AF2113E3860096B9E9 /* Info.plist */,
-				6F4EA6D12113E4530096B9E9 /* WeekdayBar.swift */,
-				6F668645211410710047D752 /* CalendarView.swift */,
-				6F668647211410880047D752 /* EventListView.swift */,
-				6F668649211410B00047D752 /* Layouts.swift */,
 			);
 			path = cali;
 			sourceTree = "<group>";
@@ -135,6 +150,79 @@
 				6F4EA6C52113E3860096B9E9 /* Info.plist */,
 			);
 			path = caliUITests;
+			sourceTree = "<group>";
+		};
+		6F6686602115136C0047D752 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */,
+				6F66864B211427B20047D752 /* Settings.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		6F668661211513870047D752 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				6F668664211513A70047D752 /* Main */,
+			);
+			name = Screens;
+			sourceTree = "<group>";
+		};
+		6F668664211513A70047D752 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6F4EA6A52113E3860096B9E9 /* ViewController.swift */,
+				6F668666211513B30047D752 /* Views */,
+				6F668665211513AD0047D752 /* Cells */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		6F668665211513AD0047D752 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6F66864D21142EB30047D752 /* CalendarCollectionViewCell.swift */,
+				6F66864E21142EB30047D752 /* CalendarCollectionViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		6F668666211513B30047D752 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6F668645211410710047D752 /* CalendarView.swift */,
+				6F668647211410880047D752 /* EventListView.swift */,
+				6F4EA6D12113E4530096B9E9 /* WeekdayBar.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6F668667211513D40047D752 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6F66865121150E170047D752 /* EventService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		6F66866A211513EE0047D752 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F668655211510A20047D752 /* Event.swift */,
+				6F668657211510AB0047D752 /* Person.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		6F66866B2115146E0047D752 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6F66866C2115147A0047D752 /* Faker.swift */,
+				6F668649211410B00047D752 /* Layouts.swift */,
+				6F66866E211514AF0047D752 /* Random.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F66865021142EB30047D752 /* CalendarCollectionViewCell.xib in Resources */,
 				6F4EA6AE2113E3860096B9E9 /* LaunchScreen.storyboard in Resources */,
 				6F4EA6AB2113E3860096B9E9 /* Assets.xcassets in Resources */,
 				6F4EA6A92113E3860096B9E9 /* Main.storyboard in Resources */,
@@ -271,12 +360,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F66864F21142EB30047D752 /* CalendarCollectionViewCell.swift in Sources */,
 				6F668646211410710047D752 /* CalendarView.swift in Sources */,
+				6F66866F211514AF0047D752 /* Random.swift in Sources */,
 				6F668648211410880047D752 /* EventListView.swift in Sources */,
 				6F4EA6A62113E3860096B9E9 /* ViewController.swift in Sources */,
+				6F668658211510AB0047D752 /* Person.swift in Sources */,
+				6F668656211510A20047D752 /* Event.swift in Sources */,
+				6F66865221150E170047D752 /* EventService.swift in Sources */,
 				6F66864A211410B00047D752 /* Layouts.swift in Sources */,
+				6F66864C211427B20047D752 /* Settings.swift in Sources */,
 				6F4EA6D22113E4530096B9E9 /* WeekdayBar.swift in Sources */,
 				6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */,
+				6F66866D2115147A0047D752 /* Faker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

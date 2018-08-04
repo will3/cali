@@ -8,9 +8,63 @@
 
 import UIKit
 
+#if !NO_LAYOUT_SHORTHANDS
+    func layout(_ view: UIView) -> LayoutBuilder {
+        return Layouts.item(view)
+    }
+    
+    func layoutStack(_ view: UIView) -> LayoutBuilder {
+        return Layouts.stack(view)
+    }
+#endif
+
+class LayoutRegistry {
+    static var layouts: [UUID : Layout] = [:]
+    static func add(layout: Layout) {
+        layouts[layout.id] = layout
+    }
+}
+
+class LayoutRunner {
+    static let instance = LayoutRunner()
+    private var timer : Timer?;
+    var started = false
+    
+    func startIfNeeded() {
+        if started {
+            return
+        }
+        start()
+        started = true
+    }
+    
+    func start() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1 / 60.0, repeats: true) { timer in
+            self.checkViewReleased()
+        }
+        started = true
+    }
+    
+    func checkViewReleased() {
+        let keys = LayoutRegistry.layouts.keys
+        for key in keys {
+            if let layout = LayoutRegistry.layouts[key] {
+                if (layout.view == nil) {
+                    LayoutRegistry.layouts.removeValue(forKey: layout.id)
+                }
+            }
+        }
+    }
+    
+    func stop() {
+        timer?.invalidate()
+        started = false
+    }
+}
+
 class Layouts {
-    static func list(_ view: UIView) -> LayoutBuilder {
-        return LayoutBuilder(view: view, type: LayoutType.List)
+    static func stack(_ view: UIView) -> LayoutBuilder {
+        return LayoutBuilder(view: view, type: LayoutType.Stack)
     }
     
     static func item(_ view: UIView) -> LayoutBuilder {
@@ -23,9 +77,23 @@ enum LayoutDirection {
     case Horizontal
 }
 
+enum LayoutAlign {
+    case Default
+    case Left
+    case Center
+    case Right
+}
+
+enum LayoutAlignVertical {
+    case Default
+    case Top
+    case Center
+    case Bottom
+}
+
 enum LayoutType {
     case Item
-    case List
+    case Stack
 }
 
 enum LayoutSize {
@@ -41,45 +109,38 @@ class LayoutBuilder {
         layout = Layout(view: view, type: type)
     }
     
-    @discardableResult
-    func addChild(_ builder: LayoutBuilder) -> Self {
-        layout.addChild(child: builder.layout)
+    func addChild(_ wrapper: LayoutBuilder) -> Self {
+        layout.addChild(child: wrapper.layout)
         return self
     }
     
-    @discardableResult
-    func addChildren(_ builders: [LayoutBuilder]) -> Self {
-        for builder in builders {
-            addChild(builder)
+    func addChildren(_ wrappers: [LayoutBuilder]) -> Self {
+        for wrapper in wrappers {
+            layout.addChild(child: wrapper.layout)
         }
         return self
     }
     
-    @discardableResult
     func width(_ width: LayoutSize) -> Self {
         layout.width = width
         return self
     }
     
-    @discardableResult
     func height(_ height: LayoutSize) -> Self {
         layout.height = height
         return self
     }
     
-    @discardableResult
     func width(_ width: Float) -> Self {
         layout.width = LayoutSize.Value(width)
         return self
     }
     
-    @discardableResult
     func height(_ height: Float) -> Self {
         layout.height = LayoutSize.Value(height)
         return self
     }
     
-    @discardableResult
     func direction(_ direction: LayoutDirection) -> Self {
         layout.direction = direction
         return self
@@ -95,52 +156,84 @@ class LayoutBuilder {
         return self
     }
     
+    func align(_ align: LayoutAlign) -> Self {
+        layout.align = align
+        return self
+    }
+    
+    func alignVertical(_ alignVertical: LayoutAlignVertical) -> Self {
+        layout.alignVertical = alignVertical
+        return self
+    }
+    
+    func center() -> Self {
+        return align(LayoutAlign.Center).alignVertical(LayoutAlignVertical.Center)
+    }
+    
+    func matchParent() -> Self {
+        return align(LayoutAlign.Left)
+            .alignVertical(LayoutAlignVertical.Center)
+            .width(LayoutSize.MatchParent)
+            .height(LayoutSize.MatchParent)
+    }
+    
     func install() {
         layout.install()
+    }
+    
+    func reinstall() {
+        layout.install()
+    }
+    
+    func uninstall() {
+        layout.uninstall()
     }
 }
 
 class Layout {
-    let view: UIView
+    let id : UUID = UUID()
+    weak var view: UIView?
     let type: LayoutType
     private var children: [Layout] = []
+    private var constraints: [NSLayoutConstraint] = []
+    
+    var direction = LayoutDirection.Vertical
+    var alignItems = LayoutAlign.Left
+    var useTopMarginGuide = false
+    var useBottomMarginGuide = false
     
     var width = LayoutSize.Default
     var height = LayoutSize.Default
-    var direction = LayoutDirection.Vertical
-    var useTopMarginGuide = false
-    var useBottomMarginGuide = false
+    
+    var align = LayoutAlign.Default
+    var alignVertical = LayoutAlignVertical.Default
+    weak var parent : Layout?
+    private(set) var installed = false
     
     init (view: UIView, type: LayoutType) {
         self.view = view
         self.type = type
+        
+        LayoutRegistry.add(layout: self)
+        LayoutRunner.instance.startIfNeeded()
     }
     
     func addChild(child: Layout) {
+        child.parent = self
         children.append(child)
     }
     
-    func install() {
-        switch type {
-        case .List:
-            installList()
-            for child in children {
-                child.installListItem()
-            }
-        case .Item:
-            break
-        }
-    }
-    
-    private func installListItem() {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private func installWidth() {
+        guard let view = self.view else { return }
         guard let superview = view.superview else {
             return
         }
         switch width {
         case .Default:
-            install(constraint:
-                view.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 1.0))
+            if parent?.type == LayoutType.Stack {
+                install(constraint:
+                    view.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 1.0))
+            }
         case .MatchParent:
             install(constraint:
                 view.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: 1.0))
@@ -148,7 +241,13 @@ class Layout {
             install(constraint:
                 view.widthAnchor.constraint(equalToConstant: CGFloat(value)))
         }
-        
+    }
+    
+    private func installHeight() {
+        guard let view = self.view else { return }
+        guard let superview = view.superview else {
+            return
+        }
         switch height {
         case .Default:
             break;
@@ -159,26 +258,63 @@ class Layout {
             install(constraint:
                 view.heightAnchor.constraint(equalToConstant: CGFloat(value)))
         }
-        
-        switch direction {
-        case .Vertical:
+    }
+    
+    private func installItem() {
+        guard let view = self.view else { return }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        installWidth()
+        installHeight()
+        installAlign()
+        installAlignVertical()
+    }
+    
+    private func installAlign() {
+        guard let view = self.view else { return }
+        guard let superview = view.superview else {
+            return
+        }
+        switch align {
+        case .Default:
+            break
+        case .Left:
             install(constraint:
-                view.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 0))
+                view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0))
+        case .Center:
             install(constraint:
-                view.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: 0))
-        case .Horizontal:
+                view.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 0))
+        case .Right:
+            install(constraint:
+                view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0))
+        }
+    }
+    
+    private func installAlignVertical() {
+        guard let view = self.view else { return }
+        guard let superview = view.superview else {
+            return
+        }
+        switch alignVertical {
+        case .Default:
+            break
+        case .Top:
             install(constraint:
                 view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 0))
+        case .Center:
+            install(constraint:
+                view.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 0))
+        case .Bottom:
             install(constraint:
                 view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0))
         }
     }
     
-    private func installList() {
+    private func installStack() {
+        guard let view = self.view else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         var index = 0
         for child in children {
-            
+            guard let childView = child.view else { continue }
             switch direction {
             case .Vertical:
                 if index == 0 {
@@ -187,10 +323,12 @@ class Layout {
                         view.topAnchor;
                     
                     install(constraint:
-                        child.view.topAnchor.constraint(equalTo: topAnchor, constant: 0))
+                        childView.topAnchor.constraint(equalTo: topAnchor, constant: 0))
                 } else {
-                    install(constraint:
-                        child.view.topAnchor.constraint(equalTo: children[index - 1].view.bottomAnchor, constant: 0))
+                    if let prevView = children[index - 1].view {
+                        install(constraint:
+                            childView.topAnchor.constraint(equalTo: prevView.bottomAnchor, constant: 0))
+                    }
                 }
                 
                 if index == children.count - 1 {
@@ -199,30 +337,75 @@ class Layout {
                         view.bottomAnchor;
                     
                     install(constraint:
-                        child.view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0))
+                        childView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0))
                 }
             case .Horizontal:
                 if index == 0 {
                     install(constraint:
-                        child.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0))
+                        childView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0))
                 } else {
-                    install(constraint:
-                        child.view.leadingAnchor.constraint(equalTo: children[index - 1].view.leadingAnchor, constant: 0))
+                    if let prevView = children[index - 1].view {
+                        install(constraint:
+                            childView.leadingAnchor.constraint(equalTo: prevView.leadingAnchor, constant: 0))
+                    }
                 }
                 
                 if index == children.count - 1 {
                     install(constraint:
-                        child.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0))
+                        childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0))
                 }
             }
             
-            
             index += 1
+        }
+        
+        for child in children {
+            guard let childView = child.view else { continue }
+            switch alignItems {
+            case .Default, .Left:
+                install(constraint:
+                    childView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0))
+            case .Right:
+                install(constraint:
+                    childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0))
+            case .Center:
+                install(constraint:
+                    childView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0))
+            }
+        }
+    }
+
+    private func install(constraint: NSLayoutConstraint) {
+        constraint.isActive = true
+        constraints.append(constraint)
+    }
+    
+    func installIfNeeded() {
+        if !installed {
+            install()
+            installed = true
         }
     }
     
-    private func install(constraint: NSLayoutConstraint) {
-        constraint.isActive = true
-        // TODO add to list
+    func install() {
+        uninstall();
+        switch type {
+        case .Stack:
+            installStack()
+        case .Item:
+            installItem()
+        }
+        
+        for child in children {
+            child.install()
+        }
+        installed = true
+    }
+    
+    func uninstall() {
+        for constraint in constraints {
+            constraint.isActive = false
+        }
+        installed = false
     }
 }
