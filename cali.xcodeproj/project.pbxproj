@@ -26,6 +26,8 @@
 		6F668658211510AB0047D752 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668657211510AB0047D752 /* Person.swift */; };
 		6F66866D2115147A0047D752 /* Faker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66866C2115147A0047D752 /* Faker.swift */; };
 		6F66866F211514AF0047D752 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66866E211514AF0047D752 /* Random.swift */; };
+		6F668671211529950047D752 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668670211529950047D752 /* Colors.swift */; };
+		6F66867321154E8F0047D752 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66867221154E8F0047D752 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		6F668657211510AB0047D752 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		6F66866C2115147A0047D752 /* Faker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faker.swift; sourceTree = "<group>"; };
 		6F66866E211514AF0047D752 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		6F668670211529950047D752 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		6F66867221154E8F0047D752 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,8 @@
 				6F66866C2115147A0047D752 /* Faker.swift */,
 				6F668649211410B00047D752 /* Layouts.swift */,
 				6F66866E211514AF0047D752 /* Random.swift */,
+				6F668670211529950047D752 /* Colors.swift */,
+				6F66867221154E8F0047D752 /* Fonts.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -361,8 +367,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F66864F21142EB30047D752 /* CalendarCollectionViewCell.swift in Sources */,
+				6F66867321154E8F0047D752 /* Fonts.swift in Sources */,
 				6F668646211410710047D752 /* CalendarView.swift in Sources */,
 				6F66866F211514AF0047D752 /* Random.swift in Sources */,
+				6F668671211529950047D752 /* Colors.swift in Sources */,
 				6F668648211410880047D752 /* EventListView.swift in Sources */,
 				6F4EA6A62113E3860096B9E9 /* ViewController.swift in Sources */,
 				6F668658211510AB0047D752 /* Person.swift in Sources */,

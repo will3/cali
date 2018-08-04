@@ -28,15 +28,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         eventListView = EventListView()
         view.addSubview(eventListView)
         
-        calendarLayout = Layouts.item(calendarView).height(100)
+        calendarLayout = layout(calendarView).height(100)
         
-        Layouts.stack(view)
+        layoutStack(view)
             .useTopMarginGuide(true)
             .useBottomMarginGuide(true)
-            .addChildren(
-                [ Layouts.item(weekdayBar).height(20),
+            .children(
+                [ layout(weekdayBar).height(20),
                   calendarLayout,
-                  Layouts.item(eventListView) ]
+                  layout(eventListView) ]
             ).install()
         
         let calendarPan = UIPanGestureRecognizer(target: self, action: #selector(ViewController.didPanCalendar))
@@ -45,8 +45,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let eventsPan = UIPanGestureRecognizer(target: self, action: #selector(ViewController.didPanEvents))
         eventListView.scrollView.addGestureRecognizer(eventsPan)
-        eventsPan.delegate = self
-        
+        eventsPan.delegate = self   
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        calendarView.scrollToTodayIfNeeded()
     }
     
     override func didReceiveMemoryWarning() {
