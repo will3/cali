@@ -9,17 +9,50 @@
 import UIKit
 
 class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var scrollView: UIScrollView {
-        return collectionView
-    }
     private var collectionView: UICollectionView!
     private var layout: UICollectionViewFlowLayout!
+    private let overlay = MonthOverlayView()
+    
     private var didLoad = false
     var hasScrolledToToday = false
     
-    var totalWidth: CGFloat = UIScreen.main.bounds.size.width { didSet { reloadData() } }
-    var dates: CalendarDates? { didSet { reloadData() } }
-    var selectedDate: Date? { didSet { updateSelectedDate() } }
+    var totalWidth: CGFloat = UIScreen.main.bounds.size.width {
+        didSet {
+            reloadData()
+        }
+    }
+    
+    var dates: CalendarDates? {
+        didSet {
+            overlay.dates = dates
+            reloadData()
+        }
+    }
+    
+    var selectedDate: Date? {
+        didSet {
+            updateSelectedDate()   
+        }
+    }
+    
+    var itemSize: CGSize {
+        let width = totalWidth / 7.0
+        return CGSize(width: width, height: width + 4.0)
+    }
+    
+    func startOverlayObservers() {
+        collectionView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (keyPath == "contentOffset") {
+            overlay.setContentOffset(collectionView.contentOffset)
+        }
+    }
+    
+    func endOverlayObservers() {
+        collectionView.removeObserver(self, forKeyPath: "contentOffset")
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,14 +76,17 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         collectionView.backgroundColor = UIColor.white
         collectionView.showsVerticalScrollIndicator = false
         
-        self.addSubview(collectionView)
+        addSubview(collectionView)
 
         Layouts.view(collectionView).matchParent().install()
         
-        let width = totalWidth / 7.0
-        layout.itemSize = CGSize(width: width, height: width + 4.0)
+        layout.itemSize = itemSize
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
+        
+        overlay.rowHeight = itemSize.height
+        addSubview(overlay)
+        Layouts.view(overlay).matchParent().install()
 
         collectionView.register(
             UINib.init(nibName: CalendarCollectionViewCell.identifier, bundle: Bundle.main),
@@ -77,6 +113,14 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     private func reloadData() {
         collectionView.reloadData()
+    }
+    
+    func updateSelectedDate() {
+        for indexPath in collectionView.indexPathsForVisibleItems {
+            if let calendarCell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+                update(calendarCell: calendarCell, indexPath: indexPath)
+            }
+        }
     }
     
     // MARK: UICollectionViewDataSource
@@ -119,11 +163,16 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    func updateSelectedDate() {
-        for indexPath in collectionView.indexPathsForVisibleItems {
-            if let calendarCell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
-                update(calendarCell: calendarCell, indexPath: indexPath)
-            }
+    // MARK: UIScrollViewDelegate
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.2) {
+            self.overlay.alpha = 1.0
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.2) {
+            self.overlay.alpha = 0.0
         }
     }
 }

@@ -185,6 +185,11 @@ class LayoutBuilder {
         return self
     }
     
+    func translatesAutoresizingMaskIntoConstraints() -> Self {
+        layout.translatesAutoresizingMaskIntoConstraints = true
+        return self
+    }
+    
     func install() {
         layout.install()
     }
@@ -212,22 +217,19 @@ class Layout {
     let type: LayoutType
     private var children: [Layout] = []
     private var constraints: [NSLayoutConstraint] = []
+    weak var parent : Layout?
     
     var direction = LayoutDirection.Vertical
     var alignItems = LayoutFit.Stretch
     var useTopMarginGuide = false
     var useBottomMarginGuide = false
-    
     var width = LayoutSize.Default
     var height = LayoutSize.Default
-    
     var fitHorizontal = LayoutFit.Default
     var fitVertical = LayoutFit.Default
     var aspect: Float?
-    
-    weak var parent : Layout?
-    
     var insets = UIEdgeInsets.zero
+    var translatesAutoresizingMaskIntoConstraints = false
     
     private(set) var installed = false
     
@@ -280,7 +282,7 @@ class Layout {
     
     private func installItem() {
         guard let view = self.view else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         installWidth()
         installHeight()
         intallFitHorizontal()
@@ -349,7 +351,7 @@ class Layout {
     
     private func installStack() {
         guard let view = self.view else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         var index = 0
         for child in children {
             guard let childView = child.view else { continue }

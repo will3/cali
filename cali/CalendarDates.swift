@@ -12,6 +12,10 @@ class CalendarDates {
     let calendar: Calendar
     let startDate: Date
     let numDates: Int
+    var numWeekRows: Int {
+        return Int(ceil(Double(numDates) / 7.0))
+    }
+    
     let today: Date
     let startOfMonth: Date
     let indexForToday: Int
@@ -36,6 +40,17 @@ class CalendarDates {
         
         let components = calendar.dateComponents([.day], from: startDate, to: today)
         indexForToday = components.day!
+    }
+    
+    func getDate(weeks: Int) -> Date? {
+        var components = DateComponents()
+        components.day = weeks * 7
+        return calendar.date(byAdding: components, to: startDate)
+    }
+    
+    func getWeekIndex(date: Date) -> Int {
+        let index = getIndex(date: date)
+        return Int(floor(Double(index) / 7.0))
     }
     
     func getDate(index: Int) -> CalendarDate? {

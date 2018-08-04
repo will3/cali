@@ -78,6 +78,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     func updateLabels() {
         monthLabel?.text = month
         label?.text = day
+        layoutIfNeeded()
     }
     
     override func awakeFromNib() {

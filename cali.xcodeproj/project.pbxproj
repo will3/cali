@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */; };
-		6F4EA6A62113E3860096B9E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A52113E3860096B9E9 /* ViewController.swift */; };
-		6F4EA6A92113E3860096B9E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A72113E3860096B9E9 /* Main.storyboard */; };
+		6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A52113E3860096B9E9 /* MainViewController.swift */; };
 		6F4EA6AB2113E3860096B9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */; };
 		6F4EA6AE2113E3860096B9E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6AC2113E3860096B9E9 /* LaunchScreen.storyboard */; };
 		6F4EA6B92113E3860096B9E9 /* caliTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6B82113E3860096B9E9 /* caliTests.swift */; };
@@ -33,6 +32,8 @@
 		6F66867B211566A20047D752 /* CalendarFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66867A211566A20047D752 /* CalendarFormatters.swift */; };
 		6F66867D2115689A0047D752 /* EventListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66867C2115689A0047D752 /* EventListHeaderView.swift */; };
 		6F66867F2115695D0047D752 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66867E2115695D0047D752 /* EventCell.swift */; };
+		6F668681211581960047D752 /* MonthOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668680211581960047D752 /* MonthOverlayView.swift */; };
+		6F668683211584F10047D752 /* MonthOverlayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668682211584F10047D752 /* MonthOverlayCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +56,7 @@
 /* Begin PBXFileReference section */
 		6F4EA6A02113E3860096B9E9 /* cali.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cali.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6F4EA6A52113E3860096B9E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6F4EA6A82113E3860096B9E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6F4EA6A52113E3860096B9E9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F4EA6AD2113E3860096B9E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F4EA6AF2113E3860096B9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +85,8 @@
 		6F66867A211566A20047D752 /* CalendarFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFormatters.swift; sourceTree = "<group>"; };
 		6F66867C2115689A0047D752 /* EventListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListHeaderView.swift; sourceTree = "<group>"; };
 		6F66867E2115695D0047D752 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		6F668680211581960047D752 /* MonthOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthOverlayView.swift; sourceTree = "<group>"; };
+		6F668682211584F10047D752 /* MonthOverlayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthOverlayCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +142,6 @@
 				6F668667211513D40047D752 /* Services */,
 				6F668661211513870047D752 /* Screens */,
 				6F6686602115136C0047D752 /* Core */,
-				6F4EA6A72113E3860096B9E9 /* Main.storyboard */,
 				6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */,
 				6F4EA6AC2113E3860096B9E9 /* LaunchScreen.storyboard */,
 				6F4EA6AF2113E3860096B9E9 /* Info.plist */,
@@ -189,7 +190,7 @@
 				6F6686752115665D0047D752 /* Models */,
 				6F668666211513B30047D752 /* Views */,
 				6F668665211513AD0047D752 /* Cells */,
-				6F4EA6A52113E3860096B9E9 /* ViewController.swift */,
+				6F4EA6A52113E3860096B9E9 /* MainViewController.swift */,
 				6F66867A211566A20047D752 /* CalendarFormatters.swift */,
 			);
 			name = Main;
@@ -201,6 +202,7 @@
 				6F66864D21142EB30047D752 /* CalendarCollectionViewCell.swift */,
 				6F66864E21142EB30047D752 /* CalendarCollectionViewCell.xib */,
 				6F66867E2115695D0047D752 /* EventCell.swift */,
+				6F668682211584F10047D752 /* MonthOverlayCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -212,6 +214,7 @@
 				6F66867C2115689A0047D752 /* EventListHeaderView.swift */,
 				6F668647211410880047D752 /* EventListView.swift */,
 				6F4EA6D12113E4530096B9E9 /* WeekdayBar.swift */,
+				6F668680211581960047D752 /* MonthOverlayView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -364,7 +367,6 @@
 				6F66865021142EB30047D752 /* CalendarCollectionViewCell.xib in Resources */,
 				6F4EA6AE2113E3860096B9E9 /* LaunchScreen.storyboard in Resources */,
 				6F4EA6AB2113E3860096B9E9 /* Assets.xcassets in Resources */,
-				6F4EA6A92113E3860096B9E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,9 +399,11 @@
 				6F668677211566750047D752 /* CalendarDate.swift in Sources */,
 				6F6686792115667F0047D752 /* CalendarDates.swift in Sources */,
 				6F668648211410880047D752 /* EventListView.swift in Sources */,
-				6F4EA6A62113E3860096B9E9 /* ViewController.swift in Sources */,
+				6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */,
+				6F668683211584F10047D752 /* MonthOverlayCell.swift in Sources */,
 				6F668658211510AB0047D752 /* Person.swift in Sources */,
 				6F668656211510A20047D752 /* Event.swift in Sources */,
+				6F668681211581960047D752 /* MonthOverlayView.swift in Sources */,
 				6F66867D2115689A0047D752 /* EventListHeaderView.swift in Sources */,
 				6F66867F2115695D0047D752 /* EventCell.swift in Sources */,
 				6F66865221150E170047D752 /* EventService.swift in Sources */,
@@ -444,14 +448,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6F4EA6A72113E3860096B9E9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6F4EA6A82113E3860096B9E9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6F4EA6AC2113E3860096B9E9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

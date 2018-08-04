@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate {
+class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate {
 
     var weekdayBar : WeekdayBar!;
     var calendarView : CalendarView!;
@@ -28,6 +28,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, EventListVi
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        view.backgroundColor = UIColor.white
+        
         weekdayBar = WeekdayBar()
         view.addSubview(weekdayBar)
         calendarView = CalendarView()
@@ -39,6 +41,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, EventListVi
         calendarLayout = layout(calendarView).height(100)
         
         layoutStack(view)
+            .translatesAutoresizingMaskIntoConstraints()
             .useTopMarginGuide(true)
             .useBottomMarginGuide(true)
             .children(
@@ -47,11 +50,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, EventListVi
                   layout(eventListView) ]
             ).install()
         
-        let calendarPan = UIPanGestureRecognizer(target: self, action: #selector(ViewController.didPanCalendar))
-        calendarView.scrollView.addGestureRecognizer(calendarPan)
+        let calendarPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanCalendar))
+        calendarView.addGestureRecognizer(calendarPan)
         calendarPan.delegate = self
         
-        let eventsPan = UIPanGestureRecognizer(target: self, action: #selector(ViewController.didPanEvents))
+        let eventsPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanEvents))
         eventListView.scrollView.addGestureRecognizer(eventsPan)
         eventsPan.delegate = self
         
@@ -63,10 +66,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, EventListVi
         self.dates = CalendarDates(today: today, calendar: calendar)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        calendarView.startOverlayObservers()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         calendarView.scrollToTodayIfNeeded()
         eventListView.scrollToTodayIfNeeded()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        calendarView.endOverlayObservers()
     }
     
     override func didReceiveMemoryWarning() {
