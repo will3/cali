@@ -8,9 +8,20 @@
 
 import UIKit
 
+protocol EventListViewDelegate: AnyObject {
+    func eventListViewDidScrollToDay(eventListView: EventListView)
+}
+
 class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     private var didLoad = false
     private var tableView: UITableView!
+    var dates: CalendarDates? { didSet { reloadData() } }
+    var selectedDate: Date?
+    var calendar = Calendar.current
+    var hasScrolledToToday = false
+    private(set) var firstDay: Date?
+    weak var delegate: EventListViewDelegate?
+    
     var scrollView: UIScrollView {
         return tableView
     }
@@ -21,6 +32,10 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    private func reloadData() {
+        tableView.reloadData()
     }
     
     override func didMoveToSuperview() {
@@ -36,14 +51,62 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         addSubview(tableView)
         
+        tableView.register(EventListHeaderView.self, forHeaderFooterViewReuseIdentifier: EventListHeaderView.identifier)
+        
         layout(tableView).matchParent().install()
+        
+        tableView.register(EventCell.self, forCellReuseIdentifier: EventCell.identifier)
+        
+        tableView.showsVerticalScrollIndicator = false
+    }
+    
+    func scrollToTodayIfNeeded() {
+        guard let dates = self.dates else { return }
+        if !hasScrolledToToday {
+            let index = dates.indexForToday
+            let indexPath = IndexPath(row: 0, section: index)
+            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            
+            hasScrolledToToday = true
+        }
+    }
+    
+    // MARK: UITableViewDataSource
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return dates?.numDates ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier) as! EventCell
+        return cell
+    }
+    
+    // MARK: UITableViewDelegate
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: EventListHeaderView.identifier) as! EventListHeaderView
+        guard let date = dates?.getDate(index: section) else { return UITableViewCell() }
+        headerView.date = date.date
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let firstVisibleIndexPath = tableView.indexPathsForVisibleRows?.first else {
+            return
+        }
+        
+        let firstDay = dates?.getDate(index: firstVisibleIndexPath.section)?.date
+        if firstDay != self.firstDay {
+            self.firstDay = firstDay
+            delegate?.eventListViewDidScrollToDay(eventListView: self)
+        }
     }
 }

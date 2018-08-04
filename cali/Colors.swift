@@ -11,6 +11,8 @@ import UIKit
 
 class Colors {
     static let accent: UIColor = UIColor(rgb:0x0070DA)
+    static let lightAccent: UIColor = UIColor(rgb: 0xF4FAFC)
+    static let hard = UIColor(rgb:0x666666)
     static let primary = UIColor(rgb:0x8E8D93)
     static let dimBackground = UIColor(rgb:0xF8F8F8)
     static let separator = UIColor(rgb:0xECECEC)

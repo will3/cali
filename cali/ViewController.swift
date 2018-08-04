@@ -8,14 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate {
 
     var weekdayBar : WeekdayBar!;
     var calendarView : CalendarView!;
     var eventListView : EventListView!;
     var calendarLayout : LayoutBuilder!
-    
     var isCalendarViewExpanded = false
+    var dates: CalendarDates? { didSet {
+        calendarView.dates = dates
+        eventListView.dates = dates
+        } }
+    var selectedDate: Date? { didSet {
+        calendarView.selectedDate = selectedDate
+        eventListView.selectedDate = selectedDate
+        } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +33,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         calendarView = CalendarView()
         view.addSubview(calendarView)
         eventListView = EventListView()
+        eventListView.delegate = self
         view.addSubview(eventListView)
         
         calendarLayout = layout(calendarView).height(100)
@@ -45,12 +53,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let eventsPan = UIPanGestureRecognizer(target: self, action: #selector(ViewController.didPanEvents))
         eventListView.scrollView.addGestureRecognizer(eventsPan)
-        eventsPan.delegate = self   
+        eventsPan.delegate = self
+        
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        if selectedDate == nil {
+            selectedDate = today
+        }
+        self.dates = CalendarDates(today: today, calendar: calendar)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         calendarView.scrollToTodayIfNeeded()
+        eventListView.scrollToTodayIfNeeded()
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,6 +108,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    // MARK: EventListViewDelegate
+    
+    func eventListViewDidScrollToDay(eventListView: EventListView) {
+        self.selectedDate = eventListView.firstDay
+        calendarView.scrollToSelectedDate()
     }
 }
 

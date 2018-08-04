@@ -152,6 +152,26 @@ class LayoutBuilder {
         return self
     }
     
+    func left(_ value: Float) -> Self {
+        layout.insets.left = CGFloat(value)
+        return self
+    }
+    
+    func right(_ value: Float) -> Self {
+        layout.insets.right = CGFloat(value)
+        return self
+    }
+    
+    func top(_ value: Float) -> Self {
+        layout.insets.top = CGFloat(value)
+        return self
+    }
+    
+    func bottom(_ value: Float) -> Self {
+        layout.insets.bottom = CGFloat(value)
+        return self
+    }
+    
     func center() -> Self {
         return horizontal(LayoutFit.Center).vertical(LayoutFit.Center)
     }

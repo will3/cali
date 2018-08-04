@@ -10,10 +10,12 @@ import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     static let identifier = "CalendarCollectionViewCell"
-    private(set) var label: UILabel?
-    private(set) var monthLabel: UILabel?
-    private(set) var view: UIView?
-    private(set) var circleView: UIView?
+    private var label: UILabel?
+    private var monthLabel: UILabel?
+    private var view: UIView?
+    private var circleView: UIView?
+    private var leftBorder: UIView?
+    private var botBorder: UIView?
     
     override var bounds: CGRect {
         didSet {
@@ -23,8 +25,31 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     var shouldShowCircle: Bool = false { didSet { updateCircle() } }
-    
     var isPast: Bool = false { didSet { updateIsPast() } }
+    var drawLeftBorder = false { didSet { updateLeftBorder() } }
+    var drawBotBorder = false { didSet { updateBotBorder() }}
+    var month: String = "" { didSet { updateLabels() } }
+    var day: String = "" { didSet { updateLabels() } }
+    
+    func updateLeftBorder() {
+        if drawLeftBorder {
+            if leftBorder == nil {
+                leftBorder = UIView()
+                leftBorder?.backgroundColor = Colors.hard
+            }
+        }
+        leftBorder?.isHidden = !drawLeftBorder
+    }
+    
+    func updateBotBorder() {
+        if drawBotBorder {
+            if botBorder == nil {
+                botBorder = UIView()
+                botBorder?.backgroundColor = Colors.hard
+            }
+        }
+        botBorder?.isHidden = drawBotBorder
+    }
     
     func updateCircle() {
         guard let circleView = self.circleView else { return }
@@ -48,6 +73,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         } else {
             contentView.backgroundColor = UIColor.clear
         }
+    }
+    
+    func updateLabels() {
+        monthLabel?.text = month
+        label?.text = day
     }
     
     override func awakeFromNib() {
@@ -93,9 +123,10 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         
         layout(circleView)
             .horizontal(.Stretch)
+            .left(4)
+            .right(4)
             .vertical(.Center)
             .aspect(1)
-            .insets(UIEdgeInsetsMake(2.0, 2.0, 2.0, 2.0))
             .install()
         
         self.label = label
