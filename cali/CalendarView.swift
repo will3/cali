@@ -40,6 +40,14 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         return CGSize(width: width, height: width + 4.0)
     }
     
+    var preferredCollapsedHeight : Float {
+        return Float(itemSize.height * 2)
+    }
+    
+    var preferredExpandedHeight : Float {
+        return Float(itemSize.height * 5)
+    }
+    
     func startOverlayObservers() {
         collectionView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
     }

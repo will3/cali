@@ -9,7 +9,6 @@
 import UIKit
 
 class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate {
-
     var weekdayBar : WeekdayBar!;
     var calendarView : CalendarView!;
     var eventListView : EventListView!;
@@ -39,7 +38,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         eventListView.delegate = self
         view.addSubview(eventListView)
         
-        calendarLayout = layout(calendarView).height(100)
+        calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
         
         layoutStack(view)
             .translatesAutoresizingMaskIntoConstraints()
@@ -105,7 +104,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     func expandCalendarView() {
         if (isCalendarViewExpanded) {
             UIView.animate(withDuration: 0.2) {
-                self.calendarLayout.height(200).reinstall()
+                self.calendarLayout
+                    .height(self.calendarView.preferredExpandedHeight)
+                    .reinstall()
                 self.view.layoutIfNeeded()
             }
         }
@@ -116,7 +117,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     func collapseCalendarView() {
         if (!isCalendarViewExpanded) {
             UIView.animate(withDuration: 0.2) {
-                self.calendarLayout.height(100).reinstall()
+                self.calendarLayout
+                    .height(self.calendarView.preferredCollapsedHeight)
+                    .reinstall()
                 self.view.layoutIfNeeded()
             }
         }
