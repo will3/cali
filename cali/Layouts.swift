@@ -12,10 +12,6 @@ import UIKit
     func layout(_ view: UIView) -> LayoutBuilder {
         return Layouts.view(view)
     }
-    
-    func layoutStack(_ view: UIView) -> LayoutBuilder {
-        return Layouts.stack(view)
-    }
 #endif
 
 class LayoutRegistry {
@@ -63,23 +59,14 @@ class LayoutRunner {
 }
 
 class Layouts {
-    static func stack(_ view: UIView) -> LayoutBuilder {
-        return LayoutBuilder(view: view, type: LayoutType.Stack)
-    }
-    
     static func view(_ view: UIView) -> LayoutBuilder {
-        return LayoutBuilder(view: view, type: LayoutType.Item)
+        return LayoutBuilder(view: view)
     }
 }
 
 enum LayoutDirection {
     case Vertical
     case Horizontal
-}
-
-enum LayoutType {
-    case Item
-    case Stack
 }
 
 enum LayoutSize {
@@ -91,11 +78,12 @@ enum LayoutSize {
 class LayoutBuilder {
     let layout: Layout
     
-    init (view: UIView, type: LayoutType) {
-        layout = Layout(view: view, type: type)
+    init (view: UIView) {
+        layout = Layout(view: view)
     }
     
-    func children(_ wrappers: [LayoutBuilder]) -> Self {
+    func stack(_ wrappers: [LayoutBuilder]) -> Self {
+        layout.stackChildren = true
         for wrapper in wrappers {
             layout.addChild(child: wrapper.layout)
         }
@@ -124,6 +112,11 @@ class LayoutBuilder {
     
     func direction(_ direction: LayoutDirection) -> Self {
         layout.direction = direction
+        return self
+    }
+    
+    func alignItems(_ alignItems: LayoutFit) -> Self {
+        layout.alignItems = alignItems
         return self
     }
     
@@ -214,7 +207,6 @@ enum LayoutFit {
 class Layout {
     let id : UUID = UUID()
     weak var view: UIView?
-    let type: LayoutType
     private var children: [Layout] = []
     private var constraints: [NSLayoutConstraint] = []
     weak var parent : Layout?
@@ -230,12 +222,12 @@ class Layout {
     var aspect: Float?
     var insets = UIEdgeInsets.zero
     var translatesAutoresizingMaskIntoConstraints = false
+    var stackChildren = false
     
     private(set) var installed = false
     
-    init (view: UIView, type: LayoutType) {
+    init (view: UIView) {
         self.view = view
-        self.type = type
         
         LayoutRegistry.add(layout: self)
         LayoutRunner.instance.startIfNeeded()
@@ -401,7 +393,7 @@ class Layout {
         
         for child in children {
             guard let childView = child.view else { continue }
-            switch direction{
+            switch direction {
             case .Vertical:
                 switch alignItems {
                 case .Default, .Leading:
@@ -455,16 +447,17 @@ class Layout {
     
     func install() {
         uninstall();
-        switch type {
-        case .Stack:
+        
+        if stackChildren {
             installStack()
-        case .Item:
-            installItem()
         }
+        
+        installItem()
         
         for child in children {
             child.install()
         }
+        
         installed = true
     }
     

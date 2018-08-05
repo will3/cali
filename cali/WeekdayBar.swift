@@ -40,9 +40,9 @@ class WeekdayBar: UIView {
             label.text = days[i];
         }
         
-        layoutStack(self)
+        layout(self)
             .direction(.Horizontal)
-            .children(labels.map({ label in
+            .stack(labels.map({ label in
                 return layout(label).width(.Ratio(1 / 7.0))
             })).install()
         

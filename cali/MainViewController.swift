@@ -40,11 +40,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
         
-        layoutStack(view)
+        layout(view)
             .translatesAutoresizingMaskIntoConstraints()
             .useTopMarginGuide(true)
             .useBottomMarginGuide(true)
-            .children(
+            .stack(
                 [ layout(weekdayBar).height(24),
                   calendarLayout,
                   layout(eventListView) ]
@@ -63,7 +63,18 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         if selectedDate == nil {
             selectedDate = today
         }
+        
         self.dates = CalendarDates(today: today, calendar: calendar)
+        
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed))
+        ]
+    }
+    
+    @objc func plusPressed() {
+        let vc = CreateEventViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

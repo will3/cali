@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         
+        UINavigationBar.appearance().tintColor = Colors.primary
+        
         self.window?.rootViewController = nav
         
         return true

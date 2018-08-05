@@ -121,8 +121,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             .height(1.0)
             .install()
         
-        layoutStack(view)
-            .children([
+        layout(view)
+            .stack([
                 layout(monthLabel),
                 layout(label)
                 ])
