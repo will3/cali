@@ -72,10 +72,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     }
     
     @objc func plusPressed() {
-        let vc = CreateEventViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        NavigationBars.style(navigationBar: nav.navigationBar, .white)
-        present(nav, animated: true, completion: nil)
+        // Add a fake event
     }
     
     override func viewWillAppear(_ animated: Bool) {
