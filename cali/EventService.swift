@@ -9,8 +9,14 @@
 import Foundation
 
 class EventService {
+    static let instance = EventService()
+    
     func getEvents(date: Date) -> [Event] {
         // Mock events
         return []
+    }
+    
+    func add(event: Event) {
+        
     }
 }

@@ -25,7 +25,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         var cellIdentifier: String {
             switch self {
             case .title:
-                return EventTextInputCell.identifier
+                return EventTitleCell.identifier
             case .people:
                 return EventPeopleCell.identifier
             case .allday:
@@ -33,7 +33,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
             case .dateTime:
                 return EventDateTimeCell.identifier
             case .location:
-                return EventTextInputCell.identifier
+                return EventLocationCell.identifier
             case .alert:
                 return EventDetailCell.identifier
             default:
@@ -44,6 +44,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     var sections: [[RowType]] = []
+    var event = Event()
     
     override func viewDidLoad() {
         view.addSubview(tableView)
@@ -52,18 +53,26 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(EventToggleCell.self, forCellReuseIdentifier: EventToggleCell.identifier)
-        tableView.register(EventTextInputCell.self, forCellReuseIdentifier: EventTextInputCell.identifier)
-        tableView.register(EventPeopleCell.self, forCellReuseIdentifier: EventPeopleCell.identifier)
+        TableViews.register(tableview: tableView, identifiers: [
+            EventToggleCell.identifier: EventToggleCell.self,
+            EventTitleCell.identifier: EventTitleCell.self,
+            EventPeopleCell.identifier: EventPeopleCell.self,
+            EventDateTimeCell.identifier: EventDateTimeCell.self,
+            EventDetailCell.identifier: EventDetailCell.self,
+            EventLocationCell.identifier: EventLocationCell.self ])
         
         tableView.backgroundView = nil
         tableView.backgroundColor = Colors.dimBackground
+        tableView.keyboardDismissMode = .interactive
+        tableView.separatorColor = Colors.separator
         
         updateSections()
         
         navigationItem.title = NSLocalizedString("New Event", comment: "")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Images.cross, style: .plain, target: self, action: #selector(CreateEventViewController.crossPressed))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.tick, style: .plain, target: self, action: #selector(CreateEventViewController.tickPressed))
+        let tickButton = UIBarButtonItem(image: Images.tick, style: .plain, target: self, action: #selector(CreateEventViewController.tickPressed))
+        navigationItem.rightBarButtonItem = tickButton
+        tickButton.tintColor = Colors.accent
     }
     
     @objc func crossPressed() {
@@ -78,11 +87,11 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     func updateSections() {
         sections = [
             [ .title ],
-            [ .people ],
-            [ .allday, .dateTime ],
-            [ .location, .skypeCall ],
-            [ .desc ],
-            [ .alert, .isPrivate, .showAs ]
+//            [ .people ],
+//            [ .allday, .dateTime ],
+//            [ .location, .skypeCall ],
+//            [ .desc ],
+//            [ .alert, .isPrivate, .showAs ]
         ]
     }
     
@@ -92,7 +101,13 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
             return UITableViewCell()
         }
         
-        // rowType.configure(cell: cell)
+        switch rowType {
+        case .title:
+            guard let inputCell = cell as? EventTitleCell else { break }
+            inputCell.event = event
+        default:
+            break
+        }
         
         return cell
     }
