@@ -11,10 +11,9 @@ import Foundation
 struct Event : Codable {
     let id: String
     var start: Date?
-    var end: Date?
+    var duration: TimeInterval?
     var title: String?
-    var formattedAddress: String?
-    // var attendees : [Person] = []
+    var attendees : [Person] = []
     
     init() {
         id = NSUUID().uuidString

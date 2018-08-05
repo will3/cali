@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Person {
+struct Person : Codable {
     var firstName: String?
     var lastName: String?
 }

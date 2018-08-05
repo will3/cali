@@ -73,6 +73,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     @objc func plusPressed() {
         // Add a fake event
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
