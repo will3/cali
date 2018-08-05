@@ -22,6 +22,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     var selectedDate: Date? { didSet {
         calendarView.selectedDate = selectedDate
         eventListView.selectedDate = selectedDate
+        updateNavigationItemTitle()
         } }
     
     override func viewDidLoad() {
@@ -45,7 +46,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             .useTopMarginGuide(true)
             .useBottomMarginGuide(true)
             .children(
-                [ layout(weekdayBar).height(20),
+                [ layout(weekdayBar).height(24),
                   calendarLayout,
                   layout(eventListView) ]
             ).install()
@@ -85,6 +86,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func updateNavigationItemTitle() {
+        if let selectedDate = self.selectedDate {
+            self.navigationItem.title = CalendarFormatters.longMonthFormatter.string(from: selectedDate)
+        }
     }
     
     @objc func didPanCalendar() {

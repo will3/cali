@@ -144,7 +144,13 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             calendarCell.month = ""
         }
         
-        calendarCell.isPast = dates.isPastMonth(date: date.date)
+        if dates.isPastMonth(date: date.date) {
+            calendarCell.background = .Past
+        } else if dates.isToday(date: date.date) {
+            calendarCell.background = .Today
+        } else {
+            calendarCell.background = .Default
+        }
         calendarCell.shouldShowCircle = selected
     }
     
@@ -165,12 +171,37 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     // MARK: UIScrollViewDelegate
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        showOverlay()
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if (velocity.y == 0) {
+            hideOverlay()
+            // snap
+            let y = targetContentOffset.pointee.y
+            let desiredY = round(y / itemSize.height) * itemSize.height
+            let contentOffset = CGPoint(x: 0, y: desiredY)
+            scrollView.setContentOffset(contentOffset, animated: true)
+        } else {
+            let y = targetContentOffset.pointee.y
+            let desiredY = round(y / itemSize.height) * itemSize.height
+            targetContentOffset.pointee = CGPoint(x: 0, y: desiredY)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        hideOverlay()
+    }
+    
+    // MARK: Overlay
+    
+    func showOverlay() {
         UIView.animate(withDuration: 0.2) {
             self.overlay.alpha = 1.0
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func hideOverlay() {
         UIView.animate(withDuration: 0.2) {
             self.overlay.alpha = 0.0
         }

@@ -9,6 +9,11 @@
 import UIKit
 
 class CalendarCollectionViewCell: UICollectionViewCell {
+    enum Background {
+        case Default
+        case Past
+        case Today
+    }
     static let identifier = "CalendarCollectionViewCell"
     private var label: UILabel?
     private var monthLabel: UILabel?
@@ -25,7 +30,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     var shouldShowCircle: Bool = false { didSet { updateCircle() } }
-    var isPast: Bool = false { didSet { updateIsPast() } }
+    var background: Background = .Past { didSet { updateBackground() } }
     var drawLeftBorder = false { didSet { updateLeftBorder() } }
     var drawBotBorder = false { didSet { updateBotBorder() }}
     var month: String = "" { didSet { updateLabels() } }
@@ -67,11 +72,14 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func updateIsPast() {
-        if isPast {
-            contentView.backgroundColor = Colors.dimBackground
-        } else {
+    func updateBackground() {
+        switch background {
+        case .Default:
             contentView.backgroundColor = UIColor.clear
+        case .Past:
+            contentView.backgroundColor = Colors.dimBackground
+        case .Today:
+            contentView.backgroundColor = Colors.lightAccent
         }
     }
     
@@ -136,6 +144,6 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         self.circleView = circleView
         
         updateCircle()
-        updateIsPast()
+        updateBackground()
     }
 }

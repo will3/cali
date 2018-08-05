@@ -14,4 +14,10 @@ class CalendarFormatters {
         formatter.dateFormat = "LLL";
         return formatter
     }()
+    
+    static let longMonthFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "LLLL";
+        return formatter
+    }()
 }

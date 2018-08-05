@@ -69,4 +69,8 @@ class CalendarDates {
     func isPastMonth(date: Date) -> Bool {
         return date.compare(startOfMonth) == .orderedAscending
     }
+    
+    func isToday(date: Date) -> Bool {
+        return date == today
+    }
 }
