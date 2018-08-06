@@ -16,18 +16,28 @@ class Layout {
     private var constraints: [NSLayoutConstraint] = []
     weak var parent : Layout?
     
-    var direction = LayoutDirection.Vertical
-    var alignItems = LayoutFit.Stretch
+    var direction = LayoutDirection.vertical
+    var alignItems = LayoutFit.stretch
     var useTopMarginGuide = false
     var useBottomMarginGuide = false
-    var width = LayoutSize.Default
-    var height = LayoutSize.Default
-    var fitHorizontal = LayoutFit.Default
-    var fitVertical = LayoutFit.Default
+    var width = LayoutSize.none
+    var height = LayoutSize.none
+    var fitHorizontal = LayoutFit.none
+    var fitVertical = LayoutFit.none
     var aspect: Float?
     var insets = UIEdgeInsets.zero
     var translatesAutoresizingMaskIntoConstraints = false
     var stackChildren = false
+    var minWidth = LayoutSize.none
+    var maxWidth = LayoutSize.none
+    var minHeight = LayoutSize.none
+    var maxHeight = LayoutSize.none
+    var hug = LayoutPriority.none
+    var resist = LayoutPriority.none
+    var originalHugHorizontal: UILayoutPriority?
+    var originalHugVertical: UILayoutPriority?
+    var originalResistHorizontal: UILayoutPriority?
+    var originalResistVertical: UILayoutPriority?
     
     private(set) var installed = false
     
@@ -49,14 +59,48 @@ class Layout {
             return
         }
         switch width {
-        case .Default:
+        case .none:
             break
-        case .Ratio(let value):
+        case .ratio(let value):
             install(constraint:
                 view.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: CGFloat(value)))
-        case .Value(let value):
+        case .value(let value):
             install(constraint:
                 view.widthAnchor.constraint(equalToConstant: CGFloat(value)))
+        }
+    }
+    
+    private func installMinWidth() {
+        guard let view = self.view else { return }
+        guard let superview = view.superview else {
+            return
+        }
+        switch width {
+        case .none:
+            break
+        case .ratio(let value):
+            install(constraint:
+                view.widthAnchor.constraint(greaterThanOrEqualTo: superview.widthAnchor, multiplier: CGFloat(value)))
+        case .value(let value):
+            install(constraint:
+                view.widthAnchor.constraint(greaterThanOrEqualToConstant: CGFloat(value)))
+        }
+    }
+    
+    private func installMaxWidth() {
+        guard let view = self.view else { return }
+        guard let superview = view.superview else {
+            return
+        }
+        switch width {
+        case .none:
+            break
+        case .ratio(let value):
+            install(constraint:
+                view.widthAnchor.constraint(lessThanOrEqualTo: superview.widthAnchor, multiplier: CGFloat(value)))
+        case .value(let value):
+            install(constraint:
+                view.widthAnchor.constraint(lessThanOrEqualToConstant: CGFloat(value)))
         }
     }
     
@@ -66,14 +110,48 @@ class Layout {
             return
         }
         switch height {
-        case .Default:
+        case .none:
             break;
-        case .Ratio(let value):
+        case .ratio(let value):
             install(constraint:
                 view.heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: CGFloat(value)))
-        case .Value(let value):
+        case .value(let value):
             install(constraint:
                 view.heightAnchor.constraint(equalToConstant: CGFloat(value)))
+        }
+    }
+    
+    private func installMinHeight() {
+        guard let view = self.view else { return }
+        guard let superview = view.superview else {
+            return
+        }
+        switch height {
+        case .none:
+            break
+        case .ratio(let value):
+            install(constraint:
+                view.heightAnchor.constraint(greaterThanOrEqualTo: superview.heightAnchor, multiplier: CGFloat(value)))
+        case .value(let value):
+            install(constraint:
+                view.heightAnchor.constraint(greaterThanOrEqualToConstant: CGFloat(value)))
+        }
+    }
+    
+    private func installMaxHeight() {
+        guard let view = self.view else { return }
+        guard let superview = view.superview else {
+            return
+        }
+        switch height {
+        case .none:
+            break
+        case .ratio(let value):
+            install(constraint:
+                view.heightAnchor.constraint(lessThanOrEqualTo: superview.heightAnchor, multiplier: CGFloat(value)))
+        case .value(let value):
+            install(constraint:
+                view.heightAnchor.constraint(lessThanOrEqualToConstant: CGFloat(value)))
         }
     }
     
@@ -81,7 +159,11 @@ class Layout {
         guard let view = self.view else { return }
         view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         installWidth()
+        installMinWidth()
+        installMaxWidth()
         installHeight()
+        installMinHeight()
+        installMaxHeight()
         intallFitHorizontal()
         intallFitVertical()
         installAspect()
@@ -102,18 +184,18 @@ class Layout {
         }
         
         switch fitHorizontal {
-        case .Default:
+        case .none:
             break
-        case .Leading:
+        case .leading:
             install(constraint:
                 view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left))
-        case .Center:
+        case .center:
             install(constraint:
                 view.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 0))
-        case .Trailing:
+        case .trailing:
             install(constraint:
                 view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right))
-        case .Stretch:
+        case .stretch:
             install(constraint:
                 view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left))
             install(constraint:
@@ -127,18 +209,18 @@ class Layout {
             return
         }
         switch fitVertical {
-        case .Default:
+        case .none:
             break
-        case .Leading:
+        case .leading:
             install(constraint:
                 view.topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top))
-        case .Center:
+        case .center:
             install(constraint:
                 view.centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: 0))
-        case .Trailing:
+        case .trailing:
             install(constraint:
                 view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom))
-        case .Stretch:
+        case .stretch:
             install(constraint:
                 view.topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top))
             install(constraint:
@@ -158,6 +240,63 @@ class Layout {
         for child in children {
             installAlignItems(child: child)
         }
+        
+        for child in children {
+            installChildHug(child: child)
+            installChildResist(child: child)
+        }
+    }
+    
+    func installChildHug(child: Layout) {
+        guard let childView = child.view else { return }
+        initOriginalLayoutPriorities()
+        
+        let axis: UILayoutConstraintAxis = direction == .horizontal ? .horizontal : .vertical
+        guard let originalValue: UILayoutPriority = direction == .horizontal ? originalHugHorizontal : originalHugVertical else { return }
+        
+        switch hug {
+        case .none:
+            break
+        case .less(let value): childView.setContentHuggingPriority(UILayoutPriority(originalValue.rawValue - value), for: axis)
+        case .more(let value): childView.setContentHuggingPriority(UILayoutPriority(originalValue.rawValue + value), for: axis)
+        case .value(let value): childView.setContentHuggingPriority(UILayoutPriority(value), for: axis)
+        }
+    }
+    
+    func installChildResist(child: Layout) {
+        guard let childView = child.view else { return }
+        initOriginalLayoutPriorities()
+        
+        let axis: UILayoutConstraintAxis = direction == .horizontal ? .horizontal : .vertical
+        guard let originalValue: UILayoutPriority = direction == .horizontal ? originalResistHorizontal : originalResistVertical else { return }
+        
+        switch hug {
+        case .none:
+            break
+        case .less(let value): childView.setContentCompressionResistancePriority(UILayoutPriority(originalValue.rawValue - value), for: axis)
+        case .more(let value): childView.setContentCompressionResistancePriority(UILayoutPriority(originalValue.rawValue + value), for: axis)
+        case .value(let value): childView.setContentCompressionResistancePriority(UILayoutPriority(value), for: axis)
+        }
+    }
+    
+    func initOriginalLayoutPriorities() {
+        guard let view = self.view else { return }
+        if originalHugHorizontal == nil {
+            originalHugHorizontal = view.contentHuggingPriority(for: .horizontal)
+        }
+        
+        if originalHugVertical == nil {
+            originalHugVertical = view.contentHuggingPriority(for: .vertical)
+        }
+        
+        if originalResistHorizontal == nil {
+            originalResistHorizontal = view.contentCompressionResistancePriority(for: .horizontal)
+        }
+        
+        if originalResistVertical == nil {
+            originalResistVertical =
+                view.contentCompressionResistancePriority(for: .vertical)
+        }
     }
     
     private func installStackAxis(child: Layout, index: Int) {
@@ -165,7 +304,7 @@ class Layout {
         guard let view = self.view else { return }
         
         switch direction {
-        case .Vertical:
+        case .vertical:
             if index == 0 {
                 let topAnchor = useTopMarginGuide ?
                     view.layoutMarginsGuide.topAnchor :
@@ -191,7 +330,7 @@ class Layout {
                 install(constraint:
                     childView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin))
             }
-        case .Horizontal:
+        case .horizontal:
             if index == 0 {
                 let margin = child.insets.left
                 install(constraint:
@@ -218,35 +357,35 @@ class Layout {
         guard let childView = child.view else { return }
         
         switch direction {
-        case .Vertical:
+        case .vertical:
             switch alignItems {
-            case .Default, .Leading:
+            case .none, .leading:
                 install(constraint:
                     childView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: child.insets.top))
-            case .Trailing:
+            case .trailing:
                 install(constraint:
                     childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -child.insets.bottom))
-            case .Center:
+            case .center:
                 install(constraint:
                     childView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0))
-            case .Stretch:
+            case .stretch:
                 install(constraint:
                     childView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: child.insets.top))
                 install(constraint:
                     childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -child.insets.bottom))
             }
-        case .Horizontal:
+        case .horizontal:
             switch alignItems {
-            case .Default, .Leading:
+            case .none, .leading:
                 install(constraint:
                     childView.topAnchor.constraint(equalTo: view.topAnchor, constant: child.insets.left))
-            case .Trailing:
+            case .trailing:
                 install(constraint:
                     childView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -child.insets.right))
-            case .Center:
+            case .center:
                 install(constraint:
                     childView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0))
-            case .Stretch:
+            case .stretch:
                 install(constraint:
                     childView.topAnchor.constraint(equalTo: view.topAnchor, constant: child.insets.left))
                 install(constraint:
@@ -271,6 +410,7 @@ class Layout {
         uninstall();
         
         if stackChildren {
+            addSubviewsIfNeeded()
             installStack()
         }
         
@@ -281,6 +421,17 @@ class Layout {
         }
         
         installed = true
+    }
+    
+    func addSubviewsIfNeeded() {
+        for child in children {
+            guard let view = child.view else { continue }
+            guard let parentView = self.view else { continue }
+            
+            if view.superview != parentView {
+                parentView.addSubview(view)
+            }
+        }
     }
     
     func uninstall() {

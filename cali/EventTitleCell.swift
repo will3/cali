@@ -19,7 +19,7 @@ class EventTitleCell: UITableViewCell, UITextFieldDelegate {
     var event: Event? { didSet { textField.text = event?.title ?? "" } }
     
     var placeholder = "" { didSet {
-        textField.placeholder = placeholder
+        textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [ NSAttributedStringKey.foregroundColor: Colors.primary ])
         } }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -35,6 +35,7 @@ class EventTitleCell: UITableViewCell, UITextFieldDelegate {
     func loadView() {
         textField.returnKeyType = .done
         textField.delegate = self
+        textField.textColor = Colors.black
         
         wrapper.addSubview(iconImageView)
         wrapper.addSubview(textField)
@@ -43,8 +44,8 @@ class EventTitleCell: UITableViewCell, UITextFieldDelegate {
         iconImageView.backgroundColor = Colors.accent
         
         layout(wrapper)
-            .direction(.Horizontal)
-            .alignItems(.Center)
+            .direction(.horizontal)
+            .alignItems(.center)
             .stack([
                 layout(iconImageView).width(24).height(24),
                 layout(textField).left(12)
@@ -54,6 +55,7 @@ class EventTitleCell: UITableViewCell, UITextFieldDelegate {
         layout(wrapper).matchParent().height(42).left(12).right(12).install()
  
         textField.placeholder = NSLocalizedString("Title", comment: "Create event title textfield placeholder")
+        textField.tintColor = Colors.accent
         
         selectionStyle = .none
         

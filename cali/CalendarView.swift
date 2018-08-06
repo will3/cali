@@ -16,7 +16,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     private var didLoad = false
     var hasScrolledToToday = false
     
-    var totalWidth: CGFloat = UIScreen.main.bounds.size.width {
+    private var totalWidth: CGFloat = UIScreen.main.bounds.size.width {
         didSet {
             reloadData()
         }

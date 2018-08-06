@@ -21,20 +21,27 @@ class Layouts {
 }
 
 enum LayoutDirection {
-    case Vertical
-    case Horizontal
+    case vertical
+    case horizontal
 }
 
 enum LayoutSize {
-    case Default
-    case Value(Float)
-    case Ratio(Float)
+    case none
+    case value(Float)
+    case ratio(Float)
 }
 
 enum LayoutFit {
-    case Default
-    case Leading
-    case Center
-    case Trailing
-    case Stretch
+    case none
+    case leading
+    case center
+    case trailing
+    case stretch
+}
+
+enum LayoutPriority {
+    case none
+    case more(Float)
+    case less(Float)
+    case value(Float)
 }

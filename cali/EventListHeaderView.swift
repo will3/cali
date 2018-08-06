@@ -54,8 +54,8 @@ class EventListHeaderView: UITableViewHeaderFooterView {
         layout(label)
             .left(18)
             .right(18)
-            .horizontal(.Stretch)
-            .vertical(.Center)
+            .horizontal(.stretch)
+            .vertical(.center)
             .install()
         
         updateLabel()

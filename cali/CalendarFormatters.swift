@@ -8,16 +8,34 @@
 
 import Foundation
 
-class CalendarFormatters {
-    static let shortMonthFormatter: DateFormatter = {
+class DateFormatters {
+    static let LLLFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "LLL";
         return formatter
     }()
     
-    static let longMonthFormatter: DateFormatter = {
+    static let LLLLFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "LLLL";
+        return formatter
+    }()
+    
+    static let EEEddMMMFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("EEEddMMM")
+        return formatter
+    }()
+    
+    static let hmmaFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter
+    }()
+    
+    static let hmmFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm"
         return formatter
     }()
 }

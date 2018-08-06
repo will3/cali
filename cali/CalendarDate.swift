@@ -19,7 +19,7 @@ class CalendarDate {
     }
     
     var formattedMonth: String {
-        return CalendarFormatters.shortMonthFormatter.string(from: date)
+        return DateFormatters.LLLFormatter.string(from: date)
     }
     
     init(date: Date, calendar: Calendar) {

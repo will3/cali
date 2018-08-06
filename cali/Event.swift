@@ -12,6 +12,12 @@ struct Event : Codable {
     let id: String
     var start: Date?
     var duration: TimeInterval?
+    var end: Date? {
+        guard let start = self.start else { return nil }
+        guard let duration = self.duration else { return nil }
+        return start.addingTimeInterval(duration)
+    }
+    
     var title: String?
     var attendees : [Person] = []
     

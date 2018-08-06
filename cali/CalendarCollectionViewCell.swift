@@ -116,8 +116,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(botBorder)
         
         layout(botBorder)
-            .horizontal(.Stretch)
-            .vertical(.Trailing)
+            .horizontal(.stretch)
+            .vertical(.trailing)
             .height(1.0)
             .install()
         
@@ -131,10 +131,10 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         layout(view).center().install()
         
         layout(circleView)
-            .horizontal(.Stretch)
+            .horizontal(.stretch)
             .left(4)
             .right(4)
-            .vertical(.Center)
+            .vertical(.center)
             .aspect(1)
             .install()
         

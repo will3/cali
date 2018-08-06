@@ -9,23 +9,70 @@
 import Foundation
 import UIKit
 
-class LayoutBuilder {
+protocol LayoutWrapper {
+    func layout_internal_getLayout() -> Layout
+}
+
+extension UIView : LayoutWrapper {
+    func layout_internal_getLayout() -> Layout {
+        return Layout(view: self)
+    }
+}
+
+class LayoutBuilder : LayoutWrapper {
     let layout: Layout
     
     init (view: UIView) {
         layout = Layout(view: view)
     }
     
-    func stack(_ wrappers: [LayoutBuilder]) -> Self {
+    func layout_internal_getLayout() -> Layout {
+        return layout
+    }
+    
+    func stack(_ wrappers: [LayoutWrapper]) -> Self {
         layout.stackChildren = true
         for wrapper in wrappers {
-            layout.addChild(child: wrapper.layout)
+            layout.addChild(child: wrapper.layout_internal_getLayout())
         }
         return self
     }
     
+    func stackHorizontal(_ wrappers: [LayoutWrapper]) -> Self {
+        return stack(wrappers).direction(.horizontal)
+    }
+    
+    func stackVertical(_ wrappers: [LayoutWrapper]) -> Self {
+        return stack(wrappers)
+    }
+    
     func width(_ width: LayoutSize) -> Self {
         layout.width = width
+        return self
+    }
+    
+    func width(_ width: Float) -> Self {
+        layout.width = .value(width)
+        return self
+    }
+    
+    func minWidth(_ minWidth: LayoutSize) -> Self {
+        layout.minWidth = minWidth
+        return self
+    }
+    
+    func minWidth(_ minWidth: Float) -> Self {
+        layout.minWidth = .value(minWidth)
+        return self
+    }
+    
+    func maxWidth(_ maxWidth: LayoutSize) -> Self {
+        layout.maxWidth = maxWidth
+        return self
+    }
+    
+    func maxWidth(_ maxWidth: Float) -> Self {
+        layout.maxWidth = .value(maxWidth)
         return self
     }
     
@@ -34,13 +81,28 @@ class LayoutBuilder {
         return self
     }
     
-    func width(_ width: Float) -> Self {
-        layout.width = LayoutSize.Value(width)
+    func height(_ height: Float) -> Self {
+        layout.height = .value(height)
         return self
     }
     
-    func height(_ height: Float) -> Self {
-        layout.height = LayoutSize.Value(height)
+    func minHeight(_ minHeight: LayoutSize) -> Self {
+        layout.minHeight = minHeight
+        return self
+    }
+    
+    func minHeight(_ minHeight: Float) -> Self {
+        layout.minHeight = .value(minHeight)
+        return self
+    }
+    
+    func maxHeight(_ maxHeight: LayoutSize) -> Self {
+        layout.maxHeight = maxHeight
+        return self
+    }
+    
+    func maxHeight(_ maxHeight: Float) -> Self {
+        layout.maxHeight = .value(maxHeight)
         return self
     }
     
@@ -100,11 +162,11 @@ class LayoutBuilder {
     }
     
     func center() -> Self {
-        return horizontal(LayoutFit.Center).vertical(LayoutFit.Center)
+        return horizontal(.center).vertical(.center)
     }
     
     func matchParent() -> Self {
-        return horizontal(LayoutFit.Stretch).vertical(LayoutFit.Stretch)
+        return horizontal(.stretch).vertical(.stretch)
     }
     
     func insets(_ insets: UIEdgeInsets) -> Self {
@@ -114,6 +176,52 @@ class LayoutBuilder {
     
     func translatesAutoresizingMaskIntoConstraints() -> Self {
         layout.translatesAutoresizingMaskIntoConstraints = true
+        return self
+    }
+    
+    func hugMore() -> Self {
+        return hugMore(1)
+    }
+    
+    func hugMore(_ value: Float) -> Self {
+        layout.hug = .more(value)
+        return self
+    }
+    
+    func hugLess() -> Self {
+        return hugLess(1)
+    }
+    
+    func hugLess(_ value: Float) -> Self {
+        layout.hug = .less(value)
+        return self
+    }
+    
+    func hug(_ value: Float) -> Self {
+        layout.hug = .value(value)
+        return self
+    }
+    
+    func resistMore() -> Self {
+        return resistMore(1)
+    }
+    
+    func resistMore(_ value: Float) -> Self {
+        layout.resist = .more(value)
+        return self
+    }
+    
+    func resistLess() -> Self {
+        return resistLess(1)
+    }
+    
+    func resistLess(_ value: Float) -> Self {
+        layout.resist = .less(value)
+        return self
+    }
+    
+    func resist(_ value: Float) -> Self {
+        layout.resist = .value(value)
         return self
     }
     

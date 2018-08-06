@@ -72,7 +72,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     }
     
     @objc func plusPressed() {
+        guard let selectedDate = self.selectedDate else { return }
         let vc = CreateEventViewController()
+        
+        vc.event.start = selectedDate.addingTimeInterval(TimeIntervals.hour * 12)
+        vc.event.duration = TimeIntervals.hour
+        
         let nav = UINavigationController(rootViewController: vc)
         NavigationBars.style(navigationBar: nav.navigationBar, .white)
         present(nav, animated: true, completion: nil)
@@ -101,7 +106,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     func updateNavigationItemTitle() {
         if let selectedDate = self.selectedDate {
-            self.navigationItem.title = CalendarFormatters.longMonthFormatter.string(from: selectedDate)
+            self.navigationItem.title = DateFormatters.LLLLFormatter.string(from: selectedDate)
         }
     }
     

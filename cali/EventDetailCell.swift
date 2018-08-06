@@ -28,7 +28,7 @@ class EventDetailCell: UITableViewCell {
     
     func loadView() {
         layout(wrapper)
-            .alignItems(.Center)
+            .alignItems(.center)
             .stack([
                 layout(iconImageView),
                 layout(titleLabel),

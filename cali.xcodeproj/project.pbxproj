@@ -49,6 +49,8 @@
 		6F6686A02116A55C0047D752 /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66869F2116A55C0047D752 /* LayoutBuilder.swift */; };
 		6F6686A22116A5640047D752 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A12116A5640047D752 /* Layout.swift */; };
 		6F6686A52116AF900047D752 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A42116AF900047D752 /* Collections.swift */; };
+		6F6686A72116F27A0047D752 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A62116F27A0047D752 /* DurationFormatter.swift */; };
+		6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2C62117C2D8004570ED /* TimeIntervals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		6F66869F2116A55C0047D752 /* LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
 		6F6686A12116A5640047D752 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		6F6686A42116AF900047D752 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
+		6F6686A62116F27A0047D752 /* DurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
+		6FACC2C62117C2D8004570ED /* TimeIntervals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +228,6 @@
 				6F668666211513B30047D752 /* Views */,
 				6F668665211513AD0047D752 /* Cells */,
 				6F4EA6A52113E3860096B9E9 /* MainViewController.swift */,
-				6F66867A211566A20047D752 /* CalendarFormatters.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -279,6 +282,9 @@
 				6F668687211689E80047D752 /* Images.swift */,
 				6F6686942116A1500047D752 /* NavigationBars.swift */,
 				6F6686982116A2E20047D752 /* TableViews.swift */,
+				6F6686A62116F27A0047D752 /* DurationFormatter.swift */,
+				6F66867A211566A20047D752 /* CalendarFormatters.swift */,
+				6FACC2C62117C2D8004570ED /* TimeIntervals.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -486,8 +492,10 @@
 				6F668658211510AB0047D752 /* Person.swift in Sources */,
 				6F66869121169BA00047D752 /* EventDateTimeCell.swift in Sources */,
 				6F668656211510A20047D752 /* Event.swift in Sources */,
+				6F6686A72116F27A0047D752 /* DurationFormatter.swift in Sources */,
 				6F668681211581960047D752 /* MonthOverlayView.swift in Sources */,
 				6F668688211689E80047D752 /* Images.swift in Sources */,
+				6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */,
 				6F66869E2116A5380047D752 /* LayoutRunner.swift in Sources */,
 				6F66867D2115689A0047D752 /* EventListHeaderView.swift in Sources */,
 				6F66869C2116A5220047D752 /* LayoutRegistry.swift in Sources */,

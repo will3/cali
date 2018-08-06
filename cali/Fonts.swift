@@ -15,4 +15,6 @@ class Fonts {
     
     static let headerFont = UIFont.systemFont(ofSize: 14.0)
     static let headerFontMedium = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+    
+    static let navigationItemTitleFont = UIFont.systemFont(ofSize: 16.0, weight: .medium)
 }

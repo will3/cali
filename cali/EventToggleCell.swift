@@ -34,8 +34,8 @@ class EventToggleCell : UITableViewCell {
         wrapper.addSubview(iconImageView)
         
         layout(wrapper)
-            .direction(.Horizontal)
-            .alignItems(.Center)
+            .direction(.horizontal)
+            .alignItems(.center)
             .stack([
                 layout(label),
                 layout(iconImageView)

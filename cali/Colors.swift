@@ -17,6 +17,7 @@ class Colors {
     static let dimBackground = UIColor(rgb:0xF8F8F8)
     static let separator = UIColor(rgb:0xECECEC)
     static let white = UIColor(rgb:0xFFFFFF)
+    static let black = UIColor(rgb:0x000000)
 }
 
 extension UIColor {

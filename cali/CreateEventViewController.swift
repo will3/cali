@@ -89,6 +89,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
             [ .title ],
 //            [ .people ],
 //            [ .allday, .dateTime ],
+            [ .dateTime ],
 //            [ .location, .skypeCall ],
 //            [ .desc ],
 //            [ .alert, .isPrivate, .showAs ]
@@ -104,6 +105,9 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         switch rowType {
         case .title:
             guard let inputCell = cell as? EventTitleCell else { break }
+            inputCell.event = event
+        case .dateTime:
+            guard let inputCell = cell as? EventDateTimeCell else { break }
             inputCell.event = event
         default:
             break

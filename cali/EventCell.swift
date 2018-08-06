@@ -32,10 +32,10 @@ class EventCell : UITableViewCell {
         noEventsLabel.textColor = Colors.primary
         
         layout(noEventsLabel)
-            .horizontal(.Stretch)
+            .horizontal(.stretch)
             .left(18)
             .right(18)
-            .vertical(.Stretch)
+            .vertical(.stretch)
             .top(12)
             .bottom(12)
             .install()

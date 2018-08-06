@@ -21,6 +21,10 @@ class NavigationBars {
             navigationBar.barTintColor = UIColor.white
             navigationBar.setBackgroundImage(UIImage(), for: .default)
             navigationBar.shadowImage = UIImage()
+            navigationBar.titleTextAttributes = [
+                NSAttributedStringKey.foregroundColor: Colors.accent,
+                NSAttributedStringKey.font : Fonts.navigationItemTitleFont
+            ]
         }
     }
 }

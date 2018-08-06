@@ -40,16 +40,19 @@ class WeekdayBar: UIView {
             label.text = days[i];
         }
         
+        let children = labels.map { (label) in
+            return layout(label).width(.ratio(1 / 7.0))
+        }
+        
         layout(self)
-            .direction(.Horizontal)
-            .stack(labels.map({ label in
-                return layout(label).width(.Ratio(1 / 7.0))
-            })).install()
+            .direction(.horizontal)
+            .stack(children)
+            .install()
         
         let border = UIView()
         addSubview(border)
         border.backgroundColor = Colors.separator
         
-        layout(border).horizontal(.Stretch).vertical(.Trailing).height(1.0).install()
+        layout(border).horizontal(.stretch).vertical(.trailing).height(1.0).install()
     }
 }
