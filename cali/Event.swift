@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Event : Codable {
+struct Event : Storable {
     let id: String
     var start: Date?
     var duration: TimeInterval?
@@ -47,5 +47,9 @@ struct Event : Codable {
     
     init() {
         id = NSUUID().uuidString
+    }
+    
+    func getID() -> String {
+        return id
     }
 }

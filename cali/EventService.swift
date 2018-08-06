@@ -17,6 +17,6 @@ class EventService {
     }
     
     func add(event: Event) {
-        
+        Collection(name: "events").insert(object: event)
     }
 }
