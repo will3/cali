@@ -165,8 +165,21 @@ class LayoutBuilder : LayoutWrapper {
         return horizontal(.center).vertical(.center)
     }
     
+    func center(_ view: UIView) -> Self {
+        return parent(view).center()
+    }
+    
+    func parent(_ view: UIView) -> Self {
+        layout.parentView = view
+        return self
+    }
+    
     func matchParent() -> Self {
         return horizontal(.stretch).vertical(.stretch)
+    }
+    
+    func matchParent(_ view: UIView) -> Self {
+        return parent(view).matchParent()
     }
     
     func insets(_ insets: UIEdgeInsets) -> Self {
@@ -222,6 +235,15 @@ class LayoutBuilder : LayoutWrapper {
     
     func resist(_ value: Float) -> Self {
         layout.resist = .value(value)
+        return self
+    }
+    
+    func priority(_ value: Float) -> Self {
+        return priority(UILayoutPriority(value))
+    }
+    
+    func priority(_ priority: UILayoutPriority) -> Self {
+        layout.priority = priority
         return self
     }
     

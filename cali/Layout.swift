@@ -38,6 +38,8 @@ class Layout {
     var originalHugVertical: UILayoutPriority?
     var originalResistHorizontal: UILayoutPriority?
     var originalResistVertical: UILayoutPriority?
+    var parentView: UIView?
+    var priority = UILayoutPriority.required
     
     private(set) var installed = false
     
@@ -395,6 +397,7 @@ class Layout {
     }
     
     private func install(constraint: NSLayoutConstraint) {
+        constraint.priority = priority
         constraint.isActive = true
         constraints.append(constraint)
     }
@@ -409,6 +412,8 @@ class Layout {
     func install() {
         uninstall();
         
+        installParentView()
+        
         if stackChildren {
             addSubviewsIfNeeded()
             installStack()
@@ -421,6 +426,13 @@ class Layout {
         }
         
         installed = true
+    }
+    
+    func installParentView() {
+        guard let view = self.view else { return }
+        if let parentView = self.parentView {
+            parentView.addSubview(view)
+        }
     }
     
     func addSubviewsIfNeeded() {

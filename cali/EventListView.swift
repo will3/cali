@@ -36,6 +36,8 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     private func reloadData() {
         tableView.reloadData()
+        tableView.layoutIfNeeded()
+        scrollToTodayIfNeeded()
     }
     
     override func didMoveToSuperview() {
@@ -60,7 +62,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.showsVerticalScrollIndicator = false
     }
     
-    func scrollToTodayIfNeeded() {
+    private func scrollToTodayIfNeeded() {
         guard let dates = self.dates else { return }
         if !hasScrolledToToday {
             let index = dates.indexForToday

@@ -8,21 +8,19 @@
 
 import UIKit
 
+protocol CalendarViewDelegate : AnyObject {
+    func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView)
+}
+
 class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    private var collectionView: UICollectionView!
-    private var layout: UICollectionViewFlowLayout!
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     private let overlay = MonthOverlayView()
-    
     private var didLoad = false
     var hasScrolledToToday = false
+    var totalWidth: CGFloat = UIScreen.main.bounds.size.width
+    weak var delegate: CalendarViewDelegate?
     
-    private var totalWidth: CGFloat = UIScreen.main.bounds.size.width {
-        didSet {
-            reloadData()
-        }
-    }
-    
-    var dates: CalendarDates? {
+    var dates = CalendarDates() {
         didSet {
             overlay.dates = dates
             reloadData()
@@ -31,11 +29,15 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     var selectedDate: Date? {
         didSet {
-            updateSelectedDate()   
+            updateSelectedDate()
         }
     }
     
     var itemSize: CGSize {
+        return CalendarView.itemSizeForWidth(totalWidth)
+    }
+    
+    static func itemSizeForWidth(_ totalWidth: CGFloat) -> CGSize {
         let width = totalWidth / 7.0
         return CGSize(width: width, height: width + 4.0)
     }
@@ -48,7 +50,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         return Float(itemSize.height * 5)
     }
     
-    func startOverlayObservers() {
+    private func startOverlayObservers() {
         collectionView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
     }
     
@@ -58,7 +60,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    func endOverlayObservers() {
+    private func endOverlayObservers() {
         collectionView.removeObserver(self, forKeyPath: "contentOffset")
     }
     
@@ -71,41 +73,50 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     override func didMoveToSuperview() {
-        if didLoad { return }
-        loadView()
-        didLoad = true
+        if !didLoad {
+            loadView()
+            didLoad = true
+        }
+        
+        if superview == nil {
+            endOverlayObservers()
+        } else {
+            startOverlayObservers()
+        }
     }
     
     private func loadView() {
-        layout = UICollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.white
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.scrollsToTop = false
         
         addSubview(collectionView)
 
         Layouts.view(collectionView).matchParent().install()
         
-        layout.itemSize = itemSize
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.itemSize = itemSize
+            flowLayout.minimumLineSpacing = 0
+            flowLayout.minimumInteritemSpacing = 0
+        }
         
         overlay.rowHeight = itemSize.height
         addSubview(overlay)
-        Layouts.view(overlay).matchParent().install()
+        layout(overlay).matchParent().install()
 
         collectionView.register(
             UINib.init(nibName: CalendarCollectionViewCell.identifier, bundle: Bundle.main),
             forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
+        
+        reloadData()
     }
     
-    func scrollToTodayIfNeeded() {
+    private func scrollToTodayIfNeeded() {
         if hasScrolledToToday {
             return
         }
-        guard let dates = self.dates else { return }
         let indexPath = IndexPath(item: dates.indexForToday, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         hasScrolledToToday = true
@@ -113,7 +124,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     func scrollToSelectedDate() {
         guard let selectedDate = self.selectedDate else { return }
-        guard let dates = self.dates else { return }
         
         let indexPath = IndexPath(item: dates.getIndex(date: selectedDate), section: 0)
         collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
@@ -121,6 +131,11 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     private func reloadData() {
         collectionView.reloadData()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollToTodayIfNeeded()
     }
     
     func updateSelectedDate() {
@@ -141,7 +156,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func update(calendarCell: CalendarCollectionViewCell, indexPath: IndexPath) {
-        let dates = self.dates!
         let date = dates.getDate(index: indexPath.item)!
         
         calendarCell.day = date.formattedDay
@@ -163,12 +177,14 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedDate = dates?.getDate(index: indexPath.item)?.date
+        selectedDate = dates.getDate(index: indexPath.item)?.date
         collectionView.reloadData()
+        
+        delegate?.calendarViewDidChangeSelectedDate(self)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dates?.numDates ?? 0
+        return dates.numDates
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

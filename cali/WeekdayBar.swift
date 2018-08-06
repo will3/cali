@@ -41,7 +41,7 @@ class WeekdayBar: UIView {
         }
         
         let children = labels.map { (label) in
-            return layout(label).width(.ratio(1 / 7.0))
+            return layout(label).width(.ratio(1 / 7.0)).priority(999)
         }
         
         layout(self)
@@ -53,6 +53,12 @@ class WeekdayBar: UIView {
         addSubview(border)
         border.backgroundColor = Colors.separator
         
-        layout(border).horizontal(.stretch).vertical(.trailing).height(1.0).install()
+        layout(border)
+            .horizontal(.stretch)
+            .vertical(.trailing)
+            .height(1.0)
+            .install()
+        
+        layout(self).height(24).priority(999).install()
     }
 }

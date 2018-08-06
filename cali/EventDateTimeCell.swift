@@ -75,20 +75,23 @@ class EventDateTimeCell : UITableViewCell {
         updateEvent()
         
         let leftButton = UIButton()
-        left.addSubview(leftButton)
         leftButton.addTarget(self, action: #selector(EventDateTimeCell.didPressLeft), for: .touchUpInside)
-        layout(leftButton).matchParent().install()
+        layout(leftButton).matchParent(left).install()
         
         let rightButton = UIButton()
         rightButton.addTarget(self, action: #selector(EventDateTimeCell.didPressRight), for: .touchUpInside)
-        right.addSubview(rightButton)
-        layout(rightButton).matchParent().install()
+        layout(rightButton).matchParent(right).install()
         
         selectionStyle = .none
     }
     
     @objc func didPressLeft() {
         
+        if let keyWindow = UIApplication.shared.keyWindow {
+            let selectionView = DateTimeSelectionView()
+            selectionView.event = event
+            layout(selectionView).matchParent(keyWindow).install()
+        }
     }
     
     @objc func didPressRight() {
@@ -105,13 +108,12 @@ class EventDateTimeCell : UITableViewCell {
             .EEEddMMMFormatter.string(from: start)
         dateDiffLabel.text = DurationFormatter.formatRelative(from: start, to: end)
         timeTitleLabel.text = NSLocalizedString("Time", comment: "")
-        let startTimeText = DateFormatters.hmmaFormatter.string(from: start)
-        let endTimeText = DateFormatters.hmmaFormatter.string(from: end)
+        
         
         let boldStartTimeText = DateFormatters.hmmFormatter.string(from: start)
         let boldEndTimeText = DateFormatters.hmmFormatter.string(from: end)
         
-        let text = String(format:NSLocalizedString("%1$@ → %2$@", comment: "Create event start time to end time"), startTimeText, endTimeText)
+        let text = DateFormatters.formatMeetingDuration(start: start, end: end)
         
         let attributedText = NSMutableAttributedString(string: text)
         

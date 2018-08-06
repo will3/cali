@@ -20,9 +20,10 @@ class CalendarDates {
     let startOfMonth: Date
     let indexForToday: Int
     
-    init(today: Date, calendar: Calendar) {
-        self.today = today
-        self.calendar = calendar
+    init() {
+        calendar = Calendar.current
+        today = calendar.startOfDay(for: Date())
+        
         let weekday = 1 // Sunday
         let sundayComponents = DateComponents(calendar: calendar, weekday: weekday)
         

@@ -21,6 +21,30 @@ struct Event : Codable {
     var title: String?
     var attendees : [Person] = []
     
+    var startDay: Date? {
+        if let start = self.start {
+            return Calendar.current.startOfDay(for: start)
+        } else {
+            return nil
+        }
+    }
+    
+    mutating func changeDay(_ day: Date) {
+        guard let start = self.start else { return }
+        var fromComponents =
+            Calendar.current.dateComponents(
+                [.year,.month,.day,.hour,.minute,.second],
+                from: start)
+        let toComponents =
+            Calendar.current.dateComponents(
+                [.year,.month,.day],
+                from: day)
+        fromComponents.year = toComponents.year
+        fromComponents.month = toComponents.month
+        fromComponents.day = toComponents.day
+        self.start = Calendar.current.date(from: fromComponents)
+    }
+    
     init() {
         id = NSUUID().uuidString
     }

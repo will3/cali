@@ -106,7 +106,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         
         let monthLabel = UILabel()
         monthLabel.textAlignment = .center
-        monthLabel.font = Fonts.monthFont;
+        monthLabel.font = Fonts.calendarSmallLight;
         monthLabel.textColor = Colors.primary
         view.addSubview(monthLabel)
         contentView.addSubview(view)

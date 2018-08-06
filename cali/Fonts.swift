@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 class Fonts {
     static let dayFont = UIFont.systemFont(ofSize: 16.0)
-    static let monthFont = UIFont.systemFont(ofSize: 14.0, weight: .light)
+    static let navigationItemTitleFont = UIFont.systemFont(ofSize: 16.0, weight: .medium)
+    
+    static let headerFontMedium = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+    static let headerFont = UIFont.systemFont(ofSize: 14.0)
+    static let calendarSmallLight = UIFont.systemFont(ofSize: 14.0, weight: .light)
+    
     static let weekdayFont = UIFont.systemFont(ofSize: 12.0)
     
-    static let headerFont = UIFont.systemFont(ofSize: 14.0)
-    static let headerFontMedium = UIFont.systemFont(ofSize: 14.0, weight: .medium)
-    
-    static let navigationItemTitleFont = UIFont.systemFont(ofSize: 16.0, weight: .medium)
 }

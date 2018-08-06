@@ -38,4 +38,16 @@ class DateFormatters {
         formatter.dateFormat = "h:mm"
         return formatter
     }()
+    
+    static let EECommaDMMMFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EE, d MMM"
+        return formatter
+    }()
+    
+    static func formatMeetingDuration(start: Date, end: Date) -> String {
+        let startTimeText = DateFormatters.hmmaFormatter.string(from: start)
+        let endTimeText = DateFormatters.hmmaFormatter.string(from: end)
+        return String(format:NSLocalizedString("%1$@ → %2$@", comment: "Create event start time to end time"), startTimeText, endTimeText)
+    }
 }

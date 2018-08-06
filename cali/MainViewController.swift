@@ -14,7 +14,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     var eventListView : EventListView!;
     var calendarLayout : LayoutBuilder!
     var isCalendarViewExpanded = false
-    var dates: CalendarDates? { didSet {
+    var dates = CalendarDates() { didSet {
         calendarView.dates = dates
         eventListView.dates = dates
         } }
@@ -45,7 +45,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             .useTopMarginGuide(true)
             .useBottomMarginGuide(true)
             .stack(
-                [ layout(weekdayBar).height(24),
+                [ layout(weekdayBar),
                   calendarLayout,
                   layout(eventListView) ]
             ).install()
@@ -58,13 +58,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         eventListView.scrollView.addGestureRecognizer(eventsPan)
         eventsPan.delegate = self
         
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
-        if selectedDate == nil {
-            selectedDate = today
-        }
+        self.dates = CalendarDates()
         
-        self.dates = CalendarDates(today: today, calendar: calendar)
+        if selectedDate == nil {
+            selectedDate = self.dates.today
+        }
         
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed))
@@ -81,22 +79,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         let nav = UINavigationController(rootViewController: vc)
         NavigationBars.style(navigationBar: nav.navigationBar, .white)
         present(nav, animated: true, completion: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        calendarView.startOverlayObservers()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        calendarView.scrollToTodayIfNeeded()
-        eventListView.scrollToTodayIfNeeded()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        calendarView.endOverlayObservers()
     }
     
     override func didReceiveMemoryWarning() {
