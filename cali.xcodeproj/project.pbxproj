@@ -51,8 +51,10 @@
 		6F6686A52116AF900047D752 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A42116AF900047D752 /* Collections.swift */; };
 		6F6686A72116F27A0047D752 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A62116F27A0047D752 /* DurationFormatter.swift */; };
 		6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2C62117C2D8004570ED /* TimeIntervals.swift */; };
-		6FACC2CA2117D620004570ED /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2C92117D620004570ED /* DateSelectionView.swift */; };
-		6FACC2CC2117D870004570ED /* DateTimeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CB2117D870004570ED /* DateTimeSelectionView.swift */; };
+		6FACC2CA2117D620004570ED /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2C92117D620004570ED /* DatePicker.swift */; };
+		6FACC2CC2117D870004570ED /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CB2117D870004570ED /* DateTimePicker.swift */; };
+		6FACC2CF2117F588004570ED /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CE2117F588004570ED /* DayView.swift */; };
+		6FACC2D1211800D5004570ED /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2D0211800D5004570ED /* TimePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,8 +125,10 @@
 		6F6686A42116AF900047D752 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
 		6F6686A62116F27A0047D752 /* DurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
 		6FACC2C62117C2D8004570ED /* TimeIntervals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervals.swift; sourceTree = "<group>"; };
-		6FACC2C92117D620004570ED /* DateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionView.swift; sourceTree = "<group>"; };
-		6FACC2CB2117D870004570ED /* DateTimeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeSelectionView.swift; sourceTree = "<group>"; };
+		6FACC2C92117D620004570ED /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		6FACC2CB2117D870004570ED /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		6FACC2CE2117F588004570ED /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		6FACC2D0211800D5004570ED /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,8 +352,10 @@
 		6FACC2CD2117D8A8004570ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6FACC2C92117D620004570ED /* DateSelectionView.swift */,
-				6FACC2CB2117D870004570ED /* DateTimeSelectionView.swift */,
+				6FACC2C92117D620004570ED /* DatePicker.swift */,
+				6FACC2CB2117D870004570ED /* DateTimePicker.swift */,
+				6FACC2CE2117F588004570ED /* DayView.swift */,
+				6FACC2D0211800D5004570ED /* TimePicker.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -495,11 +501,12 @@
 				6F66866F211514AF0047D752 /* Random.swift in Sources */,
 				6F6686A22116A5640047D752 /* Layout.swift in Sources */,
 				6F6686972116A2610047D752 /* EventLocationCell.swift in Sources */,
+				6FACC2CF2117F588004570ED /* DayView.swift in Sources */,
 				6F668671211529950047D752 /* Colors.swift in Sources */,
 				6F668677211566750047D752 /* CalendarDate.swift in Sources */,
 				6F66868F211699600047D752 /* EventPeopleCell.swift in Sources */,
 				6F6686792115667F0047D752 /* CalendarDates.swift in Sources */,
-				6FACC2CC2117D870004570ED /* DateTimeSelectionView.swift in Sources */,
+				6FACC2CC2117D870004570ED /* DateTimePicker.swift in Sources */,
 				6F66868B2116932F0047D752 /* EventToggleCell.swift in Sources */,
 				6F668648211410880047D752 /* EventListView.swift in Sources */,
 				6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */,
@@ -512,6 +519,7 @@
 				6F668688211689E80047D752 /* Images.swift in Sources */,
 				6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */,
 				6F66869E2116A5380047D752 /* LayoutRunner.swift in Sources */,
+				6FACC2D1211800D5004570ED /* TimePicker.swift in Sources */,
 				6F66867D2115689A0047D752 /* EventListHeaderView.swift in Sources */,
 				6F66869C2116A5220047D752 /* LayoutRegistry.swift in Sources */,
 				6F66867F2115695D0047D752 /* EventCell.swift in Sources */,
@@ -522,7 +530,7 @@
 				6F4EA6D22113E4530096B9E9 /* WeekdayBar.swift in Sources */,
 				6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */,
 				6F6686952116A1500047D752 /* NavigationBars.swift in Sources */,
-				6FACC2CA2117D620004570ED /* DateSelectionView.swift in Sources */,
+				6FACC2CA2117D620004570ED /* DatePicker.swift in Sources */,
 				6F66867B211566A20047D752 /* CalendarFormatters.swift in Sources */,
 				6F6686A02116A55C0047D752 /* LayoutBuilder.swift in Sources */,
 				6F6686862116837D0047D752 /* CreateEventViewController.swift in Sources */,

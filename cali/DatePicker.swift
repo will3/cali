@@ -9,7 +9,12 @@
 import Foundation
 import UIKit
 
-class DateSelectionView : UIView {
+protocol DatePickerDelegate : AnyObject {
+    func datePickerDidFinish(_ datePicker: DatePicker)
+    func datePickerDidChange(_ datePicker: DatePicker)
+}
+
+class DatePicker : UIView, CalendarViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -18,6 +23,8 @@ class DateSelectionView : UIView {
     }
     
     var loaded = false
+    weak var delegate : DatePickerDelegate?
+    
     override func didMoveToSuperview() {
         if !loaded {
             loadView()
@@ -25,17 +32,18 @@ class DateSelectionView : UIView {
         }
     }
     
-    weak var delegate: CalendarViewDelegate? { didSet {
-        calendarView.delegate = delegate
-        } }
-    
     let bar = UIView()
     let button = UIButton()
     let dateLabel = UILabel()
     let timeLabel = UILabel()
+    
     var event : Event? { didSet {
         updateLabels()
         calendarView.selectedDate = event?.startDay } }
+    
+    var selectedDate: Date? {
+        return calendarView.selectedDate
+    }
     
     let calendarView = CalendarView()
     let weekdayBar = WeekdayBar()
@@ -63,6 +71,8 @@ class DateSelectionView : UIView {
             ])
             .center(bar).install()
         
+        button.setImage(Images.tick, for: .normal)
+        button.addTarget(self, action: #selector(DatePicker.didPressDone), for: .touchUpInside)
         layout(button)
             .parent(bar)
             .width(44)
@@ -73,9 +83,10 @@ class DateSelectionView : UIView {
         
         // 6 rows
         let calendarViewHeight = Float(CalendarView.itemSizeForWidth(totalWidth).height) * 6.0
+        calendarView.delegate = self
         
         layout(self).stack([
-            layout(bar).height(60),
+            layout(bar).height(50),
             weekdayBar,
             layout(calendarView)
                 .height(calendarViewHeight)
@@ -88,6 +99,10 @@ class DateSelectionView : UIView {
         updateLabels()
     }
     
+    @objc func didPressDone() {
+        delegate?.datePickerDidFinish(self)
+    }
+    
     private func updateLabels() {
         guard let event = self.event else { return }
         guard let start = event.start else { return }
@@ -95,5 +110,11 @@ class DateSelectionView : UIView {
         
         dateLabel.text = DateFormatters.EECommaDMMMFormatter.string(from: start)
         timeLabel.text = DateFormatters.formatMeetingDuration(start: start, end: end)
+    }
+
+    // MARK: CalendarViewDelegate
+    
+    func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
+        self.delegate?.datePickerDidChange(self)
     }
 }

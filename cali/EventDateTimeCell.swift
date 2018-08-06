@@ -88,9 +88,9 @@ class EventDateTimeCell : UITableViewCell {
     @objc func didPressLeft() {
         
         if let keyWindow = UIApplication.shared.keyWindow {
-            let selectionView = DateTimeSelectionView()
-            selectionView.event = event
-            layout(selectionView).matchParent(keyWindow).install()
+            let picker = DateTimePicker()
+            picker.event = event
+            layout(picker).matchParent(keyWindow).install()
         }
     }
     

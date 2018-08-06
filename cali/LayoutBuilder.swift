@@ -247,7 +247,83 @@ class LayoutBuilder : LayoutWrapper {
         return self
     }
     
+    private var pinLeftValue: Float?
+    private var pinRightValue: Float?
+    private var pinTopValue: Float?
+    private var pinBotValue: Float?
+    
+    func pinLeft() -> Self {
+        return pinLeft(0)
+    }
+    
+    func pinLeft(_ value: Float) -> Self {
+        pinLeftValue = value
+        return self
+    }
+    
+    func pinRight() -> Self {
+        return pinRight(0)
+    }
+    
+    func pinRight(_ value: Float) -> Self {
+        pinRightValue = value
+        return self
+    }
+    
+    func pinTop() -> Self {
+        return pinTop(0)
+    }
+    
+    func pinTop(_ value: Float) -> Self {
+        pinTopValue = value
+        return self
+    }
+    
+    func pinBottom() -> Self {
+        return pinBottom(0)
+    }
+    
+    func pinBottom(_ value: Float) -> Self {
+        pinBotValue = value
+        return self
+    }
+    
+    private func updatePins() {
+        if pinLeftValue != nil && pinRightValue != nil {
+            layout.fitHorizontal = .stretch
+        } else if pinLeftValue != nil {
+            layout.fitHorizontal = .leading
+        } else if pinRightValue != nil {
+            layout.fitHorizontal = .trailing
+        }
+        
+        if (pinTopValue != nil && pinBotValue != nil) {
+            layout.fitVertical = .stretch
+        } else if pinTopValue != nil {
+            layout.fitVertical = .leading
+        } else if pinBotValue != nil {
+            layout.fitVertical = .trailing
+        }
+        
+        if let pinLeftValue = self.pinLeftValue {
+            layout.insets.left = CGFloat(pinLeftValue)
+        }
+        
+        if let pinRightValue = self.pinRightValue {
+            layout.insets.right = CGFloat(pinRightValue)
+        }
+        
+        if let pinTopValue = self.pinTopValue {
+            layout.insets.top = CGFloat(pinTopValue)
+        }
+        
+        if let pinBotValue = self.pinBotValue {
+            layout.insets.bottom = CGFloat(pinBotValue)
+        }
+    }
+    
     func install() {
+        updatePins()
         layout.install()
     }
     
