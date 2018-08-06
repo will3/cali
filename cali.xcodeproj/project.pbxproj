@@ -55,6 +55,10 @@
 		6FACC2CC2117D870004570ED /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CB2117D870004570ED /* DateTimePicker.swift */; };
 		6FACC2CF2117F588004570ED /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CE2117F588004570ED /* DayView.swift */; };
 		6FACC2D1211800D5004570ED /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2D0211800D5004570ED /* TimePicker.swift */; };
+		6FACC2D321183FE9004570ED /* IndexEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2D221183FE9004570ED /* IndexEntry.swift */; };
+		6FACC2D521183FFB004570ED /* Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2D421183FFB004570ED /* Index.swift */; };
+		6FACC2D72118401E004570ED /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2D62118401E004570ED /* Node.swift */; };
+		6FACC2D921184053004570ED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2D821184053004570ED /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +133,10 @@
 		6FACC2CB2117D870004570ED /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		6FACC2CE2117F588004570ED /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		6FACC2D0211800D5004570ED /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		6FACC2D221183FE9004570ED /* IndexEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexEntry.swift; sourceTree = "<group>"; };
+		6FACC2D421183FFB004570ED /* Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
+		6FACC2D62118401E004570ED /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		6FACC2D821184053004570ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +353,10 @@
 			isa = PBXGroup;
 			children = (
 				6F6686A42116AF900047D752 /* Collections.swift */,
+				6FACC2D221183FE9004570ED /* IndexEntry.swift */,
+				6FACC2D421183FFB004570ED /* Index.swift */,
+				6FACC2D62118401E004570ED /* Node.swift */,
+				6FACC2D821184053004570ED /* Storage.swift */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -495,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F66864F21142EB30047D752 /* CalendarCollectionViewCell.swift in Sources */,
+				6FACC2D921184053004570ED /* Storage.swift in Sources */,
 				6F6686992116A2E20047D752 /* TableViews.swift in Sources */,
 				6F66867321154E8F0047D752 /* Fonts.swift in Sources */,
 				6F668646211410710047D752 /* CalendarView.swift in Sources */,
@@ -503,11 +516,13 @@
 				6F6686972116A2610047D752 /* EventLocationCell.swift in Sources */,
 				6FACC2CF2117F588004570ED /* DayView.swift in Sources */,
 				6F668671211529950047D752 /* Colors.swift in Sources */,
+				6FACC2D72118401E004570ED /* Node.swift in Sources */,
 				6F668677211566750047D752 /* CalendarDate.swift in Sources */,
 				6F66868F211699600047D752 /* EventPeopleCell.swift in Sources */,
 				6F6686792115667F0047D752 /* CalendarDates.swift in Sources */,
 				6FACC2CC2117D870004570ED /* DateTimePicker.swift in Sources */,
 				6F66868B2116932F0047D752 /* EventToggleCell.swift in Sources */,
+				6FACC2D521183FFB004570ED /* Index.swift in Sources */,
 				6F668648211410880047D752 /* EventListView.swift in Sources */,
 				6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */,
 				6F668683211584F10047D752 /* MonthOverlayCell.swift in Sources */,
@@ -515,6 +530,7 @@
 				6F66869121169BA00047D752 /* EventDateTimeCell.swift in Sources */,
 				6F668656211510A20047D752 /* Event.swift in Sources */,
 				6F6686A72116F27A0047D752 /* DurationFormatter.swift in Sources */,
+				6FACC2D321183FE9004570ED /* IndexEntry.swift in Sources */,
 				6F668681211581960047D752 /* MonthOverlayView.swift in Sources */,
 				6F668688211689E80047D752 /* Images.swift in Sources */,
 				6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */,

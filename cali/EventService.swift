@@ -10,13 +10,17 @@ import Foundation
 
 class EventService {
     static let instance = EventService()
+    let eventsCollection = Collection<Event>(name: "events")
     
-    func getEvents(date: Date) -> [Event] {
-        // Mock events
-        return []
+    func insert(event: Event) {
+        eventsCollection.insert(object: event)
     }
     
-    func add(event: Event) {
-        Collection(name: "events").insert(object: event)
+    func find() -> [Event] {
+        return eventsCollection.find()
+    }
+    
+    func find(filter: (Event) -> Bool) -> [Event] {
+        return eventsCollection.find().filter(filter)
     }
 }

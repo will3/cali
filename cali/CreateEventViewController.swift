@@ -81,6 +81,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     
     @objc func tickPressed() {
         // Create event
+        EventService.instance.insert(event: event)
         dismiss(animated: true, completion: nil)
     }
     
