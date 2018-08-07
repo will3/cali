@@ -16,7 +16,7 @@
 		6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A52113E3860096B9E9 /* MainViewController.swift */; };
 		6F4EA6AB2113E3860096B9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */; };
 		6F4EA6AE2113E3860096B9E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6AC2113E3860096B9E9 /* LaunchScreen.storyboard */; };
-		6F4EA6B92113E3860096B9E9 /* caliTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6B82113E3860096B9E9 /* caliTests.swift */; };
+		6F4EA6B92113E3860096B9E9 /* EventFormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6B82113E3860096B9E9 /* EventFormatterSpec.swift */; };
 		6F4EA6C42113E3860096B9E9 /* caliUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6C32113E3860096B9E9 /* caliUITests.swift */; };
 		6F4EA6D22113E4530096B9E9 /* WeekdayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6D12113E4530096B9E9 /* WeekdayBar.swift */; };
 		6F668646211410710047D752 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F668645211410710047D752 /* CalendarView.swift */; };
@@ -96,7 +96,7 @@
 		6F4EA6AD2113E3860096B9E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F4EA6AF2113E3860096B9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F4EA6B42113E3860096B9E9 /* caliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = caliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F4EA6B82113E3860096B9E9 /* caliTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = caliTests.swift; sourceTree = "<group>"; };
+		6F4EA6B82113E3860096B9E9 /* EventFormatterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormatterSpec.swift; sourceTree = "<group>"; };
 		6F4EA6BA2113E3860096B9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F4EA6BF2113E3860096B9E9 /* caliUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = caliUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4EA6C32113E3860096B9E9 /* caliUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = caliUITests.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 		6F4EA6B72113E3860096B9E9 /* caliTests */ = {
 			isa = PBXGroup;
 			children = (
-				6F4EA6B82113E3860096B9E9 /* caliTests.swift */,
+				6F4EA6B82113E3860096B9E9 /* EventFormatterSpec.swift */,
 				6F4EA6BA2113E3860096B9E9 /* Info.plist */,
 			);
 			path = caliTests;
@@ -697,7 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F4EA6B92113E3860096B9E9 /* caliTests.swift in Sources */,
+				6F4EA6B92113E3860096B9E9 /* EventFormatterSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
