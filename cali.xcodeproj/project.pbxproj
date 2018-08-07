@@ -164,6 +164,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F0E3BB62119728A003E5E00 /* DayView */ = {
+			isa = PBXGroup;
+			children = (
+				6FACC2CE2117F588004570ED /* DayView.swift */,
+			);
+			name = DayView;
+			sourceTree = "<group>";
+		};
 		6F4EA6972113E3860096B9E9 = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +239,7 @@
 		6F668661211513870047D752 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6F0E3BB62119728A003E5E00 /* DayView */,
 				6F6686842116835A0047D752 /* CreateEvent */,
 				6F668664211513A70047D752 /* Main */,
 			);
@@ -366,7 +375,6 @@
 			children = (
 				6FACC2C92117D620004570ED /* DatePicker.swift */,
 				6FACC2CB2117D870004570ED /* DateTimePicker.swift */,
-				6FACC2CE2117F588004570ED /* DayView.swift */,
 				6FACC2D0211800D5004570ED /* TimePicker.swift */,
 			);
 			name = Views;

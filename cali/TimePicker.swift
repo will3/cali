@@ -36,6 +36,7 @@ class TimePicker: UIView {
     let dayView = DayView()
     var event : Event? { didSet {
         dayView.startDay = event?.startDay
+        dayView.event = event
         updateEvent() } }
     let titleLabel = UILabel()
     

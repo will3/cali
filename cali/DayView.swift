@@ -46,6 +46,7 @@ protocol DraggableEventViewDelegate : AnyObject {
     func draggableEventViewDidDrag(_ view: DraggableEventView, translation: CGPoint)
     func draggableEventViewDidDragTop(_ view: DraggableEventView, translation: CGPoint)
     func draggableEventViewDidDragBot(_ view: DraggableEventView, translation: CGPoint)
+    func draggableEventViewDidEndDrag(_ view: DraggableEventView)
 }
 
 class DraggableEventView : UIView {
@@ -71,18 +72,41 @@ class DraggableEventView : UIView {
     let topHandle = EventHandleView()
     let bottomHandle = EventHandleView()
     let handleSize = Float(20)
-    var event : Event?
+    var event : Event? { didSet { updateEvent() } }
+    var draggedStart: Date?
+    var draggedDuration: TimeInterval?
+    var dirty = false
+    let timeLabel = UILabel()
+    let durationLabel = UILabel()
     
     var paddingVertical: Float {
         return handleSize / 2
     }
     
+    private func updateEvent() {
+        guard let event = self.event else { return }
+        guard let start = event.start else { return }
+        guard let end = event.end else { return }
+        timeLabel.text = DateFormatters.formatMeetingDuration(start: start, end: end)
+        durationLabel.text = DurationFormatter.formatMeetingDuration(from: start, to: end)
+    }
+    
     func loadView() {
-        layer.cornerRadius = 2
-        clipsToBounds = true
-        
         let halfHandleSize = CGFloat(handleSize / 2)
         mainHandle.backgroundColor = Colors.accent
+        mainHandle.layer.cornerRadius = 2
+        mainHandle.clipsToBounds = true
+        
+        timeLabel.textColor = Colors.white
+        durationLabel.textColor = Colors.white
+        timeLabel.font = Fonts.graphMedium
+        durationLabel.font = Fonts.graphSmall
+        
+        layout(mainHandle).stack([
+            layout(timeLabel).left(2).top(2),
+            layout(durationLabel).left(2)
+            ]).install()
+        
         layout(mainHandle).matchParent(self).insets(UIEdgeInsetsMake(halfHandleSize, 0, halfHandleSize, 0)).install()
         layout(topHandle).parent(self).pinTop().pinRight(4)
             .width(handleSize).height(handleSize).install()
@@ -105,16 +129,26 @@ class DraggableEventView : UIView {
     @objc func mainDragged(pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDrag(self, translation: translation)
+        
+        if pan.state == .ended {
+            delegate?.draggableEventViewDidEndDrag(self)
+        }
     }
     
     @objc func topDragged(pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDragTop(self, translation: translation)
+        if pan.state == .ended {
+            delegate?.draggableEventViewDidEndDrag(self)
+        }
     }
     
     @objc func botDragged(pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDragBot(self, translation: translation)
+        if pan.state == .ended {
+            delegate?.draggableEventViewDidEndDrag(self)
+        }
     }
 }
 
@@ -141,8 +175,10 @@ class DayView : UIView, DraggableEventViewDelegate {
     let eventLayer = UIView()
     var labels : [UILabel] = []
     var startDay: Date? { didSet {
-        updateLabels()
         updateEvents() } }
+    var event: Event? { didSet {
+        updateEvents()
+        }}
     let hours = 24
     
     let labelHalfHeight : Float = 6
@@ -151,7 +187,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     var totalHeight : Float {
         return Float(hours) * hourHeight + labelHalfHeight * 2 + botPadding
     }
-    let labelWidth : Float = 50
+    let labelWidth : Float = 42
     let graphStartX : Float = 54
     let graphRightPadding : Float = 2
     let eventService = EventService.instance
@@ -168,15 +204,20 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
+    var map: [ String: DraggableEventView ] = [:]
+    var layouts: [ String: LayoutBuilder ] = [:]
+    
     private func updateEvents() {
         guard let startDay = self.startDay else { return }
         let events = eventService.find(startDay: startDay)
         for event in events {
             addEventView(event: event)
         }
+        
+        if let event = self.event {
+            addEventView(event: event)
+        }
     }
-    
-    var map: [ String: DraggableEventView ] = [:]
     
     private func addEventView(event: Event) {
         if map[event.id] == nil {
@@ -187,20 +228,30 @@ class DayView : UIView, DraggableEventViewDelegate {
             eventLayer.addSubview(eventView)
         }
         
-        placeEventView(event: event, view: map[event.id]!)
+        placeEventView(map[event.id]!)
     }
     
-    private func placeEventView(event: Event, view: DraggableEventView) {
-        guard let start = event.start else { return }
+    private func placeEventView(_ view: DraggableEventView) {
+        guard let event = view.event else { return }
+        guard let start = view.draggedStart ?? event.start else { return }
         guard let startDay = self.startDay else { return }
-        guard let duration = event.duration else { return }
+        guard let duration = view.draggedDuration ?? event.duration else { return }
         
         let timeInterval = start.timeIntervalSince(startDay)
         let x = graphStartX
         let y = labelHalfHeight + Float(timeInterval / TimeIntervals.hour * Double(hourHeight)) - view.paddingVertical
         let height = Float(duration / TimeIntervals.hour * Double(hourHeight)) + view.paddingVertical * 2
-        
-        layout(view).pinLeft(x).pinRight(graphRightPadding).pinTop(y).height(height).install()
+       
+        if layouts[event.id] == nil {
+           layouts[event.id] = layout(view)
+        }
+    
+        layouts[event.id]?
+            .pinLeft(x)
+            .pinRight(graphRightPadding)
+            .pinTop(y)
+            .height(height)
+            .install()
     }
     
     func loadView() {
@@ -245,19 +296,39 @@ class DayView : UIView, DraggableEventViewDelegate {
     // MARK: DraggableEventViewDelegate
     
     func draggableEventViewDidDrag(_ view: DraggableEventView, translation: CGPoint) {
-        guard var event = view.event else { return }
+        guard let event = view.event else { return }
         let timeInterval = Double(translation.y) / Double(hourHeight) * TimeIntervals.hour
-        event.start?.addTimeInterval(timeInterval)
-        
-        eventService.update(event: event)
-        updateEvents()
+        view.draggedStart = event.start?.addingTimeInterval(timeInterval)
+        view.dirty = true
+        placeEventView(view)
     }
     
     func draggableEventViewDidDragTop(_ view: DraggableEventView, translation: CGPoint) {
-        
+        guard let event = view.event else { return }
+        guard let duration = event.duration else { return }
+        let timeInterval = Double(translation.y) / Double(hourHeight) * TimeIntervals.hour
+        view.draggedStart = event.start?.addingTimeInterval(timeInterval)
+        view.draggedDuration = duration - timeInterval
+        placeEventView(view)
     }
     
     func draggableEventViewDidDragBot(_ view: DraggableEventView, translation: CGPoint) {
-        
+        guard let event = view.event else { return }
+        guard let duration = event.duration else { return }
+        let timeInterval = Double(translation.y) / Double(hourHeight) * TimeIntervals.hour
+        view.draggedDuration = duration + timeInterval
+        placeEventView(view)
+    }
+    
+    func draggableEventViewDidEndDrag(_ view: DraggableEventView) {
+        var event = view.event
+        if let draggedStart = view.draggedStart {
+            event?.start = draggedStart
+        }
+        if let draggedDuration = view.draggedDuration {
+            event?.duration = draggedDuration
+        }
+        view.event = event
+        placeEventView(view)
     }
 }

@@ -19,4 +19,5 @@ class Fonts {
     static let weekdayFont = UIFont.systemFont(ofSize: 12.0)
     
     static let graphSmall = UIFont.systemFont(ofSize: 12.0)
+    static let graphMedium = UIFont.systemFont(ofSize: 14.0)
 }
