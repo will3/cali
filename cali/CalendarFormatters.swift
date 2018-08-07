@@ -50,10 +50,4 @@ class DateFormatters {
         formatter.dateFormat = "h a"
         return formatter
     }();
-    
-    static func formatMeetingDuration(start: Date, end: Date) -> String {
-        let startTimeText = DateFormatters.hmmaFormatter.string(from: start)
-        let endTimeText = DateFormatters.hmmaFormatter.string(from: end)
-        return String(format:NSLocalizedString("%1$@ → %2$@", comment: "Create event start time to end time"), startTimeText, endTimeText)
-    }
 }

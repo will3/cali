@@ -112,14 +112,14 @@ class EventDateTimeCell : UITableViewCell, DateTimePickerDelegate {
         
         dateValueLabel.text = DateFormatters
             .EEEddMMMFormatter.string(from: start)
-        dateDiffLabel.text = DurationFormatter.formatRelative(from: start, to: end)
+        dateDiffLabel.text = EventFormatter.formatRelative(from: start, to: end)
         timeTitleLabel.text = NSLocalizedString("Time", comment: "")
         
         
         let boldStartTimeText = DateFormatters.hmmFormatter.string(from: start)
         let boldEndTimeText = DateFormatters.hmmFormatter.string(from: end)
         
-        let text = DateFormatters.formatMeetingDuration(start: start, end: end)
+        let text = EventFormatter.formatTimes(start: start, end: end)
         
         let attributedText = NSMutableAttributedString(string: text)
         
@@ -138,7 +138,7 @@ class EventDateTimeCell : UITableViewCell, DateTimePickerDelegate {
         }
         
         timeValueLabel.attributedText = attributedText
-        timeDurationLabel.text = DurationFormatter.formatMeetingDuration(from: start, to: end)
+        timeDurationLabel.text = EventFormatter.formatMeetingDuration(from: start, to: end)
     }
     
     // MARK: DateTimePickerDelegate

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A25BF172E958D314D857EBA /* Pods_caliTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4341E05BD225E23B4D9458 /* Pods_caliTests.framework */; };
+		32E1E032B94ADA01C15533C1 /* Pods_cali.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BF20E50EFADA6768328281 /* Pods_cali.framework */; };
+		4190301FE9B753117B8D9C82 /* Pods_caliUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19F24A8A7800D4FF181EF36 /* Pods_caliUITests.framework */; };
 		6F0E3BB821197845003E5E00 /* DraggableEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E3BB721197845003E5E00 /* DraggableEventView.swift */; };
 		6F0E3BBA2119787E003E5E00 /* EventHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E3BB92119787E003E5E00 /* EventHandleView.swift */; };
 		6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */; };
@@ -51,7 +54,7 @@
 		6F6686A02116A55C0047D752 /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66869F2116A55C0047D752 /* LayoutBuilder.swift */; };
 		6F6686A22116A5640047D752 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A12116A5640047D752 /* Layout.swift */; };
 		6F6686A52116AF900047D752 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A42116AF900047D752 /* Collections.swift */; };
-		6F6686A72116F27A0047D752 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A62116F27A0047D752 /* DurationFormatter.swift */; };
+		6F6686A72116F27A0047D752 /* EventFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A62116F27A0047D752 /* EventFormatter.swift */; };
 		6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2C62117C2D8004570ED /* TimeIntervals.swift */; };
 		6FACC2CA2117D620004570ED /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2C92117D620004570ED /* DatePicker.swift */; };
 		6FACC2CC2117D870004570ED /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CB2117D870004570ED /* DateTimePicker.swift */; };
@@ -81,6 +84,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15BBD00BB784777E310E2D8A /* Pods-caliUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-caliUITests/Pods-caliUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5EDB028D93F5FE14D2C6A37E /* Pods-cali.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cali.release.xcconfig"; path = "Pods/Target Support Files/Pods-cali/Pods-cali.release.xcconfig"; sourceTree = "<group>"; };
+		6CA475C3BDF1549BD83E3AB8 /* Pods-caliUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-caliUITests/Pods-caliUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6F0E3BB721197845003E5E00 /* DraggableEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableEventView.swift; sourceTree = "<group>"; };
 		6F0E3BB92119787E003E5E00 /* EventHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandleView.swift; sourceTree = "<group>"; };
 		6F4EA6A02113E3860096B9E9 /* cali.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cali.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +137,7 @@
 		6F66869F2116A55C0047D752 /* LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
 		6F6686A12116A5640047D752 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		6F6686A42116AF900047D752 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
-		6F6686A62116F27A0047D752 /* DurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
+		6F6686A62116F27A0047D752 /* EventFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormatter.swift; sourceTree = "<group>"; };
 		6FACC2C62117C2D8004570ED /* TimeIntervals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervals.swift; sourceTree = "<group>"; };
 		6FACC2C92117D620004570ED /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		6FACC2CB2117D870004570ED /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
@@ -141,6 +147,12 @@
 		6FACC2D421183FFB004570ED /* Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Index.swift; sourceTree = "<group>"; };
 		6FACC2D62118401E004570ED /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		6FACC2D821184053004570ED /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		7343CE43C6026B48A5D8D38D /* Pods-caliTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-caliTests/Pods-caliTests.debug.xcconfig"; sourceTree = "<group>"; };
+		773472091C96004F9780354C /* Pods-caliTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-caliTests/Pods-caliTests.release.xcconfig"; sourceTree = "<group>"; };
+		BF37F879BB82E63E4ABC0C0F /* Pods-cali.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cali.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cali/Pods-cali.debug.xcconfig"; sourceTree = "<group>"; };
+		CB4341E05BD225E23B4D9458 /* Pods_caliTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_caliTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19F24A8A7800D4FF181EF36 /* Pods_caliUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_caliUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6BF20E50EFADA6768328281 /* Pods_cali.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cali.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E1E032B94ADA01C15533C1 /* Pods_cali.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A25BF172E958D314D857EBA /* Pods_caliTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4190301FE9B753117B8D9C82 /* Pods_caliUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +200,8 @@
 				6F4EA6B72113E3860096B9E9 /* caliTests */,
 				6F4EA6C22113E3860096B9E9 /* caliUITests */,
 				6F4EA6A12113E3860096B9E9 /* Products */,
+				C6CF45004F50D5385600EAB3 /* Pods */,
+				80FDDD98239E71BA279309F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -313,7 +330,7 @@
 				6F668687211689E80047D752 /* Images.swift */,
 				6F6686942116A1500047D752 /* NavigationBars.swift */,
 				6F6686982116A2E20047D752 /* TableViews.swift */,
-				6F6686A62116F27A0047D752 /* DurationFormatter.swift */,
+				6F6686A62116F27A0047D752 /* EventFormatter.swift */,
 				6F66867A211566A20047D752 /* CalendarFormatters.swift */,
 				6FACC2C62117C2D8004570ED /* TimeIntervals.swift */,
 			);
@@ -386,6 +403,29 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		80FDDD98239E71BA279309F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6BF20E50EFADA6768328281 /* Pods_cali.framework */,
+				CB4341E05BD225E23B4D9458 /* Pods_caliTests.framework */,
+				E19F24A8A7800D4FF181EF36 /* Pods_caliUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6CF45004F50D5385600EAB3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF37F879BB82E63E4ABC0C0F /* Pods-cali.debug.xcconfig */,
+				5EDB028D93F5FE14D2C6A37E /* Pods-cali.release.xcconfig */,
+				7343CE43C6026B48A5D8D38D /* Pods-caliTests.debug.xcconfig */,
+				773472091C96004F9780354C /* Pods-caliTests.release.xcconfig */,
+				15BBD00BB784777E310E2D8A /* Pods-caliUITests.debug.xcconfig */,
+				6CA475C3BDF1549BD83E3AB8 /* Pods-caliUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -393,6 +433,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F4EA6C82113E3860096B9E9 /* Build configuration list for PBXNativeTarget "cali" */;
 			buildPhases = (
+				44404C72BF3372FB033C1034 /* [CP] Check Pods Manifest.lock */,
 				6F4EA69C2113E3860096B9E9 /* Sources */,
 				6F4EA69D2113E3860096B9E9 /* Frameworks */,
 				6F4EA69E2113E3860096B9E9 /* Resources */,
@@ -410,9 +451,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F4EA6CB2113E3860096B9E9 /* Build configuration list for PBXNativeTarget "caliTests" */;
 			buildPhases = (
+				72DAF7E58D02A3154A7C25DA /* [CP] Check Pods Manifest.lock */,
 				6F4EA6B02113E3860096B9E9 /* Sources */,
 				6F4EA6B12113E3860096B9E9 /* Frameworks */,
 				6F4EA6B22113E3860096B9E9 /* Resources */,
+				4EED21252AFC3F1C7FA81A87 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -428,6 +471,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F4EA6CE2113E3860096B9E9 /* Build configuration list for PBXNativeTarget "caliUITests" */;
 			buildPhases = (
+				A65F80CDAECE8B8635B91331 /* [CP] Check Pods Manifest.lock */,
 				6F4EA6BB2113E3860096B9E9 /* Sources */,
 				6F4EA6BC2113E3860096B9E9 /* Frameworks */,
 				6F4EA6BD2113E3860096B9E9 /* Resources */,
@@ -515,6 +559,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44404C72BF3372FB033C1034 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cali-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4EED21252AFC3F1C7FA81A87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-caliTests/Pods-caliTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-caliTests/Pods-caliTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72DAF7E58D02A3154A7C25DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-caliTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A65F80CDAECE8B8635B91331 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-caliUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6F4EA69C2113E3860096B9E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -544,7 +665,7 @@
 				6F668658211510AB0047D752 /* Person.swift in Sources */,
 				6F66869121169BA00047D752 /* EventDateTimeCell.swift in Sources */,
 				6F668656211510A20047D752 /* Event.swift in Sources */,
-				6F6686A72116F27A0047D752 /* DurationFormatter.swift in Sources */,
+				6F6686A72116F27A0047D752 /* EventFormatter.swift in Sources */,
 				6FACC2D321183FE9004570ED /* IndexEntry.swift in Sources */,
 				6F668681211581960047D752 /* MonthOverlayView.swift in Sources */,
 				6F668688211689E80047D752 /* Images.swift in Sources */,
@@ -724,6 +845,7 @@
 		};
 		6F4EA6C92113E3860096B9E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF37F879BB82E63E4ABC0C0F /* Pods-cali.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -740,6 +862,7 @@
 		};
 		6F4EA6CA2113E3860096B9E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EDB028D93F5FE14D2C6A37E /* Pods-cali.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -756,6 +879,7 @@
 		};
 		6F4EA6CC2113E3860096B9E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7343CE43C6026B48A5D8D38D /* Pods-caliTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -773,6 +897,7 @@
 		};
 		6F4EA6CD2113E3860096B9E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 773472091C96004F9780354C /* Pods-caliTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -790,6 +915,7 @@
 		};
 		6F4EA6CF2113E3860096B9E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15BBD00BB784777E310E2D8A /* Pods-caliUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -806,6 +932,7 @@
 		};
 		6F4EA6D02113E3860096B9E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CA475C3BDF1549BD83E3AB8 /* Pods-caliUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

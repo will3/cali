@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DurationFormatter {
+class EventFormatter {
     static let calendar = Calendar.current
     static func formatRelative(from: Date, to: Date) -> String {
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: from, to: to)
@@ -111,5 +111,11 @@ class DurationFormatter {
         } else {
             return String(format: NSLocalizedString("Duration: %1$@, %2$@", comment:""), hourText, minuteText)
         }
+    }
+    
+    static func formatTimes(start: Date, end: Date) -> String {
+        let startTimeText = DateFormatters.hmmaFormatter.string(from: start)
+        let endTimeText = DateFormatters.hmmaFormatter.string(from: end)
+        return String(format:NSLocalizedString("%1$@ → %2$@", comment: "Create event start time to end time"), startTimeText, endTimeText)
     }
 }

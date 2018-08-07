@@ -109,7 +109,7 @@ class DatePicker : UIView, CalendarViewDelegate {
         guard let end = event.end else { return }
         
         dateLabel.text = DateFormatters.EECommaDMMMFormatter.string(from: start)
-        timeLabel.text = DateFormatters.formatMeetingDuration(start: start, end: end)
+        timeLabel.text = EventFormatter.formatTimes(start: start, end: end)
     }
 
     // MARK: CalendarViewDelegate
