@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CreateEventViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CreateEventViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, EventDateTimeCellDelegate {
     enum RowType {
         case title
         case people
@@ -110,6 +110,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         case .dateTime:
             guard let inputCell = cell as? EventDateTimeCell else { break }
             inputCell.event = event
+            inputCell.delegate = self
         default:
             break
         }
@@ -127,5 +128,13 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
+    }
+    
+    // MARK: EventDateTimeCellDelegate
+    
+    func eventDateTimeCellDidChange(_ view: EventDateTimeCell) {
+        if let event = view.event {
+            self.event = event
+        }
     }
 }

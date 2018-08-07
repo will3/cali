@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol DayViewDelegate : AnyObject {
+    func dayViewDidChangeEvent(_ event: Event)
+}
+
 class DayView : UIView, DraggableEventViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,6 +23,8 @@ class DayView : UIView, DraggableEventViewDelegate {
     }
     
     private var loaded = false
+    
+    var delegate : DayViewDelegate?
     
     override func didMoveToSuperview() {
         if !loaded {
@@ -112,6 +118,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     }
     
     func loadView() {
+        scrollView.showsVerticalScrollIndicator = false
         layout(scrollView).matchParent(self).install()
         layout(contentView).matchParent(scrollView).install()
         
@@ -178,14 +185,17 @@ class DayView : UIView, DraggableEventViewDelegate {
     }
     
     func draggableEventViewDidEndDrag(_ view: DraggableEventView) {
-        var event = view.event
+        guard var event = view.event else { return }
+        
         if let draggedStart = view.draggedStart {
-            event?.start = draggedStart
+            event.start = draggedStart
         }
         if let draggedDuration = view.draggedDuration {
-            event?.duration = draggedDuration
+            event.duration = draggedDuration
         }
         view.event = event
         placeEventView(view)
+        
+        delegate?.dayViewDidChangeEvent(event)
     }
 }

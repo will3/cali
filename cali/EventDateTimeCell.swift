@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
-class EventDateTimeCell : UITableViewCell {
+protocol EventDateTimeCellDelegate : AnyObject {
+    func eventDateTimeCellDidChange(_ view: EventDateTimeCell)
+}
+
+class EventDateTimeCell : UITableViewCell, DateTimePickerDelegate {
     static let identifier = "EventDateTimeCell"
+    weak var delegate : EventDateTimeCellDelegate?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -90,6 +95,7 @@ class EventDateTimeCell : UITableViewCell {
         if let keyWindow = UIApplication.shared.keyWindow {
             let picker = DateTimePicker()
             picker.event = event
+            picker.delegate = self
             layout(picker).matchParent(keyWindow).install()
         }
     }
@@ -133,5 +139,12 @@ class EventDateTimeCell : UITableViewCell {
         
         timeValueLabel.attributedText = attributedText
         timeDurationLabel.text = DurationFormatter.formatMeetingDuration(from: start, to: end)
+    }
+    
+    // MARK: DateTimePickerDelegate
+    
+    func dateTimePickerDidFinish(_ dateTimePicker: DateTimePicker) {
+        self.event = dateTimePicker.event
+        self.delegate?.eventDateTimeCellDidChange(self)
     }
 }

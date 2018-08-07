@@ -192,6 +192,17 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             update(calendarCell: calendarCell, indexPath: indexPath)
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSize = self.itemSize
+        if indexPath.row % 7 == 6 {
+            let width = floor(totalWidth - 6 * floor(itemSize.width))
+            return CGSize(width: width, height: itemSize.height)
+        } else {
+            let width = floor(itemSize.width)
+            return CGSize(width: width, height: itemSize.height)
+        }
+    }
     
     // MARK: UIScrollViewDelegate
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

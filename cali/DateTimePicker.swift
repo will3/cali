@@ -13,7 +13,7 @@ protocol DateTimePickerDelegate : AnyObject {
     func dateTimePickerDidFinish(_ dateTimePicker: DateTimePicker)
 }
 
-class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate {
+class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePickerDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -85,6 +85,7 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate {
             .vertical(.center)
             .install()
         
+        timePicker.delegate = self
         layout(timePicker)
             .matchParent(right)
             .insets(UIEdgeInsetsMake(
@@ -141,5 +142,17 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate {
     
     func datePickerDidFinish(_ datePicker: DatePicker) {
         dismiss()
+        delegate?.dateTimePickerDidFinish(self)
+    }
+    
+    // MARK: TimePickerDelegate
+    
+    func timePickerDidChange(_ timePicker: TimePicker) {
+        self.event = timePicker.event
+    }
+    
+    func timePickerDidFinish(_ timePicker: TimePicker) {
+        dismiss()
+        delegate?.dateTimePickerDidFinish(self)
     }
 }

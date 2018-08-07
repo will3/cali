@@ -17,11 +17,11 @@ class DurationFormatter {
             if year == 1 {
                 return "In 1 year"
             } else if year > 0 {
-                return String(format: "In %@ years", year)
+                return String(format: "In %d years", year)
             } else if year == -1 {
                 return String(format: "1 year ago", year)
             } else if year < 0 {
-                return String(format: "%@ years ago", year)
+                return String(format: "%d years ago", year)
             }
         }
         
@@ -29,11 +29,11 @@ class DurationFormatter {
             if month == 1 {
                 return "In 1 month"
             } else if month > 0 {
-                return String(format: "In %@ months", month)
+                return String(format: "In %d months", month)
             } else if month == -1 {
                 return String(format: "1 month ago", month)
             } else if month < 0 {
-                return String(format: "%@ months ago", month)
+                return String(format: "%d months ago", month)
             }
         }
         
@@ -41,11 +41,11 @@ class DurationFormatter {
             if week == 1 {
                 return "In 1 week"
             } else if week > 0 {
-                return String(format: "In %@ weeks", week)
+                return String(format: "In %d weeks", week)
             } else if week == -1 {
                 return "Last week"
             } else if week < 0 {
-                return String(format: "%@ weeks ago", week)
+                return String(format: "%d weeks ago", week)
             }
         }
         
@@ -53,11 +53,11 @@ class DurationFormatter {
             if day == 1 {
                 return "Tomorrow"
             } else if day > 0 {
-                return String(format: "In %@ days", day)
+                return String(format: "In %d days", day)
             } else if day == -1 {
                 return "Yesterday"
             } else if day < 0 {
-                return String(format: "%@ days ago", day)
+                return String(format: "%d days ago", day)
             }
         }
         
@@ -65,11 +65,11 @@ class DurationFormatter {
             if hour == 1 {
                 return "In 1 hour"
             } else if hour > 0 {
-                return String(format: "In %@ hours", hour)
+                return String(format: "In %d hours", hour)
             } else if hour == -1 {
                 return "1 hour ago"
             } else if hour < 0 {
-                return String(format: "%@ hours ago", hour)
+                return String(format: "%d hours ago", hour)
             }
         }
         
@@ -77,11 +77,11 @@ class DurationFormatter {
             if minute == 1 {
                 return "In 1 minute"
             } else if minute > 0 {
-                return String(format: "In %@ minutes", minute)
+                return String(format: "In %d minutes", minute)
             } else if minute == -1 {
                 return "1 minute ago"
             } else if minute < 0 {
-                return String(format: "%@ minutes ago", minute)
+                return String(format: "%d minutes ago", minute)
             }
         }
         

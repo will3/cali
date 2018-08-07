@@ -38,7 +38,7 @@ class DraggableEventView : UIView {
     let mainHandle = UIView()
     let topHandle = EventHandleView()
     let bottomHandle = EventHandleView()
-    let handleSize = Float(20)
+    let handleSize = Float(44)
     var event : Event? { didSet { updateEvent() } }
     var draggedStart: Date?
     var draggedDuration: TimeInterval?

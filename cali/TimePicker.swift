@@ -11,9 +11,10 @@ import UIKit
 
 protocol TimePickerDelegate : AnyObject {
     func timePickerDidFinish(_ timePicker: TimePicker)
+    func timePickerDidChange(_ timePicker: TimePicker)
 }
 
-class TimePicker: UIView {
+class TimePicker: UIView, DayViewDelegate {
     weak var delegate: TimePickerDelegate?
     
     override init(frame: CGRect) {
@@ -43,6 +44,8 @@ class TimePicker: UIView {
     private func loadView() {
         backgroundColor = Colors.white
         
+        dayView.delegate = self
+        
         let rightButton = UIButton()
         rightButton.setImage(Images.tick, for: .normal)
         rightButton.addTarget(self, action: #selector(TimePicker.donePressed), for: .touchUpInside)
@@ -50,7 +53,13 @@ class TimePicker: UIView {
         titleLabel.textColor = Colors.accent
         titleLabel.font = Fonts.dayFont
         layout(titleLabel).center(bar).install()
-        layout(rightButton).pinRight().vertical(.center).width(44).height(44).install()
+        layout(rightButton)
+            .parent(bar)
+            .pinRight()
+            .vertical(.center)
+            .width(44)
+            .height(44)
+            .install()
         
         layout(self).stack([ bar, dayView ]).install()
         layout(bar).height(44).install()
@@ -67,5 +76,14 @@ class TimePicker: UIView {
         guard let event = self.event else { return }
         guard let startDay = event.startDay else { return }
         titleLabel.text = DateFormatters.EECommaDMMMFormatter.string(from: startDay)
+    }
+    
+    // MARK: DayViewDelegate
+    func dayViewDidChangeEvent(_ event: Event) {
+        if event.id == self.event?.id {
+            self.event = event
+            // update event
+            self.delegate?.timePickerDidChange(self)
+        }
     }
 }
