@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0E3BB821197845003E5E00 /* DraggableEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E3BB721197845003E5E00 /* DraggableEventView.swift */; };
+		6F0E3BBA2119787E003E5E00 /* EventHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E3BB92119787E003E5E00 /* EventHandleView.swift */; };
 		6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */; };
 		6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A52113E3860096B9E9 /* MainViewController.swift */; };
 		6F4EA6AB2113E3860096B9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */; };
@@ -79,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F0E3BB721197845003E5E00 /* DraggableEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableEventView.swift; sourceTree = "<group>"; };
+		6F0E3BB92119787E003E5E00 /* EventHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandleView.swift; sourceTree = "<group>"; };
 		6F4EA6A02113E3860096B9E9 /* cali.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cali.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F4EA6A52113E3860096B9E9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				6FACC2CE2117F588004570ED /* DayView.swift */,
+				6F0E3BB721197845003E5E00 /* DraggableEventView.swift */,
+				6F0E3BB92119787E003E5E00 /* EventHandleView.swift */,
 			);
 			name = DayView;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 				6F6686A22116A5640047D752 /* Layout.swift in Sources */,
 				6F6686972116A2610047D752 /* EventLocationCell.swift in Sources */,
 				6FACC2CF2117F588004570ED /* DayView.swift in Sources */,
+				6F0E3BB821197845003E5E00 /* DraggableEventView.swift in Sources */,
 				6F668671211529950047D752 /* Colors.swift in Sources */,
 				6FACC2D72118401E004570ED /* Node.swift in Sources */,
 				6F668677211566750047D752 /* CalendarDate.swift in Sources */,
@@ -555,6 +562,7 @@
 				6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */,
 				6F6686952116A1500047D752 /* NavigationBars.swift in Sources */,
 				6FACC2CA2117D620004570ED /* DatePicker.swift in Sources */,
+				6F0E3BBA2119787E003E5E00 /* EventHandleView.swift in Sources */,
 				6F66867B211566A20047D752 /* CalendarFormatters.swift in Sources */,
 				6F6686A02116A55C0047D752 /* LayoutBuilder.swift in Sources */,
 				6F6686862116837D0047D752 /* CreateEventViewController.swift in Sources */,

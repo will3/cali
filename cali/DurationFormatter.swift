@@ -91,19 +91,19 @@ class DurationFormatter {
     static func formatMeetingDuration(from: Date, to: Date) -> String {
         let dateComponents = calendar.dateComponents([.hour, .minute], from: from, to: to)
         
-        let hour = dateComponents.hour!
-        let minute = dateComponents.minute!
+        let hour = dateComponents.hour ?? 0
+        let minute = dateComponents.minute ?? 0
         
         var hourText = ""
         if hour == 1 {
             hourText = "1 hr"
         } else if hour > 1 {
-            hourText = String(format: NSLocalizedString("%1$@ hrs", comment: ""), hour)
+            hourText = String(format: NSLocalizedString("%d hrs", comment: ""), hour)
         }
         
         var minuteText = ""
         if minute > 0 {
-            minuteText = String(format: NSLocalizedString("%1$@ min", comment: ""), minute)
+            minuteText = String(format: NSLocalizedString("%d min", comment: ""), minute)
         }
         
         if minuteText.isEmpty {
