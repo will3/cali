@@ -15,13 +15,13 @@ class EventFormatter {
         
         if let year = components.year {
             if year == 1 {
-                return "In 1 year"
+                return NSLocalizedString("In 1 year", comment: "")
             } else if year > 0 {
-                return String(format: "In %d years", year)
+                return String(format: NSLocalizedString("In %d years", comment: ""), year)
             } else if year == -1 {
-                return String(format: "1 year ago", year)
+                return String(format: NSLocalizedString("Last year", comment: ""), year)
             } else if year < 0 {
-                return String(format: "%d years ago", year)
+                return String(format: NSLocalizedString("%d years ago", comment: ""), -year)
             }
         }
         
@@ -29,23 +29,11 @@ class EventFormatter {
             if month == 1 {
                 return "In 1 month"
             } else if month > 0 {
-                return String(format: "In %d months", month)
+                return String(format: NSLocalizedString("In %d months", comment: ""), month)
             } else if month == -1 {
-                return String(format: "1 month ago", month)
+                return String(format: NSLocalizedString("Last month", comment: ""), month)
             } else if month < 0 {
-                return String(format: "%d months ago", month)
-            }
-        }
-        
-        if let week = components.weekOfYear {
-            if week == 1 {
-                return "In 1 week"
-            } else if week > 0 {
-                return String(format: "In %d weeks", week)
-            } else if week == -1 {
-                return "Last week"
-            } else if week < 0 {
-                return String(format: "%d weeks ago", week)
+                return String(format: NSLocalizedString("%d months ago", comment: ""), -month)
             }
         }
         
@@ -53,11 +41,11 @@ class EventFormatter {
             if day == 1 {
                 return "Tomorrow"
             } else if day > 0 {
-                return String(format: "In %d days", day)
+                return String(format: NSLocalizedString("In %d days", comment: ""), day)
             } else if day == -1 {
                 return "Yesterday"
             } else if day < 0 {
-                return String(format: "%d days ago", day)
+                return String(format: NSLocalizedString("%d days ago", comment: ""), -day)
             }
         }
         
@@ -65,11 +53,11 @@ class EventFormatter {
             if hour == 1 {
                 return "In 1 hour"
             } else if hour > 0 {
-                return String(format: "In %d hours", hour)
+                return String(format: NSLocalizedString("In %d hours", comment: ""), hour)
             } else if hour == -1 {
                 return "1 hour ago"
             } else if hour < 0 {
-                return String(format: "%d hours ago", hour)
+                return String(format: NSLocalizedString("%d hours ago", comment: ""), -hour)
             }
         }
         
@@ -77,11 +65,11 @@ class EventFormatter {
             if minute == 1 {
                 return "In 1 minute"
             } else if minute > 0 {
-                return String(format: "In %d minutes", minute)
+                return String(format: NSLocalizedString("In %d minutes", comment: ""), minute)
             } else if minute == -1 {
                 return "1 minute ago"
             } else if minute < 0 {
-                return String(format: "%d minutes ago", minute)
+                return String(format: NSLocalizedString("%d minutes ago", comment: ""), -minute)
             }
         }
         
@@ -96,7 +84,7 @@ class EventFormatter {
         
         var hourText = ""
         if hour == 1 {
-            hourText = "1 hr"
+            hourText = NSLocalizedString("1 hr", comment: "")
         } else if hour > 1 {
             hourText = String(format: NSLocalizedString("%d hrs", comment: ""), hour)
         }
