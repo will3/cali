@@ -29,7 +29,7 @@ class EventHandleView: UIView {
     let circle = UIView()
     func loadView() {
         circle.backgroundColor = Colors.white
-        let size = Float(20)
+        let size = Float(10)
         circle.layer.cornerRadius = CGFloat(size) / 2
         circle.clipsToBounds = true
         circle.layer.borderWidth = 1
@@ -42,7 +42,15 @@ class EventHandleView: UIView {
     }
 }
 
+protocol DraggableEventViewDelegate : AnyObject {
+    func draggableEventViewDidDrag(_ view: DraggableEventView, translation: CGPoint)
+    func draggableEventViewDidDragTop(_ view: DraggableEventView, translation: CGPoint)
+    func draggableEventViewDidDragBot(_ view: DraggableEventView, translation: CGPoint)
+}
+
 class DraggableEventView : UIView {
+    weak var delegate : DraggableEventViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -62,42 +70,55 @@ class DraggableEventView : UIView {
     let mainHandle = UIView()
     let topHandle = EventHandleView()
     let bottomHandle = EventHandleView()
-    let handleSize = 44
+    let handleSize = Float(20)
+    var event : Event?
+    
+    var paddingVertical: Float {
+        return handleSize / 2
+    }
     
     func loadView() {
+        layer.cornerRadius = 2
+        clipsToBounds = true
+        
         let halfHandleSize = CGFloat(handleSize / 2)
         mainHandle.backgroundColor = Colors.accent
         layout(mainHandle).matchParent(self).insets(UIEdgeInsetsMake(halfHandleSize, 0, halfHandleSize, 0)).install()
-        layout(topHandle).parent(self).pinTop().pinRight().install()
-        layout(bottomHandle).parent(self).pinBottom().pinLeft().install()
+        layout(topHandle).parent(self).pinTop().pinRight(4)
+            .width(handleSize).height(handleSize).install()
+        layout(bottomHandle).parent(self).pinBottom().pinLeft(4)
+            .width(handleSize).height(handleSize).install()
         
         mainHandle.addGestureRecognizer(
-            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.mainDragged(tap:)))
+            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.mainDragged(pan:)))
         )
         
         topHandle.addGestureRecognizer(
-            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.topDragged(tap:)))
+            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.topDragged(pan:)))
         )
         
         bottomHandle.addGestureRecognizer(
-            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.botDragged(tap:)))
+            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.botDragged(pan:)))
         )
     }
     
-    @objc func mainDragged(tap: UITapGestureRecognizer) {
-        
+    @objc func mainDragged(pan: UIPanGestureRecognizer) {
+        let translation = pan.translation(in: pan.view?.superview)
+        delegate?.draggableEventViewDidDrag(self, translation: translation)
     }
     
-    @objc func topDragged(tap: UITapGestureRecognizer) {
-        
+    @objc func topDragged(pan: UIPanGestureRecognizer) {
+        let translation = pan.translation(in: pan.view?.superview)
+        delegate?.draggableEventViewDidDragTop(self, translation: translation)
     }
     
-    @objc func botDragged(tap: UITapGestureRecognizer) {
-        
+    @objc func botDragged(pan: UIPanGestureRecognizer) {
+        let translation = pan.translation(in: pan.view?.superview)
+        delegate?.draggableEventViewDidDragBot(self, translation: translation)
     }
 }
 
-class DayView : UIView {
+class DayView : UIView, DraggableEventViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -117,9 +138,23 @@ class DayView : UIView {
     
     let scrollView = UIScrollView()
     let contentView = UIView()
+    let eventLayer = UIView()
     var labels : [UILabel] = []
-    var startDay: Date? { didSet { updateLabels() } }
+    var startDay: Date? { didSet {
+        updateLabels()
+        updateEvents() } }
     let hours = 24
+    
+    let labelHalfHeight : Float = 6
+    let hourHeight : Float = 60
+    let botPadding : Float = 6
+    var totalHeight : Float {
+        return Float(hours) * hourHeight + labelHalfHeight * 2 + botPadding
+    }
+    let labelWidth : Float = 50
+    let graphStartX : Float = 54
+    let graphRightPadding : Float = 2
+    let eventService = EventService.instance
     
     private func updateLabels() {
         if labels.count == 0 {
@@ -133,18 +168,44 @@ class DayView : UIView {
         }
     }
     
+    private func updateEvents() {
+        guard let startDay = self.startDay else { return }
+        let events = eventService.find(startDay: startDay)
+        for event in events {
+            addEventView(event: event)
+        }
+    }
+    
+    var map: [ String: DraggableEventView ] = [:]
+    
+    private func addEventView(event: Event) {
+        if map[event.id] == nil {
+            let eventView = DraggableEventView()
+            map[event.id] = eventView
+            eventView.event = event
+            eventView.delegate = self
+            eventLayer.addSubview(eventView)
+        }
+        
+        placeEventView(event: event, view: map[event.id]!)
+    }
+    
+    private func placeEventView(event: Event, view: DraggableEventView) {
+        guard let start = event.start else { return }
+        guard let startDay = self.startDay else { return }
+        guard let duration = event.duration else { return }
+        
+        let timeInterval = start.timeIntervalSince(startDay)
+        let x = graphStartX
+        let y = labelHalfHeight + Float(timeInterval / TimeIntervals.hour * Double(hourHeight)) - view.paddingVertical
+        let height = Float(duration / TimeIntervals.hour * Double(hourHeight)) + view.paddingVertical * 2
+        
+        layout(view).pinLeft(x).pinRight(graphRightPadding).pinTop(y).height(height).install()
+    }
+    
     func loadView() {
         layout(scrollView).matchParent(self).install()
         layout(contentView).matchParent(scrollView).install()
-        
-        
-        let labelHalfHeight : Float = 6
-        let hourHeight : Float = 60
-        let botPadding : Float = 6
-        let totalHeight = Float(hours) * hourHeight + labelHalfHeight * 2 + botPadding
-        let labelWidth : Float = 50
-        let graphStartX : Float = 54
-        let graphRightPadding : Float = 2
         
         layout(contentView).width(.ratio(1)).height(totalHeight).install()
         
@@ -176,6 +237,27 @@ class DayView : UIView {
         
         backgroundColor = Colors.white
         
+        layout(eventLayer).matchParent(contentView).install()
+        
         updateLabels()
+    }
+    
+    // MARK: DraggableEventViewDelegate
+    
+    func draggableEventViewDidDrag(_ view: DraggableEventView, translation: CGPoint) {
+        guard var event = view.event else { return }
+        let timeInterval = Double(translation.y) / Double(hourHeight) * TimeIntervals.hour
+        event.start?.addTimeInterval(timeInterval)
+        
+        eventService.update(event: event)
+        updateEvents()
+    }
+    
+    func draggableEventViewDidDragTop(_ view: DraggableEventView, translation: CGPoint) {
+        
+    }
+    
+    func draggableEventViewDidDragBot(_ view: DraggableEventView, translation: CGPoint) {
+        
     }
 }

@@ -16,8 +16,18 @@ class EventService {
         eventsCollection.insert(object: event)
     }
     
+    func update(event: Event) {
+        eventsCollection.update(object: event)
+    }
+    
     func find() -> [Event] {
         return eventsCollection.find()
+    }
+    
+    func find(startDay: Date) -> [Event] {
+        return eventsCollection.find().filter({ (event) -> Bool in
+            return event.startDay == startDay
+        })
     }
     
     func find(filter: (Event) -> Bool) -> [Event] {

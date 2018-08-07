@@ -8,12 +8,33 @@
 
 import Foundation
 
+protocol StorageChannel {
+    func write(data: Any, key: String)
+    func has(key: String) -> Bool
+    func read(key: String) -> Any?
+}
+
+class UserDefaultStorage : StorageChannel {
+    let userDefaults = UserDefaults.standard
+    func write(data: Any, key: String) {
+        userDefaults.set(data, forKey: key)
+    }
+    
+    func has(key: String) -> Bool {
+        return userDefaults.object(forKey: key) != nil
+    }
+    
+    func read(key: String) -> Any? {
+        return userDefaults.object(forKey: key)
+    }
+}
+
 class Storage {
     static let instance = Storage()
     let prefix = "1337"
     
-    let userDefaults = UserDefaults.standard
-    
+    var channel = UserDefaultStorage()
+
     func insert(data: Data, collection: String, id: String) {
         var keys = getKeys(collection: collection)
         keys.append(id)
@@ -22,8 +43,18 @@ class Storage {
         write(data: data, key: id)
     }
     
+    func update(data: Data, collection: String, id: String) {
+        let keys = getKeys(collection: collection)
+        if !keys.contains(id) {
+            return
+        }
+        write(data: data, key: id)
+    }
+    
+    
+    
     func findDocument(key: String) -> Data? {
-        return userDefaults.data(forKey: key)
+        return channel.read(key: key) as? Data
     }
     
     func find(collection: String) -> [Data] {
@@ -37,25 +68,25 @@ class Storage {
         return result
     }
     
-    func setKeys(collection: String, keys: [ String ]) {
-        let key = getKeysKey(collection: collection)
-        userDefaults.set(keys, forKey: key)
+    func write(data: Data, key: String) {
+        channel.write(data: data, key: key)
     }
     
-    func getKeys(collection: String) -> [ String ] {
+    func has(key: String) -> Bool {
+        return channel.has(key: key)
+    }
+    
+    private func setKeys(collection: String, keys: [ String ]) {
         let key = getKeysKey(collection: collection)
-        return userDefaults.array(forKey: key) as? [String] ?? [String]()
+        channel.write(data: keys, key: key)
+    }
+    
+    private func getKeys(collection: String) -> [ String ] {
+        let key = getKeysKey(collection: collection)
+        return channel.read(key: key) as? [String] ?? [String]()
     }
     
     private func getKeysKey(collection: String) -> String {
         return "\(prefix)\(collection)$keys"
-    }
-    
-    func write(data: Data, key: String) {
-        userDefaults.set(data, forKey: key)
-    }
-    
-    func has(key: String) -> Bool {
-        return userDefaults.object(forKey: key) != nil
     }
 }

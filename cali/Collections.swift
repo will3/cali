@@ -25,11 +25,13 @@ class Collection<T> where T: Storable {
     func insert(object: T) {
         let data = try! JSONEncoder().encode(object)
         let id = object.getID()
-        insert(data: data, id: id)
+        storage.insert(data: data, collection: name, id: id)
     }
     
-    func insert(data: Data, id: String) {
-        storage.insert(data: data, collection: name, id: id)
+    func update(object: T) {
+        let data = try! JSONEncoder().encode(object)
+        let id = object.getID()
+        storage.update(data: data, collection: name, id: id)
     }
     
     func find() -> [T] {
