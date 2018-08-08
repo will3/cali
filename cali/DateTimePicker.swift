@@ -79,12 +79,10 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePic
         scrollView.isPagingEnabled = true
         
         layout(contentView).stackHorizontal([
-            left,
-            right]).install()
-        
-        layout(left).width(.ratio(0.5)).install()
-        layout(right).width(.ratio(0.5)).install()
-        
+            layout(left).width(.ratio(0.5)),
+            layout(right).width(.ratio(0.5))])
+            .install()
+
         layout(datePicker)
             .parent(left)
             .horizontal(.stretch)

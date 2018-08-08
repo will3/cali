@@ -67,8 +67,8 @@ class DatePicker : UIView, CalendarViewDelegate {
         let titleView = UIView()
         
         layout(titleView).stack([
-            dateLabel,
-            timeLabel
+            layout(dateLabel),
+            layout(timeLabel)
             ])
             .center(bar).install()
         
@@ -88,7 +88,7 @@ class DatePicker : UIView, CalendarViewDelegate {
         
         layout(self).stack([
             layout(bar).height(50),
-            weekdayBar,
+            layout(weekdayBar),
             layout(calendarView)
                 .height(calendarViewHeight)
                 .hugLess()

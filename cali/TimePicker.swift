@@ -62,7 +62,7 @@ class TimePicker: UIView, DayViewDelegate {
             .height(44)
             .install()
         
-        layout(self).stack([ bar, dayView ]).install()
+        layout(self).stack([ layout(bar), layout(dayView) ]).install()
         layout(bar).height(44).install()
         
         layer.cornerRadius = 8.0

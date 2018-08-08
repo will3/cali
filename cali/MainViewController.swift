@@ -13,6 +13,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     let weekdayBar = WeekdayBar()
     let calendarView = CalendarView()
     let eventListView = EventListView()
+    let layoutSelector = LayoutSelectorView()
+    var layoutSelectorLayout : LayoutBuilder?
+    
+    var layoutSelectorShown = false
+    
     var calendarLayout : LayoutBuilder?
     var isCalendarViewExpanded = false
     var dates = CalendarDates() { didSet {
@@ -30,12 +35,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         // Do any additional setup after loading the view, typically from a nib.
         
         view.backgroundColor = UIColor.white
-        
-        view.addSubview(weekdayBar)
         calendarView.delegate = self
         view.addSubview(calendarView)
         eventListView.delegate = self
         view.addSubview(eventListView)
+        view.addSubview(weekdayBar)
         
         let calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
         self.calendarLayout = calendarLayout
@@ -49,6 +53,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
                   calendarLayout,
                   layout(eventListView) ]
             ).install()
+        
+        layoutSelectorLayout = layout(layoutSelector).parent(view).pinLeft().pinRight().pinTop(
+            weekdayBar.preferredHeight - layoutSelector.preferredHeight)
+        layoutSelectorLayout?.install()
         
         let calendarPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanCalendar))
         calendarView.addGestureRecognizer(calendarPan)
@@ -65,13 +73,22 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         }
         
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed))
+            UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed)),
+            UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.layoutPressed))
         ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         eventListView.reloadData()
+    }
+    
+    @objc func layoutPressed() {
+        if layoutSelectorShown {
+            hideLayoutSelector()
+        } else {
+            showLayoutSelector()
+        }
     }
     
     @objc func plusPressed() {
@@ -146,6 +163,39 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
         self.selectedDate = calendarView.selectedDate
         eventListView.scrollToSelectedDate()
+    }
+    
+    // MARK: Layout selector
+    
+    func showLayoutSelector() {
+        if layoutSelectorShown {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.layoutSelectorLayout?
+                .pinTop(self.weekdayBar.preferredHeight)
+                .reinstall()
+            self.view.layoutIfNeeded()
+        }
+        
+        layoutSelectorShown = true
+    }
+    
+    func hideLayoutSelector() {
+        if !layoutSelectorShown {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.layoutSelectorLayout?
+                .top(self.weekdayBar.preferredHeight -
+                    self.layoutSelector.preferredHeight)
+                .reinstall()
+            self.view.layoutIfNeeded()
+        }
+        
+        layoutSelectorShown = false
     }
 }
 

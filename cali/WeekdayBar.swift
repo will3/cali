@@ -60,6 +60,8 @@ class WeekdayBar: UIView {
             .height(1.0)
             .install()
         
-        layout(self).height(24).priority(999).install()
+        layout(self).height(preferredHeight).priority(999).install()
     }
+    
+    let preferredHeight : Float = 24
 }
