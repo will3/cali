@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Layouts
 
 class EventEmptyCell : UITableViewCell {
     var noEventsLabel: UILabel?

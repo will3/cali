@@ -1,8 +1,10 @@
 PODS:
+  - Layouts (0.0.1)
   - Nimble (7.1.1)
   - Quick (1.3.0)
 
 DEPENDENCIES:
+  - Layouts (from `./layouts/`)
   - Nimble
   - Quick
 
@@ -11,10 +13,15 @@ SPEC REPOS:
     - Nimble
     - Quick
 
+EXTERNAL SOURCES:
+  Layouts:
+    :path: "./layouts/"
+
 SPEC CHECKSUMS:
+  Layouts: 94bbc48d220b97a0c7aac44b70fdbe75717498c3
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
   Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
 
-PODFILE CHECKSUM: 4d2cdf217acee215a50baf9f4b46200d85589e89
+PODFILE CHECKSUM: bb8d9391ec800618e5ac089092c1ddf28575255d
 
 COCOAPODS: 1.5.3

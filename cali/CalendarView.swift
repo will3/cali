@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Layouts
 
 protocol CalendarViewDelegate : AnyObject {
     func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView)

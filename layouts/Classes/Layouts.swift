@@ -9,29 +9,29 @@
 import UIKit
 
 #if !NO_LAYOUT_SHORTHANDS
-    func layout(_ view: UIView) -> LayoutBuilder {
+    public func layout(_ view: UIView) -> LayoutBuilder {
         return Layouts.view(view)
     }
 #endif
 
-class Layouts {
-    static func view(_ view: UIView) -> LayoutBuilder {
+public class Layouts {
+    public static func view(_ view: UIView) -> LayoutBuilder {
         return LayoutBuilder(view: view)
     }
 }
 
-enum LayoutDirection {
+public enum LayoutDirection {
     case vertical
     case horizontal
 }
 
-enum LayoutSize {
+public enum LayoutSize {
     case none
     case value(Float)
     case ratio(Float)
 }
 
-enum LayoutFit {
+public enum LayoutFit {
     case none
     case leading
     case center
@@ -39,7 +39,7 @@ enum LayoutFit {
     case stretch
 }
 
-enum LayoutPriority {
+public enum LayoutPriority {
     case none
     case more(Float)
     case less(Float)

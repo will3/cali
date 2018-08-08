@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Layouts
 
 protocol DraggableEventViewDelegate : AnyObject {
     func draggableEventViewDidDrag(_ view: DraggableEventView, translation: CGPoint)

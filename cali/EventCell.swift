@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Layouts
 
 class EventCell : UITableViewCell {
     static let identifier = "EventCell"

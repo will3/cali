@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Layouts
 
 class EventTitleCell: UITableViewCell, UITextFieldDelegate {
     static let identifier = "EventTitleCell"

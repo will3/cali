@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Layouts
 
 class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate {
     var weekdayBar : WeekdayBar!;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Layouts
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     enum Background {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Layouts
 
 class WeekdayBar: UIView {
     var labels : [UILabel] = [];

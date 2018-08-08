@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Layouts
 
 protocol DayViewDelegate : AnyObject {
     func dayViewDidChangeEvent(_ event: Event)

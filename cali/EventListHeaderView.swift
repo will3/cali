@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Layouts
 
 class EventListHeaderView: UITableViewHeaderFooterView {
     static let identifier = "EventListHeaderView"

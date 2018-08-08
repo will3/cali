@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Layouts
 
 class EventToggleCell : UITableViewCell {
     static let identifier = "EventToggleCell"

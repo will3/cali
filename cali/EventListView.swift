@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Layouts
 
 protocol EventListViewDelegate: AnyObject {
     func eventListViewDidScrollToDay(eventListView: EventListView)

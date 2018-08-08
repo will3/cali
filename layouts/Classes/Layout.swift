@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Layout {
+public class Layout {
     let id : UUID = UUID()
     weak var view: UIView?
     private var children: [Layout] = []
