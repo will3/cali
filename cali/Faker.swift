@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class Faker {
     var random = Random(seed: 1337)
@@ -32,16 +33,12 @@ class Faker {
         return array[index]
     }
     
-    func event(day: Date) -> Event {
-        var event = Event()
-        event.start = day.addingTimeInterval(startTime)
-        event.duration = duration
-        
-        return event
-    }
-//    var event: Event {
-//        var event = Event()
-//        event.start =
+//    func event(day: Date) -> Event {
+//        let context = AppDelegate.instance.context
+//        let event = Event(context: context)
+//        event.start = day.addingTimeInterval(startTime)
+//        event.duration = duration
+//        return event
 //    }
 }
 

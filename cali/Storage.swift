@@ -1,92 +1,63 @@
 //
-//  UserDefaultsStorage.swift
+//  Storage.swift
 //  cali
 //
-//  Created by will3 on 6/08/18.
+//  Created by will3 on 8/08/18.
 //  Copyright © 2018 will3. All rights reserved.
 //
 
 import Foundation
-
-protocol StorageChannel {
-    func write(data: Any, key: String)
-    func has(key: String) -> Bool
-    func read(key: String) -> Any?
-}
-
-class UserDefaultStorage : StorageChannel {
-    let userDefaults = UserDefaults.standard
-    func write(data: Any, key: String) {
-        userDefaults.set(data, forKey: key)
-    }
-    
-    func has(key: String) -> Bool {
-        return userDefaults.object(forKey: key) != nil
-    }
-    
-    func read(key: String) -> Any? {
-        return userDefaults.object(forKey: key)
-    }
-}
+import CoreData
 
 class Storage {
     static let instance = Storage()
-    let prefix = "1337"
     
-    var channel = UserDefaultStorage()
-
-    func insert(data: Data, collection: String, id: String) {
-        var keys = getKeys(collection: collection)
-        keys.append(id)
-        setKeys(collection: collection, keys: keys)
-        
-        write(data: data, key: id)
-    }
+    // MARK: - Core Data stack
     
-    func update(data: Data, collection: String, id: String) {
-        let keys = getKeys(collection: collection)
-        if !keys.contains(id) {
-            return
-        }
-        write(data: data, key: id)
-    }
+    lazy var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+         */
+        let container = NSPersistentContainer(name: "cali")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
     
+    // MARK: - Core Data Saving support
     
-    
-    func findDocument(key: String) -> Data? {
-        return channel.read(key: key) as? Data
-    }
-    
-    func find(collection: String) -> [Data] {
-        let keys = getKeys(collection: collection)
-        var result: [Data] = []
-        for key in keys {
-            if let document = findDocument(key: key) {
-                result.append(document)
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-        return result
     }
     
-    func write(data: Data, key: String) {
-        channel.write(data: data, key: key)
-    }
-    
-    func has(key: String) -> Bool {
-        return channel.has(key: key)
-    }
-    
-    private func setKeys(collection: String, keys: [ String ]) {
-        let key = getKeysKey(collection: collection)
-        channel.write(data: keys, key: key)
-    }
-    
-    private func getKeys(collection: String) -> [ String ] {
-        let key = getKeysKey(collection: collection)
-        return channel.read(key: key) as? [String] ?? [String]()
-    }
-    
-    private func getKeysKey(collection: String) -> String {
-        return "\(prefix)\(collection)$keys"
+    var context : NSManagedObjectContext {
+        return persistentContainer.viewContext
     }
 }

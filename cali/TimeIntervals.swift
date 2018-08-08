@@ -10,4 +10,5 @@ import Foundation
 
 class TimeIntervals {
     static let hour : TimeInterval = 60 * 60
+    static let day : TimeInterval = 60 * 60 * 24
 }

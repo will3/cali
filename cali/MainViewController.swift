@@ -73,8 +73,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         guard let selectedDate = self.selectedDate else { return }
         let vc = CreateEventViewController()
         
-        vc.event.start = selectedDate.addingTimeInterval(TimeIntervals.hour * 12)
-        vc.event.duration = TimeIntervals.hour
+        vc.createEvent(start: selectedDate.addingTimeInterval(TimeIntervals.hour * 12), duration: TimeIntervals.hour)
         
         let nav = UINavigationController(rootViewController: vc)
         NavigationBars.style(navigationBar: nav.navigationBar, .white)

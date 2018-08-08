@@ -44,10 +44,15 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     var sections: [[RowType]] = []
-    var event = Event()
+    private(set) var event: Event?
+    
+    func createEvent(start: Date, duration: TimeInterval) {
+        event = EventService.instance.createEvent(start: start, duration: duration)
+    }
     
     override func viewDidLoad() {
         view.addSubview(tableView)
+        
         layout(tableView).matchParent().install()
         
         tableView.delegate = self
@@ -76,12 +81,23 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     }
     
     @objc func crossPressed() {
-        dismiss(animated: true, completion: nil)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Discard event", comment: ""), style: .destructive, handler: { (action) in
+            
+            if let event = self.event {
+                EventService.instance.discardEvent(event)
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     @objc func tickPressed() {
         // Create event
-        EventService.instance.insert(event: event)
         dismiss(animated: true, completion: nil)
     }
     

@@ -91,17 +91,21 @@ class EventDateTimeCell : UITableViewCell, DateTimePickerDelegate {
     }
     
     @objc func didPressLeft() {
-        
+        showDateTimePicker(page: .date)
+    }
+    
+    @objc func didPressRight() {
+        showDateTimePicker(page: .time)
+    }
+    
+    func showDateTimePicker(page: DateTimePickerPage) {
         if let keyWindow = UIApplication.shared.keyWindow {
             let picker = DateTimePicker()
             picker.event = event
             picker.delegate = self
+            picker.initialPage = page
             layout(picker).matchParent(keyWindow).install()
         }
-    }
-    
-    @objc func didPressRight() {
-        
     }
     
     func updateEvent() {

@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+enum DateTimePickerPage {
+    case date
+    case time
+}
+
 protocol DateTimePickerDelegate : AnyObject {
     func dateTimePickerDidFinish(_ dateTimePicker: DateTimePicker)
 }
@@ -41,6 +46,8 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePic
     let left = UIView()
     let right = UIView()
     let timePicker = TimePicker()
+    var initialPage = DateTimePickerPage.date
+    var didSetInitialPage = false
     
     var event: Event? { didSet {
         datePicker.event = event
@@ -109,6 +116,17 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePic
         scrollView.delegate = self
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if !didSetInitialPage {
+            if initialPage == .time {
+                scrollView.contentOffset = CGPoint(x: scrollView.bounds.width, y: 0)
+            }
+            didSetInitialPage = true
+        }
+    }
+    
     @objc func didTapBackground() {
         dismiss()
     }
@@ -134,9 +152,9 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePic
     // MARK: DatePickerDelegate
     
     func datePickerDidChange(_ datePicker: DatePicker) {
-        guard var event = self.event else { return }
+        guard let event = self.event else { return }
         guard let selectedDate = datePicker.selectedDate else { return }
-        event.changeDay(selectedDate)
+        EventService.instance.changeDay(event: event, day: selectedDate)
         self.event = event
     }
     

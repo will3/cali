@@ -83,19 +83,21 @@ class DayView : UIView, DraggableEventViewDelegate {
     }
     
     private func addEventView(event: Event) {
-        if map[event.id] == nil {
+        guard let id = event.id  else { return }
+        if map[id] == nil {
             let eventView = DraggableEventView()
-            map[event.id] = eventView
+            map[id] = eventView
             eventView.event = event
             eventView.delegate = self
             eventLayer.addSubview(eventView)
         }
         
-        placeEventView(map[event.id]!)
+        placeEventView(map[id]!)
     }
     
     private func placeEventView(_ view: DraggableEventView) {
         guard let event = view.event else { return }
+        guard let id = event.id else { return }
         guard let start = view.draggedStart ?? event.start else { return }
         guard let startDay = self.startDay else { return }
         guard let duration = view.draggedDuration ?? event.duration else { return }
@@ -105,11 +107,11 @@ class DayView : UIView, DraggableEventViewDelegate {
         let y = labelHalfHeight + Float(timeInterval / TimeIntervals.hour * Double(hourHeight)) - view.paddingVertical
         let height = Float(duration / TimeIntervals.hour * Double(hourHeight)) + view.paddingVertical * 2
        
-        if layouts[event.id] == nil {
-           layouts[event.id] = layout(view)
+        if layouts[id] == nil {
+           layouts[id] = layout(view)
         }
     
-        layouts[event.id]?
+        layouts[id]!
             .pinLeft(x)
             .pinRight(graphRightPadding)
             .pinTop(y)
@@ -185,7 +187,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     }
     
     func draggableEventViewDidEndDrag(_ view: DraggableEventView) {
-        guard var event = view.event else { return }
+        guard let event = view.event else { return }
         
         if let draggedStart = view.draggedStart {
             event.start = draggedStart
