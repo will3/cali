@@ -28,4 +28,14 @@ open class Event: _Event {
         guard let duration = self.duration else { return nil }
         return start.addingTimeInterval(duration)
     }
+    
+    var displayTitle: String {
+        if let title = self.title {
+            if !title.isEmpty {
+                return title
+            }
+        }
+        
+        return NSLocalizedString("Untitled", comment: "")
+    }
 }

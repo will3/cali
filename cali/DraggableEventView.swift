@@ -56,7 +56,7 @@ class DraggableEventView : UIView {
         guard let start = event.start else { return }
         guard let end = event.end else { return }
         timeLabel.text = EventFormatter.formatTimes(start: start, end: end)
-        durationLabel.text = EventFormatter.formatMeetingDuration(from: start, to: end)
+        durationLabel.text = EventFormatter.formatDuration(from: start, to: end, durationTag: false)
     }
     
     func loadView() {

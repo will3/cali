@@ -21,6 +21,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     var hasScrolledToToday = false
     private(set) var firstDay: Date?
     weak var delegate: EventListViewDelegate?
+    let eventService = EventService.instance
     
     var scrollView: UIScrollView {
         return tableView
@@ -34,7 +35,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         super.init(coder: aDecoder)
     }
     
-    private func reloadData() {
+    func reloadData() {
         tableView.reloadData()
         tableView.layoutIfNeeded()
         scrollToTodayIfNeeded()
@@ -58,6 +59,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         layout(tableView).matchParent().install()
         
         tableView.register(EventCell.self, forCellReuseIdentifier: EventCell.identifier)
+        tableView.register(EventEmptyCell.self, forCellReuseIdentifier: EventEmptyCell.identifier)
         
         tableView.showsVerticalScrollIndicator = false
     }
@@ -80,12 +82,26 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let date = dates?.getDate(index: section) else { return 0 }
+        let events = eventService.find(startDay: date.date)
+        if events.count == 0 {
+            return 1
+        } else {
+            return events.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier) as! EventCell
-        return cell
+        guard let date = dates?.getDate(index: indexPath.section) else { return UITableViewCell() }
+        let events = eventService.find(startDay: date.date)
+        
+        if events.count == 0 {
+            return tableView.dequeueReusableCell(withIdentifier: EventEmptyCell.identifier, for: indexPath)
+        } else {
+            let eventCell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as! EventCell
+            eventCell.event = events[indexPath.row]
+            return eventCell
+        }
     }
     
     // MARK: UITableViewDelegate

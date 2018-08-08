@@ -69,6 +69,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         ]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        eventListView.reloadData()
+    }
+    
     @objc func plusPressed() {
         guard let selectedDate = self.selectedDate else { return }
         let vc = CreateEventViewController()

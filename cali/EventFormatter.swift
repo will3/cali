@@ -76,7 +76,7 @@ class EventFormatter {
         return NSLocalizedString("Now", comment: "")
     }
     
-    static func formatMeetingDuration(from: Date, to: Date) -> String {
+    static func formatDuration(from: Date, to: Date, durationTag: Bool) -> String {
         let dateComponents = calendar.dateComponents([.hour, .minute], from: from, to: to)
         
         let hour = dateComponents.hour ?? 0
@@ -94,10 +94,18 @@ class EventFormatter {
             minuteText = String(format: NSLocalizedString("%d min", comment: ""), minute)
         }
         
-        if minuteText.isEmpty {
-            return String(format: NSLocalizedString("Duration: %1$@", comment: ""), hourText)
+        if durationTag {
+            if minuteText.isEmpty {
+                return String(format: NSLocalizedString("Duration: %1$@", comment: ""), hourText)
+            } else {
+                return String(format: NSLocalizedString("Duration: %1$@, %2$@", comment:""), hourText, minuteText)
+            }
         } else {
-            return String(format: NSLocalizedString("Duration: %1$@, %2$@", comment:""), hourText, minuteText)
+            if minuteText.isEmpty {
+                return String(format: NSLocalizedString("%1$@", comment: ""), hourText)
+            } else {
+                return String(format: NSLocalizedString("%1$@, %2$@", comment:""), hourText, minuteText)
+            }
         }
     }
     

@@ -142,7 +142,7 @@ class EventDateTimeCell : UITableViewCell, DateTimePickerDelegate {
         }
         
         timeValueLabel.attributedText = attributedText
-        timeDurationLabel.text = EventFormatter.formatMeetingDuration(from: start, to: end)
+        timeDurationLabel.text = EventFormatter.formatDuration(from: start, to: end, durationTag: true)
     }
     
     // MARK: DateTimePickerDelegate

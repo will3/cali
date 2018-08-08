@@ -20,4 +20,7 @@ class Fonts {
     
     static let graphSmall = UIFont.systemFont(ofSize: 12.0)
     static let graphMedium = UIFont.systemFont(ofSize: 14.0)
+    
+    static let fontSmall = UIFont.systemFont(ofSize: 12.0)
+    static let fontMedium = UIFont.systemFont(ofSize: 14.0)
 }
