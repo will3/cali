@@ -39,6 +39,11 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     func reloadData() {
         tableView.reloadData()
         tableView.layoutIfNeeded()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         scrollToTodayIfNeeded()
     }
     
@@ -51,6 +56,8 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func loadView() {
         tableView = UITableView()
+        tableView.separatorColor = Colors.separator
+        tableView.separatorInset = UIEdgeInsets.zero
         tableView.delegate = self
         tableView.dataSource = self
         addSubview(tableView)
@@ -113,6 +120,10 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
@@ -127,5 +138,13 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
             self.firstDay = firstDay
             delegate?.eventListViewDidScrollToDay(eventListView: self)
         }
+    }
+    
+    func scrollToSelectedDate() {
+        guard let dates = self.dates else { return }
+        guard let selectedDate = self.selectedDate else { return }
+        let index = dates.getIndex(date: selectedDate)
+        let indexPath = IndexPath(row: 0, section: index)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 }

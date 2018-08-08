@@ -20,9 +20,39 @@ protocol DraggableEventViewDelegate : AnyObject {
 class DraggableEventView : UIView {
     weak var delegate : DraggableEventViewDelegate?
     
+    var isDraggable = false {
+        didSet {
+            updateDraggable()
+        }
+    }
+    
+    private func updateDraggable() {
+        if isDraggable {
+            mainHandle.backgroundColor = Colors.accent.withAlphaComponent(Colors.draggableAlpha)
+            timeLabel.textColor = Colors.white
+            durationLabel.textColor = Colors.white
+            titleLabel.textColor = Colors.white
+            topHandle.isHidden = false
+            bottomHandle.isHidden = false
+            isUserInteractionEnabled = true
+            titleLabel.isHidden = true
+        } else {
+            mainHandle.backgroundColor =
+                Colors.dimBackground.withAlphaComponent(Colors.draggableAlpha)
+            timeLabel.textColor = Colors.primary
+            durationLabel.textColor = Colors.primary
+            titleLabel.textColor = Colors.primary
+            topHandle.isHidden = true
+            bottomHandle.isHidden = true
+            isUserInteractionEnabled = false
+            titleLabel.isHidden = false
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -47,6 +77,7 @@ class DraggableEventView : UIView {
     let timeLabel = UILabel()
     let durationLabel = UILabel()
     let labelContainer = UIView()
+    let titleLabel = UILabel()
     
     var paddingVertical: Float {
         return handleSize / 2
@@ -58,6 +89,7 @@ class DraggableEventView : UIView {
         guard let end = event.end else { return }
         timeLabel.text = EventFormatter.formatTimes(start: start, end: end)
         durationLabel.text = EventFormatter.formatDuration(from: start, to: end, durationTag: false)
+        titleLabel.text = event.displayTitle
     }
     
     func loadView() {
@@ -82,6 +114,12 @@ class DraggableEventView : UIView {
             .pinTop(6)
             .install()
         
+        layout(titleLabel)
+            .parent(mainHandle)
+            .pinLeft(6)
+            .pinTop(6)
+            .install()
+        
         layout(mainHandle).matchParent(self).insets(UIEdgeInsetsMake(halfHandleSize, 0, halfHandleSize, 0)).install()
         layout(topHandle).parent(self).pinTop().pinRight(4)
             .width(handleSize).height(handleSize).install()
@@ -89,8 +127,7 @@ class DraggableEventView : UIView {
             .width(handleSize).height(handleSize).install()
         
         mainHandle.addGestureRecognizer(
-            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.mainDragged(pan:)))
-        )
+            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.mainDragged(pan:))))
         
         topHandle.addGestureRecognizer(
             UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.topDragged(pan:)))
@@ -99,6 +136,8 @@ class DraggableEventView : UIView {
         bottomHandle.addGestureRecognizer(
             UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.botDragged(pan:)))
         )
+        
+        updateDraggable()
     }
     
     @objc func mainDragged(pan: UIPanGestureRecognizer) {

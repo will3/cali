@@ -9,11 +9,11 @@
 import UIKit
 import Layouts
 
-class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate {
-    var weekdayBar : WeekdayBar!;
-    var calendarView : CalendarView!;
-    var eventListView : EventListView!;
-    var calendarLayout : LayoutBuilder!
+class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate, CalendarViewDelegate {
+    let weekdayBar = WeekdayBar()
+    let calendarView = CalendarView()
+    let eventListView = EventListView()
+    var calendarLayout : LayoutBuilder?
     var isCalendarViewExpanded = false
     var dates = CalendarDates() { didSet {
         calendarView.dates = dates
@@ -31,15 +31,14 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         view.backgroundColor = UIColor.white
         
-        weekdayBar = WeekdayBar()
         view.addSubview(weekdayBar)
-        calendarView = CalendarView()
+        calendarView.delegate = self
         view.addSubview(calendarView)
-        eventListView = EventListView()
         eventListView.delegate = self
         view.addSubview(eventListView)
         
-        calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
+        let calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
+        self.calendarLayout = calendarLayout
         
         layout(view)
             .translatesAutoresizingMaskIntoConstraints()
@@ -108,7 +107,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     func expandCalendarView() {
         if (isCalendarViewExpanded) {
             UIView.animate(withDuration: 0.2) {
-                self.calendarLayout
+                self.calendarLayout?
                     .height(self.calendarView.preferredExpandedHeight)
                     .reinstall()
                 self.view.layoutIfNeeded()
@@ -121,7 +120,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     func collapseCalendarView() {
         if (!isCalendarViewExpanded) {
             UIView.animate(withDuration: 0.2) {
-                self.calendarLayout
+                self.calendarLayout?
                     .height(self.calendarView.preferredCollapsedHeight)
                     .reinstall()
                 self.view.layoutIfNeeded()
@@ -142,6 +141,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     func eventListViewDidScrollToDay(eventListView: EventListView) {
         self.selectedDate = eventListView.firstDay
         calendarView.scrollToSelectedDate()
+    }
+    
+    func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
+        self.selectedDate = calendarView.selectedDate
+        eventListView.scrollToSelectedDate()
     }
 }
 

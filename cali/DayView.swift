@@ -70,6 +70,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     
     var map: [ String: DraggableEventView ] = [:]
     var layouts: [ String: LayoutBuilder ] = [:]
+    var draggableEventView: DraggableEventView?
     
     private func updateEvents() {
         guard let startDay = self.startDay else { return }
@@ -77,9 +78,8 @@ class DayView : UIView, DraggableEventViewDelegate {
         for event in events {
             addEventView(event: event)
         }
-        
-        if let event = self.event {
-            addEventView(event: event)
+        if let draggableEventView = self.draggableEventView {
+            draggableEventView.superview?.bringSubview(toFront: draggableEventView)
         }
     }
     
@@ -91,6 +91,13 @@ class DayView : UIView, DraggableEventViewDelegate {
             eventView.event = event
             eventView.delegate = self
             eventLayer.addSubview(eventView)
+        }
+        
+        if event == self.event {
+            map[id]?.isDraggable = true
+            draggableEventView = map[id]
+        } else {
+            map[id]?.isDraggable = false
         }
         
         placeEventView(map[id]!)

@@ -322,6 +322,11 @@ public class LayoutBuilder : LayoutWrapper {
         }
     }
     
+    public func justifyItems(_ value: LayoutJustify) -> Self {
+        layout.justifyItems = value
+        return self
+    }
+    
     public func install() {
         updatePins()
         layout.install()

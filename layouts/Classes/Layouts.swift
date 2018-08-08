@@ -45,3 +45,8 @@ public enum LayoutPriority {
     case less(Float)
     case value(Float)
 }
+
+public enum LayoutJustify {
+    case stretch
+    case leading
+}

@@ -18,6 +18,7 @@ public class Layout {
     
     var direction = LayoutDirection.vertical
     var alignItems = LayoutFit.stretch
+    var justifyItems = LayoutJustify.stretch
     var useTopMarginGuide = false
     var useBottomMarginGuide = false
     var width = LayoutSize.none
@@ -235,7 +236,7 @@ public class Layout {
         view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
         var index = 0
         for child in children {
-            installStackAxis(child: child, index: index)
+            installStack(child: child, index: index)
             index += 1
         }
         
@@ -301,7 +302,7 @@ public class Layout {
         }
     }
     
-    private func installStackAxis(child: Layout, index: Int) {
+    private func installStack(child: Layout, index: Int) {
         guard let childView = child.view else { return }
         guard let view = self.view else { return }
         
@@ -324,13 +325,15 @@ public class Layout {
                 }
             }
             
-            if index == children.count - 1 {
-                let bottomAnchor = useBottomMarginGuide ?
-                    view.layoutMarginsGuide.bottomAnchor :
-                    view.bottomAnchor;
-                let margin = child.insets.bottom
-                install(constraint:
-                    childView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin))
+            if justifyItems == .stretch {
+                if index == children.count - 1 {
+                    let bottomAnchor = useBottomMarginGuide ?
+                        view.layoutMarginsGuide.bottomAnchor :
+                        view.bottomAnchor;
+                    let margin = child.insets.bottom
+                    install(constraint:
+                        childView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin))
+                }
             }
         case .horizontal:
             if index == 0 {
@@ -346,10 +349,12 @@ public class Layout {
                 }
             }
             
-            if index == children.count - 1 {
-                let margin = child.insets.right
-                install(constraint:
-                    childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin))
+            if justifyItems == .stretch {
+                if index == children.count - 1 {
+                    let margin = child.insets.right
+                    install(constraint:
+                        childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin))
+                }
             }
         }
     }
@@ -363,35 +368,35 @@ public class Layout {
             switch alignItems {
             case .none, .leading:
                 install(constraint:
-                    childView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: child.insets.top))
+                    childView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: child.insets.left))
             case .trailing:
                 install(constraint:
-                    childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -child.insets.bottom))
+                    childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -child.insets.right))
             case .center:
                 install(constraint:
                     childView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0))
             case .stretch:
                 install(constraint:
-                    childView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: child.insets.top))
+                    childView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: child.insets.left))
                 install(constraint:
-                    childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -child.insets.bottom))
+                    childView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -child.insets.right))
             }
         case .horizontal:
             switch alignItems {
             case .none, .leading:
                 install(constraint:
-                    childView.topAnchor.constraint(equalTo: view.topAnchor, constant: child.insets.left))
+                    childView.topAnchor.constraint(equalTo: view.topAnchor, constant: child.insets.top))
             case .trailing:
                 install(constraint:
-                    childView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -child.insets.right))
+                    childView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -child.insets.bottom))
             case .center:
                 install(constraint:
                     childView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0))
             case .stretch:
                 install(constraint:
-                    childView.topAnchor.constraint(equalTo: view.topAnchor, constant: child.insets.left))
+                    childView.topAnchor.constraint(equalTo: view.topAnchor, constant: child.insets.top))
                 install(constraint:
-                    childView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -child.insets.right))
+                    childView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -child.insets.bottom))
             }
         }
     }

@@ -32,12 +32,17 @@ class EventCell : UITableViewCell {
     let right = UIView()
     
     private func loadView() {
-        layout(contentView).stackHorizontal([left, right]).install()
-        layout(left).stack([timeLabel, durationLabel]).install()
-        layout(right).stack([titleLabel]).install()
-        layout(timeLabel).left(18).top(14).install()
-        layout(durationLabel).left(18).top(2).bottom(18).install()
-        layout(timeLabel).right(18).top(14).install()
+        layout(contentView).stackHorizontal([
+            layout(left).stack([
+                layout(timeLabel).left(18).top(14),
+                layout(durationLabel).left(18).top(2).bottom(18)
+                ]),
+            layout(right)
+                .stack([
+                    layout(titleLabel).left(18).right(18).top(14)
+                    ])
+                .justifyItems(.leading)
+            ]).install()
         
         timeLabel.font = Fonts.fontSmall
         durationLabel.font = Fonts.fontSmall

@@ -18,6 +18,7 @@ class Colors {
     static let separator = UIColor(rgb:0xECECEC)
     static let white = UIColor(rgb:0xFFFFFF)
     static let black = UIColor(rgb:0x000000)
+    static let draggableAlpha: CGFloat = 0.8
 }
 
 extension UIColor {
