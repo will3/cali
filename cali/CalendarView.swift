@@ -168,13 +168,14 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             calendarCell.month = ""
         }
         
-        if dates.isPastMonth(date: date.date) {
-            calendarCell.background = .Past
-        } else if dates.isToday(date: date.date) {
-            calendarCell.background = .Today
+        if dates.isToday(date: date.date) {
+            calendarCell.background = .today
+        } else if dates.isEvenNumberOfMonth(date: date.date) {
+            calendarCell.background = .white
         } else {
-            calendarCell.background = .Default
+            calendarCell.background = .grey
         }
+        
         calendarCell.shouldShowCircle = selected
         calendarCell.numEvents = eventService.find(startDay: date.date).count
     }

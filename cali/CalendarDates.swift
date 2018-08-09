@@ -17,7 +17,7 @@ class CalendarDates {
     }
     
     let today: Date
-    let startOfMonth: Date
+    let todayMonth: Int
     let indexForToday: Int
     
     init() {
@@ -36,8 +36,7 @@ class CalendarDates {
                                   to: thisSunday)!
         numDates = (settings.numWeeksBackwards + settings.numWeeksForward) * 7
         
-        let startOfMonthComponents = calendar.dateComponents([ .year, .month ], from: today)
-        startOfMonth = calendar.date(from: startOfMonthComponents)!
+        todayMonth = calendar.dateComponents([ .month ], from: today).month!
         
         let components = calendar.dateComponents([.day], from: startDate, to: today)
         indexForToday = components.day!
@@ -67,8 +66,11 @@ class CalendarDates {
         return min(numDates - 1, max(0, day))
     }
     
-    func isPastMonth(date: Date) -> Bool {
-        return date.compare(startOfMonth) == .orderedAscending
+    func isEvenNumberOfMonth(date: Date) -> Bool {
+        if let numMonths = calendar.dateComponents([ .year, .month ], from: date).month {
+            return numMonths % 2 == todayMonth % 2
+        }
+        return false
     }
     
     func isToday(date: Date) -> Bool {

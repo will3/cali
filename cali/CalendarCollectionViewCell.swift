@@ -11,9 +11,9 @@ import Layouts
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     enum Background {
-        case Default
-        case Past
-        case Today
+        case white
+        case grey
+        case today
     }
     static let identifier = "CalendarCollectionViewCell"
     private let label = UILabel()
@@ -35,7 +35,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         updateCircle()
         updateDot()
         } }
-    var background: Background = .Past { didSet { updateBackground() } }
+    var background: Background = .white { didSet { updateBackground() } }
     var drawLeftBorder = false { didSet { updateLeftBorder() } }
     var drawBotBorder = false { didSet { updateBotBorder() }}
     var month: String = "" { didSet {
@@ -68,11 +68,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     func updateBackground() {
         switch background {
-        case .Default:
-            contentView.backgroundColor = UIColor.clear
-        case .Past:
+        case .white:
+            contentView.backgroundColor = Colors.white
+        case .grey:
             contentView.backgroundColor = Colors.dimBackground
-        case .Today:
+        case .today:
             contentView.backgroundColor = Colors.lightAccent
         }
     }
