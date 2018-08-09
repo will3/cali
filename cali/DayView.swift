@@ -61,6 +61,10 @@ class DayView : UIView, DraggableEventViewDelegate {
     let graphStartX : Float = 54
     let graphRightPadding : Float = 2
     
+    private var map: [ String: DraggableEventView ] = [:]
+    private var layouts: [ String: LayoutBuilder ] = [:]
+    private var draggableEventView: DraggableEventView?
+    
     private func updateLabels() {
         if labels.count == 0 {
             return
@@ -73,12 +77,15 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
-    private var map: [ String: DraggableEventView ] = [:]
-    private var layouts: [ String: LayoutBuilder ] = [:]
-    private var draggableEventView: DraggableEventView?
-    
     private func updateEvents() {
         guard let startDay = self.startDay else { return }
+        
+        for kv in map {
+            kv.value.removeFromSuperview()
+        }
+        map.removeAll()
+        layouts.removeAll()
+        
         let events = eventService.find(startDay: startDay)
         for event in events {
             addEventView(event: event)
@@ -111,7 +118,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     
     @objc func didTapEvent(tap: UITapGestureRecognizer) {
         guard let eventView = tap.view?.superview as? DraggableEventView else { return }
-        guard let event = eventView.event else { return }
+        // guard let event = eventView.event else { return }
 
         // TODO
 //        let vc = EventViewController()

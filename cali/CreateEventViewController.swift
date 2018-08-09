@@ -51,6 +51,10 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         event = EventService.instance.createEvent(start: start, duration: duration)
     }
     
+    func editEvent(_ event: Event) {
+        self.event = event
+    }
+    
     override func viewDidLoad() {
         view.addSubview(tableView)
         
