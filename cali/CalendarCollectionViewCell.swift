@@ -16,12 +16,13 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         case Today
     }
     static let identifier = "CalendarCollectionViewCell"
-    private var label: UILabel?
-    private var monthLabel: UILabel?
-    private var view: UIView?
-    private var circleView: UIView?
-    private var leftBorder: UIView?
-    private var botBorder: UIView?
+    private let label = UILabel()
+    private let monthLabel = UILabel()
+    private let view = UIView()
+    private let circleView = UIView()
+    private let leftBorder = UIView()
+    private let botBorder = UIView()
+    private let dot = UIView()
     
     override var bounds: CGRect {
         didSet {
@@ -30,46 +31,38 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    var shouldShowCircle: Bool = false { didSet { updateCircle() } }
+    var shouldShowCircle: Bool = false { didSet {
+        updateCircle()
+        updateDot()
+        } }
     var background: Background = .Past { didSet { updateBackground() } }
     var drawLeftBorder = false { didSet { updateLeftBorder() } }
     var drawBotBorder = false { didSet { updateBotBorder() }}
-    var month: String = "" { didSet { updateLabels() } }
+    var month: String = "" { didSet {
+        updateLabels()
+        updateDot() } }
     var day: String = "" { didSet { updateLabels() } }
     
     func updateLeftBorder() {
-        if drawLeftBorder {
-            if leftBorder == nil {
-                leftBorder = UIView()
-                leftBorder?.backgroundColor = Colors.hard
-            }
-        }
-        leftBorder?.isHidden = !drawLeftBorder
+        leftBorder.isHidden = !drawLeftBorder
     }
     
     func updateBotBorder() {
-        if drawBotBorder {
-            if botBorder == nil {
-                botBorder = UIView()
-                botBorder?.backgroundColor = Colors.hard
-            }
-        }
-        botBorder?.isHidden = drawBotBorder
+        botBorder.isHidden = drawBotBorder
     }
     
     func updateCircle() {
-        guard let circleView = self.circleView else { return }
         if shouldShowCircle {
             circleView.backgroundColor = Colors.accent
             circleView.superview?.layoutIfNeeded()
             circleView.layer.cornerRadius = circleView.bounds.size.height / 2.0
             circleView.clipsToBounds = true
-            label?.textColor = Colors.white
-            monthLabel?.textColor = Colors.white
+            label.textColor = Colors.white
+            monthLabel.textColor = Colors.white
         } else {
             circleView.backgroundColor = UIColor.clear
-            label?.textColor = Colors.primary
-            monthLabel?.textColor = Colors.primary
+            label.textColor = Colors.primary
+            monthLabel.textColor = Colors.primary
         }
     }
     
@@ -85,34 +78,47 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     func updateLabels() {
-        monthLabel?.text = month
-        label?.text = day
+        monthLabel.text = month
+        label.text = day
         layoutIfNeeded()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updateDotPosition()
+    }
+    
+    private func updateDotPosition() {
+        let dotWidth : CGFloat = CGFloat(3)
+        let labelEndY = view.bounds.height + view.frame.origin.y
+        let height = contentView.bounds.height
+        
+        dot.frame = CGRect(
+            x: (contentView.bounds.width - CGFloat(dotWidth)) / CGFloat(2.0),
+            y: labelEndY + (height - labelEndY - dotWidth) / 2.0 - 3.0,
+            width: dotWidth,
+            height: dotWidth
+        )
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        let circleView = UIView()
         contentView.addSubview(circleView)
         
-        let view = UIView()
-        
-        let label = UILabel(frame: contentView.bounds)
         label.font = Fonts.dayFont;
         label.textAlignment = .center
         label.textColor = Colors.primary
         view.addSubview(label)
         
-        let monthLabel = UILabel()
         monthLabel.textAlignment = .center
         monthLabel.font = Fonts.calendarSmallLight;
         monthLabel.textColor = Colors.primary
         view.addSubview(monthLabel)
         contentView.addSubview(view)
         
-        let botBorder = UIView()
         botBorder.backgroundColor = Colors.separator
         contentView.addSubview(botBorder)
         
@@ -123,6 +129,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             .install()
         
         layout(view)
+            .alignItems(.center)
             .stack([
                 layout(monthLabel),
                 layout(label)
@@ -139,12 +146,31 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             .aspect(1)
             .install()
         
-        self.label = label
-        self.monthLabel = monthLabel
-        self.view = view
-        self.circleView = circleView
-        
         updateCircle()
         updateBackground()
+        updateDot()
+        
+        contentView.addSubview(dot)
+    }
+    
+    var numEvents = 0 {
+        didSet { updateDot() }
+    }
+    
+    private func updateDot() {
+        let shouldShowDot = month.isEmpty && !shouldShowCircle
+        if shouldShowDot {
+            if numEvents == 1 {
+                dot.backgroundColor = Colors.dotColorOne
+            } else if numEvents == 2 {
+                dot.backgroundColor = Colors.dotColorTwo
+            } else if numEvents >= 3 {
+                dot.backgroundColor = Colors.dotColorThree
+            } else {
+                dot.backgroundColor = UIColor.clear
+            }
+        } else {
+            dot.backgroundColor = UIColor.clear
+        }
     }
 }

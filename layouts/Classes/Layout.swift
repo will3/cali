@@ -168,7 +168,7 @@ public class Layout {
         installMinHeight()
         installMaxHeight()
         intallFitHorizontal()
-        intallFitVertical()
+        installFitVertical()
         installAspect()
     }
     
@@ -206,11 +206,12 @@ public class Layout {
         }
     }
     
-    private func intallFitVertical() {
+    private func installFitVertical() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
             return
         }
+        
         switch fitVertical {
         case .none:
             break

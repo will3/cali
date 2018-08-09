@@ -23,6 +23,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     private(set) var firstDay: Date?
     weak var delegate: EventListViewDelegate?
     let eventService = EventService.instance
+    private(set) var scrollingToSelectedDate = false
     
     var scrollView: UIScrollView {
         return tableView
@@ -135,7 +136,9 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         let firstDay = dates?.getDate(index: firstVisibleIndexPath.section)?.date
         if firstDay != self.firstDay {
             self.firstDay = firstDay
-            delegate?.eventListViewDidScrollToDay(eventListView: self)
+            if !scrollingToSelectedDate {
+                delegate?.eventListViewDidScrollToDay(eventListView: self)
+            }
         }
     }
     
@@ -145,5 +148,11 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         let index = dates.getIndex(date: selectedDate)
         let indexPath = IndexPath(row: 0, section: index)
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        
+        scrollingToSelectedDate = true
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        scrollingToSelectedDate = false
     }
 }

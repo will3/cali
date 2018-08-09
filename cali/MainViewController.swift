@@ -66,10 +66,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         let calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
         self.calendarLayout = calendarLayout
         
+        dayView.viewController = self
+        
         layout(view)
             .translatesAutoresizingMaskIntoConstraints()
-            .useTopMarginGuide(true)
-            .useBottomMarginGuide(true)
+            .useTopMarginGuide()
+            .useBottomMarginGuide()
             .stack(
                 [ layout(weekdayBar),
                   calendarLayout,
@@ -186,6 +188,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         calendarView.scrollToSelectedDate()
     }
     
+    // MARK: CalendarViewDelegate
     func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
         self.selectedDate = calendarView.selectedDate
         eventListView.scrollToSelectedDate()

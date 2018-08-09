@@ -116,13 +116,13 @@ public class LayoutBuilder : LayoutWrapper {
         return self
     }
     
-    public func useTopMarginGuide(_ flag: Bool) -> Self {
-        layout.useTopMarginGuide = flag
+    public func useTopMarginGuide() -> Self {
+        layout.useTopMarginGuide = true
         return self
     }
     
-    public func useBottomMarginGuide(_ flag: Bool) -> Self {
-        layout.useBottomMarginGuide = flag
+    public func useBottomMarginGuide() -> Self {
+        layout.useBottomMarginGuide = true
         return self
     }
     

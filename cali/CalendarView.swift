@@ -20,6 +20,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     var hasScrolledToToday = false
     var totalWidth: CGFloat = UIScreen.main.bounds.size.width
     weak var delegate: CalendarViewDelegate?
+    let eventService = EventService.instance
     
     var dates = CalendarDates() {
         didSet {
@@ -175,6 +176,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
             calendarCell.background = .Default
         }
         calendarCell.shouldShowCircle = selected
+        calendarCell.numEvents = eventService.find(startDay: date.date).count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

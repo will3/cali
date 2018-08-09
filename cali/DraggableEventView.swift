@@ -17,8 +17,12 @@ protocol DraggableEventViewDelegate : AnyObject {
     func draggableEventViewDidEndDrag(_ view: DraggableEventView)
 }
 
-class DraggableEventView : UIView {
+class DraggableEventView : UIView, UIGestureRecognizerDelegate {
     weak var delegate : DraggableEventViewDelegate?
+    let mainTapGesture = UITapGestureRecognizer()
+    var opacityOnTap : Bool {
+        return !isDraggable
+    }
     
     var isDraggable = false {
         didSet {
@@ -34,7 +38,6 @@ class DraggableEventView : UIView {
             titleLabel.textColor = Colors.white
             topHandle.isHidden = false
             bottomHandle.isHidden = false
-            isUserInteractionEnabled = true
             
             titleLabel.isHidden = true
             timeLabel.isHidden = false
@@ -47,7 +50,6 @@ class DraggableEventView : UIView {
             titleLabel.textColor = Colors.primary
             topHandle.isHidden = true
             bottomHandle.isHidden = true
-            isUserInteractionEnabled = false
             
             titleLabel.isHidden = false
             timeLabel.isHidden = true
@@ -138,17 +140,20 @@ class DraggableEventView : UIView {
             UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.mainDragged(pan:))))
         
         topHandle.addGestureRecognizer(
-            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.topDragged(pan:)))
-        )
+            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.topDragged(pan:))))
         
         bottomHandle.addGestureRecognizer(
-            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.botDragged(pan:)))
-        )
+            UIPanGestureRecognizer(target: self, action: #selector(DraggableEventView.botDragged(pan:))))
+        
+        mainHandle.addGestureRecognizer(mainTapGesture)
+        mainTapGesture.delegate = self
+        mainTapGesture.addTarget(self, action: #selector(DraggableEventView.mainTapped(tap:)))
         
         updateDraggable()
     }
     
     @objc func mainDragged(pan: UIPanGestureRecognizer) {
+        if !isDraggable { return }
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDrag(self, translation: translation)
         
@@ -158,6 +163,7 @@ class DraggableEventView : UIView {
     }
     
     @objc func topDragged(pan: UIPanGestureRecognizer) {
+        if !isDraggable { return }
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDragTop(self, translation: translation)
         if pan.state == .ended {
@@ -166,10 +172,35 @@ class DraggableEventView : UIView {
     }
     
     @objc func botDragged(pan: UIPanGestureRecognizer) {
+        if !isDraggable { return }
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDragBot(self, translation: translation)
         if pan.state == .ended {
             delegate?.draggableEventViewDidEndDrag(self)
         }
+    }
+    
+    @objc func mainTapped(tap: UITapGestureRecognizer) {
+        if !opacityOnTap {
+            return
+        }
+        
+        if tap.state == UIGestureRecognizerState.began {
+            UIView.animate(withDuration: 0.2) {
+                self.alpha = 0.8
+            }
+        }
+        
+        if tap.state == UIGestureRecognizerState.ended {
+            UIView.animate(withDuration: 0.2) {
+                self.alpha = 1.0
+            }
+        }
+    }
+    
+    // MARK: UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

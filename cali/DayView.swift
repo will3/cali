@@ -37,6 +37,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let eventLayer = UIView()
+    weak var viewController: UIViewController?
     
     private var labels : [UILabel] = []
     
@@ -94,6 +95,7 @@ class DayView : UIView, DraggableEventViewDelegate {
             map[id] = eventView
             eventView.event = event
             eventView.delegate = self
+            eventView.mainTapGesture.addTarget(self, action: #selector(DayView.didTapEvent(tap:)))
             eventLayer.addSubview(eventView)
         }
         
@@ -105,6 +107,17 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
         
         placeEventView(map[id]!)
+    }
+    
+    @objc func didTapEvent(tap: UITapGestureRecognizer) {
+        guard let eventView = tap.view?.superview as? DraggableEventView else { return }
+        guard let event = eventView.event else { return }
+
+        // TODO
+//        let vc = EventViewController()
+//        vc.event = event
+//
+//        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func placeEventView(_ view: DraggableEventView) {
