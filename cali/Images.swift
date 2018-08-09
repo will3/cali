@@ -15,4 +15,5 @@ class Images {
     static let tick = UIImage(named: "tick")
     static let agenda = UIImage(named: "agenda")
     static let day = UIImage(named: "day")
+    static let cal = UIImage(named: "cal")
 }

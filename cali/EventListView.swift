@@ -11,6 +11,7 @@ import Layouts
 
 protocol EventListViewDelegate: AnyObject {
     func eventListViewDidScrollToDay(eventListView: EventListView)
+    func eventListViewDidScroll(eventListView: EventListView)
 }
 
 class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -24,6 +25,13 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     weak var delegate: EventListViewDelegate?
     let eventService = EventService.instance
     private(set) var scrollingToSelectedDate = false
+    
+    var offset: CGFloat? {
+        guard let dates = self.dates else { return nil }
+        let indexPath = IndexPath(row: 0, section: dates.indexForToday)
+        let rect = tableView.rectForRow(at: indexPath)
+        return tableView.contentOffset.y - rect.origin.y
+    }
     
     var scrollView: UIScrollView {
         return tableView
@@ -129,15 +137,15 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let firstVisibleIndexPath = tableView.indexPathsForVisibleRows?.first else {
-            return
-        }
+        self.delegate?.eventListViewDidScroll(eventListView: self)
         
-        let firstDay = dates?.getDate(index: firstVisibleIndexPath.section)?.date
-        if firstDay != self.firstDay {
-            self.firstDay = firstDay
-            if !scrollingToSelectedDate {
-                delegate?.eventListViewDidScrollToDay(eventListView: self)
+        if let firstVisibleIndexPath = tableView.indexPathsForVisibleRows?.first {
+            let firstDay = dates?.getDate(index: firstVisibleIndexPath.section)?.date
+            if firstDay != self.firstDay {
+                self.firstDay = firstDay
+                if !scrollingToSelectedDate {
+                    delegate?.eventListViewDidScrollToDay(eventListView: self)
+                }
             }
         }
     }

@@ -24,10 +24,13 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     var calendarLayout : LayoutBuilder?
     var isCalendarViewExpanded = false
+    
     var dates = CalendarDates() { didSet {
         calendarView.dates = dates
         eventListView.dates = dates
+        calendarAnimatedView.today = dates.today
         } }
+    
     var selectedDate: Date? { didSet {
         calendarView.selectedDate = selectedDate
         eventListView.selectedDate = selectedDate
@@ -35,11 +38,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         updateNavigationItemTitle()
         } }
     
-    
     var layoutType: LayoutSelectorView.LayoutType = .agenda {
         didSet {
             updateLayout()
-            updateRightButtons() }
+            updateRightBarButtons() }
     }
     
     override func viewDidLoad() {
@@ -106,16 +108,31 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         updateLayout()
         
-        updateRightButtons()
+        updateRightBarButtons()
+        
+        updateLeftBarButtons()
+        
+        calendarAnimatedView.button.addTarget(self, action: #selector(MainViewController.didTapCalendar), for: .touchUpInside)
     }
     
-    private func updateRightButtons() {
+    @objc func didTapCalendar() {
+        selectedDate = self.dates.today
+    }
+    
+    private func updateRightBarButtons() {
         let rightButtons = [
             UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed)),
             UIBarButtonItem(image: layoutTypeImage, style: .plain, target: self, action: #selector(MainViewController.layoutPressed))
         ]
         
         navigationItem.rightBarButtonItems = rightButtons
+    }
+    
+    let calendarAnimatedView = CalendarAnimatedView()
+    private func updateLeftBarButtons() {
+        calendarAnimatedView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        let leftItem = UIBarButtonItem(customView: calendarAnimatedView)
+        navigationItem.leftBarButtonItem = leftItem
     }
     
     private var layoutTypeImage : UIImage? {
@@ -223,6 +240,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     func eventListViewDidScrollToDay(eventListView: EventListView) {
         self.selectedDate = eventListView.firstDay
         calendarView.scrollToSelectedDate()
+    }
+    
+    func eventListViewDidScroll(eventListView: EventListView) {
+        if let offset = eventListView.offset {
+            calendarAnimatedView.offset = offset
+        }
     }
     
     // MARK: CalendarViewDelegate
