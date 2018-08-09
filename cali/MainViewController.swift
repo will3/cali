@@ -9,13 +9,16 @@
 import UIKit
 import Layouts
 
-class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate, CalendarViewDelegate {
+class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate, CalendarViewDelegate, LayoutSelectorViewDelegate {
     let weekdayBar = WeekdayBar()
     let calendarView = CalendarView()
     let eventListView = EventListView()
+    let contentView = UIView()
     let layoutSelector = LayoutSelectorView()
+    let layoutSelectorBackgroundView = UIView()
+    let dayView = DayView()
+    
     var layoutSelectorLayout : LayoutBuilder?
-    var layoutSelectorBackgroundView = UIView()
     
     var layoutSelectorShown = false
     
@@ -29,21 +32,30 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         calendarView.selectedDate = selectedDate
         eventListView.selectedDate = selectedDate
         updateNavigationItemTitle()
+        dayView.startDay = selectedDate
         } }
+    
+    
+    var layoutType: LayoutSelectorView.LayoutType = .agenda {
+        didSet { updateLayout() }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         view.addSubview(calendarView)
-        view.addSubview(eventListView)
+        view.addSubview(contentView)
         view.addSubview(layoutSelectorBackgroundView)
         view.addSubview(layoutSelector)
         view.addSubview(weekdayBar)
         
+        layoutSelector.delegate = self
+        
         layoutSelectorBackgroundView.backgroundColor = Colors.fadeBackgroundColor
         layoutSelectorBackgroundView.alpha = 0.0
         layout(layoutSelectorBackgroundView).matchParent(view).install()
+        layoutSelectorBackgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(MainViewController.layoutSelectorBackgroundViewTapped)))
         
         view.backgroundColor = UIColor.white
         calendarView.delegate = self
@@ -61,7 +73,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             .stack(
                 [ layout(weekdayBar),
                   calendarLayout,
-                  layout(eventListView) ]
+                  layout(contentView) ]
             ).install()
         
         layoutSelectorLayout = layout(layoutSelector).parent(view).pinLeft().pinRight().pinTop(
@@ -88,6 +100,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         ]
         
         weekdayBar.superview?.bringSubview(toFront: weekdayBar)
+        
+        updateLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -212,6 +226,34 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         }
         
         layoutSelectorShown = false
+    }
+    
+    @objc func layoutSelectorBackgroundViewTapped() {
+        hideLayoutSelector()
+    }
+    
+    // MARK: LayoutSelectorViewDelegate
+    
+    func layoutSelectorViewDidChange(_ view: LayoutSelectorView) {
+        hideLayoutSelector()
+        if (self.layoutType != layoutSelector.selectedType) {
+            self.layoutType = layoutSelector.selectedType
+        }
+    }
+    
+    var currentContentViewChild : UIView?
+    func updateLayout() {
+        switch layoutType {
+        case .agenda:
+            currentContentViewChild?.removeFromSuperview()
+            layout(eventListView).matchParent(contentView).install()
+            currentContentViewChild = eventListView
+        case .day:
+            currentContentViewChild?.removeFromSuperview()
+            layout(dayView).matchParent(contentView).install()
+            currentContentViewChild = dayView
+            break
+        }
     }
 }
 

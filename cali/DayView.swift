@@ -34,17 +34,22 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
-    let scrollView = UIScrollView()
-    let contentView = UIView()
-    let eventLayer = UIView()
-    var labels : [UILabel] = []
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    private let eventLayer = UIView()
+    
+    private var labels : [UILabel] = []
+    
     var startDay: Date? { didSet {
         updateEvents() } }
+    
     var event: Event? { didSet {
         updateEvents()
         }}
-    let hours = 24
     
+    let eventService = EventService.instance
+    
+    let hours = 24
     let labelHalfHeight : Float = 6
     let hourHeight : Float = 60
     let botPadding : Float = 6
@@ -54,7 +59,6 @@ class DayView : UIView, DraggableEventViewDelegate {
     let labelWidth : Float = 42
     let graphStartX : Float = 54
     let graphRightPadding : Float = 2
-    let eventService = EventService.instance
     
     private func updateLabels() {
         if labels.count == 0 {
@@ -68,9 +72,9 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
-    var map: [ String: DraggableEventView ] = [:]
-    var layouts: [ String: LayoutBuilder ] = [:]
-    var draggableEventView: DraggableEventView?
+    private var map: [ String: DraggableEventView ] = [:]
+    private var layouts: [ String: LayoutBuilder ] = [:]
+    private var draggableEventView: DraggableEventView?
     
     private func updateEvents() {
         guard let startDay = self.startDay else { return }

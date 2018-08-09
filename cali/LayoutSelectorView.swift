@@ -10,10 +10,16 @@ import Foundation
 import UIKit
 import Layouts
 
+protocol LayoutSelectorViewDelegate : AnyObject {
+    func layoutSelectorViewDidChange(_ view: LayoutSelectorView)
+}
+
 class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
     var didLoad = false
     let tableView = UITableView()
-    let rows : [RowType] = [.agenda, .day]
+    let rows : [LayoutType] = [.agenda, .day]
+    weak var delegate : LayoutSelectorViewDelegate?
+    var selectedType = LayoutType.agenda
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -26,7 +32,7 @@ class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    enum RowType {
+    enum LayoutType {
         case agenda
         case day
     }
@@ -83,6 +89,8 @@ class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        selectedType = rows[indexPath.row]
+        delegate?.layoutSelectorViewDidChange(self)
     }
     
     class LayoutSelectorCell : UITableViewCell {
@@ -113,9 +121,12 @@ class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
         func loadView() {
             backgroundColor = Colors.white
             
-            layout(contentView).stackHorizontal([
-                layout(iconView).width(44).height(44),
-                layout(label)
+            layout(contentView)
+                .translatesAutoresizingMaskIntoConstraints()
+                .alignItems(.center)
+                .stackHorizontal([
+                    layout(iconView).width(44).height(44),
+                    layout(label)
                 ]).install()
             
             separator.backgroundColor = Colors.separator

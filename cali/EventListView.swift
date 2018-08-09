@@ -15,7 +15,7 @@ protocol EventListViewDelegate: AnyObject {
 
 class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     private var didLoad = false
-    private var tableView: UITableView!
+    private let tableView = UITableView()
     var dates: CalendarDates? { didSet { reloadData() } }
     var selectedDate: Date?
     var calendar = Calendar.current
@@ -55,7 +55,6 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func loadView() {
-        tableView = UITableView()
         tableView.separatorColor = Colors.separator
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.delegate = self

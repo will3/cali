@@ -35,7 +35,10 @@ class DraggableEventView : UIView {
             topHandle.isHidden = false
             bottomHandle.isHidden = false
             isUserInteractionEnabled = true
+            
             titleLabel.isHidden = true
+            timeLabel.isHidden = false
+            durationLabel.isHidden = false
         } else {
             mainHandle.backgroundColor =
                 Colors.dimBackground.withAlphaComponent(Colors.draggableAlpha)
@@ -45,7 +48,10 @@ class DraggableEventView : UIView {
             topHandle.isHidden = true
             bottomHandle.isHidden = true
             isUserInteractionEnabled = false
+            
             titleLabel.isHidden = false
+            timeLabel.isHidden = true
+            durationLabel.isHidden = true
         }
     }
     
@@ -102,6 +108,8 @@ class DraggableEventView : UIView {
         durationLabel.textColor = Colors.white
         timeLabel.font = Fonts.graphMedium
         durationLabel.font = Fonts.graphSmall
+        
+        titleLabel.font = Fonts.graphMedium
         
         layout(labelContainer).stack([
             layout(timeLabel).bottom(2),
