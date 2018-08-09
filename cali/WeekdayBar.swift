@@ -23,12 +23,13 @@ class WeekdayBar: UIView {
     
     override func didMoveToSuperview() {
         if !loaded {
-            loadViews()
+            loadView()
             loaded = true
         }
     }
     
-    func loadViews() {
+    func loadView() {
+        backgroundColor = Colors.white
         let days = [ "S", "M", "T", "W", "T", "F", "S" ]
         for i in 0..<7 {
             let label = UILabel()

@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 import Layouts
 
-class LayoutSelectorView : UIView {
+class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
     var didLoad = false
+    let tableView = UITableView()
+    let rows : [RowType] = [.agenda, .day]
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -24,28 +26,68 @@ class LayoutSelectorView : UIView {
         }
     }
     
-    let agendaView = RowView()
-    let dayView = RowView()
+    enum RowType {
+        case agenda
+        case day
+    }
     
     func loadView() {
-        agendaView.showSeparator = true
-        agendaView.label.text = NSLocalizedString("Agenda", comment: "")
-        dayView.label.text = NSLocalizedString("Day", comment: "")
+        tableView.register(LayoutSelectorCell.self, forCellReuseIdentifier: LayoutSelectorCell.identifier)
         
-        layout(self).stack([
-            layout(agendaView).height(preferredRowHeight),
-            layout(dayView).height(preferredRowHeight)
-            ]).install()
+        tableView.isScrollEnabled = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        
+        layout(tableView)
+            .height(preferredHeight)
+            .matchParent(self)
+            .install()
+        
         
         backgroundColor = UIColor.white
     }
     
-    let preferredRowHeight : Float = 60
+    let preferredRowHeight : Float = 50
     var preferredHeight : Float {
         return preferredRowHeight * 2
     }
     
-    class RowView : UIView {
+    // UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rows.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LayoutSelectorCell.identifier) as? LayoutSelectorCell else {
+            return UITableViewCell()
+        }
+        
+        let rowType = rows[indexPath.row]
+        
+        switch rowType {
+        case .agenda:
+            cell.label.text = NSLocalizedString("Agenda", comment: "")
+        case .day:
+            cell.label.text = NSLocalizedString("Day", comment: "")
+        }
+        
+        return cell
+    }
+    
+    // UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(preferredRowHeight)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    class LayoutSelectorCell : UITableViewCell {
+        static let identifier = "LayoutSelectorCell"
+        
         var didLoad = false
         let iconView = UIImageView()
         let label = UILabel()
@@ -69,7 +111,9 @@ class LayoutSelectorView : UIView {
         }
         
         func loadView() {
-            layout(self).stackHorizontal([
+            backgroundColor = Colors.white
+            
+            layout(contentView).stackHorizontal([
                 layout(iconView).width(44).height(44),
                 layout(label)
                 ]).install()

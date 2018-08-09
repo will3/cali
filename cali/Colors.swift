@@ -19,6 +19,7 @@ class Colors {
     static let white = UIColor(rgb:0xFFFFFF)
     static let black = UIColor(rgb:0x000000)
     static let draggableAlpha: CGFloat = 0.8
+    static let fadeBackgroundColor = UIColor(rgb:0x000000).withAlphaComponent(0.8)
 }
 
 extension UIColor {

@@ -15,6 +15,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     let eventListView = EventListView()
     let layoutSelector = LayoutSelectorView()
     var layoutSelectorLayout : LayoutBuilder?
+    var layoutSelectorBackgroundView = UIView()
     
     var layoutSelectorShown = false
     
@@ -34,12 +35,21 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        view.addSubview(calendarView)
+        view.addSubview(eventListView)
+        view.addSubview(layoutSelectorBackgroundView)
+        view.addSubview(layoutSelector)
+        view.addSubview(weekdayBar)
+        
+        layoutSelectorBackgroundView.backgroundColor = Colors.fadeBackgroundColor
+        layoutSelectorBackgroundView.alpha = 0.0
+        layout(layoutSelectorBackgroundView).matchParent(view).install()
+        
         view.backgroundColor = UIColor.white
         calendarView.delegate = self
-        view.addSubview(calendarView)
+        
         eventListView.delegate = self
-        view.addSubview(eventListView)
-        view.addSubview(weekdayBar)
+        
         
         let calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
         self.calendarLayout = calendarLayout
@@ -76,6 +86,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed)),
             UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.layoutPressed))
         ]
+        
+        weekdayBar.superview?.bringSubview(toFront: weekdayBar)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -177,6 +189,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
                 .pinTop(self.weekdayBar.preferredHeight)
                 .reinstall()
             self.view.layoutIfNeeded()
+            
+            self.layoutSelectorBackgroundView.alpha = 1.0
         }
         
         layoutSelectorShown = true
@@ -189,10 +203,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         UIView.animate(withDuration: 0.2) {
             self.layoutSelectorLayout?
-                .top(self.weekdayBar.preferredHeight -
+                .pinTop(self.weekdayBar.preferredHeight -
                     self.layoutSelector.preferredHeight)
                 .reinstall()
             self.view.layoutIfNeeded()
+            
+            self.layoutSelectorBackgroundView.alpha = 0.0
         }
         
         layoutSelectorShown = false

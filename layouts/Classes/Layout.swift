@@ -435,8 +435,10 @@ public class Layout {
     
     func installParentView() {
         guard let view = self.view else { return }
-        if let parentView = self.parentView {
-            parentView.addSubview(view)
+        if view.superview == nil {
+            if let parentView = self.parentView {
+                parentView.addSubview(view)
+            }
         }
     }
     
@@ -445,7 +447,7 @@ public class Layout {
             guard let view = child.view else { continue }
             guard let parentView = self.view else { continue }
             
-            if view.superview != parentView {
+            if view.superview == nil {
                 parentView.addSubview(view)
             }
         }
