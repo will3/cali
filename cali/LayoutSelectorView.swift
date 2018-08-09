@@ -73,8 +73,10 @@ class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
         
         switch rowType {
         case .agenda:
+            cell.iconView.image = Images.agenda
             cell.label.text = NSLocalizedString("Agenda", comment: "")
         case .day:
+            cell.iconView.image = Images.day
             cell.label.text = NSLocalizedString("Day", comment: "")
         }
         
@@ -125,8 +127,8 @@ class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
                 .translatesAutoresizingMaskIntoConstraints()
                 .alignItems(.center)
                 .stackHorizontal([
-                    layout(iconView).width(44).height(44),
-                    layout(label)
+                    layout(iconView).width(20).height(20).left(18),
+                    layout(label).left(18)
                 ]).install()
             
             separator.backgroundColor = Colors.separator

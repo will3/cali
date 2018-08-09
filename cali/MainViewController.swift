@@ -31,13 +31,15 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     var selectedDate: Date? { didSet {
         calendarView.selectedDate = selectedDate
         eventListView.selectedDate = selectedDate
-        updateNavigationItemTitle()
         dayView.startDay = selectedDate
+        updateNavigationItemTitle()
         } }
     
     
     var layoutType: LayoutSelectorView.LayoutType = .agenda {
-        didSet { updateLayout() }
+        didSet {
+            updateLayout()
+            updateRightButtons() }
     }
     
     override func viewDidLoad() {
@@ -100,14 +102,31 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             selectedDate = self.dates.today
         }
         
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed)),
-            UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.layoutPressed))
-        ]
-        
         weekdayBar.superview?.bringSubview(toFront: weekdayBar)
         
         updateLayout()
+        
+        updateRightButtons()
+    }
+    
+    private func updateRightButtons() {
+        let rightButtons = [
+            UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed)),
+            UIBarButtonItem(image: layoutTypeImage, style: .plain, target: self, action: #selector(MainViewController.layoutPressed))
+        ]
+        
+        navigationItem.rightBarButtonItems = rightButtons
+    }
+    
+    private var layoutTypeImage : UIImage? {
+        var image : UIImage?
+        switch layoutType {
+        case .agenda:
+            image = Images.agenda
+        case .day:
+            image = Images.day
+        }
+        return image
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,7 +160,15 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     func updateNavigationItemTitle() {
         if let selectedDate = self.selectedDate {
-            self.navigationItem.title = DateFormatters.LLLLFormatter.string(from: selectedDate)
+            let calendar = Calendar.current
+            let yearA = calendar.dateComponents([.year], from: selectedDate).year
+            let yearB = calendar.dateComponents([.year], from: Date()).year
+            
+            if yearA == yearB {
+                self.navigationItem.title = DateFormatters.LLLLFormatter.string(from: selectedDate)
+            } else {
+                self.navigationItem.title = DateFormatters.LLLLyyyyFormatter.string(from: selectedDate)
+            }
         }
     }
     

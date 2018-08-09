@@ -13,4 +13,6 @@ class Images {
     static let plus = UIImage(named: "plus")
     static let cross = UIImage(named: "cross")
     static let tick = UIImage(named: "tick")
+    static let agenda = UIImage(named: "agenda")
+    static let day = UIImage(named: "day")
 }

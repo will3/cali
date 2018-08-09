@@ -21,6 +21,12 @@ class DateFormatters {
         return formatter
     }()
     
+    static let LLLLyyyyFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "LLLL yyyy";
+        return formatter
+    }()
+    
     static let EEEddMMMFormatter : DateFormatter = {
         let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("EEEddMMM")
