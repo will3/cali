@@ -90,6 +90,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         eventListView.scrollView.addGestureRecognizer(eventsPan)
         eventsPan.delegate = self
         
+        let dayViewPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanDayView))
+        dayView.scrollView.addGestureRecognizer(dayViewPan)
+        dayViewPan.delegate = self
+        
         self.dates = CalendarDates()
         
         if selectedDate == nil {
@@ -148,6 +152,10 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     @objc func didPanEvents() {
         collapseCalendarView()
     }
+    
+    @objc func didPanDayView() {
+        collapseCalendarView()
+    }
 
     func expandCalendarView() {
         if (isCalendarViewExpanded) {
@@ -170,6 +178,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
                     .reinstall()
                 self.view.layoutIfNeeded()
             }
+            
+            calendarView.scrollToSelectedDate()
         }
         
         isCalendarViewExpanded = false

@@ -34,7 +34,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
-    private let scrollView = UIScrollView()
+    let scrollView = UIScrollView()
     private let contentView = UIView()
     private let eventLayer = UIView()
     weak var viewController: UIViewController?
