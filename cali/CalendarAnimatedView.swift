@@ -34,8 +34,8 @@ class CalendarAnimatedView : UIView {
         return 0
     }
     
-    let preferredWidth : CGFloat = 24
-    let preferredHeight : CGFloat = 24
+    let preferredWidth : CGFloat = 28
+    let preferredHeight : CGFloat = 28
     
     private func updateDelta() {
         let delta = Float(offset)

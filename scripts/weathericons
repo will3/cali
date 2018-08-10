@@ -1,0 +1,11 @@
+cd ./weatherSVGs
+svgexport Sun.svg clear-day.png 1x
+svgexport Moon.svg clear-night.png 1x
+svgexport Cloud-Rain.svg rain.png 1x
+svgexport Cloud-Snow.svg snow.png 1x
+svgexport Cloud-Hail.svg sleet.png 1x
+svgexport Wind.svg wind.png 1x
+svgexport Cloud-Fog-Alt.svg fog.png 1x
+svgexport Cloud.svg cloudy.png 1x
+svgexport Cloud-Sun.svg partly-cloudy-day.png 1x
+svgexport Cloud-Moon.svg partly-cloudy-night.png 1x
