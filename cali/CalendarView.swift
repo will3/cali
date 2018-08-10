@@ -21,6 +21,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     var totalWidth: CGFloat = UIScreen.main.bounds.size.width
     weak var delegate: CalendarViewDelegate?
     let eventService = EventService.instance
+    var weatherForcast: WeatherForcastResponse? { didSet { updateWeather() } }
     
     var dates = CalendarDates() {
         didSet {
@@ -178,6 +179,12 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         
         calendarCell.shouldShowCircle = selected
         calendarCell.numEvents = eventService.find(startDay: date.date).count
+        
+        if let weatherData = weatherDataMap[date.dateUTC] {
+            calendarCell.weatherIcon = weatherData.icon
+        } else {
+            calendarCell.weatherIcon = nil
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -244,5 +251,20 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         UIView.animate(withDuration: 0.2) {
             self.overlay.alpha = 0.0
         }
+    }
+    
+    var weatherDataMap: [ Date: WeatherData ] = [:]
+    
+    private func updateWeather() {
+        guard let offset = self.weatherForcast?.offset else { return }
+        guard let daily = self.weatherForcast?.daily else { return }
+        
+        for data in daily.data ?? [] {
+            guard let time = data.time else { continue }
+            let date = Date(timeIntervalSince1970: time + offset * TimeIntervals.hour)
+            weatherDataMap[date] = data
+        }
+        
+        reloadData()
     }
 }

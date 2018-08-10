@@ -22,6 +22,7 @@ class CalendarDates {
     
     init() {
         calendar = Calendar.current
+        
         today = calendar.startOfDay(for: Date())
         
         let weekday = 1 // Sunday

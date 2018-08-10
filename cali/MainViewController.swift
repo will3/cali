@@ -8,6 +8,7 @@
 
 import UIKit
 import Layouts
+import CoreLocation
 
 class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate, CalendarViewDelegate, LayoutSelectorViewDelegate {
     let weekdayBar = WeekdayBar()
@@ -24,6 +25,35 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     var calendarLayout : LayoutBuilder?
     var isCalendarViewExpanded = false
+    
+    let locationService = LocationService.instance
+    
+    var location: CLLocation? {
+        didSet {
+            updateWeather()
+        }
+    }
+    
+    var weatherForcast: WeatherForcastResponse? {
+        didSet {
+            calendarView.weatherForcast = weatherForcast
+        }
+    }
+    
+    private func updateWeather() {
+        if let location = self.location {
+            if weatherForcast == nil {
+                WeatherService.instance.getWeather(location: location) { (err, response) in
+                    if err != nil {
+                        // swallow
+                        return
+                    }
+                    
+                    self.weatherForcast = response
+                }
+            }
+        }
+    }
     
     var dates = CalendarDates() { didSet {
         calendarView.dates = dates
@@ -113,6 +143,18 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         updateLeftBarButtons()
         
         calendarAnimatedView.button.addTarget(self, action: #selector(MainViewController.didTapCalendar), for: .touchUpInside)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.didUpdateLocation), name: LocationService.didUpdateNotificationName, object: nil)
+        
+        locationService.ensureLocation(from: self)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func didUpdateLocation() {
+        location = locationService.location
     }
     
     @objc func didTapCalendar() {

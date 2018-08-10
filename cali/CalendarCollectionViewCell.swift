@@ -23,6 +23,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     private let leftBorder = UIView()
     private let botBorder = UIView()
     private let dot = UIView()
+    private let weatherIconView = WeatherIconView()
     
     override var bounds: CGRect {
         didSet {
@@ -34,6 +35,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     var shouldShowCircle: Bool = false { didSet {
         updateCircle()
         updateDot()
+        weatherIconView.hasBackground = shouldShowCircle
         } }
     var background: Background = .white { didSet { updateBackground() } }
     var drawLeftBorder = false { didSet { updateLeftBorder() } }
@@ -42,6 +44,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         updateLabels()
         updateDot() } }
     var day: String = "" { didSet { updateLabels() } }
+    var weatherIcon: String? { didSet { weatherIconView.icon = weatherIcon } }
     
     func updateLeftBorder() {
         leftBorder.isHidden = !drawLeftBorder
@@ -122,12 +125,6 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         botBorder.backgroundColor = Colors.separator
         contentView.addSubview(botBorder)
         
-        layout(botBorder)
-            .horizontal(.stretch)
-            .vertical(.trailing)
-            .height(1.0)
-            .install()
-        
         layout(view)
             .alignItems(.center)
             .stack([
@@ -149,6 +146,20 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         updateCircle()
         updateBackground()
         updateDot()
+        
+        layout(weatherIconView)
+            .parent(contentView)
+            .width(20)
+            .height(20)
+            .pinRight(2)
+            .pinBottom(2)
+            .install()
+        
+        layout(botBorder)
+            .horizontal(.stretch)
+            .vertical(.trailing)
+            .height(1.0)
+            .install()
         
         contentView.addSubview(dot)
     }

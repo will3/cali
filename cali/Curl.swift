@@ -17,16 +17,18 @@ class Curl {
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
             
-            guard let data = data, error == nil else {
-                let err = CurlError.string(error?.localizedDescription ?? "No data")
-                block(err, nil)
-                return
-            }
-            
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                block(nil, responseJSON)
-                return
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else {
+                    let err = CurlError.string(error?.localizedDescription ?? "No data")
+                    block(err, nil)
+                    return
+                }
+                
+                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let responseJSON = responseJSON as? [String: Any] {
+                    block(nil, responseJSON)
+                    return
+                }
             }
         }
         

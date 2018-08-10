@@ -15,8 +15,9 @@ protocol LocationServiceDelegate {
 }
 
 class LocationService : NSObject, CLLocationManagerDelegate {
-    let locationManager = CLLocationManager()
-    var location: CLLocation?
+    private let locationManager = CLLocationManager()
+    private(set) var location: CLLocation?
+    static let instance = LocationService()
     
     static let didUpdateNotificationName = NSNotification.Name("locationServiceDidUpdateNotificationName")
     
@@ -45,7 +46,7 @@ class LocationService : NSObject, CLLocationManagerDelegate {
         let alertController = UIAlertController(title: NSLocalizedString("Enable location for weather forecasts", comment: ""), message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler:
             { (action) in
-                self.locationManager.requestLocation()
+                self.locationManager.requestWhenInUseAuthorization()
         }))
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler:nil))
@@ -83,5 +84,18 @@ class LocationService : NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.location = locations[locations.count - 1]
         NotificationCenter.default.post(name: LocationService.didUpdateNotificationName, object: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.locationManager.requestLocation()
+        default:
+            break
+        }
     }
 }

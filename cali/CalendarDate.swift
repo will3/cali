@@ -14,6 +14,10 @@ class CalendarDate {
     var day: Int {
         return calendar.component(.day, from: date)
     }
+    var dateUTC: Date {
+        return date.addingTimeInterval(Double(TimeZone.current.secondsFromGMT()))
+    }
+    
     var formattedDay: String {
         return "\(day)"
     }
