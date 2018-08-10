@@ -21,11 +21,17 @@ class CalendarAnimatedView : UIView {
     let button = UIButton()
     
     private func updateDay() {
-        if let day = Calendar.current.dateComponents([.day], from: today).day {
-            for leaf in leafs {
-                leaf.day = day
-            }
+        let day = self.day
+        for leaf in leafs {
+            leaf.day = day
         }
+    }
+    
+    var day: Int {
+        if let day = Calendar.current.dateComponents([.day], from: today).day {
+            return day
+        }
+        return 0
     }
     
     let preferredWidth : CGFloat = 24
@@ -52,7 +58,7 @@ class CalendarAnimatedView : UIView {
             CGAffineTransform.identity
                 .translatedBy(x: -pivot.x, y: -pivot.y)
                 .rotated(by: tilt)
-                .translatedBy(x: pivot.x, y: pivot.y)
+                .translatedBy(x: pivot.x, y: pivot.y + 6)
     }
     
     override func didMoveToSuperview() {
@@ -66,10 +72,12 @@ class CalendarAnimatedView : UIView {
     }
     
     private func loadView() {
+        let day = self.day
         for index in 0..<numberOfLeaves {
             let leaf = LeafView()
             leafs.append(leaf)
             leaf.translatesAutoresizingMaskIntoConstraints = false
+            leaf.day = day
             addSubview(leaf)
             leaf.index = numberOfLeaves - index - 1
         }

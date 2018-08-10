@@ -117,6 +117,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     @objc func didTapCalendar() {
         selectedDate = self.dates.today
+        calendarView.scrollToSelectedDate()
+        eventListView.scrollToSelectedDate()
     }
     
     private func updateRightBarButtons() {
