@@ -65,7 +65,9 @@ class EventListHeaderView: UITableViewHeaderFooterView {
     func updateLabel() {
         guard let date = self.date else { return }
         
-        let dateFormatter = calendar.isDate(date, equalTo: Date(), toGranularity: .year) ?
+        let now = Container.instance.nowProvider.now
+        
+        let dateFormatter = calendar.isDate(date, equalTo: now, toGranularity: .year) ?
             EventListHeaderView.dayWeekMonthFormatter :
             EventListHeaderView.dayWeekMonthYearFormatter
         

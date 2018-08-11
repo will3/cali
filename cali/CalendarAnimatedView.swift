@@ -13,7 +13,11 @@ import Layouts
 /// Animates calendar movement
 class CalendarAnimatedView : UIView {
     /// Today, setting this updates the view
-    var today = Date() { didSet { updateDay() } }
+    var today : Date = {
+        let now = Container.instance.nowProvider.now
+        return now
+    }() { didSet { updateDay() } }
+    
     /// offset in pixels, set this to animate the view
     var offset : CGFloat = 0 { didSet { updateDelta() } }
     /// Tappable area

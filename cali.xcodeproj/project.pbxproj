@@ -24,6 +24,14 @@
 		6F346841211E60C20005D5C7 /* EventMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346840211E60C20005D5C7 /* EventMap.swift */; };
 		6F346843211E640D0005D5C7 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346842211E640D0005D5C7 /* Container.swift */; };
 		6F346845211E68020005D5C7 /* DeleteEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346844211E68020005D5C7 /* DeleteEventButton.swift */; };
+		6F346848211E72B10005D5C7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346847211E72B10005D5C7 /* MainView.swift */; };
+		6F34684A211E72BD0005D5C7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346849211E72BD0005D5C7 /* CalendarView.swift */; };
+		6F34684C211E72CF0005D5C7 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34684B211E72CF0005D5C7 /* EventListView.swift */; };
+		6F34684E211E72D80005D5C7 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34684D211E72D80005D5C7 /* CreateEventView.swift */; };
+		6F346850211E72F00005D5C7 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34684F211E72EF0005D5C7 /* EditEventView.swift */; };
+		6F346852211E72FC0005D5C7 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346851211E72FC0005D5C7 /* DayView.swift */; };
+		6F346854211E73080005D5C7 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346853211E73080005D5C7 /* DateTimePicker.swift */; };
+		6F346856211E73420005D5C7 /* NowProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346855211E73420005D5C7 /* NowProvider.swift */; };
 		6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */; };
 		6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A52113E3860096B9E9 /* MainViewController.swift */; };
 		6F4EA6AB2113E3860096B9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */; };
@@ -108,6 +116,14 @@
 		6F346840211E60C20005D5C7 /* EventMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMap.swift; sourceTree = "<group>"; };
 		6F346842211E640D0005D5C7 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		6F346844211E68020005D5C7 /* DeleteEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEventButton.swift; sourceTree = "<group>"; };
+		6F346847211E72B10005D5C7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6F346849211E72BD0005D5C7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		6F34684B211E72CF0005D5C7 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
+		6F34684D211E72D80005D5C7 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
+		6F34684F211E72EF0005D5C7 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
+		6F346851211E72FC0005D5C7 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		6F346853211E73080005D5C7 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		6F346855211E73420005D5C7 /* NowProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowProvider.swift; sourceTree = "<group>"; };
 		6F4EA6A02113E3860096B9E9 /* cali.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cali.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F4EA6A52113E3860096B9E9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +232,20 @@
 			path = persistent;
 			sourceTree = "<group>";
 		};
+		6F346846211E729D0005D5C7 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				6F346847211E72B10005D5C7 /* MainView.swift */,
+				6F346849211E72BD0005D5C7 /* CalendarView.swift */,
+				6F34684B211E72CF0005D5C7 /* EventListView.swift */,
+				6F34684D211E72D80005D5C7 /* CreateEventView.swift */,
+				6F34684F211E72EF0005D5C7 /* EditEventView.swift */,
+				6F346851211E72FC0005D5C7 /* DayView.swift */,
+				6F346853211E73080005D5C7 /* DateTimePicker.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 		6F4EA6972113E3860096B9E9 = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +297,7 @@
 		6F4EA6C22113E3860096B9E9 /* caliUITests */ = {
 			isa = PBXGroup;
 			children = (
+				6F346846211E729D0005D5C7 /* Pages */,
 				6F4EA6C32113E3860096B9E9 /* caliUITests.swift */,
 				6F4EA6C52113E3860096B9E9 /* Info.plist */,
 			);
@@ -282,6 +313,7 @@
 				6F346834211D42660005D5C7 /* Serialization.swift */,
 				6F346836211D428A0005D5C7 /* Curl.swift */,
 				6F346842211E640D0005D5C7 /* Container.swift */,
+				6F346855211E73420005D5C7 /* NowProvider.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -725,6 +757,7 @@
 				6F4EA6D22113E4530096B9E9 /* WeekdayBar.swift in Sources */,
 				6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */,
 				6F6686952116A1500047D752 /* NavigationBars.swift in Sources */,
+				6F346856211E73420005D5C7 /* NowProvider.swift in Sources */,
 				6F346843211E640D0005D5C7 /* Container.swift in Sources */,
 				6F346845211E68020005D5C7 /* DeleteEventButton.swift in Sources */,
 				6FACC2CA2117D620004570ED /* DatePicker.swift in Sources */,
@@ -752,7 +785,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F346852211E72FC0005D5C7 /* DayView.swift in Sources */,
 				6F4EA6C42113E3860096B9E9 /* caliUITests.swift in Sources */,
+				6F346854211E73080005D5C7 /* DateTimePicker.swift in Sources */,
+				6F346848211E72B10005D5C7 /* MainView.swift in Sources */,
+				6F34684E211E72D80005D5C7 /* CreateEventView.swift in Sources */,
+				6F34684A211E72BD0005D5C7 /* CalendarView.swift in Sources */,
+				6F34684C211E72CF0005D5C7 /* EventListView.swift in Sources */,
+				6F346850211E72F00005D5C7 /* EditEventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

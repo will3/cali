@@ -28,7 +28,8 @@ class CalendarDates {
     let indexForToday: Int
     
     init() {
-        today = calendar.startOfDay(for: Date())
+        let now = Container.instance.nowProvider.now
+        today = calendar.startOfDay(for: now)
         
         let weekday = 1 // Sunday
         let sundayComponents = DateComponents(calendar: calendar, weekday: weekday)

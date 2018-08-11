@@ -220,8 +220,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     private func updateNavigationItemTitle() {
         if let selectedDate = self.selectedDate {
+            let now = Container.instance.nowProvider.now
             let yearA = calendar.dateComponents([.year], from: selectedDate).year
-            let yearB = calendar.dateComponents([.year], from: Date()).year
+            let yearB = calendar.dateComponents([.year], from: now).year
             
             if yearA == yearB {
                 self.navigationItem.title = DateFormatters.LLLLFormatter.string(from: selectedDate)

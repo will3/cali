@@ -14,4 +14,7 @@ class Container {
     
     /// Calendar
     var calendar = Calendar.current
+    
+    // Now provider
+    let nowProvider = NowProvider()
 }
