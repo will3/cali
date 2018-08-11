@@ -25,8 +25,6 @@ class EventCell : UITableViewCell {
     private let left = UIView()
     /// Right
     private let right = UIView()
-    /// Left width
-    let leftWidth : Float = 100.0
 
     /// Event
     var event: Event? {
@@ -53,12 +51,12 @@ class EventCell : UITableViewCell {
             .translatesAutoresizingMaskIntoConstraints()
             .stackHorizontal([
             layout(left)
-                .width(leftWidth)
+                .width(80.0)
                 .hugMore()
                 .resistMore()
                 .stack([
-                    layout(timeLabel).left(18).top(14).hugMore(),
-                    layout(durationLabel).left(18).top(2).bottom(18).hugMore()
+                    layout(timeLabel).left(18).top(14),
+                    layout(durationLabel).left(18).top(2).bottom(18)
                     ]),
             layout(right)
                 .justifyItems(.leading)
