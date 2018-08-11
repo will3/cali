@@ -47,7 +47,7 @@ class EventCell : UITableViewCell {
     }
     
     private func loadView() {
-        titleLabel.numberOfLines = 4
+        titleLabel.numberOfLines = 3
         
         layout(contentView)
             .translatesAutoresizingMaskIntoConstraints()
