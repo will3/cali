@@ -13,8 +13,13 @@ import Layouts
 /// View controller to create event
 class CreateEventViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, EventDateTimeCellDelegate {
 
+    private enum ViewType {
+        case create
+        case edit
+    }
+    
     /// Row type
-    enum RowType {
+    private enum RowType {
         case title
         case dateTime
         
@@ -34,6 +39,10 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     private var sections: [[RowType]] = []
     /// Event
     private(set) var event: Event?
+    /// View type
+    private var viewType = ViewType.create { didSet { updateViewType() } }
+    /// Delete button
+    private let deleteButton = DeleteEventButton()
     
     // MARK: Public
 
@@ -45,6 +54,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
      */
     func createEvent(start: Date, duration: TimeInterval) {
         event = EventService.instance.createEvent(start: start, duration: duration)
+        self.viewType = .create
     }
     
     /**
@@ -54,6 +64,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
      */
     func editEvent(_ event: Event) {
         self.event = event
+        self.viewType = .edit
     }
     
     // MARK: UIViewController
@@ -86,6 +97,9 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         let tickButton = UIBarButtonItem(image: Images.tick, style: .plain, target: self, action: #selector(CreateEventViewController.tickPressed))
         navigationItem.rightBarButtonItem = tickButton
         tickButton.tintColor = Colors.accent
+        
+        layout(deleteButton).parent(view).pinBottom(20).horizontal(.center).install()
+        deleteButton.button.addTarget(self, action: #selector(CreateEventViewController.deletePressed), for: .touchUpInside)
     }
     
     // MARK: UITableViewDataSource
@@ -164,5 +178,18 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
 //            [ .desc ],
 //            [ .alert, .isPrivate, .showAs ]
         ]
+    }
+    
+    private func updateViewType() {
+        switch viewType {
+        case .create:
+            deleteButton.isHidden = true
+        case .edit:
+            deleteButton.isHidden = false
+        }
+    }
+    
+    @objc private func deletePressed() {
+        
     }
 }

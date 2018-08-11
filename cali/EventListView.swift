@@ -16,21 +16,28 @@ protocol EventListViewDelegate: AnyObject {
 
 /// Event list view
 class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
-    /// View did load
-    private var didLoad = false
-    /// Table view
-    private let tableView = UITableView()
     /// Dates
     var dates: CalendarDates? { didSet { reloadData() } }
     /// Selected date
     var selectedDate: Date?
-    /// Calendar
-    let calendar = Container.instance.calendar
-    var hasScrolledToToday = false
+    /// View controller
+    weak var viewController: UIViewController?
+    /// First day
     private(set) var firstDay: Date?
+    /// Has scrolled to today
+    private var hasScrolledToToday = false
+    /// View did load
+    private var didLoad = false
+    /// Table view
+    private let tableView = UITableView()
+    /// Calendar
+    private let calendar = Container.instance.calendar
+    /// Delegate
     weak var delegate: EventListViewDelegate?
-    let eventService = EventService.instance
-    private(set) var scrollingToSelectedDate = false
+    /// Event service
+    private let eventService = EventService.instance
+    /// Is scrolling to selected date
+    private(set) var isScrollingToSelectedDate = false
     
     var offset: CGFloat? {
         guard let dates = self.dates else { return nil }
@@ -136,6 +143,15 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        if let date = dates?.getDate(index: indexPath.section) {
+            let events = eventService.find(startDay: date.date)
+            let event = events[indexPath.row]
+            
+            let vc = CreateEventViewController()
+            vc.editEvent(event)
+            self.viewController?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -149,7 +165,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
             let firstDay = dates?.getDate(index: firstVisibleIndexPath.section)?.date
             if firstDay != self.firstDay {
                 self.firstDay = firstDay
-                if !scrollingToSelectedDate {
+                if !isScrollingToSelectedDate {
                     delegate?.eventListViewDidScrollToDay(eventListView: self)
                 }
             }
@@ -163,10 +179,12 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         let indexPath = IndexPath(row: 0, section: index)
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         
-        scrollingToSelectedDate = true
+        isScrollingToSelectedDate = true
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollingToSelectedDate = false
+        isScrollingToSelectedDate = false
     }
+    
+    
 }

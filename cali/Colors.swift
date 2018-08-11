@@ -24,6 +24,7 @@ class Colors {
     static let dotColorOne = UIColor(rgb:0x8E8D93).withAlphaComponent(0.5)
     static let dotColorTwo = UIColor(rgb:0x8E8D93).withAlphaComponent(0.75)
     static let dotColorThree = UIColor(rgb:0x8E8D93).withAlphaComponent(1.0)
+    static let red = UIColor(rgb:0xDD0023)
 }
 
 extension UIColor {
