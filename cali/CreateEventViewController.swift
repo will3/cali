@@ -43,6 +43,8 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     private var viewType = ViewType.create { didSet { updateViewType() } }
     /// Delete button
     private let deleteButton = DeleteEventButton()
+    /// Event service
+    private let eventSerivce = Container.instance.eventService
     
     // MARK: Public
 
@@ -53,7 +55,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
      * - duration: Duration
      */
     func createEvent(start: Date, duration: TimeInterval) {
-        event = EventService.instance.createEvent(start: start, duration: duration)
+        event = eventSerivce.createEvent(start: start, duration: duration)
         self.viewType = .create
     }
     
@@ -152,7 +154,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Discard event", comment: ""), style: .destructive, handler: { (action) in
             
             if let event = self.event {
-                EventService.instance.discardEvent(event)
+                self.eventSerivce.discardEvent(event)
             }
             
             self.dismiss(animated: true, completion: nil)

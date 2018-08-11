@@ -35,7 +35,8 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     /// Delegate
     weak var delegate: EventListViewDelegate?
     /// Event service
-    private let eventService = EventService.instance
+    private let eventService = Container.instance.eventService
+    
     /// Is scrolling to selected date
     private(set) var isScrollingToSelectedDate = false
     

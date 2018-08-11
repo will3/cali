@@ -12,8 +12,6 @@ import CoreLocation
 
 /// Weather service
 class WeatherService {
-    static let instance = WeatherService()
-    
     /**
      * Get weather
      * 

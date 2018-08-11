@@ -55,7 +55,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         updateEvents() } }
     
     /// Event service
-    let eventService = EventService.instance
+    let eventService = Container.instance.eventService
     
     // MARK: Dimensions
     let hours = 24

@@ -11,8 +11,6 @@ import CoreData
 
 /// Storage
 class Storage {
-    static let instance = Storage()
-    
     /// Persistent container
     lazy var persistentContainer: NSPersistentContainer = {
         /*

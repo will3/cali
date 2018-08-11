@@ -28,7 +28,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     /// Total width of view, set this before adding to superview
     var totalWidth: CGFloat = UIScreen.main.bounds.size.width
     /// Event service
-    private let eventService = EventService.instance
+    private let eventService = Container.instance.eventService
     /// Weather forecast, set this to show weather forecasts
     var weatherForcast: WeatherForcastResponse? { didSet { updateWeather() } }
     /// Map of weather data, by UTC Date

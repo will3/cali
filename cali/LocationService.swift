@@ -18,18 +18,17 @@ protocol LocationServiceDelegate {
 class LocationService : NSObject, CLLocationManagerDelegate {
     /// Location manager
     private let locationManager = CLLocationManager()
+
+    /// Location
+    private(set) var location: CLLocation?
+    
+    /// Update notification name
+    static let didUpdateNotificationName = NSNotification.Name("locationServiceDidUpdateNotificationName")
     
     override init() {
         super.init()
         locationManager.delegate = self
     }
-
-    /// Location
-    private(set) var location: CLLocation?
-    /// Instance
-    static let instance = LocationService()
-    /// Update notification name
-    static let didUpdateNotificationName = NSNotification.Name("locationServiceDidUpdateNotificationName")
     
     /** 
      * Ensure location

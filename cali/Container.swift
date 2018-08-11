@@ -16,5 +16,17 @@ class Container {
     var calendar = Calendar.current
     
     // Now provider
-    let nowProvider = NowProvider()
+    var nowProvider = NowProvider()
+    
+    // Weather service
+    var weatherService = WeatherService()
+    
+    // Location service
+    var locationService = LocationService()
+    
+    // Event service
+    var eventService = EventService()
+    
+    // Storage
+    var storage = Storage()
 }

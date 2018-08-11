@@ -37,10 +37,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     /// Is calendar view expanded
     private var isCalendarViewExpanded = false
     /// Location service
-    private let locationService = LocationService.instance
+    private let locationService = Container.instance.locationService
     /// Current content view child
     private var currentContentViewChild : UIView?
-
+    /// Weather service
+    let weatherService = Container.instance.weatherService
+    /// Calendar
     let calendar = Container.instance.calendar
 
     /// Location
@@ -369,7 +371,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     private func updateWeather() {
         if let location = self.location {
             if weatherForcast == nil {
-                WeatherService.instance.getWeather(location: location) { (err, response) in
+                weatherService.getWeather(location: location) { (err, response) in
                     if err != nil {
                         // swallow
                         return

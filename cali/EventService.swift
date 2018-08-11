@@ -10,8 +10,7 @@ import Foundation
 import CoreData
 
 class EventService {
-    static let instance = EventService()
-    let context = Storage.instance.context
+    let context = Container.instance.storage.context
     let map = EventMap()
     var hasInitEventMap = false
     let calendar = Container.instance.calendar
