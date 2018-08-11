@@ -8,18 +8,26 @@
 
 import Foundation
 
-class WeatherForcastResponse : IDeserializable {
+/// Weather forcast response object, full documentation on https://darksky.net/dev
+class WeatherForcastResponse : Deserializable {
     required init() { }
     
-    var latitude: Double? // 37.8267,
-    var longitude: Double? // -122.4233,
-    var timezone: String? // "America/Los_Angeles",
-    var currently: WeatherData? // {},
-    var minutely: WeatherDataMultiple? // {},
-    var hourly: WeatherDataMultiple? // {},
-    var daily: WeatherDataMultiple? // {},
-    //    var flags // {},
-    var offset: Double? // -7
+    /// Latitude
+    var latitude: Double?
+    /// Longitude
+    var longitude: Double?
+    /// Timezone
+    var timezone: String?
+    /// Forecast currently
+    var currently: WeatherData?
+    /// Forecast minutely
+    var minutely: WeatherDataMultiple?
+    /// Forecast hourly
+    var hourly: WeatherDataMultiple?
+    /// Forecast daily
+    var daily: WeatherDataMultiple?
+    /// Offset
+    var offset: Double?
     
     func deserialize(json: [String : Any]) {
         latitude = json["latitude"] as? Double

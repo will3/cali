@@ -10,9 +10,16 @@ import Foundation
 import UIKit
 import CoreLocation
 
+/// Weather service
 class WeatherService {
     static let instance = WeatherService()
     
+    /**
+     * Get weather
+     * 
+     * - parameter location: location
+     * - parameter block: return block
+     */
     func getWeather(location: CLLocation, block: @escaping(CurlError?, WeatherForcastResponse?) -> Void) {
         let url = URL(string: "https://api.darksky.net/forecast/\(Settings.instance.darkSkyApiKey)/\(location.coordinate.latitude),\(location.coordinate.longitude)")!
         

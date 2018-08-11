@@ -14,12 +14,18 @@ protocol EventListViewDelegate: AnyObject {
     func eventListViewDidScroll(eventListView: EventListView)
 }
 
+/// Event list view
 class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
+    /// View did load
     private var didLoad = false
+    /// Table view
     private let tableView = UITableView()
+    /// Dates
     var dates: CalendarDates? { didSet { reloadData() } }
+    /// Selected date
     var selectedDate: Date?
-    var calendar = Calendar.current
+    /// Calendar
+    let calendar = Container.instance.calendar
     var hasScrolledToToday = false
     private(set) var firstDay: Date?
     weak var delegate: EventListViewDelegate?

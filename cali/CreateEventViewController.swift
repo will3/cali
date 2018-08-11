@@ -10,51 +10,54 @@ import Foundation
 import UIKit
 import Layouts
 
+/// View controller to create event
 class CreateEventViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, EventDateTimeCellDelegate {
+
+    /// Row type
     enum RowType {
         case title
-        case people
-        case allday
         case dateTime
-        case location
-        case skypeCall
-        case desc
-        case alert
-        case isPrivate
-        case showAs
         
         var cellIdentifier: String {
             switch self {
             case .title:
                 return EventTitleCell.identifier
-            case .people:
-                return EventPeopleCell.identifier
-            case .allday:
-                return EventToggleCell.identifier
             case .dateTime:
                 return EventDateTimeCell.identifier
-            case .location:
-                return EventLocationCell.identifier
-            case .alert:
-                return EventDetailCell.identifier
-            default:
-                return EventToggleCell.identifier
             }
         }
     }
     
-    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
-    var sections: [[RowType]] = []
+    /// Table view
+    private let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    /// Sections
+    private var sections: [[RowType]] = []
+    /// Event
     private(set) var event: Event?
     
+    // MARK: Public
+
+    /**
+     * Create event
+     * 
+     * - param start: Start date
+     * - duration: Duration
+     */
     func createEvent(start: Date, duration: TimeInterval) {
         event = EventService.instance.createEvent(start: start, duration: duration)
     }
     
+    /**
+     * Edit event
+     * 
+     * - param event: Event
+     */
     func editEvent(_ event: Event) {
         self.event = event
     }
     
+    // MARK: UIViewController
+
     override func viewDidLoad() {
         view.addSubview(tableView)
         
@@ -85,7 +88,52 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         tickButton.tintColor = Colors.accent
     }
     
-    @objc func crossPressed() {
+    // MARK: UITableViewDataSource
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rowType = sections[indexPath.section][indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: rowType.cellIdentifier) else {
+            return UITableViewCell()
+        }
+        
+        switch rowType {
+        case .title:
+            guard let inputCell = cell as? EventTitleCell else { break }
+            inputCell.event = event
+        case .dateTime:
+            guard let inputCell = cell as? EventDateTimeCell else { break }
+            inputCell.event = event
+            inputCell.delegate = self
+        }
+        
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sections[section].count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    // MARK: EventDateTimeCellDelegate
+    
+    func eventDateTimeCellDidChange(_ view: EventDateTimeCell) {
+        if let event = view.event {
+            self.event = event
+        }
+    }
+
+    // MARK: Private
+
+    @objc private func crossPressed() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Discard event", comment: ""), style: .destructive, handler: { (action) in
             
@@ -101,12 +149,12 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         present(alertController, animated: true, completion: nil)
     }
     
-    @objc func tickPressed() {
+    @objc private func tickPressed() {
         // Create event
         dismiss(animated: true, completion: nil)
     }
     
-    func updateSections() {
+    private func updateSections() {
         sections = [
             [ .title ],
 //            [ .people ],
@@ -116,46 +164,5 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
 //            [ .desc ],
 //            [ .alert, .isPrivate, .showAs ]
         ]
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let rowType = sections[indexPath.section][indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: rowType.cellIdentifier) else {
-            return UITableViewCell()
-        }
-        
-        switch rowType {
-        case .title:
-            guard let inputCell = cell as? EventTitleCell else { break }
-            inputCell.event = event
-        case .dateTime:
-            guard let inputCell = cell as? EventDateTimeCell else { break }
-            inputCell.event = event
-            inputCell.delegate = self
-        default:
-            break
-        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
-    // MARK: EventDateTimeCellDelegate
-    
-    func eventDateTimeCellDidChange(_ view: EventDateTimeCell) {
-        if let event = view.event {
-            self.event = event
-        }
     }
 }

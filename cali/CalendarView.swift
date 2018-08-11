@@ -13,16 +13,27 @@ protocol CalendarViewDelegate : AnyObject {
     func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView)
 }
 
+/// Calendar View
 class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    /// Collection view
+    private let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    /// Overlay
     private let overlay = MonthOverlayView()
+    /// Did load view
     private var didLoad = false
-    var hasScrolledToToday = false
-    var totalWidth: CGFloat = UIScreen.main.bounds.size.width
+    /// Has scrolled to today
+    private var hasScrolledToToday = false
+    /// Delegate
     weak var delegate: CalendarViewDelegate?
-    let eventService = EventService.instance
+    /// Total width of view, set this before adding to superview
+    var totalWidth: CGFloat = UIScreen.main.bounds.size.width
+    /// Event service
+    private let eventService = EventService.instance
+    /// Weather forecast, set this to show weather forecasts
     var weatherForcast: WeatherForcastResponse? { didSet { updateWeather() } }
-    
+    /// Map of weather data, by UTC Date
+    var weatherDataMap: [ Date: WeatherData ] = [:]
+    /// Dates to display
     var dates = CalendarDates() {
         didSet {
             overlay.dates = dates
@@ -30,29 +41,40 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
+    /// Selected date
     var selectedDate: Date? {
         didSet {
             updateSelectedDate()
         }
     }
     
+    /// Item size
     var itemSize: CGSize {
         return CalendarView.itemSizeForWidth(totalWidth)
     }
     
+    /**
+     * Given total width, calculate item size
+     * 
+     * - param totalWidth: Total width
+     * - returns: item size
+     */
     static func itemSizeForWidth(_ totalWidth: CGFloat) -> CGSize {
         let width = totalWidth / 7.0
         return CGSize(width: width, height: width + 4.0)
     }
     
+    /// Preferred collapsed height
     var preferredCollapsedHeight : Float {
         return Float(itemSize.height * 2)
     }
     
+    /// Preferred expanded height
     var preferredExpandedHeight : Float {
         return Float(itemSize.height * 5)
     }
     
+    /// Start overlay observers
     private func startOverlayObservers() {
         collectionView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
     }
@@ -63,16 +85,9 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
+    /// End overlay observers
     private func endOverlayObservers() {
         collectionView.removeObserver(self, forKeyPath: "contentOffset")
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     override func didMoveToSuperview() {
@@ -116,6 +131,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         reloadData()
     }
     
+    /// Scroll to today if needed
     private func scrollToTodayIfNeeded() {
         if hasScrolledToToday {
             return
@@ -125,6 +141,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         hasScrolledToToday = true
     }
     
+    /// Scroll to selected date
     func scrollToSelectedDate() {
         guard let selectedDate = self.selectedDate else { return }
         
@@ -132,6 +149,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
     
+    /// Reload data
     private func reloadData() {
         collectionView.reloadData()
     }
@@ -141,7 +159,13 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         scrollToTodayIfNeeded()
     }
     
-    func updateSelectedDate() {
+    /// Update selected date
+    private func updateSelectedDate() {
+        redrawVisibileCells()        
+    }
+
+    /// Redraw visible cells
+    private func redrawVisibileCells() {
         for indexPath in collectionView.indexPathsForVisibleItems {
             if let calendarCell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
                 update(calendarCell: calendarCell, indexPath: indexPath)
@@ -156,35 +180,6 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         update(calendarCell: cell, indexPath: indexPath)
         
         return cell
-    }
-    
-    func update(calendarCell: CalendarCollectionViewCell, indexPath: IndexPath) {
-        let date = dates.getDate(index: indexPath.item)!
-        
-        calendarCell.day = date.formattedDay
-        let selected = date.date == selectedDate
-        if date.day == 1 && !selected {
-            calendarCell.month = date.formattedMonth
-        } else {
-            calendarCell.month = ""
-        }
-        
-        if dates.isToday(date: date.date) {
-            calendarCell.background = .today
-        } else if dates.isEvenNumberOfMonth(date: date.date) {
-            calendarCell.background = .white
-        } else {
-            calendarCell.background = .grey
-        }
-        
-        calendarCell.shouldShowCircle = selected
-        calendarCell.numEvents = eventService.find(startDay: date.date).count
-        
-        if let weatherData = weatherDataMap[date.dateUTC] {
-            calendarCell.weatherIcon = weatherData.icon
-        } else {
-            calendarCell.weatherIcon = nil
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -253,14 +248,49 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
-    var weatherDataMap: [ Date: WeatherData ] = [:]
-    
+    /**
+     * Update calendar cell
+     * 
+     * - param calendarCell: Calendar Cell
+     * - param indexPath: Index path
+     */
+    private func update(calendarCell: CalendarCollectionViewCell, indexPath: IndexPath) {
+        let date = dates.getDate(index: indexPath.item)!
+        
+        calendarCell.day = date.formattedDay
+        let selected = date.date == selectedDate
+        if date.day == 1 && !selected {
+            calendarCell.month = date.formattedMonth
+        } else {
+            calendarCell.month = ""
+        }
+        
+        if dates.isToday(date: date.date) {
+            calendarCell.background = .today
+        } else if dates.isEvenNumberOfMonth(date: date.date) {
+            calendarCell.background = .white
+        } else {
+            calendarCell.background = .grey
+        }
+        
+        calendarCell.shouldShowCircle = selected
+        calendarCell.numEvents = eventService.find(startDay: date.date).count
+        
+        if let weatherData = weatherDataMap[date.dateUTC] {
+            calendarCell.weatherIcon = weatherData.icon
+        } else {
+            calendarCell.weatherIcon = nil
+        }
+    }
+
+    /// Update weather
     private func updateWeather() {
         guard let offset = self.weatherForcast?.offset else { return }
         guard let daily = self.weatherForcast?.daily else { return }
         
         for data in daily.data ?? [] {
             guard let time = data.time else { continue }
+            // Note date is UTC, and CalendarDates dates are localized by calendar timezone
             let date = Date(timeIntervalSince1970: time + offset * TimeIntervals.hour)
             weatherDataMap[date] = data
         }

@@ -14,17 +14,11 @@ protocol DayViewDelegate : AnyObject {
     func dayViewDidChangeEvent(_ event: Event)
 }
 
+/// Day view
 class DayView : UIView, DraggableEventViewDelegate {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+    /// View did load
     private var loaded = false
-    
+    /// Delegate
     var delegate : DayViewDelegate?
     
     override func didMoveToSuperview() {
@@ -34,22 +28,36 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
+    /// Scroll view
     let scrollView = UIScrollView()
+    
+    /// Content view
     private let contentView = UIView()
+    /// Event layer
     private let eventLayer = UIView()
+    /// View controller, used for navigation
     weak var viewController: UIViewController?
-    
+    /// Labels
     private var labels : [UILabel] = []
+
+    private var map: [ String: DraggableEventView ] = [:]
+
+    private var layouts: [ String: LayoutBuilder ] = [:]
+
+    private var draggableEventView: DraggableEventView?
     
+    /// Start day
     var startDay: Date? { didSet {
         updateEvents() } }
-    
+
+    /// Event
     var event: Event? { didSet {
-        updateEvents()
-        }}
+        updateEvents() } }
     
+    /// Event service
     let eventService = EventService.instance
     
+    // MARK: Dimensions
     let hours = 24
     let labelHalfHeight : Float = 6
     let hourHeight : Float = 60
@@ -60,10 +68,6 @@ class DayView : UIView, DraggableEventViewDelegate {
     let labelWidth : Float = 42
     let graphStartX : Float = 54
     let graphRightPadding : Float = 2
-    
-    private var map: [ String: DraggableEventView ] = [:]
-    private var layouts: [ String: LayoutBuilder ] = [:]
-    private var draggableEventView: DraggableEventView?
     
     private func updateLabels() {
         if labels.count == 0 {

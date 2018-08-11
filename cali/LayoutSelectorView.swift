@@ -14,12 +14,24 @@ protocol LayoutSelectorViewDelegate : AnyObject {
     func layoutSelectorViewDidChange(_ view: LayoutSelectorView)
 }
 
+/// Layout selector view
 class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
-    var didLoad = false
-    let tableView = UITableView()
-    let rows : [LayoutType] = [.agenda, .day]
+    enum LayoutType {
+        case agenda
+        case day
+    }
+
     weak var delegate : LayoutSelectorViewDelegate?
+
+    private var didLoad = false
+    private let tableView = UITableView()
+    private let rows : [LayoutType] = [.agenda, .day]
     var selectedType = LayoutType.agenda
+
+    let preferredRowHeight : Float = 50
+    var preferredHeight : Float {
+        return preferredRowHeight * 2
+    }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -30,11 +42,6 @@ class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
                 didLoad = true
             }
         }
-    }
-    
-    enum LayoutType {
-        case agenda
-        case day
     }
     
     func loadView() {
@@ -52,11 +59,6 @@ class LayoutSelectorView : UIView, UITableViewDataSource, UITableViewDelegate {
         
         
         backgroundColor = UIColor.white
-    }
-    
-    let preferredRowHeight : Float = 50
-    var preferredHeight : Float {
-        return preferredRowHeight * 2
     }
     
     // UITableViewDataSource

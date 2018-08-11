@@ -8,13 +8,21 @@
 
 import Foundation
 
-protocol IDeserializable {
+/// Implement this interface to deserialize through Deserializer
+protocol Deserializable {
     init()
     func deserialize(json: [String: Any])
 }
 
+/// Deserializer
 class Deserializer {
-    static func deserializeArray<T>(jsonArray: [[String: Any]]?) -> [T]? where T : IDeserializable {
+    /**
+     * Given json array, deserializes objects
+     *
+     * - parameter jsonArray: JSON array
+     * - returns: array of objects
+     */
+    static func deserializeArray<T>(jsonArray: [[String: Any]]?) -> [T]? where T : Deserializable {
         guard let jsonArray = jsonArray else { return nil }
         var objects: [T] = []
         for json in jsonArray {
@@ -25,7 +33,13 @@ class Deserializer {
         return objects
     }
     
-    static func deserialize<T>(json: Any?) -> T? where T : IDeserializable {
+    /**
+     * Given json, deserialize an object
+     *
+     * - parameter json: JSON
+     * - returns: object
+     */
+    static func deserialize<T>(json: Any?) -> T? where T : Deserializable {
         guard let json = json as? [String: Any] else { return nil }
         
         let obj = T.init()

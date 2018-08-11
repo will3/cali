@@ -15,18 +15,20 @@ class EventToggleCell : UITableViewCell {
     private let label = UILabel()
     private let iconImageView = UIImageView()
     private let wrapper = UIView()
+    private var loaded = false
     
     var title = "" { didSet { updateTitle() } }
     var icon: UIImage? { didSet { updateIcon() }}
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        loadView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        loadView()
+
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        if self.superview != nil {
+            if !loaded {
+                loadView()
+                loaded = true
+            }
+        }
     }
     
     func loadView() {

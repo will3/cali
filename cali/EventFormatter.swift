@@ -9,7 +9,15 @@
 import Foundation
 
 class EventFormatter {
-    static let calendar = Calendar.current
+    static let calendar = Container.instance.calendar
+    
+    /**
+     * Format a date relative 
+     *
+     * - parameter from: From date
+     * - parameter from: To date
+     * - returns: Formatted string
+     */
     static func formatRelative(from: Date, to: Date) -> String {
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: from, to: to)
         
@@ -76,6 +84,13 @@ class EventFormatter {
         return NSLocalizedString("Now", comment: "")
     }
     
+    /**
+     * Format meeting duration
+     * - parameter from: From date
+     * - parameter to: To date
+     * - parameter durationTag: If true, format with duration tag
+     * - returns: Formatted string
+     */
     static func formatDuration(from: Date, to: Date, durationTag: Bool) -> String {
         let dateComponents = calendar.dateComponents([.hour, .minute], from: from, to: to)
         
@@ -109,6 +124,13 @@ class EventFormatter {
         }
     }
     
+    /**
+     * Format start time to end time
+     *
+     * - parameter start: Start time
+     * - parameter end: End time
+     * - returns: Formatted string
+     */
     static func formatTimes(start: Date, end: Date) -> String {
         let startTimeText = DateFormatters.hmmaFormatter.string(from: start)
         let endTimeText = DateFormatters.hmmaFormatter.string(from: end)

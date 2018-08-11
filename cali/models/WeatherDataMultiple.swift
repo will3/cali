@@ -8,9 +8,13 @@
 
 import Foundation
 
-class WeatherDataMultiple : IDeserializable {
+/// Weather data multiple
+class WeatherDataMultiple : Deserializable {
+    /// Summary
     var summary: String?
+    /// Icon
     var icon: String?
+    /// Data
     var data: [WeatherData]?
     
     required init() { }

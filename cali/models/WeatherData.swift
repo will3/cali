@@ -8,26 +8,63 @@
 
 import Foundation
 
-class WeatherData : IDeserializable {
+/// Weather data
+class WeatherData : Deserializable {
     required init() { }
-    var time: Double? // 1533866406,
-    var summary: String? // "Clear",
-    var icon: String? // "clear-day",
-    var nearestStormDistance: Double? // 0,
-    var precipIntensity: Double? // 0,
-    var precipProbability: Double? // 0,
-    var temperature: Double? // 75.01,
-    var apparentTemperature: Double? // 75.01,
-    var dewPoint: Double? // 53.39,
-    var humidity: Double? // 0.47,
-    var pressure: Double? // 1011.9,
-    var windSpeed: Double? // 6.74,
-    var windGust: Double? // 10.78,
-    var windBearing: Double? // 267,
-    var cloudCover: Double? // 0.12,
-    var uvIndex: Double? // 0,
-    var visibility: Double? // 10,
-    var ozone: Double? // 298.79
+
+    /// Time
+    var time: Double?
+
+    /// Summary
+    var summary: String?
+
+    /// Icon
+    var icon: String?
+
+    /// Nearest storm distance
+    var nearestStormDistance: Double?
+
+    /// Precip intensity
+    var precipIntensity: Double?
+
+    /// Precip probability
+    var precipProbability: Double?
+
+    /// Temperature
+    var temperature: Double?
+
+    /// Apparent temperature
+    var apparentTemperature: Double?
+
+    /// Dew point
+    var dewPoint: Double?
+
+    /// Humidity
+    var humidity: Double?
+
+    /// Pressure
+    var pressure: Double?
+
+    /// Wind speed
+    var windSpeed: Double?
+
+    /// Wind gust
+    var windGust: Double?
+
+    /// Wind bearing
+    var windBearing: Double?
+
+    /// Cloud cover
+    var cloudCover: Double?
+
+    /// Uv index
+    var uvIndex: Double?
+
+    /// Visibility
+    var visibility: Double?
+
+    /// Ozone
+    var ozone: Double?
     
     func deserialize(json: [String: Any]) {
         time = json["time"] as? Double

@@ -13,7 +13,20 @@ import Layouts
 class EventCell : UITableViewCell {
     static let identifier = "EventCell"
     
-    var didLoad = false
+    private var didLoad = false
+    
+    private let timeLabel = UILabel()
+    private let durationLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let left = UIView()
+    private let right = UIView()
+
+    var event: Event? {
+        didSet {
+            updateEvent()
+        }
+    }
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
@@ -24,12 +37,6 @@ class EventCell : UITableViewCell {
             }
         }
     }
-    
-    let timeLabel = UILabel()
-    let durationLabel = UILabel()
-    let titleLabel = UILabel()
-    let left = UIView()
-    let right = UIView()
     
     private func loadView() {
         layout(contentView).stackHorizontal([
@@ -51,12 +58,6 @@ class EventCell : UITableViewCell {
         timeLabel.textColor = Colors.black
         durationLabel.textColor = Colors.primary
         titleLabel.textColor = Colors.black
-    }
-    
-    var event: Event? {
-        didSet {
-            updateEvent()
-        }
     }
     
     func updateEvent() {

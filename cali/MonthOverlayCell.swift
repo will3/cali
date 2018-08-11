@@ -10,18 +10,22 @@ import Foundation
 import UIKit
 import Layouts
 
+/// Month overlay cell
 class MonthOverlayCell : UITableViewCell {
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        loadView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        loadView()
-    }
-    
+    static let identifier = "MonthOverlayCell"
     let label = UILabel()
+    
+    private var loaded = false
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if superview != nil {
+            if !loaded {
+                loaded = true
+                loadView()
+            }
+        }
+    }
     
     func loadView() {
         backgroundColor = UIColor.clear
@@ -29,6 +33,4 @@ class MonthOverlayCell : UITableViewCell {
         layout(label).center().install()
         contentView.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.8)
     }
-    
-    static let identifier = "MonthOverlayCell"
 }

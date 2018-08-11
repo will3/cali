@@ -15,13 +15,13 @@ class EventListHeaderView: UITableViewHeaderFooterView {
     
     private static var dayWeekMonthFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("EEEEMMMMdd")
+        dateFormatter.setLocalizedDateFormatFromTemplate("EEEEddMMMM")
         return dateFormatter
     }()
     
     private static var dayWeekMonthYearFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("EEEEMMMMddyyyy")
+        dateFormatter.setLocalizedDateFormatFromTemplate("EEEEddMMMMyyyy")
         return dateFormatter
     }()
     
@@ -36,7 +36,7 @@ class EventListHeaderView: UITableViewHeaderFooterView {
     private var didLoad = false
     
     var date: Date? { didSet { updateLabel() } }
-    var calendar: Calendar = Calendar.current { didSet { updateLabel() } }
+    var calendar = Container.instance.calendar
     
     var label: UILabel?
     

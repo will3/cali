@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 class TableViews {
-    static func register(tableview: UITableView, identifiers: [ String : AnyClass ]) {
-        for kv in identifiers {
-            tableview.register(kv.value, forCellReuseIdentifier: kv.key)
-        }
-    }
+	/// Register tableview cells
+  static func register(tableview: UITableView, identifiers: [ String : AnyClass ]) {
+      for kv in identifiers {
+          tableview.register(kv.value, forCellReuseIdentifier: kv.key)
+      }
+  }
 }

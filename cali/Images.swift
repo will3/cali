@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// Images
 class Images {
     static let plus = UIImage(named: "plus")
     static let cross = UIImage(named: "cross")

@@ -9,42 +9,12 @@
 import Foundation
 import CoreData
 
-class EventMap {
-    var map : [Date : Set<Event>] = [:]
-
-    func removeAll() {
-        map.removeAll()
-    }
-    
-    func addEvent(_ event: Event) {
-        guard let startDay = event.startDay else { return }
-        if map[startDay] == nil {
-            map[startDay] = []
-        }
-        
-        map[startDay]?.insert(event)
-    }
-    
-    func removeEvent(_ event: Event) {
-        guard let startDay = event.startDay else { return }
-        map[startDay]?.remove(event)
-    }
-    
-    func find(startDay: Date) -> [Event] {
-        let result = map[startDay] ?? []
-        return result.sorted(by: { (a, b) -> Bool in
-            if a.start == nil { return true }
-            if b.start == nil { return false }
-            return a.start! > b.start!
-        })
-    }
-}
-
 class EventService {
     static let instance = EventService()
     let context = Storage.instance.context
     let map = EventMap()
     var hasInitEventMap = false
+    let calendar = Container.instance.calendar
     
     func find(startDay: Date) -> [Event] {
         initEventMapIfNeeded()
@@ -66,17 +36,17 @@ class EventService {
     func changeDay(event: Event, day: Date) {
         guard let start = event.start else { return }
         var fromComponents =
-            Calendar.current.dateComponents(
+            calendar.dateComponents(
                 [.year,.month,.day,.hour,.minute,.second],
                 from: start)
         let toComponents =
-            Calendar.current.dateComponents(
+            calendar.dateComponents(
                 [.year,.month,.day],
                 from: day)
         fromComponents.year = toComponents.year
         fromComponents.month = toComponents.month
         fromComponents.day = toComponents.day
-        let nextStart = Calendar.current.date(from: fromComponents)
+        let nextStart = calendar.date(from: fromComponents)
         map.removeEvent(event)
         event.start = nextStart
         map.addEvent(event)

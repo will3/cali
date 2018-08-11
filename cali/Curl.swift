@@ -12,7 +12,14 @@ enum CurlError : Error {
     case string(String)
 }
 
+/// Curl utility
 class Curl {
+    /**
+     * Get request
+     * 
+     * - param url: URL
+     * - param block: Return block
+     */
     static func get(url: URL, block: @escaping (CurlError?, [String: Any]?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in

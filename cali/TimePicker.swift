@@ -15,32 +15,32 @@ protocol TimePickerDelegate : AnyObject {
     func timePickerDidChange(_ timePicker: TimePicker)
 }
 
+/// Timer picker
 class TimePicker: UIView, DayViewDelegate {
+    /// Delegate
     weak var delegate: TimePickerDelegate?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+    /// Event
+    var event : Event? { didSet {
+        dayView.startDay = event?.startDay
+        dayView.event = event
+        updateEvent() } }
+
+    /// View loaded
     private var loaded = false
+    /// Bar
+    private let bar = UIView()
+    /// Day view
+    private let dayView = DayView()
+    /// Title label
+    private let titleLabel = UILabel()
+
     override func didMoveToSuperview() {
         if !loaded {
             loadView()
             loaded = true
         }
     }
-    
-    let bar = UIView()
-    let dayView = DayView()
-    var event : Event? { didSet {
-        dayView.startDay = event?.startDay
-        dayView.event = event
-        updateEvent() } }
-    let titleLabel = UILabel()
     
     private func loadView() {
         backgroundColor = Colors.white
@@ -69,7 +69,7 @@ class TimePicker: UIView, DayViewDelegate {
         clipsToBounds = true
     }
     
-    @objc func donePressed() {
+    @objc private func donePressed() {
         delegate?.timePickerDidFinish(self)
     }
     
@@ -80,6 +80,7 @@ class TimePicker: UIView, DayViewDelegate {
     }
     
     // MARK: DayViewDelegate
+    
     func dayViewDidChangeEvent(_ event: Event) {
         if event.id == self.event?.id {
             self.event = event

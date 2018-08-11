@@ -9,17 +9,14 @@
 import UIKit
 import Layouts
 
+/// Week day bar
 class WeekdayBar: UIView {
-    var labels : [UILabel] = [];
-    var loaded = false
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    let preferredHeight : Float = 28
+
+    /// Labels
+    private var labels : [UILabel] = [];
+    /// View loaded
+    private var loaded = false
     
     override func didMoveToSuperview() {
         if !loaded {
@@ -28,7 +25,7 @@ class WeekdayBar: UIView {
         }
     }
     
-    func loadView() {
+    private func loadView() {
         backgroundColor = Colors.white
         let days = [ "S", "M", "T", "W", "T", "F", "S" ]
         for i in 0..<7 {
@@ -63,6 +60,4 @@ class WeekdayBar: UIView {
         
         layout(self).height(preferredHeight).priority(999).install()
     }
-    
-    let preferredHeight : Float = 28
 }

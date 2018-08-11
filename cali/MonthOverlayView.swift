@@ -10,24 +10,12 @@ import Foundation
 import UIKit
 import Layouts
 
+/// Month overlay view
 class MonthOverlayView : UIView, UITableViewDataSource, UITableViewDelegate {
-    static let monthNameFormmater : DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM"
-        return formatter
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    var didLoad = false
-    let tableView = UITableView()
     var dates: CalendarDates? { didSet { tableView.reloadData() } }
+
+    private var didLoad = false
+    private let tableView = UITableView()
     var rowHeight = CGFloat(42.0)
     
     func setContentOffset(_ contentOffset: CGPoint) {
@@ -58,6 +46,7 @@ class MonthOverlayView : UIView, UITableViewDataSource, UITableViewDelegate {
         self.alpha = 0.0
     }
     
+    // MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MonthOverlayCell.identifier, for: indexPath) as? MonthOverlayCell else {
             return UITableViewCell()
@@ -72,7 +61,7 @@ class MonthOverlayView : UIView, UITableViewDataSource, UITableViewDelegate {
                 
                 // render if row is 2 rows from start of month
                 if indexPath.row == index + 2 {
-                    cell.label.text = MonthOverlayView.monthNameFormmater.string(from: date)
+                    cell.label.text = DateFormatters.MMMMFormmater.string(from: date)
                 } else {
                     cell.label.text = ""
                 }
@@ -82,11 +71,12 @@ class MonthOverlayView : UIView, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return rowHeight
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dates?.numWeekRows ?? 0
+    }
+
+    // MARK: UITableViewDelegate
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return rowHeight
     }
 }

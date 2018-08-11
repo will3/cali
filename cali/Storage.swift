@@ -9,11 +9,11 @@
 import Foundation
 import CoreData
 
+/// Storage
 class Storage {
     static let instance = Storage()
     
-    // MARK: - Core Data stack
-    
+    /// Persistent container
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -41,8 +41,7 @@ class Storage {
         return container
     }()
     
-    // MARK: - Core Data Saving support
-    
+    /// Save context
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -57,6 +56,7 @@ class Storage {
         }
     }
     
+    /// Context
     var context : NSManagedObjectContext {
         return persistentContainer.viewContext
     }

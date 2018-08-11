@@ -11,11 +11,10 @@ import UIKit
 import Layouts
 
 class EventEmptyCell : UITableViewCell {
-    var noEventsLabel: UILabel?
+    private let noEventsLabel = UILabel()
     
-    static var identifier: String {
-        return "EventEmptyCell"
-    }
+    static let identifier = "EventEmptyCell"
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         loadView()
@@ -27,10 +26,10 @@ class EventEmptyCell : UITableViewCell {
     }
     
     func loadView() {
-        let noEventsLabel = UILabel()
         noEventsLabel.text = NSLocalizedString("No events", comment: "")
         contentView.addSubview(noEventsLabel)
         noEventsLabel.textColor = Colors.primary
+        noEventsLabel.font = Fonts.fontMedium
         
         layout(noEventsLabel)
             .horizontal(.stretch)
@@ -40,7 +39,5 @@ class EventEmptyCell : UITableViewCell {
             .top(12)
             .bottom(12)
             .install()
-        
-        self.noEventsLabel = noEventsLabel
     }
 }

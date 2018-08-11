@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+
+/// Fonts
 class Fonts {
     static let dayFont = UIFont.systemFont(ofSize: 18.0)
     static let navigationItemTitleFont = UIFont.systemFont(ofSize: 16.0, weight: .medium)

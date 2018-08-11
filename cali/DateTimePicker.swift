@@ -19,18 +19,12 @@ protocol DateTimePickerDelegate : AnyObject {
     func dateTimePickerDidFinish(_ dateTimePicker: DateTimePicker)
 }
 
+/// Date time picker
 class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePickerDelegate {
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    private var loaded = false
-    
+    /// Delegate
     weak var delegate : DateTimePickerDelegate?
+    /// Initial page
+    var initialPage = DateTimePickerPage.date
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -40,15 +34,26 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePic
         }
     }
     
-    let datePicker = DatePicker()
-    let scrollView = UIScrollView()
-    let contentView = UIView()
-    let pageControl = UIPageControl()
-    let left = UIView()
-    let right = UIView()
-    let timePicker = TimePicker()
-    var initialPage = DateTimePickerPage.date
-    var didSetInitialPage = false
+    /// View loaded
+    private var loaded = false
+    /// Date picker
+    private let datePicker = DatePicker()
+    /// Scroll view
+    private let scrollView = UIScrollView()
+    /// Content view
+    private let contentView = UIView()
+    /// Page control
+    private let pageControl = UIPageControl()
+    /// Left
+    private let left = UIView()
+    /// Right
+    private let right = UIView()
+    /// Time picker
+    private let timePicker = TimePicker()
+    /// Did set initial page
+    private var didSetInitialPage = false
+    /// Event service
+    private let eventService = EventService.instance
     
     var event: Event? { didSet {
         datePicker.event = event
@@ -126,15 +131,16 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePic
         }
     }
     
-    @objc func didTapBackground() {
+    @objc private func didTapBackground() {
         dismiss()
     }
     
-    @objc func didChangePage() {
+    @objc private func didChangePage() {
         let contentOffset = CGPoint(x: CGFloat(pageControl.currentPage) * scrollView.bounds.width, y: 0)
         scrollView.setContentOffset(contentOffset, animated: true)
     }
     
+    /// Dismiss self
     func dismiss() {
         self.removeFromSuperview()
     }
@@ -153,7 +159,7 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePic
     func datePickerDidChange(_ datePicker: DatePicker) {
         guard let event = self.event else { return }
         guard let selectedDate = datePicker.selectedDate else { return }
-        EventService.instance.changeDay(event: event, day: selectedDate)
+        eventService.changeDay(event: event, day: selectedDate)
         self.event = event
     }
     

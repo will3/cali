@@ -4,14 +4,17 @@ import Foundation
 open class Event: _Event {
 	// Custom logic goes here.
     
+    /// Start day
     var startDay: Date? {
         if let start = self.start {
-            return Calendar.current.startOfDay(for: start)
+            let calendar = Container.instance.calendar
+            return calendar.startOfDay(for: start)
         } else {
             return nil
         }
     }
     
+    /// Duration
     var duration: TimeInterval? {
         get {
             return durationNumber?.doubleValue
@@ -23,12 +26,14 @@ open class Event: _Event {
         }
     }
     
+    /// End
     var end: Date? {
         guard let start = self.start else { return nil }
         guard let duration = self.duration else { return nil }
         return start.addingTimeInterval(duration)
     }
     
+    /// Display title
     var displayTitle: String {
         if let title = self.title {
             if !title.isEmpty {

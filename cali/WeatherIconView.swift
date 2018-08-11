@@ -10,17 +10,21 @@ import Foundation
 import UIKit
 import Layouts
 
+/// Weather icon view
 class WeatherIconView : UIView {
+    /// Icon to show
     var icon : String? { didSet { updateIcon() } }
-    let imageView = UIImageView()
-    var loaded = false
+    /// Has background
     var hasBackground = false { didSet {
         if hasBackground {
             backgroundColor = Colors.white
         } else {
             backgroundColor = UIColor.clear
-        }
-        } }
+        } } }
+
+    private let imageView = UIImageView()
+    private var loaded = false
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         

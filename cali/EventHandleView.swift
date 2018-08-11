@@ -27,7 +27,9 @@ class EventHandleView: UIView {
         }
     }
     
-    let circle = UIView()
+    /// Circle view
+    private let circle = UIView()
+    
     func loadView() {
         circle.backgroundColor = Colors.white
         let size = Float(10)

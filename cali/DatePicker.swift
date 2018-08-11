@@ -15,15 +15,11 @@ protocol DatePickerDelegate : AnyObject {
     func datePickerDidChange(_ datePicker: DatePicker)
 }
 
+/// Event date picker
 class DatePicker : UIView, CalendarViewDelegate {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    var loaded = false
+    /// View loaded
+    private var loaded = false
+    /// Delegate
     weak var delegate : DatePickerDelegate?
     
     override func didMoveToSuperview() {
@@ -33,24 +29,35 @@ class DatePicker : UIView, CalendarViewDelegate {
         }
     }
     
-    let bar = UIView()
-    let button = UIButton()
-    let dateLabel = UILabel()
-    let timeLabel = UILabel()
+    /// Bar
+    private let bar = UIView()
+    /// Button
+    private let button = UIButton()
+    /// Date label
+    private let dateLabel = UILabel()
+    /// Time label
+    private let timeLabel = UILabel()
     
+    /// Event
     var event : Event? { didSet {
         updateLabels()
         calendarView.selectedDate = event?.startDay } }
     
+    /// Selected date
     var selectedDate: Date? {
         return calendarView.selectedDate
     }
     
-    let calendarView = CalendarView()
-    let weekdayBar = WeekdayBar()
-    var totalWidth = UIScreen.main.bounds.width { didSet {
-        calendarView.totalWidth = totalWidth
-        } }
+    /// Calendar view
+    private let calendarView = CalendarView()
+    /// Week day bar
+    private let weekdayBar = WeekdayBar()
+    /// Total width
+    var totalWidth = UIScreen.main.bounds.width { 
+        didSet { 
+            calendarView.totalWidth = totalWidth 
+        } 
+    }
     
     func loadView() {
         backgroundColor = UIColor.white
@@ -100,10 +107,18 @@ class DatePicker : UIView, CalendarViewDelegate {
         updateLabels()
     }
     
-    @objc func didPressDone() {
+    @objc private func didPressDone() {
         delegate?.datePickerDidFinish(self)
     }
+
+    // MARK: CalendarViewDelegate
     
+    func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
+        self.delegate?.datePickerDidChange(self)
+    }
+
+    // MARK: Private
+
     private func updateLabels() {
         guard let event = self.event else { return }
         guard let start = event.start else { return }
@@ -111,11 +126,5 @@ class DatePicker : UIView, CalendarViewDelegate {
         
         dateLabel.text = DateFormatters.EECommaDMMMFormatter.string(from: start)
         timeLabel.text = EventFormatter.formatTimes(start: start, end: end)
-    }
-
-    // MARK: CalendarViewDelegate
-    
-    func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
-        self.delegate?.datePickerDidChange(self)
     }
 }

@@ -10,32 +10,33 @@ import Foundation
 import UIKit
 import Layouts
 
+/// Animates calendar movement
 class CalendarAnimatedView : UIView {
-    var loaded = false
-    
+    /// Today, setting this updates the view
     var today = Date() { didSet { updateDay() } }
+    /// offset in pixels, set this to animate the view
     var offset : CGFloat = 0 { didSet { updateDelta() } }
-    let numberOfLeaves = 4
-    var leafs : [ LeafView ] = []
-    
+    /// Tappable area
     let button = UIButton()
+
+    private var loaded = false
+
+    private let numberOfLeaves = 4
+
+    private var leafs : [ LeafView ] = []
     
-    private func updateDay() {
-        let day = self.day
-        for leaf in leafs {
-            leaf.day = day
-        }
-    }
+    private let calendar = Container.instance.calendar
     
-    var day: Int {
-        if let day = Calendar.current.dateComponents([.day], from: today).day {
+    private var day: Int {
+        if let day = calendar.dateComponents([.day], from: today).day {
             return day
         }
         return 0
     }
     
-    let preferredWidth : CGFloat = 32
-    let preferredHeight : CGFloat = 32
+    private let preferredWidth : CGFloat = 32
+
+    private let preferredHeight : CGFloat = 32
     
     private func updateDelta() {
         let delta = Float(offset)
@@ -86,10 +87,11 @@ class CalendarAnimatedView : UIView {
         
         layoutIfNeeded()
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        // Layout leafs manually
         var index = 0
         for leaf in leafs {
             leaf.frame = CGRect(x: 0,
@@ -98,19 +100,24 @@ class CalendarAnimatedView : UIView {
                                 height: preferredHeight)
             index += 1
         }
+    }    
+    
+    private func updateDay() {
+        let day = self.day
+        for leaf in leafs {
+            leaf.day = day
+        }
     }
     
-    class LeafView : UIView {
-        var loaded = false
-        
-        var day = 1 {
-            didSet {
-                updateDay()
-            }
-        }
-        
-        var delta : Float = 0 { didSet {
-            updateDelta() }}
+    private class LeafView : UIView {
+
+        var day = 1 { didSet { updateDay() } }
+        var delta : Float = 0 { didSet { updateDelta() }}
+        var index = 0
+
+        private var loaded = false
+        private let imageView = UIImageView()
+        private let label = UILabel()
         
         override func didMoveToSuperview() {
             super.didMoveToSuperview()
@@ -121,10 +128,6 @@ class CalendarAnimatedView : UIView {
                 }
             }
         }
-        
-        let imageView = UIImageView()
-        let label = UILabel()
-        var index = 0
         
         private func loadView() {
             imageView.image = Images.cal

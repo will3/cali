@@ -10,65 +10,70 @@ import UIKit
 import Layouts
 import CoreLocation
 
+/// Main view controller
 class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate, CalendarViewDelegate, LayoutSelectorViewDelegate {
-    let weekdayBar = WeekdayBar()
-    let calendarView = CalendarView()
-    let eventListView = EventListView()
-    let contentView = UIView()
-    let layoutSelector = LayoutSelectorView()
-    let layoutSelectorBackgroundView = UIView()
-    let dayView = DayView()
-    
-    var layoutSelectorLayout : LayoutBuilder?
-    
-    var layoutSelectorShown = false
-    
-    var calendarLayout : LayoutBuilder?
-    var isCalendarViewExpanded = false
-    
-    let locationService = LocationService.instance
-    
-    var location: CLLocation? {
+    /// Week day bar
+    private let weekdayBar = WeekdayBar()
+    /// Calendar view
+    private let calendarView = CalendarView()
+    /// Event list view
+    private let eventListView = EventListView()
+    /// Content view
+    private let contentView = UIView()
+    /// Layout selector
+    private let layoutSelector = LayoutSelectorView()
+    /// Layout selector background
+    private let layoutSelectorBackgroundView = UIView()
+    /// Day view
+    private let dayView = DayView()
+    /// Calendar animated
+    private let calendarAnimatedView = CalendarAnimatedView()
+    /// Layout for layout selector
+    private var layoutSelectorLayout : LayoutBuilder?
+    /// Layout selector shown
+    private var layoutSelectorShown = false
+    /// Layout for calendar
+    private var calendarLayout : LayoutBuilder?
+    /// Is calendar view expanded
+    private var isCalendarViewExpanded = false
+    /// Location service
+    private let locationService = LocationService.instance
+    /// Current content view child
+    private var currentContentViewChild : UIView?
+
+    let calendar = Container.instance.calendar
+
+    /// Location
+    private var location: CLLocation? {
         didSet {
             updateWeather()
         }
     }
-    
-    var weatherForcast: WeatherForcastResponse? {
+
+    /// Weather forecast
+    private var weatherForcast: WeatherForcastResponse? {
         didSet {
             calendarView.weatherForcast = weatherForcast
         }
     }
-    
-    private func updateWeather() {
-        if let location = self.location {
-            if weatherForcast == nil {
-                WeatherService.instance.getWeather(location: location) { (err, response) in
-                    if err != nil {
-                        // swallow
-                        return
-                    }
-                    
-                    self.weatherForcast = response
-                }
-            }
-        }
-    }
-    
-    var dates = CalendarDates() { didSet {
+
+    /// Dates
+    private var dates = CalendarDates() { didSet {
         calendarView.dates = dates
         eventListView.dates = dates
         calendarAnimatedView.today = dates.today
         } }
     
-    var selectedDate: Date? { didSet {
+    /// Selected date
+    private var selectedDate: Date? { didSet {
         calendarView.selectedDate = selectedDate
         eventListView.selectedDate = selectedDate
         dayView.startDay = selectedDate
         updateNavigationItemTitle()
         } }
-    
-    var layoutType: LayoutSelectorView.LayoutType = .agenda {
+
+    /// Layout
+    private var layoutType: LayoutSelectorView.LayoutType = .agenda {
         didSet {
             updateLayout()
             updateRightBarButtons() }
@@ -148,16 +153,21 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         locationService.ensureLocation(from: self)
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        eventListView.reloadData()
+    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func didUpdateLocation() {
+    @objc private func didUpdateLocation() {
         location = locationService.location
     }
     
-    @objc func didTapCalendar() {
+    @objc private func didTapCalendar() {
         selectedDate = self.dates.today
         calendarView.scrollToSelectedDate()
         eventListView.scrollToSelectedDate()
@@ -172,7 +182,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         navigationItem.rightBarButtonItems = rightButtons
     }
     
-    let calendarAnimatedView = CalendarAnimatedView()
     private func updateLeftBarButtons() {
         calendarAnimatedView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         let leftItem = UIBarButtonItem(customView: calendarAnimatedView)
@@ -190,12 +199,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         return image
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        eventListView.reloadData()
-    }
-    
-    @objc func layoutPressed() {
+    @objc private func layoutPressed() {
         if layoutSelectorShown {
             hideLayoutSelector()
         } else {
@@ -203,7 +207,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         }
     }
     
-    @objc func plusPressed() {
+    @objc private func plusPressed() {
         guard let selectedDate = self.selectedDate else { return }
         let vc = CreateEventViewController()
         
@@ -214,14 +218,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         present(nav, animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func updateNavigationItemTitle() {
+    private func updateNavigationItemTitle() {
         if let selectedDate = self.selectedDate {
-            let calendar = Calendar.current
             let yearA = calendar.dateComponents([.year], from: selectedDate).year
             let yearB = calendar.dateComponents([.year], from: Date()).year
             
@@ -233,19 +231,21 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         }
     }
     
-    @objc func didPanCalendar() {
+    @objc private func didPanCalendar() {
         expandCalendarView()
     }
     
-    @objc func didPanEvents() {
+    @objc private func didPanEvents() {
         collapseCalendarView()
     }
     
-    @objc func didPanDayView() {
+    @objc private func didPanDayView() {
         collapseCalendarView()
     }
 
-    func expandCalendarView() {
+    // MARK: Calendar view
+
+    private func expandCalendarView() {
         if (isCalendarViewExpanded) {
             UIView.animate(withDuration: 0.2) {
                 self.calendarLayout?
@@ -258,7 +258,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         isCalendarViewExpanded = true
     }
     
-    func collapseCalendarView() {
+    private func collapseCalendarView() {
         if (!isCalendarViewExpanded) {
             UIView.animate(withDuration: 0.2) {
                 self.calendarLayout?
@@ -293,6 +293,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     }
     
     // MARK: CalendarViewDelegate
+
     func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
         self.selectedDate = calendarView.selectedDate
         eventListView.scrollToSelectedDate()
@@ -300,7 +301,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     // MARK: Layout selector
     
-    func showLayoutSelector() {
+    private func showLayoutSelector() {
         if layoutSelectorShown {
             return
         }
@@ -317,7 +318,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         layoutSelectorShown = true
     }
     
-    func hideLayoutSelector() {
+    private func hideLayoutSelector() {
         if !layoutSelectorShown {
             return
         }
@@ -335,7 +336,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         layoutSelectorShown = false
     }
     
-    @objc func layoutSelectorBackgroundViewTapped() {
+    @objc private func layoutSelectorBackgroundViewTapped() {
         hideLayoutSelector()
     }
     
@@ -348,8 +349,9 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         }
     }
     
-    var currentContentViewChild : UIView?
-    func updateLayout() {
+    // MARK: Private
+
+    private func updateLayout() {
         switch layoutType {
         case .agenda:
             currentContentViewChild?.removeFromSuperview()
@@ -360,6 +362,21 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             layout(dayView).matchParent(contentView).install()
             currentContentViewChild = dayView
             break
+        }
+    }
+
+    private func updateWeather() {
+        if let location = self.location {
+            if weatherForcast == nil {
+                WeatherService.instance.getWeather(location: location) { (err, response) in
+                    if err != nil {
+                        // swallow
+                        return
+                    }
+                    
+                    self.weatherForcast = response
+                }
+            }
         }
     }
 }

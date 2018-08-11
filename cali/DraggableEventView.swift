@@ -17,13 +17,50 @@ protocol DraggableEventViewDelegate : AnyObject {
     func draggableEventViewDidEndDrag(_ view: DraggableEventView)
 }
 
+/// Draggable event view
 class DraggableEventView : UIView, UIGestureRecognizerDelegate {
+    /// Delegate
     weak var delegate : DraggableEventViewDelegate?
+    /// Main tap gesture
     let mainTapGesture = UITapGestureRecognizer()
+    /// Event
+    var event : Event? { didSet { updateEvent() } }
+    /// Dragged start
+    var draggedStart: Date?
+    /// Dragged duration
+    var draggedDuration: TimeInterval?
+    /// Dirty
+    var dirty = false
+    
+    /// View did load
+    private var didLoad = false
+    /// Main handle
+    private let mainHandle = UIView()
+    /// Top handle
+    private let topHandle = EventHandleView()
+    /// Bottom handle
+    private let bottomHandle = EventHandleView()
+    /// Handle size
+    private let handleSize = Float(44)
+    /// Time label
+    private let timeLabel = UILabel()
+    /// Duration label
+    private let durationLabel = UILabel()
+    /// Label container
+    private let labelContainer = UIView()
+    /// Title label
+    private let titleLabel = UILabel()
+    
+    /// Padding vertical
+    var paddingVertical: Float {
+        return handleSize / 2
+    }
+
+    /// Opacity on tap
     var opacityOnTap : Bool {
         return !isDraggable
     }
-    
+    /// Is draggable
     var isDraggable = false {
         didSet {
             updateDraggable()
@@ -56,39 +93,13 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
             durationLabel.isHidden = true
         }
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    var didLoad = false
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if !didLoad {
             loadView()
             didLoad = true
         }
-    }
-    
-    let mainHandle = UIView()
-    let topHandle = EventHandleView()
-    let bottomHandle = EventHandleView()
-    let handleSize = Float(44)
-    var event : Event? { didSet { updateEvent() } }
-    var draggedStart: Date?
-    var draggedDuration: TimeInterval?
-    var dirty = false
-    let timeLabel = UILabel()
-    let durationLabel = UILabel()
-    let labelContainer = UIView()
-    let titleLabel = UILabel()
-    
-    var paddingVertical: Float {
-        return handleSize / 2
     }
     
     private func updateEvent() {

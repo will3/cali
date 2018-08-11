@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Seeded random
 class Random {
     var seed: Float
     
@@ -15,6 +16,7 @@ class Random {
         self.seed = seed
     }
     
+    /// Returns a random float from range 0 - 1
     func next() -> Float {
         seed += 1
         let x = sin(seed) * 10000.0
