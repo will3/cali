@@ -25,4 +25,5 @@ class Fonts {
     
     static let fontSmall = UIFont.systemFont(ofSize: 12.0)
     static let fontMedium = UIFont.systemFont(ofSize: 14.0)
+    static let fontNormal = UIFont.systemFont(ofSize: 16.0)
 }

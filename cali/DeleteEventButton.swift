@@ -36,10 +36,15 @@ class DeleteEventButton : UIView {
         clipsToBounds = true
         
         label.textColor = Colors.red
-        label.font = Fonts.fontMedium
+        label.font = Fonts.fontNormal
+        label.text = NSLocalizedString("Delete event", comment: "")
         
         layout(button).matchParent(self).install()
         
         layer.masksToBounds = false
+        
+        layer.shadowOpacity = 0.04
+        layer.shadowColor = Colors.black.cgColor
+        layer.shadowRadius = 4
     }
 }

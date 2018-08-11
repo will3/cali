@@ -37,6 +37,7 @@ class EventTitleCell: UITableViewCell, UITextFieldDelegate {
         textField.returnKeyType = .done
         textField.delegate = self
         textField.textColor = Colors.black
+        textField.font = Fonts.fontNormal
         
         wrapper.addSubview(iconImageView)
         wrapper.addSubview(textField)

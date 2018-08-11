@@ -150,19 +150,12 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     // MARK: Private
 
     @objc private func crossPressed() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Discard event", comment: ""), style: .destructive, handler: { (action) in
-            
-            if let event = self.event {
-                self.eventSerivce.discardEvent(event)
-            }
-            
-            self.dismiss(animated: true, completion: nil)
-        }))
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-        
-        present(alertController, animated: true, completion: nil)
+        switch viewType {
+        case .create:
+            confirmDiscardEvent(word: NSLocalizedString("Discard Event", comment: ""))
+        case .edit:
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc private func tickPressed() {
@@ -192,6 +185,26 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     }
     
     @objc private func deletePressed() {
+        confirmDiscardEvent(word: NSLocalizedString("Delete Event", comment: ""))
+    }
+    
+    private func confirmDiscardEvent(word: String) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: word, style: .destructive, handler: { (action) in
+            
+            if let event = self.event {
+                self.eventSerivce.discardEvent(event)
+            }
+            
+            if self.presentingViewController != nil {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }))
         
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
 }

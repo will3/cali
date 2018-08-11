@@ -58,6 +58,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     let eventService = Container.instance.eventService
     
     // MARK: Dimensions
+    
     let hours = 24
     let labelHalfHeight : Float = 6
     let hourHeight : Float = 60
@@ -69,6 +70,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     let graphStartX : Float = 54
     let graphRightPadding : Float = 2
     
+    /// Update labels
     private func updateLabels() {
         if labels.count == 0 {
             return
@@ -81,6 +83,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
+    /// Update events
     private func updateEvents() {
         guard let startDay = self.startDay else { return }
         
@@ -99,6 +102,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
+    /// Add event view
     private func addEventView(event: Event) {
         guard let id = event.id  else { return }
         if map[id] == nil {
@@ -120,17 +124,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         placeEventView(map[id]!)
     }
     
-    @objc func didTapEvent(tap: UITapGestureRecognizer) {
-        guard let eventView = tap.view?.superview as? DraggableEventView else { return }
-        // guard let event = eventView.event else { return }
-
-        // TODO
-//        let vc = EventViewController()
-//        vc.event = event
-//
-//        viewController?.navigationController?.pushViewController(vc, animated: true)
-    }
-    
+    /// Place event view
     private func placeEventView(_ view: DraggableEventView) {
         guard let event = view.event else { return }
         guard let id = event.id else { return }
@@ -153,6 +147,16 @@ class DayView : UIView, DraggableEventViewDelegate {
             .pinTop(y)
             .height(height)
             .install()
+    }
+    
+    @objc func didTapEvent(tap: UITapGestureRecognizer) {
+        guard let eventView = tap.view?.superview as? DraggableEventView else { return }
+        guard let event = eventView.event else { return }
+        
+        let vc = CreateEventViewController()
+        vc.editEvent(event)
+        
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     func loadView() {

@@ -44,17 +44,27 @@ class EventDateTimeCell : UITableViewCell, DateTimePickerDelegate {
     func loadView() {
         dateTitleLabel.text = " "
         dateTitleLabel.textColor = Colors.primary
+        dateTitleLabel.font = Fonts.fontNormal
+        
         dateValueLabel.text = " "
         dateValueLabel.textColor = Colors.black
+        dateValueLabel.font = Fonts.fontNormal
+        
         dateDiffLabel.text = " "
         dateDiffLabel.textColor = Colors.primary
+        dateDiffLabel.font = Fonts.fontNormal
         
         timeTitleLabel.text = " "
         timeTitleLabel.textColor = Colors.primary
+        timeTitleLabel.font = Fonts.fontNormal
+        
         timeValueLabel.text = " "
         timeValueLabel.textColor = Colors.primary
+        timeValueLabel.font = Fonts.fontNormal
+        
         timeDurationLabel.text = " "
         timeDurationLabel.textColor = Colors.primary
+        timeDurationLabel.font = Fonts.fontNormal
         
         let labelHeight: Float = 24.0
         let insets = UIEdgeInsetsMake(8, 12, 8, 12)

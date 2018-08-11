@@ -131,7 +131,7 @@ class CalendarAnimatedView : UIView {
             layout(imageView).matchParent(self).install()
             layout(label).parent(self).horizontal(.center).pinBottom(1.5).install()
             
-            label.font = Fonts.fontSmall
+            label.font = Fonts.fontMedium
             label.textColor = Colors.accent
             updateDay()
         }

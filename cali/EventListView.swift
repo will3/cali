@@ -147,11 +147,13 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         
         if let date = dates?.getDate(index: indexPath.section) {
             let events = eventService.find(startDay: date.date)
-            let event = events[indexPath.row]
-            
-            let vc = CreateEventViewController()
-            vc.editEvent(event)
-            self.viewController?.navigationController?.pushViewController(vc, animated: true)
+            if events.count > 0 {
+                let event = events[indexPath.row]
+                
+                let vc = CreateEventViewController()
+                vc.editEvent(event)
+                self.viewController?.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
