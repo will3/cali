@@ -156,6 +156,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.didUpdateLocation), name: LocationServiceNotifications.didUpdate, object: nil)
         
         locationService.ensureLocation(from: self)
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -94,14 +94,25 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         
         updateSections()
         
-        navigationItem.title = NSLocalizedString("New Event", comment: "")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Images.cross, style: .plain, target: self, action: #selector(CreateEventViewController.crossPressed))
+        updateNavigationItemTitle()
+        
         let tickButton = UIBarButtonItem(image: Images.tick, style: .plain, target: self, action: #selector(CreateEventViewController.tickPressed))
         navigationItem.rightBarButtonItem = tickButton
         tickButton.tintColor = Colors.accent
         
         layout(deleteButton).parent(view).pinBottom(20).horizontal(.center).install()
         deleteButton.button.addTarget(self, action: #selector(CreateEventViewController.deletePressed), for: .touchUpInside)
+        
+        updateLeftBarButtons()
+    }
+    
+    private func updateNavigationItemTitle() {
+        switch viewType {
+        case .create:
+            navigationItem.title = NSLocalizedString("New Event", comment: "")
+        case .edit:
+            navigationItem.title = NSLocalizedString("Edit Event", comment: "")
+        }
     }
     
     // MARK: UITableViewDataSource
@@ -150,17 +161,11 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     // MARK: Private
 
     @objc private func crossPressed() {
-        switch viewType {
-        case .create:
-            confirmDiscardEvent(word: NSLocalizedString("Discard Event", comment: ""))
-        case .edit:
-            dismiss(animated: true, completion: nil)
-        }
+        confirmDeleteEvent(word: NSLocalizedString("Discard Event", comment: ""))
     }
     
     @objc private func tickPressed() {
-        // Create event
-        dismiss(animated: true, completion: nil)
+        self.backOrDismiss()
     }
     
     private func updateSections() {
@@ -182,13 +187,25 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         case .edit:
             deleteButton.isHidden = false
         }
+        
+        updateNavigationItemTitle()
+        updateLeftBarButtons()
+    }
+    
+    private func updateLeftBarButtons() {
+        switch viewType {
+        case .create:
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: Images.cross, style: .plain, target: self, action: #selector(CreateEventViewController.crossPressed))
+        case .edit:
+            navigationItem.leftBarButtonItem = nil
+        }
     }
     
     @objc private func deletePressed() {
-        confirmDiscardEvent(word: NSLocalizedString("Delete Event", comment: ""))
+        confirmDeleteEvent(word: NSLocalizedString("Delete Event", comment: ""))
     }
     
-    private func confirmDiscardEvent(word: String) {
+    private func confirmDeleteEvent(word: String) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: word, style: .destructive, handler: { (action) in
             
@@ -196,15 +213,19 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
                 self.eventSerivce.discardEvent(event)
             }
             
-            if self.presentingViewController != nil {
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                self.navigationController?.popViewController(animated: true)
-            }
+            self.backOrDismiss()
         }))
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    private func backOrDismiss() {
+        if self.presentingViewController != nil {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

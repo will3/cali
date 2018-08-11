@@ -79,7 +79,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             contentView.backgroundColor = Colors.dimBackground
         case .today:
             if shouldShowCircle {
-                contentView.backgroundColor = Colors.dimBackground
+                contentView.backgroundColor = Colors.white
             } else {
                 contentView.backgroundColor = Colors.lightAccent
             }
