@@ -9,11 +9,18 @@
 import Foundation
 import CoreData
 
-class EventService {
-    let context = Container.instance.storage.context
-    let map = EventMap()
-    var hasInitEventMap = false
-    let calendar = Container.instance.calendar
+protocol EventService {
+    func find(startDay: Date) -> [Event]
+    func createEvent(start: Date, duration: TimeInterval) -> Event
+    func changeDay(event: Event, day: Date)
+    func discardEvent(_ event: Event)
+}
+
+class EventServiceImpl : EventService {
+    private let context = Container.instance.storage.context
+    private let map = EventMap()
+    private var hasInitEventMap = false
+    private let calendar = Container.instance.calendar
     
     func find(startDay: Date) -> [Event] {
         initEventMapIfNeeded()
@@ -82,6 +89,4 @@ class EventService {
         let results = try? context.fetch(request)
         return results ?? []
     }
-    
-    
 }

@@ -14,30 +14,38 @@ protocol LocationServiceDelegate {
     func locationServiceDidUpdateLocation(_ locationService: LocationService)
 }
 
+struct LocationServiceNotifications {
+    /// Update notification name
+    static let didUpdate = NSNotification.Name("locationServiceDidUpdateNotificationName")
+}
+
+protocol LocationService {
+    var location: CLLocation? { get }
+    
+    /**
+     * Ensure location
+     * If location permission has not been requested, request permission and fetch location once
+     * If location permission has been authorized, fetch location once
+     * If location permission has been denied, show change settings alert
+     *
+     * - parameter from: View controller used to display alerts
+     */
+    func ensureLocation(from: UIViewController)
+}
+
 /// Location service
-class LocationService : NSObject, CLLocationManagerDelegate {
+class LocationServiceImpl : NSObject, LocationService, CLLocationManagerDelegate {
     /// Location manager
     private let locationManager = CLLocationManager()
 
     /// Location
     private(set) var location: CLLocation?
     
-    /// Update notification name
-    static let didUpdateNotificationName = NSNotification.Name("locationServiceDidUpdateNotificationName")
-    
     override init() {
         super.init()
         locationManager.delegate = self
     }
     
-    /** 
-     * Ensure location
-     * If location permission has not been requested, request permission and fetch location once
-     * If location permission has been authorized, fetch location once
-     * If location permission has been denied, show change settings alert
-     * 
-     * - parameter from: View controller used to display alerts
-     */
     func ensureLocation(from: UIViewController) {
         let status = CLLocationManager.authorizationStatus()
         
@@ -58,7 +66,7 @@ class LocationService : NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.location = locations[locations.count - 1]
-        NotificationCenter.default.post(name: LocationService.didUpdateNotificationName, object: nil)
+        NotificationCenter.default.post(name: LocationServiceNotifications.didUpdate, object: nil)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

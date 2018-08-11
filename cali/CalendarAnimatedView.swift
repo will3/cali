@@ -22,25 +22,25 @@ class CalendarAnimatedView : UIView {
     var offset : CGFloat = 0 { didSet { updateDelta() } }
     /// Tappable area
     let button = UIButton()
-
+    /// View loaded
     private var loaded = false
-
+    /// Number of leaves
     private let numberOfLeaves = 4
-
+    /// Leaves
     private var leafs : [ LeafView ] = []
-    
+    /// Calendar
     private let calendar = Container.instance.calendar
-    
+    /// Day
     private var day: Int {
         if let day = calendar.dateComponents([.day], from: today).day {
             return day
         }
         return 0
     }
-    
-    private let preferredWidth : CGFloat = 32
-
-    private let preferredHeight : CGFloat = 32
+    /// Preferred width
+    private let preferredWidth : Float = 24
+    /// Preferred height
+    private let preferredHeight : Float = 24
     
     private func updateDelta() {
         let delta = Float(offset)
@@ -55,7 +55,7 @@ class CalendarAnimatedView : UIView {
         var tiltAmount = CGFloat(delta) / CGFloat(800)
         tiltAmount = min(1, max(tiltAmount, -1))
         
-        let pivot = CGPoint(x: 0, y: -preferredHeight)
+        let pivot = CGPoint(x: 0.0, y: -Double(preferredHeight))
         
         let tilt = maxTilt * tiltAmount
         
@@ -63,7 +63,7 @@ class CalendarAnimatedView : UIView {
             CGAffineTransform.identity
                 .translatedBy(x: -pivot.x, y: -pivot.y)
                 .rotated(by: tilt)
-                .translatedBy(x: pivot.x, y: pivot.y + 6)
+                .translatedBy(x: pivot.x, y: pivot.y)
     }
     
     override func didMoveToSuperview() {
@@ -84,6 +84,13 @@ class CalendarAnimatedView : UIView {
             leaf.translatesAutoresizingMaskIntoConstraints = false
             leaf.day = day
             addSubview(leaf)
+            
+            layout(leaf)
+                .width(preferredWidth)
+                .height(preferredHeight)
+                .center(self)
+                .install()
+            
             leaf.index = numberOfLeaves - index - 1
         }
         
@@ -91,20 +98,6 @@ class CalendarAnimatedView : UIView {
         
         layoutIfNeeded()
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        // Layout leafs manually
-        var index = 0
-        for leaf in leafs {
-            leaf.frame = CGRect(x: 0,
-                                y: 0,
-                                width: preferredWidth,
-                                height: preferredHeight)
-            index += 1
-        }
-    }    
     
     private func updateDay() {
         let day = self.day

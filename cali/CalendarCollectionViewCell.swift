@@ -36,7 +36,9 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         updateCircle()
         updateDot()
         weatherIconView.hasBackground = shouldShowCircle
+        updateBackground()
         } }
+    
     var background: Background = .white { didSet { updateBackground() } }
     var drawLeftBorder = false { didSet { updateLeftBorder() } }
     var drawBotBorder = false { didSet { updateBotBorder() }}
@@ -76,7 +78,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         case .grey:
             contentView.backgroundColor = Colors.dimBackground
         case .today:
-            contentView.backgroundColor = Colors.lightAccent
+            if shouldShowCircle {
+                contentView.backgroundColor = Colors.dimBackground
+            } else {
+                contentView.backgroundColor = Colors.lightAccent
+            }
         }
     }
     

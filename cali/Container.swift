@@ -13,20 +13,32 @@ class Container {
     static var instance = Container()
     
     /// Calendar
-    var calendar = Calendar.current
+    lazy var calendar = {
+        Calendar.current
+    }()
     
     // Now provider
-    var nowProvider = NowProvider()
+    lazy var nowProvider = {
+        NowProvider()
+    }()
     
     // Weather service
-    var weatherService = WeatherService()
+    lazy var weatherService : WeatherService = {
+        WeatherServiceImpl()
+    }()
     
     // Location service
-    var locationService = LocationService()
+    lazy var locationService : LocationService = {
+        LocationServiceImpl()
+    }()
     
     // Event service
-    var eventService = EventService()
+    lazy var eventService : EventService = {
+        EventServiceImpl()
+    }()
     
     // Storage
-    var storage = Storage()
+    lazy var storage : Storage = {
+        StorageImpl()
+    }()
 }

@@ -39,14 +39,18 @@ class EventCell : UITableViewCell {
     }
     
     private func loadView() {
+        titleLabel.numberOfLines = 0
         layout(contentView).stackHorizontal([
-            layout(left).stack([
-                layout(timeLabel).left(18).top(14),
-                layout(durationLabel).left(18).top(2).bottom(18)
+            layout(left)
+                .hugMore()
+                .resistMore()
+                .stack([
+                layout(timeLabel).left(18).top(14).hugMore(),
+                layout(durationLabel).left(18).top(2).bottom(18).hugMore()
                 ]),
             layout(right)
                 .stack([
-                    layout(titleLabel).left(18).right(18).top(14)
+                    layout(titleLabel).left(18).right(18).top(12).hug(1).resist(1)
                     ])
                 .justifyItems(.leading)
             ]).install()

@@ -129,6 +129,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         let eventsPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanEvents))
         eventListView.scrollView.addGestureRecognizer(eventsPan)
+        eventListView.viewController = self
+        
         eventsPan.delegate = self
         
         let dayViewPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanDayView))
@@ -151,7 +153,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         calendarAnimatedView.button.addTarget(self, action: #selector(MainViewController.didTapCalendar), for: .touchUpInside)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.didUpdateLocation), name: LocationService.didUpdateNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.didUpdateLocation), name: LocationServiceNotifications.didUpdate, object: nil)
         
         locationService.ensureLocation(from: self)
     }

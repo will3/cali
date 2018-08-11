@@ -11,13 +11,17 @@ import UIKit
 import CoreLocation
 
 /// Weather service
-class WeatherService {
+protocol WeatherService {
     /**
      * Get weather
      * 
      * - parameter location: location
      * - parameter block: return block
      */
+    func getWeather(location: CLLocation, block: @escaping(CurlError?, WeatherForcastResponse?) -> Void)
+}
+
+class WeatherServiceImpl : WeatherService {
     func getWeather(location: CLLocation, block: @escaping(CurlError?, WeatherForcastResponse?) -> Void) {
         let url = URL(string: "https://api.darksky.net/forecast/\(Settings.instance.darkSkyApiKey)/\(location.coordinate.latitude),\(location.coordinate.longitude)")!
         
