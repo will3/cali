@@ -55,7 +55,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         updateEvents() } }
     
     /// Event service
-    let eventService = Container.instance.eventService
+    let eventService = Injection.defaultContainer.eventService
     
     // MARK: Dimensions
     

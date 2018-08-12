@@ -9,7 +9,7 @@
 import Foundation
 
 class EventFormatter {
-    static let calendar = Container.instance.calendar
+    static let calendar = Injection.defaultContainer.calendar
     
     /**
      * Format a date relative 

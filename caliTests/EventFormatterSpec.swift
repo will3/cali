@@ -14,7 +14,7 @@ import Nimble
 
 class Dates {
     static func date(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int) -> Date {
-        let calendar = Container.instance.calendar
+        let calendar = Injection.defaultContainer.calendar
         var components = DateComponents()
         components.year = year
         components.month = month

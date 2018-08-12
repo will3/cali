@@ -1,15 +1,18 @@
 PODS:
+  - Cuckoo (0.11.3)
   - Layouts (0.0.1)
   - Nimble (7.1.1)
   - Quick (1.3.0)
 
 DEPENDENCIES:
+  - Cuckoo
   - Layouts (from `./layouts/`)
   - Nimble
   - Quick
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Cuckoo
     - Nimble
     - Quick
 
@@ -18,10 +21,11 @@ EXTERNAL SOURCES:
     :path: "./layouts/"
 
 SPEC CHECKSUMS:
+  Cuckoo: 97522dd7ac6f18adba6022bdc74aa69e82ca691a
   Layouts: 94bbc48d220b97a0c7aac44b70fdbe75717498c3
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
   Quick: 03278013f71aa05fe9ecabc94fbcc6835f1ee76f
 
-PODFILE CHECKSUM: bb8d9391ec800618e5ac089092c1ddf28575255d
+PODFILE CHECKSUM: 6c2797a7446868bea6bac5026360755a63bec0bd
 
 COCOAPODS: 1.5.3

@@ -53,7 +53,7 @@ class DateTimePicker : UIView, UIScrollViewDelegate, DatePickerDelegate, TimePic
     /// Did set initial page
     private var didSetInitialPage = false
     /// Event service
-    private let eventService = Container.instance.eventService
+    private let eventService = Injection.defaultContainer.eventService
     
     var event: Event? { didSet {
         datePicker.event = event

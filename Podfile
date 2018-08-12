@@ -15,6 +15,7 @@ target 'cali' do
 
     pod 'Quick'
     pod 'Nimble'
+    pod 'Cuckoo'
   end
 
   target 'caliUITests' do

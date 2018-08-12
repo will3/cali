@@ -44,7 +44,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     /// Delete button
     private let deleteButton = DeleteEventButton()
     /// Event service
-    private let eventSerivce = Container.instance.eventService
+    private let eventSerivce = Injection.defaultContainer.eventService
     
     // MARK: Public
 
@@ -184,8 +184,10 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         switch viewType {
         case .create:
             deleteButton.isHidden = true
+            self.view.accessibilityIdentifier = AccessibilityIdentifiers.createEventView
         case .edit:
             deleteButton.isHidden = false
+            self.view.accessibilityIdentifier = AccessibilityIdentifiers.editEventView
         }
         
         updateNavigationItemTitle()

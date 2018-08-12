@@ -8,6 +8,10 @@
 
 import Foundation
 
-class NowProvider {
+protocol NowProvider {
+    var now: Date { get }
+}
+
+class NowProviderImpl : NowProvider {
     var now: Date { return Date() }
 }

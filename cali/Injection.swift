@@ -8,18 +8,34 @@
 
 import Foundation
 
+class Injection {
+    static var defaultContainer : Container = DefaultContainer()
+}
+
 /// Injection container
-class Container {
-    static var instance = Container()
+protocol Container {
+    var calendar : Calendar { get }
     
+    var nowProvider : NowProvider { get }
+    
+    var weatherService : WeatherService { get }
+    
+    var locationService : LocationService { get }
+    
+    var eventService : EventService { get }
+    
+    var storage : Storage { get }
+}
+
+class DefaultContainer : Container {
     /// Calendar
     lazy var calendar = {
         Calendar.current
     }()
     
     // Now provider
-    lazy var nowProvider = {
-        NowProvider()
+    lazy var nowProvider : NowProvider = {
+        NowProviderImpl()
     }()
     
     // Weather service

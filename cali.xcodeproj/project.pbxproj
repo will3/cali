@@ -22,7 +22,7 @@
 		6F34683D211D6A370005D5C7 /* weather.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F34683C211D6A370005D5C7 /* weather.xcassets */; };
 		6F34683F211D93B20005D5C7 /* WeatherIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34683E211D93B20005D5C7 /* WeatherIconView.swift */; };
 		6F346841211E60C20005D5C7 /* EventMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346840211E60C20005D5C7 /* EventMap.swift */; };
-		6F346843211E640D0005D5C7 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346842211E640D0005D5C7 /* Container.swift */; };
+		6F346843211E640D0005D5C7 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346842211E640D0005D5C7 /* Injection.swift */; };
 		6F346845211E68020005D5C7 /* DeleteEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346844211E68020005D5C7 /* DeleteEventButton.swift */; };
 		6F346848211E72B10005D5C7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346847211E72B10005D5C7 /* MainView.swift */; };
 		6F34684A211E72BD0005D5C7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346849211E72BD0005D5C7 /* CalendarView.swift */; };
@@ -32,6 +32,7 @@
 		6F346852211E72FC0005D5C7 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346851211E72FC0005D5C7 /* DayView.swift */; };
 		6F346854211E73080005D5C7 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346853211E73080005D5C7 /* DateTimePicker.swift */; };
 		6F346856211E73420005D5C7 /* NowProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346855211E73420005D5C7 /* NowProvider.swift */; };
+		6F46FB37211FAA2C000DBBCB /* Accessability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F46FB36211FAA2C000DBBCB /* Accessability.swift */; };
 		6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */; };
 		6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A52113E3860096B9E9 /* MainViewController.swift */; };
 		6F4EA6AB2113E3860096B9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */; };
@@ -76,6 +77,16 @@
 		6FACC2CC2117D870004570ED /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CB2117D870004570ED /* DateTimePicker.swift */; };
 		6FACC2CF2117F588004570ED /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CE2117F588004570ED /* DayView.swift */; };
 		6FACC2D1211800D5004570ED /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2D0211800D5004570ED /* TimePicker.swift */; };
+		6FAF59CA211FC8DE0041BC17 /* UITestContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59C9211FC8DE0041BC17 /* UITestContainer.swift */; };
+		6FAF59D5211FCC8E0041BC17 /* StorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59D4211FCC8E0041BC17 /* StorageImpl.swift */; };
+		6FAF59D7211FCCAF0041BC17 /* EventServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59D6211FCCAF0041BC17 /* EventServiceImpl.swift */; };
+		6FAF59D9211FCCC90041BC17 /* WeatherServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59D8211FCCC90041BC17 /* WeatherServiceImpl.swift */; };
+		6FAF59DB211FCCF00041BC17 /* LocationServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59DA211FCCF00041BC17 /* LocationServiceImpl.swift */; };
+		6FAF59E5211FD1260041BC17 /* UITestWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59E4211FD1260041BC17 /* UITestWeatherService.swift */; };
+		6FAF59E7211FD1320041BC17 /* UITestLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59E6211FD1320041BC17 /* UITestLocationService.swift */; };
+		6FAF59E9211FD13C0041BC17 /* UITestEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59E8211FD13C0041BC17 /* UITestEventService.swift */; };
+		6FAF59EB211FD1460041BC17 /* UITestStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59EA211FD1460041BC17 /* UITestStorage.swift */; };
+		6FAF59ED211FD3C00041BC17 /* UITestNowProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59EC211FD3C00041BC17 /* UITestNowProvider.swift */; };
 		6FE2199021199C08005C4303 /* cali.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FE2198E21199C08005C4303 /* cali.xcdatamodeld */; };
 		6FE2199521199D9A005C4303 /* _Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE2199321199D9A005C4303 /* _Event.swift */; };
 		6FE2199621199D9A005C4303 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE2199421199D9A005C4303 /* Event.swift */; };
@@ -99,6 +110,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0864F6389BF178C252148A24 /* Pods-cali.uitest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cali.uitest.xcconfig"; path = "Pods/Target Support Files/Pods-cali/Pods-cali.uitest.xcconfig"; sourceTree = "<group>"; };
 		15BBD00BB784777E310E2D8A /* Pods-caliUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-caliUITests/Pods-caliUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EDB028D93F5FE14D2C6A37E /* Pods-cali.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cali.release.xcconfig"; path = "Pods/Target Support Files/Pods-cali/Pods-cali.release.xcconfig"; sourceTree = "<group>"; };
 		6CA475C3BDF1549BD83E3AB8 /* Pods-caliUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-caliUITests/Pods-caliUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,7 +126,7 @@
 		6F34683C211D6A370005D5C7 /* weather.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = weather.xcassets; sourceTree = "<group>"; };
 		6F34683E211D93B20005D5C7 /* WeatherIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconView.swift; sourceTree = "<group>"; };
 		6F346840211E60C20005D5C7 /* EventMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMap.swift; sourceTree = "<group>"; };
-		6F346842211E640D0005D5C7 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		6F346842211E640D0005D5C7 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		6F346844211E68020005D5C7 /* DeleteEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEventButton.swift; sourceTree = "<group>"; };
 		6F346847211E72B10005D5C7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		6F346849211E72BD0005D5C7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -124,6 +136,7 @@
 		6F346851211E72FC0005D5C7 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		6F346853211E73080005D5C7 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		6F346855211E73420005D5C7 /* NowProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowProvider.swift; sourceTree = "<group>"; };
+		6F46FB36211FAA2C000DBBCB /* Accessability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessability.swift; sourceTree = "<group>"; };
 		6F4EA6A02113E3860096B9E9 /* cali.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cali.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F4EA6A52113E3860096B9E9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -174,11 +187,23 @@
 		6FACC2CB2117D870004570ED /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		6FACC2CE2117F588004570ED /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		6FACC2D0211800D5004570ED /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		6FAF59C9211FC8DE0041BC17 /* UITestContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestContainer.swift; sourceTree = "<group>"; };
+		6FAF59D4211FCC8E0041BC17 /* StorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageImpl.swift; sourceTree = "<group>"; };
+		6FAF59D6211FCCAF0041BC17 /* EventServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServiceImpl.swift; sourceTree = "<group>"; };
+		6FAF59D8211FCCC90041BC17 /* WeatherServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceImpl.swift; sourceTree = "<group>"; };
+		6FAF59DA211FCCF00041BC17 /* LocationServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceImpl.swift; sourceTree = "<group>"; };
+		6FAF59E4211FD1260041BC17 /* UITestWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestWeatherService.swift; sourceTree = "<group>"; };
+		6FAF59E6211FD1320041BC17 /* UITestLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestLocationService.swift; sourceTree = "<group>"; };
+		6FAF59E8211FD13C0041BC17 /* UITestEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestEventService.swift; sourceTree = "<group>"; };
+		6FAF59EA211FD1460041BC17 /* UITestStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestStorage.swift; sourceTree = "<group>"; };
+		6FAF59EC211FD3C00041BC17 /* UITestNowProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestNowProvider.swift; sourceTree = "<group>"; };
 		6FE2198F21199C08005C4303 /* cali.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cali.xcdatamodel; sourceTree = "<group>"; };
 		6FE2199321199D9A005C4303 /* _Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Event.swift; sourceTree = "<group>"; };
 		6FE2199421199D9A005C4303 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		7343CE43C6026B48A5D8D38D /* Pods-caliTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-caliTests/Pods-caliTests.debug.xcconfig"; sourceTree = "<group>"; };
 		773472091C96004F9780354C /* Pods-caliTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-caliTests/Pods-caliTests.release.xcconfig"; sourceTree = "<group>"; };
+		867B6189CA06160F86698A9B /* Pods-caliTests.uitest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliTests.uitest.xcconfig"; path = "Pods/Target Support Files/Pods-caliTests/Pods-caliTests.uitest.xcconfig"; sourceTree = "<group>"; };
+		9F087C1B4D3FED1E29EF156D /* Pods-caliUITests.uitest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caliUITests.uitest.xcconfig"; path = "Pods/Target Support Files/Pods-caliUITests/Pods-caliUITests.uitest.xcconfig"; sourceTree = "<group>"; };
 		BF37F879BB82E63E4ABC0C0F /* Pods-cali.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cali.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cali/Pods-cali.debug.xcconfig"; sourceTree = "<group>"; };
 		CB4341E05BD225E23B4D9458 /* Pods_caliTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_caliTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19F24A8A7800D4FF181EF36 /* Pods_caliUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_caliUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +296,7 @@
 		6F4EA6A22113E3860096B9E9 /* cali */ = {
 			isa = PBXGroup;
 			children = (
+				6FAF59E3211FD10A0041BC17 /* UITest */,
 				6FE2199121199D9A005C4303 /* models */,
 				6F66866B2115146E0047D752 /* Utils */,
 				6F668667211513D40047D752 /* Services */,
@@ -310,10 +336,12 @@
 				6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */,
 				6F66864B211427B20047D752 /* Settings.swift */,
 				6F995D8C211A982300629C0C /* Storage.swift */,
+				6FAF59D4211FCC8E0041BC17 /* StorageImpl.swift */,
 				6F346834211D42660005D5C7 /* Serialization.swift */,
 				6F346836211D428A0005D5C7 /* Curl.swift */,
-				6F346842211E640D0005D5C7 /* Container.swift */,
+				6F346842211E640D0005D5C7 /* Injection.swift */,
 				6F346855211E73420005D5C7 /* NowProvider.swift */,
+				6F46FB36211FAA2C000DBBCB /* Accessability.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -370,8 +398,11 @@
 			isa = PBXGroup;
 			children = (
 				6F66865121150E170047D752 /* EventService.swift */,
+				6FAF59D6211FCCAF0041BC17 /* EventServiceImpl.swift */,
 				6F34682A211D2A500005D5C7 /* WeatherService.swift */,
+				6FAF59D8211FCCC90041BC17 /* WeatherServiceImpl.swift */,
 				6F346838211D56880005D5C7 /* LocationService.swift */,
+				6FAF59DA211FCCF00041BC17 /* LocationServiceImpl.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -436,6 +467,19 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		6FAF59E3211FD10A0041BC17 /* UITest */ = {
+			isa = PBXGroup;
+			children = (
+				6FAF59C9211FC8DE0041BC17 /* UITestContainer.swift */,
+				6FAF59E4211FD1260041BC17 /* UITestWeatherService.swift */,
+				6FAF59E6211FD1320041BC17 /* UITestLocationService.swift */,
+				6FAF59E8211FD13C0041BC17 /* UITestEventService.swift */,
+				6FAF59EA211FD1460041BC17 /* UITestStorage.swift */,
+				6FAF59EC211FD3C00041BC17 /* UITestNowProvider.swift */,
+			);
+			name = UITest;
+			sourceTree = "<group>";
+		};
 		6FE2199121199D9A005C4303 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +519,9 @@
 				773472091C96004F9780354C /* Pods-caliTests.release.xcconfig */,
 				15BBD00BB784777E310E2D8A /* Pods-caliUITests.debug.xcconfig */,
 				6CA475C3BDF1549BD83E3AB8 /* Pods-caliUITests.release.xcconfig */,
+				0864F6389BF178C252148A24 /* Pods-cali.uitest.xcconfig */,
+				867B6189CA06160F86698A9B /* Pods-caliTests.uitest.xcconfig */,
+				9F087C1B4D3FED1E29EF156D /* Pods-caliUITests.uitest.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -491,6 +538,7 @@
 				6F4EA69D2113E3860096B9E9 /* Frameworks */,
 				6F4EA69E2113E3860096B9E9 /* Resources */,
 				9074714FD129D659AF8692DD /* [CP] Embed Pods Frameworks */,
+				6FAF59D3211FCB6D0041BC17 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -640,11 +688,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-caliTests/Pods-caliTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
@@ -652,6 +702,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-caliTests/Pods-caliTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6FAF59D3211FCB6D0041BC17 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/EventService.swift\" \\\n\"$INPUT_DIR/WeatherService.swift\" \\\n\"$INPUT_DIR/LocationService.swift\" \\\n\"$INPUT_DIR/Storage.swift\"\n\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
 		};
 		72DAF7E58D02A3154A7C25DA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -715,12 +778,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F66864F21142EB30047D752 /* CalendarCollectionViewCell.swift in Sources */,
+				6F46FB37211FAA2C000DBBCB /* Accessability.swift in Sources */,
 				6F6686992116A2E20047D752 /* TableViews.swift in Sources */,
 				6F346835211D42660005D5C7 /* Serialization.swift in Sources */,
 				6F66867321154E8F0047D752 /* Fonts.swift in Sources */,
 				6F34683F211D93B20005D5C7 /* WeatherIconView.swift in Sources */,
 				6F668646211410710047D752 /* CalendarView.swift in Sources */,
 				6F66866F211514AF0047D752 /* Random.swift in Sources */,
+				6FAF59E7211FD1320041BC17 /* UITestLocationService.swift in Sources */,
 				6F6686972116A2610047D752 /* EventLocationCell.swift in Sources */,
 				6FACC2CF2117F588004570ED /* DayView.swift in Sources */,
 				6F0E3BB821197845003E5E00 /* DraggableEventView.swift in Sources */,
@@ -733,7 +798,9 @@
 				6F71BD63211BA3E70094FCD6 /* LayoutSelectorView.swift in Sources */,
 				6FACC2CC2117D870004570ED /* DateTimePicker.swift in Sources */,
 				6FE2199021199C08005C4303 /* cali.xcdatamodeld in Sources */,
+				6FAF59DB211FCCF00041BC17 /* LocationServiceImpl.swift in Sources */,
 				6F995D8D211A982300629C0C /* Storage.swift in Sources */,
+				6FAF59ED211FD3C00041BC17 /* UITestNowProvider.swift in Sources */,
 				6F66868B2116932F0047D752 /* EventToggleCell.swift in Sources */,
 				6F668648211410880047D752 /* EventListView.swift in Sources */,
 				6F34682F211D421E0005D5C7 /* WeatherForecastResponse.swift in Sources */,
@@ -748,7 +815,9 @@
 				6F668688211689E80047D752 /* Images.swift in Sources */,
 				6F346841211E60C20005D5C7 /* EventMap.swift in Sources */,
 				6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */,
+				6FAF59D9211FCCC90041BC17 /* WeatherServiceImpl.swift in Sources */,
 				6FACC2D1211800D5004570ED /* TimePicker.swift in Sources */,
+				6FAF59EB211FD1460041BC17 /* UITestStorage.swift in Sources */,
 				6F66867D2115689A0047D752 /* EventListHeaderView.swift in Sources */,
 				6F66867F2115695D0047D752 /* EventEmptyCell.swift in Sources */,
 				6F66865221150E170047D752 /* EventService.swift in Sources */,
@@ -756,10 +825,13 @@
 				6F66869321169CE10047D752 /* EventDetailCell.swift in Sources */,
 				6F4EA6D22113E4530096B9E9 /* WeekdayBar.swift in Sources */,
 				6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */,
+				6FAF59E5211FD1260041BC17 /* UITestWeatherService.swift in Sources */,
 				6F6686952116A1500047D752 /* NavigationBars.swift in Sources */,
+				6FAF59D5211FCC8E0041BC17 /* StorageImpl.swift in Sources */,
 				6F346856211E73420005D5C7 /* NowProvider.swift in Sources */,
-				6F346843211E640D0005D5C7 /* Container.swift in Sources */,
+				6F346843211E640D0005D5C7 /* Injection.swift in Sources */,
 				6F346845211E68020005D5C7 /* DeleteEventButton.swift in Sources */,
+				6FAF59E9211FD13C0041BC17 /* UITestEventService.swift in Sources */,
 				6FACC2CA2117D620004570ED /* DatePicker.swift in Sources */,
 				6F71BD68211C44770094FCD6 /* CalendarAnimatedView.swift in Sources */,
 				6F346831211D42300005D5C7 /* WeatherDataMultiple.swift in Sources */,
@@ -770,6 +842,8 @@
 				6F66868D211698060047D752 /* EventTitleCell.swift in Sources */,
 				6F346839211D56880005D5C7 /* LocationService.swift in Sources */,
 				6F66866D2115147A0047D752 /* Faker.swift in Sources */,
+				6FAF59D7211FCCAF0041BC17 /* EventServiceImpl.swift in Sources */,
+				6FAF59CA211FC8DE0041BC17 /* UITestContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +1009,7 @@
 			baseConfigurationReference = BF37F879BB82E63E4ABC0C0F /* Pods-cali.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CALI_UI_TEST = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52NW8KPTD6;
 				INFOPLIST_FILE = cali/Info.plist;
@@ -952,6 +1027,7 @@
 			baseConfigurationReference = 5EDB028D93F5FE14D2C6A37E /* Pods-cali.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CALI_UI_TEST = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52NW8KPTD6;
 				INFOPLIST_FILE = cali/Info.plist;
@@ -1012,7 +1088,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.str.caliUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = cali;
 			};
 			name = Debug;
@@ -1029,10 +1105,120 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.str.caliUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = cali;
 			};
 			name = Release;
+		};
+		6FAF59C4211FC6E30041BC17 /* UITest */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = UITest;
+		};
+		6FAF59C5211FC6E30041BC17 /* UITest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0864F6389BF178C252148A24 /* Pods-cali.uitest.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CALI_UI_TEST = true;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52NW8KPTD6;
+				INFOPLIST_FILE = cali/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.str.cali;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = UITest;
+		};
+		6FAF59C6211FC6E30041BC17 /* UITest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 867B6189CA06160F86698A9B /* Pods-caliTests.uitest.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52NW8KPTD6;
+				INFOPLIST_FILE = caliTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.str.caliTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cali.app/cali";
+			};
+			name = UITest;
+		};
+		6FAF59C7211FC6E30041BC17 /* UITest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F087C1B4D3FED1E29EF156D /* Pods-caliUITests.uitest.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52NW8KPTD6;
+				INFOPLIST_FILE = caliUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.str.caliUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = cali;
+			};
+			name = UITest;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1041,6 +1227,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4EA6C62113E3860096B9E9 /* Debug */,
+				6FAF59C4211FC6E30041BC17 /* UITest */,
 				6F4EA6C72113E3860096B9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1050,6 +1237,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4EA6C92113E3860096B9E9 /* Debug */,
+				6FAF59C5211FC6E30041BC17 /* UITest */,
 				6F4EA6CA2113E3860096B9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1059,6 +1247,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4EA6CC2113E3860096B9E9 /* Debug */,
+				6FAF59C6211FC6E30041BC17 /* UITest */,
 				6F4EA6CD2113E3860096B9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1068,6 +1257,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4EA6CF2113E3860096B9E9 /* Debug */,
+				6FAF59C7211FC6E30041BC17 /* UITest */,
 				6F4EA6D02113E3860096B9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

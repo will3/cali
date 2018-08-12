@@ -37,13 +37,13 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     /// Is calendar view expanded
     private var isCalendarViewExpanded = false
     /// Location service
-    private let locationService = Container.instance.locationService
+    private let locationService = Injection.defaultContainer.locationService
     /// Current content view child
     private var currentContentViewChild : UIView?
     /// Weather service
-    let weatherService = Container.instance.weatherService
+    let weatherService = Injection.defaultContainer.weatherService
     /// Calendar
-    let calendar = Container.instance.calendar
+    let calendar = Injection.defaultContainer.calendar
 
     /// Location
     private var location: CLLocation? {
@@ -158,6 +158,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         locationService.ensureLocation(from: self)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        self.view.accessibilityIdentifier = AccessibilityIdentifiers.mainView
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -226,7 +228,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     private func updateNavigationItemTitle() {
         if let selectedDate = self.selectedDate {
-            let now = Container.instance.nowProvider.now
+            let now = Injection.defaultContainer.nowProvider.now
             let yearA = calendar.dateComponents([.year], from: selectedDate).year
             let yearB = calendar.dateComponents([.year], from: now).year
             

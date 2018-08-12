@@ -36,7 +36,7 @@ class EventListHeaderView: UITableViewHeaderFooterView {
     private var didLoad = false
     
     var date: Date? { didSet { updateLabel() } }
-    var calendar = Container.instance.calendar
+    var calendar = Injection.defaultContainer.calendar
     
     var label: UILabel?
     
@@ -65,7 +65,7 @@ class EventListHeaderView: UITableViewHeaderFooterView {
     func updateLabel() {
         guard let date = self.date else { return }
         
-        let now = Container.instance.nowProvider.now
+        let now = Injection.defaultContainer.nowProvider.now
         
         let dateFormatter = calendar.isDate(date, equalTo: now, toGranularity: .year) ?
             EventListHeaderView.dayWeekMonthFormatter :

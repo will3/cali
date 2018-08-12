@@ -7,7 +7,7 @@ open class Event: _Event {
     /// Start day
     var startDay: Date? {
         if let start = self.start {
-            let calendar = Container.instance.calendar
+            let calendar = Injection.defaultContainer.calendar
             return calendar.startOfDay(for: start)
         } else {
             return nil

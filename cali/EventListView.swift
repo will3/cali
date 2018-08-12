@@ -31,11 +31,11 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     /// Table view
     private let tableView = UITableView()
     /// Calendar
-    private let calendar = Container.instance.calendar
+    private let calendar = Injection.defaultContainer.calendar
     /// Delegate
     weak var delegate: EventListViewDelegate?
     /// Event service
-    private let eventService = Container.instance.eventService
+    private let eventService = Injection.defaultContainer.eventService
     
     /// Is scrolling to selected date
     private(set) var isScrollingToSelectedDate = false

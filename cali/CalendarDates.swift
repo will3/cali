@@ -11,7 +11,7 @@ import Foundation
 /// Represents a range of dates that the calendar displays
 class CalendarDates {
     /// Calendar
-    let calendar = Container.instance.calendar
+    let calendar = Injection.defaultContainer.calendar
     /// Start date
     let startDate: Date
     /// Number of dates in total
@@ -28,7 +28,7 @@ class CalendarDates {
     let indexForToday: Int
     
     init() {
-        let now = Container.instance.nowProvider.now
+        let now = Injection.defaultContainer.nowProvider.now
         today = calendar.startOfDay(for: now)
         
         let weekday = 1 // Sunday

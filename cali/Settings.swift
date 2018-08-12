@@ -18,4 +18,12 @@ class Settings {
     let numWeeksForward = Int(ceil(2 * 365 / 7))
     
     let darkSkyApiKey = "62ededef08cf69bc5d6ddd7dd52f36b7"
+    
+    var isUITest : Bool {
+        #if CALI_UI_TEST
+            return true
+        #else
+            return false
+        #endif
+    }
 }

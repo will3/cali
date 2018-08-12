@@ -14,7 +14,7 @@ import Layouts
 class CalendarAnimatedView : UIView {
     /// Today, setting this updates the view
     var today : Date = {
-        let now = Container.instance.nowProvider.now
+        let now = Injection.defaultContainer.nowProvider.now
         return now
     }() { didSet { updateDay() } }
     
@@ -29,7 +29,7 @@ class CalendarAnimatedView : UIView {
     /// Leaves
     private var leafs : [ LeafView ] = []
     /// Calendar
-    private let calendar = Container.instance.calendar
+    private let calendar = Injection.defaultContainer.calendar
     /// Day
     private var day: Int {
         if let day = calendar.dateComponents([.day], from: today).day {
