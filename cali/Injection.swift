@@ -8,11 +8,13 @@
 
 import Foundation
 
+/// Injection
 class Injection {
-    static var defaultContainer : Container = DefaultContainer()
+    /// The default container
+    static var defaultContainer : Container!
 }
 
-/// Injection container
+/// Container
 protocol Container {
     var calendar : Calendar { get }
     

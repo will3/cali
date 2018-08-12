@@ -10,7 +10,7 @@ import Foundation
 
 // Test container used in UITests 
 class UITestContainer : Container {
-    var calendar: Calendar = {
+    lazy var calendar: Calendar = {
         var calendar = Calendar.current
         if let timeZone = TimeZone(abbreviation: "UTC") {
             calendar.timeZone = timeZone
@@ -18,13 +18,23 @@ class UITestContainer : Container {
         return calendar
     } ()
 
-    var nowProvider: NowProvider = UITestNowProvider(now: Date(timeIntervalSince1970: 0))
+    lazy var nowProvider: NowProvider = {
+        UITestNowProvider(now: Date(timeIntervalSince1970: 0))
+    }()
 
-    var weatherService: WeatherService = UITestWeatherService()
+    lazy var weatherService: WeatherService = {
+        UITestWeatherService()
+    }()
 
-    var locationService: LocationService = UITestLocationService()
+    lazy var locationService: LocationService = {
+        UITestLocationService()
+    }()
 
-    var eventService: EventService = UITestEventService()
+    lazy var eventService: EventService = {
+        EventServiceImpl()
+    }()
 
-    var storage: Storage = UITestStorage()
+    lazy var storage: Storage = {
+        UITestStorage()
+    }()
 }

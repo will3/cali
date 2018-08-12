@@ -159,7 +159,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        self.view.accessibilityIdentifier = AccessibilityIdentifiers.mainView
+        view.accessibilityIdentifier = ViewIdentifier.mainView
+        view.isAccessibilityElement = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -182,10 +183,13 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     }
     
     private func updateRightBarButtons() {
+        let plusButton = UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed))
         let rightButtons = [
-            UIBarButtonItem(image: Images.plus, style: .plain, target: self, action: #selector(MainViewController.plusPressed)),
+            plusButton,
             UIBarButtonItem(image: layoutTypeImage, style: .plain, target: self, action: #selector(MainViewController.layoutPressed))
         ]
+        
+        plusButton.accessibilityIdentifier = ViewIdentifier.plusButton
         
         navigationItem.rightBarButtonItems = rightButtons
     }

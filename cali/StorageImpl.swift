@@ -56,4 +56,8 @@ class StorageImpl : Storage {
     var context : NSManagedObjectContext {
         return persistentContainer.viewContext
     }
+    
+    func clear () {
+        // Not implemented
+    }
 }

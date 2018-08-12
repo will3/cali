@@ -20,10 +20,7 @@ class Settings {
     let darkSkyApiKey = "62ededef08cf69bc5d6ddd7dd52f36b7"
     
     var isUITest : Bool {
-        #if CALI_UI_TEST
-            return true
-        #else
-            return false
-        #endif
+        let env = ProcessInfo.processInfo.environment
+        return env["isUITest"] == "true"
     }
 }

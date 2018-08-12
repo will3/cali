@@ -14,4 +14,6 @@ protocol Storage {
     func saveContext ()
     /// Context
     var context : NSManagedObjectContext { get }
+    /// Remove everything, should only used in UI Tests
+    func clear ()
 }

@@ -92,6 +92,11 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.register(EventEmptyCell.self, forCellReuseIdentifier: EventEmptyCell.identifier)
         
         tableView.showsVerticalScrollIndicator = false
+        
+        self.isAccessibilityElement = true
+        self.accessibilityIdentifier = ViewIdentifier.eventListView
+        
+        tableView.isAccessibilityElement = true
     }
     
     private func scrollToTodayIfNeeded() {

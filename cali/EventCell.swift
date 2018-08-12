@@ -72,6 +72,9 @@ class EventCell : UITableViewCell {
         timeLabel.textColor = Colors.black
         durationLabel.textColor = Colors.primary
         titleLabel.textColor = Colors.black
+        
+        self.accessibilityIdentifier = ViewIdentifier.eventCell
+        self.isAccessibilityElement = true
     }
     
     func updateEvent() {

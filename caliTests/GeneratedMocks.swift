@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: cali/EventService.swift at 2018-08-12 02:34:16 +0000
+// MARK: - Mocks generated from file: cali/EventService.swift at 2018-08-12 05:35:20 +0000
 
 //
 //  EventsService.swift
@@ -171,7 +171,7 @@ class MockEventService: EventService, Cuckoo.ProtocolMock {
 }
 
 
-// MARK: - Mocks generated from file: cali/LocationService.swift at 2018-08-12 02:34:16 +0000
+// MARK: - Mocks generated from file: cali/LocationService.swift at 2018-08-12 05:35:20 +0000
 
 //
 //  LocationService.swift
@@ -365,7 +365,7 @@ class MockLocationService: LocationService, Cuckoo.ProtocolMock {
 }
 
 
-// MARK: - Mocks generated from file: cali/Storage.swift at 2018-08-12 02:34:16 +0000
+// MARK: - Mocks generated from file: cali/Storage.swift at 2018-08-12 05:35:20 +0000
 
 //
 //  Storage.swift
@@ -414,6 +414,18 @@ class MockStorage: Storage, Cuckoo.ProtocolMock {
         
     }
     
+    // ["name": "clear", "returnSignature": "", "fullyQualifiedName": "clear()", "parameterSignature": "", "parameterSignatureWithoutNames": "", "inputTypes": "", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "", "call": "", "parameters": [], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubNoReturnFunction"]
+     func clear()  {
+        
+            return cuckoo_manager.call("clear()",
+                parameters: (),
+                superclassCall:
+                    
+                    Cuckoo.MockManager.crashOnProtocolSuperclassCall()
+                    )
+        
+    }
+    
 
 	struct __StubbingProxy_Storage: Cuckoo.StubbingProxy {
 	    private let cuckoo_manager: Cuckoo.MockManager
@@ -430,6 +442,11 @@ class MockStorage: Storage, Cuckoo.ProtocolMock {
 	    func saveContext() -> Cuckoo.ProtocolStubNoReturnFunction<()> {
 	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
 	        return .init(stub: cuckoo_manager.createStub(for: MockStorage.self, method: "saveContext()", parameterMatchers: matchers))
+	    }
+	    
+	    func clear() -> Cuckoo.ProtocolStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockStorage.self, method: "clear()", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -458,6 +475,12 @@ class MockStorage: Storage, Cuckoo.ProtocolMock {
 	        return cuckoo_manager.verify("saveContext()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
+	    @discardableResult
+	    func clear() -> Cuckoo.__DoNotUse<Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("clear()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
 	}
 
 }
@@ -479,10 +502,14 @@ class MockStorage: Storage, Cuckoo.ProtocolMock {
         return DefaultValueRegistry.defaultValue(for: Void.self)
     }
     
+     func clear()  {
+        return DefaultValueRegistry.defaultValue(for: Void.self)
+    }
+    
 }
 
 
-// MARK: - Mocks generated from file: cali/WeatherService.swift at 2018-08-12 02:34:16 +0000
+// MARK: - Mocks generated from file: cali/WeatherService.swift at 2018-08-12 05:35:20 +0000
 
 //
 //  WeatherService.swift

@@ -99,11 +99,15 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         let tickButton = UIBarButtonItem(image: Images.tick, style: .plain, target: self, action: #selector(CreateEventViewController.tickPressed))
         navigationItem.rightBarButtonItem = tickButton
         tickButton.tintColor = Colors.accent
+        tickButton.accessibilityIdentifier = ViewIdentifier.tickButton
         
         layout(deleteButton).parent(view).pinBottom(20).horizontal(.center).install()
         deleteButton.button.addTarget(self, action: #selector(CreateEventViewController.deletePressed), for: .touchUpInside)
         
         updateLeftBarButtons()
+        
+        view.accessibilityIdentifier = ViewIdentifier.createEventView
+        view.isAccessibilityElement = true
     }
     
     private func updateNavigationItemTitle() {
@@ -184,10 +188,8 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         switch viewType {
         case .create:
             deleteButton.isHidden = true
-            self.view.accessibilityIdentifier = AccessibilityIdentifiers.createEventView
         case .edit:
             deleteButton.isHidden = false
-            self.view.accessibilityIdentifier = AccessibilityIdentifiers.editEventView
         }
         
         updateNavigationItemTitle()
@@ -197,7 +199,9 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     private func updateLeftBarButtons() {
         switch viewType {
         case .create:
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: Images.cross, style: .plain, target: self, action: #selector(CreateEventViewController.crossPressed))
+            let crossButton = UIBarButtonItem(image: Images.cross, style: .plain, target: self, action: #selector(CreateEventViewController.crossPressed))
+            navigationItem.leftBarButtonItem = crossButton
+            crossButton.accessibilityIdentifier = ViewIdentifier.crossButton
         case .edit:
             navigationItem.leftBarButtonItem = nil
         }
