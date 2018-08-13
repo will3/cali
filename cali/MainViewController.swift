@@ -60,6 +60,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         didSet {
             calendarView.weatherForecast = weatherForecast
             eventListView.weatherForecast = weatherForecast
+            dayView.weatherForecast = weatherForecast
         }
     }
 

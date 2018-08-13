@@ -55,6 +55,11 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
         updateShadow()
         updateEvent()
         } }
+    let weatherHourView = WeatherHourView()
+    var weather : WeatherData? {
+        didSet { updateWeather() }
+    }
+    var weatherHourViewLayout : LayoutBuilder?
     
     /// Padding vertical
     var paddingVertical: Float {
@@ -171,12 +176,20 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
             .parent(mainHandle)
             .pinLeft(6)
             .pinTop(6)
+            .pinRight(weatherHourView.preferredWidth)
             .install()
+        
+        weatherHourViewLayout = layout(weatherHourView)
+            .parent(mainHandle)
+            .pinTop()
+            .pinRight()
+            .pinBottom().width(weatherHourView.preferredWidth).install()
         
         layout(titleLabel)
             .parent(mainHandle)
             .pinLeft(6)
             .pinTop(6)
+            .pinRight(weatherHourView.preferredWidth)
             .install()
         
         layout(mainHandle).matchParent(self).insets(UIEdgeInsetsMake(halfHandleSize, 0, halfHandleSize, 0)).install()
@@ -276,6 +289,15 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
             mainHandle.layer.shadowOffset = CGSize.zero
         } else {
             mainHandle.layer.shadowOpacity = 0
+        }
+    }
+    
+    private func updateWeather() {
+        if weather == nil {
+            weatherHourViewLayout?.width(0).reinstall()
+        } else {
+            weatherHourViewLayout?.width(weatherHourView.preferredWidth).reinstall()
+            weatherHourView.weatherData = weather
         }
     }
 }

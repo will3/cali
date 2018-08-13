@@ -128,17 +128,19 @@ public class LayoutBuilder : LayoutWrapper {
         return self
     }
     
-    /// Set 
+    /// Set align items
     public func alignItems(_ alignItems: LayoutFit) -> Self {
         layout.alignItems = alignItems
         return self
     }
     
+    /// Use top margin guide
     public func useTopMarginGuide() -> Self {
         layout.useTopMarginGuide = true
         return self
     }
     
+    /// Use bottom margin guide
     public func useBottomMarginGuide() -> Self {
         layout.useBottomMarginGuide = true
         return self
@@ -345,16 +347,22 @@ public class LayoutBuilder : LayoutWrapper {
         return self
     }
     
-    public func install() {
+    @discardableResult
+    public func install() -> Self {
         updatePins()
         layout.install()
+        return self
     }
     
-    public func reinstall() {
+    @discardableResult
+    public func reinstall() -> Self {
         install()
+        return self
     }
     
-    public func uninstall() {
+    @discardableResult
+    public func uninstall() -> Self {
         layout.uninstall()
+        return self
     }
 }

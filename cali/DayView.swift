@@ -30,6 +30,8 @@ class DayView : UIView, DraggableEventViewDelegate {
     
     /// Scroll view
     let scrollView = UIScrollView()
+    /// Weather Forecast
+    var weatherForecast : weatherForecastResponse? { didSet { updateWeather() } }
     
     /// Content view
     private let contentView = UIView()
@@ -96,8 +98,10 @@ class DayView : UIView, DraggableEventViewDelegate {
         
         let events = eventService.find(startDay: startDay)
         for event in events {
-            addEventView(event: event)
+            let eventView = addEventView(event: event)
+            eventView?.weather = weatherForecast?.getWeather(event: event)
         }
+        
         if let draggableEventView = self.draggableEventView {
             draggableEventView.superview?.bringSubview(toFront: draggableEventView)
         }
@@ -129,10 +133,11 @@ class DayView : UIView, DraggableEventViewDelegate {
     }
     
     /// Add event view
-    private func addEventView(event: Event) {
+    @discardableResult
+    private func addEventView(event: Event) -> DraggableEventView? {
         scrollToFirstEventIfNeeded()
         
-        guard let id = event.id  else { return }
+        guard let id = event.id  else { return nil }
         if eventViewMap[id] == nil {
             let eventView = DraggableEventView()
             eventViewMap[id] = eventView
@@ -149,7 +154,9 @@ class DayView : UIView, DraggableEventViewDelegate {
             eventViewMap[id]?.isDraggable = false
         }
         
-        placeEventView(eventViewMap[id]!)
+        let eventView = eventViewMap[id]!
+        placeEventView(eventView)
+        return eventView
     }
     
     /// Place event view
@@ -291,5 +298,12 @@ class DayView : UIView, DraggableEventViewDelegate {
     
     private func snapTimeInterval(_ timeInterval: TimeInterval) -> TimeInterval {
         return floor(timeInterval / TimeIntervals.quarter) * TimeIntervals.quarter
+    }
+    
+    private func updateWeather() {
+        for eventView in eventViewMap.values {
+            guard let event = eventView.event else { continue }
+            eventView.weather = weatherForecast?.getWeather(event: event)
+        }
     }
 }
