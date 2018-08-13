@@ -11,7 +11,7 @@ It's a convention over configuration, Flexbox inspired framework with a chainabl
 
 - Browsable internal documentation: [link](http://will3.github.io/calidoc)  
 
-<img src="https://github.com/will3/cali/blob/master/doc.png" width="200">
+<img src="https://github.com/will3/cali/blob/master/doc.png" width="400">
 
 - Dependency injection  
 
