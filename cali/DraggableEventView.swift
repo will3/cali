@@ -50,6 +50,8 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
     private let labelContainer = UIView()
     /// Title label
     private let titleLabel = UILabel()
+    /// Is dragging
+    private var isDragging = false { didSet { updateShadow() } }
     
     /// Padding vertical
     var paddingVertical: Float {
@@ -116,6 +118,7 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
         mainHandle.backgroundColor = Colors.accent
         mainHandle.layer.cornerRadius = 2
         mainHandle.clipsToBounds = true
+        mainHandle.layer.masksToBounds = false
         
         timeLabel.textColor = Colors.white
         durationLabel.textColor = Colors.white
@@ -161,6 +164,8 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
         mainTapGesture.addTarget(self, action: #selector(DraggableEventView.mainTapped(tap:)))
         
         updateDraggable()
+        
+        clipsToBounds = true
     }
     
     @objc func mainDragged(pan: UIPanGestureRecognizer) {
@@ -168,7 +173,10 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDrag(self, translation: translation)
         
+        isDragging = true
+        
         if pan.state == .ended {
+            isDragging = false
             delegate?.draggableEventViewDidEndDrag(self)
         }
     }
@@ -177,7 +185,11 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
         if !isDraggable { return }
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDragTop(self, translation: translation)
+        
+        isDragging = true
+        
         if pan.state == .ended {
+            isDragging = false
             delegate?.draggableEventViewDidEndDrag(self)
         }
     }
@@ -186,7 +198,11 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
         if !isDraggable { return }
         let translation = pan.translation(in: pan.view?.superview)
         delegate?.draggableEventViewDidDragBot(self, translation: translation)
+        
+        isDragging = true
+        
         if pan.state == .ended {
+            isDragging = false
             delegate?.draggableEventViewDidEndDrag(self)
         }
     }
@@ -213,5 +229,18 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    // MARK: Private
+    
+    private func updateShadow() {
+        if isDragging {
+            mainHandle.layer.shadowColor = Colors.black.cgColor
+            mainHandle.layer.shadowOpacity = 0.2
+            mainHandle.layer.shadowRadius = 10
+            mainHandle.layer.shadowOffset = CGSize.zero
+        } else {
+            mainHandle.layer.shadowOpacity = 0
+        }
     }
 }

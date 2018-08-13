@@ -39,11 +39,11 @@ class DayView : UIView, DraggableEventViewDelegate {
     weak var viewController: UIViewController?
     /// Labels
     private var labels : [UILabel] = []
-
-    private var map: [ String: DraggableEventView ] = [:]
-
+    /// Event view map
+    private var eventViewMap: [ String: DraggableEventView ] = [:]
+    /// Layouts
     private var layouts: [ String: LayoutBuilder ] = [:]
-
+    /// Active draggable event view
     private var draggableEventView: DraggableEventView?
     
     /// Start day
@@ -68,7 +68,17 @@ class DayView : UIView, DraggableEventViewDelegate {
     }
     let labelWidth : Float = 42
     let graphStartX : Float = 54
-    let graphRightPadding : Float = 2
+    let graphRightPadding : Float = 6
+    var didScrollToFirstEvent = false
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if !didScrollToFirstEvent && eventViewMap.count > 0 {
+            scrollToFirstEvent()
+            didScrollToFirstEvent = true
+        }
+    }
     
     /// Update labels
     private func updateLabels() {
@@ -87,10 +97,10 @@ class DayView : UIView, DraggableEventViewDelegate {
     private func updateEvents() {
         guard let startDay = self.startDay else { return }
         
-        for kv in map {
+        for kv in eventViewMap {
             kv.value.removeFromSuperview()
         }
-        map.removeAll()
+        eventViewMap.removeAll()
         layouts.removeAll()
         
         let events = eventService.find(startDay: startDay)
@@ -102,12 +112,22 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
+    private func scrollToFirstEvent() {
+        if let eventView = eventViewMap.values.first {
+            scrollToEventView(eventView)
+        }
+    }
+    
+    private func scrollToEventView(_ eventView: DraggableEventView) {
+        scrollView.scrollRectToVisible(eventView.frame, animated: true)
+    }
+    
     /// Add event view
     private func addEventView(event: Event) {
         guard let id = event.id  else { return }
-        if map[id] == nil {
+        if eventViewMap[id] == nil {
             let eventView = DraggableEventView()
-            map[id] = eventView
+            eventViewMap[id] = eventView
             eventView.event = event
             eventView.delegate = self
             eventView.mainTapGesture.addTarget(self, action: #selector(DayView.didTapEvent(tap:)))
@@ -115,13 +135,13 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
         
         if event == self.event {
-            map[id]?.isDraggable = true
-            draggableEventView = map[id]
+            eventViewMap[id]?.isDraggable = true
+            draggableEventView = eventViewMap[id]
         } else {
-            map[id]?.isDraggable = false
+            eventViewMap[id]?.isDraggable = false
         }
         
-        placeEventView(map[id]!)
+        placeEventView(eventViewMap[id]!)
     }
     
     /// Place event view
@@ -159,7 +179,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func loadView() {
+    private func loadView() {
         scrollView.showsVerticalScrollIndicator = false
         layout(scrollView).matchParent(self).install()
         layout(contentView).matchParent(scrollView).install()

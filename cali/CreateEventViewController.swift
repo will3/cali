@@ -99,15 +99,14 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         let tickButton = UIBarButtonItem(image: Images.tick, style: .plain, target: self, action: #selector(CreateEventViewController.tickPressed))
         navigationItem.rightBarButtonItem = tickButton
         tickButton.tintColor = Colors.accent
-        tickButton.accessibilityIdentifier = ViewIdentifier.tickButton
+        tickButton.accessibilityIdentifier = AccessibilityIdentifier.tickButton.rawValue
         
         layout(deleteButton).parent(view).pinBottom(20).horizontal(.center).install()
         deleteButton.button.addTarget(self, action: #selector(CreateEventViewController.deletePressed), for: .touchUpInside)
         
         updateLeftBarButtons()
         
-        view.accessibilityIdentifier = ViewIdentifier.createEventView
-        view.isAccessibilityElement = true
+        AccessibilityIdentifier.createEventView.set(viewController: self)        
     }
     
     private func updateNavigationItemTitle() {
@@ -201,7 +200,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         case .create:
             let crossButton = UIBarButtonItem(image: Images.cross, style: .plain, target: self, action: #selector(CreateEventViewController.crossPressed))
             navigationItem.leftBarButtonItem = crossButton
-            crossButton.accessibilityIdentifier = ViewIdentifier.crossButton
+            crossButton.accessibilityIdentifier = AccessibilityIdentifier.crossButton.rawValue
         case .edit:
             navigationItem.leftBarButtonItem = nil
         }

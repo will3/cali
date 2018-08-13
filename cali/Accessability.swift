@@ -7,22 +7,30 @@
 //
 
 import Foundation
+import UIKit
 
-class ViewIdentifier {
+enum AccessibilityIdentifier : String {
+    case mainView = "mainView"
+    case createEventView = "createEventView"
     
-    static let mainView = "mainView"
+    case plusButton = "plusButton"
+    case titleInput = "titleInput"
+    case tickButton = "tickButton"
+    case crossButton = "crossButton"
+    case eventCell = "eventCell"
+    case eventListView = "eventListView"
+    case eventTableView = "eventTableView"
+    case calendarButton = "calendarButton"
     
-    static let createEventView = "createEventView"
-    
-    static let plusButton = "plusButton"
-    
-    static let titleInput = "titleInput"
-    
-    static let tickButton = "tickButton"
-    
-    static let crossButton = "crossButton"
-
-    static let eventCell = "eventCell"
-    
-    static let eventListView = "eventListView"
+    func set(viewController: UIViewController) {
+        let accessibilityView = UIView()
+        accessibilityView.backgroundColor = UIColor.white
+        viewController.view.addSubview(accessibilityView)
+        accessibilityView.isAccessibilityElement = true
+        accessibilityView.accessibilityIdentifier = rawValue
+        
+        accessibilityView.frame = viewController.view.bounds
+        accessibilityView.translatesAutoresizingMaskIntoConstraints = true
+        accessibilityView.superview?.sendSubview(toBack: accessibilityView)
+    }
 }

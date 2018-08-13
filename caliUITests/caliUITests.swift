@@ -31,22 +31,22 @@ class caliUITests: XCTestCase {
         super.tearDown()
     }
     
-//    func testCreateEvent() {
-//        let app = XCUIApplication()
-//
-//        let _ = MainView(app: app)
-//            .createEvent()
-//            .save()
-//    }
-//
-//    func testDiscardEvent() {
-//
-//        let app = XCUIApplication()
-//
-//        let _ = MainView(app: app)
-//            .createEvent()
-//            .discard()
-//    }
+    func testCreateEvent() {
+        let app = XCUIApplication()
+
+        let _ = MainView(app: app)
+            .createEvent()
+            .save()
+    }
+
+    func testDiscardEvent() {
+
+        let app = XCUIApplication()
+
+        let _ = MainView(app: app)
+            .createEvent()
+            .discard()
+    }
     
     func testCreateEventAndOpen() {
         let app = XCUIApplication()
@@ -55,5 +55,13 @@ class caliUITests: XCTestCase {
             .createEvent()
             .save()
             .openEvent()
+    }
+    
+    func testAnimatedCalendarView() {
+        let app = XCUIApplication()
+        
+        let _ = MainView(app: app)
+            .scrollDownEvents()
+            .pressCalendarButton()
     }
 }

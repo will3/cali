@@ -32,7 +32,7 @@ class EventHandleView: UIView {
     
     func loadView() {
         circle.backgroundColor = Colors.white
-        let size = Float(10)
+        let size = Float(14)
         circle.layer.cornerRadius = CGFloat(size) / 2
         circle.clipsToBounds = true
         circle.layer.borderWidth = 1

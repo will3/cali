@@ -29,7 +29,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     /// View did load
     private var didLoad = false
     /// Table view
-    private let tableView = UITableView()
+    let tableView = UITableView()
     /// Calendar
     private let calendar = Injection.defaultContainer.calendar
     /// Delegate
@@ -94,9 +94,9 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.showsVerticalScrollIndicator = false
         
         self.isAccessibilityElement = true
-        self.accessibilityIdentifier = ViewIdentifier.eventListView
+        self.accessibilityIdentifier = AccessibilityIdentifier.eventListView.rawValue
         
-        tableView.isAccessibilityElement = true
+        tableView.accessibilityIdentifier = AccessibilityIdentifier.eventTableView.rawValue
     }
     
     private func scrollToTodayIfNeeded() {

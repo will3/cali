@@ -13,15 +13,15 @@ class CreateEventView {
     var app: XCUIApplication
     init(app: XCUIApplication) {
         self.app = app
-        TestUtils.check(app: app, viewIdentifier: ViewIdentifier.createEventView)
+        XCTAssert(app.otherElements.matching(identifier: AccessibilityIdentifier.createEventView.rawValue).count > 0)
     }
     
     var tickButton : XCUIElement {
-        return app.buttons.matching(identifier: ViewIdentifier.tickButton).firstMatch
+        return app.buttons.matching(identifier: AccessibilityIdentifier.tickButton.rawValue).firstMatch
     }
     
     var crossButton : XCUIElement {
-        return app.buttons.matching(identifier: ViewIdentifier.crossButton).firstMatch
+        return app.buttons.matching(identifier: AccessibilityIdentifier.crossButton.rawValue).firstMatch
     }
     
     func save() -> MainView {
@@ -33,7 +33,7 @@ class CreateEventView {
         crossButton.tap()
         
         let actionSheet = app.sheets.firstMatch
-        TestUtils.wait(app: app, element: actionSheet)
+        
         actionSheet.buttons.firstMatch.tap()
 
         return MainView(app: app)

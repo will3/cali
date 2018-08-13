@@ -159,8 +159,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        view.accessibilityIdentifier = ViewIdentifier.mainView
-        view.isAccessibilityElement = true
+        AccessibilityIdentifier.mainView.set(viewController: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -189,7 +188,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             UIBarButtonItem(image: layoutTypeImage, style: .plain, target: self, action: #selector(MainViewController.layoutPressed))
         ]
         
-        plusButton.accessibilityIdentifier = ViewIdentifier.plusButton
+        plusButton.accessibilityIdentifier = AccessibilityIdentifier.plusButton.rawValue
         
         navigationItem.rightBarButtonItems = rightButtons
     }
@@ -197,6 +196,13 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     private func updateLeftBarButtons() {
         calendarAnimatedView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         let leftItem = UIBarButtonItem(customView: calendarAnimatedView)
+        
+        leftItem.accessibilityElements = [
+            calendarAnimatedView.button
+        ]
+        
+        calendarAnimatedView.button.accessibilityIdentifier = AccessibilityIdentifier.calendarButton.rawValue
+        
         navigationItem.leftBarButtonItem = leftItem
     }
     
@@ -370,10 +376,12 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             currentContentViewChild?.removeFromSuperview()
             layout(eventListView).matchParent(contentView).install()
             currentContentViewChild = eventListView
+            self.contentView.accessibilityElements = [ self.eventListView.tableView ]
         case .day:
             currentContentViewChild?.removeFromSuperview()
             layout(dayView).matchParent(contentView).install()
             currentContentViewChild = dayView
+            self.contentView.accessibilityElements = [ self.dayView ]
             break
         }
     }

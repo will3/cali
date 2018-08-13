@@ -17,17 +17,22 @@ class MainView {
     var app: XCUIApplication
     init(app: XCUIApplication) {
         self.app = app
-        TestUtils.check(app: app, viewIdentifier: ViewIdentifier.mainView)
     }
     
     var plusButton : XCUIElement {
-        return app.buttons.matching(identifier: ViewIdentifier.plusButton).firstMatch
+        return app.buttons.matching(identifier: AccessibilityIdentifier.plusButton.rawValue).firstMatch
     }
     
     var eventCell : XCUIElement {
-        let label = "Untitled"
-        app.otherElements
-        return app.cells.containing(NSPredicate(format: "label CONTAINS %@", label)).firstMatch
+        return app.tables.cells.matching(identifier: AccessibilityIdentifier.eventCell.rawValue).firstMatch
+    }
+    
+    var eventTableView : XCUIElement {
+        return app.tables.matching(identifier: AccessibilityIdentifier.eventTableView.rawValue).firstMatch
+    }
+    
+    var calendarButton : XCUIElement {
+        return app.buttons.matching(identifier: AccessibilityIdentifier.calendarButton.rawValue).firstMatch
     }
     
     func createEvent() -> CreateEventView {
@@ -39,5 +44,15 @@ class MainView {
     func openEvent() -> CreateEventView {
         eventCell.tap()
         return CreateEventView(app: app)
+    }
+    
+    func scrollDownEvents() -> Self {
+        eventTableView.swipeDown()
+        return self
+    }
+    
+    func pressCalendarButton() -> Self {
+        calendarButton.tap()
+        return self
     }
 }

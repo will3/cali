@@ -83,7 +83,6 @@
 		6FAF59ED211FD3C00041BC17 /* UITestNowProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59EC211FD3C00041BC17 /* UITestNowProvider.swift */; };
 		6FAF59EF211FDAA50041BC17 /* Accessability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F46FB36211FAA2C000DBBCB /* Accessability.swift */; };
 		6FAF59F1211FDAAF0041BC17 /* Accessability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59F0211FDAAF0041BC17 /* Accessability.swift */; };
-		6FAF59F3211FDB760041BC17 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAF59F2211FDB760041BC17 /* TestUtils.swift */; };
 		6FE2199021199C08005C4303 /* cali.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FE2198E21199C08005C4303 /* cali.xcdatamodeld */; };
 		6FE2199521199D9A005C4303 /* _Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE2199321199D9A005C4303 /* _Event.swift */; };
 		6FE2199621199D9A005C4303 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE2199421199D9A005C4303 /* Event.swift */; };
@@ -190,7 +189,6 @@
 		6FAF59EA211FD1460041BC17 /* UITestStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestStorage.swift; sourceTree = "<group>"; };
 		6FAF59EC211FD3C00041BC17 /* UITestNowProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestNowProvider.swift; sourceTree = "<group>"; };
 		6FAF59F0211FDAAF0041BC17 /* Accessability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Accessability.swift; path = cali/Accessability.swift; sourceTree = SOURCE_ROOT; };
-		6FAF59F2211FDB760041BC17 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		6FE2198F21199C08005C4303 /* cali.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cali.xcdatamodel; sourceTree = "<group>"; };
 		6FE2199321199D9A005C4303 /* _Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Event.swift; sourceTree = "<group>"; };
 		6FE2199421199D9A005C4303 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -312,7 +310,6 @@
 		6F4EA6C22113E3860096B9E9 /* caliUITests */ = {
 			isa = PBXGroup;
 			children = (
-				6FAF59F2211FDB760041BC17 /* TestUtils.swift */,
 				6FAF59F0211FDAAF0041BC17 /* Accessability.swift */,
 				6F346846211E729D0005D5C7 /* Views */,
 				6F4EA6C32113E3860096B9E9 /* caliUITests.swift */,
@@ -854,7 +851,6 @@
 				6F4EA6C42113E3860096B9E9 /* caliUITests.swift in Sources */,
 				6F346848211E72B10005D5C7 /* MainView.swift in Sources */,
 				6F34684E211E72D80005D5C7 /* CreateEventView.swift in Sources */,
-				6FAF59F3211FDB760041BC17 /* TestUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1098,116 +1094,6 @@
 			};
 			name = Release;
 		};
-		6FAF59C4211FC6E30041BC17 /* UITest */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = UITest;
-		};
-		6FAF59C5211FC6E30041BC17 /* UITest */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0864F6389BF178C252148A24 /* Pods-cali.uitest.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CALI_UI_TEST = true;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 52NW8KPTD6;
-				INFOPLIST_FILE = cali/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.str.cali;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = UITest;
-		};
-		6FAF59C6211FC6E30041BC17 /* UITest */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 867B6189CA06160F86698A9B /* Pods-caliTests.uitest.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 52NW8KPTD6;
-				INFOPLIST_FILE = caliTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.str.caliTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cali.app/cali";
-			};
-			name = UITest;
-		};
-		6FAF59C7211FC6E30041BC17 /* UITest */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F087C1B4D3FED1E29EF156D /* Pods-caliUITests.uitest.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 52NW8KPTD6;
-				INFOPLIST_FILE = caliUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.str.caliUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_TARGET_NAME = cali;
-			};
-			name = UITest;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1215,7 +1101,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4EA6C62113E3860096B9E9 /* Debug */,
-				6FAF59C4211FC6E30041BC17 /* UITest */,
 				6F4EA6C72113E3860096B9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1225,7 +1110,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4EA6C92113E3860096B9E9 /* Debug */,
-				6FAF59C5211FC6E30041BC17 /* UITest */,
 				6F4EA6CA2113E3860096B9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1235,7 +1119,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4EA6CC2113E3860096B9E9 /* Debug */,
-				6FAF59C6211FC6E30041BC17 /* UITest */,
 				6F4EA6CD2113E3860096B9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1245,7 +1128,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F4EA6CF2113E3860096B9E9 /* Debug */,
-				6FAF59C7211FC6E30041BC17 /* UITest */,
 				6F4EA6D02113E3860096B9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
