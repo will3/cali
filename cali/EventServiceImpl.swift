@@ -25,6 +25,7 @@ class EventServiceImpl : EventService {
         event.id = NSUUID().uuidString
         event.start = start
         event.duration = duration
+        event.planForWeather = true
         
         map.addEvent(event)
         
