@@ -1,2 +1,2 @@
 cd cali
-mogenerator --model cali.xcdatamodeld/cali.xcdatamodel --human-dir models --machine-dir models/generated --swift
+mogenerator --model cali.xcdatamodeld/cali.xcdatamodel --human-dir coredatamodels --machine-dir coredatamodels/generated --swift

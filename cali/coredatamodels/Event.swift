@@ -2,7 +2,7 @@ import Foundation
 
 @objc(Event)
 open class Event: _Event {
-	// Custom logic goes here.
+    // Custom logic goes here.
     
     /// Start day
     var startDay: Date? {
@@ -44,7 +44,14 @@ open class Event: _Event {
         return NSLocalizedString("Untitled", comment: "")
     }
     
+    /// Plan for weather
     var planForWeather: Bool {
-        return planforw
+        get {
+            return planForWeatherNumber?.boolValue ?? false
+        }
+        set(value) {
+            planForWeatherNumber = NSNumber(value: value)
+        }
     }
 }
+
