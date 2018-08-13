@@ -82,7 +82,6 @@ class CalendarAnimatedView : UIView {
             let leaf = LeafView()
             leafs.append(leaf)
             leaf.translatesAutoresizingMaskIntoConstraints = false
-            leaf.day = day
             addSubview(leaf)
             
             layout(leaf)
@@ -92,6 +91,11 @@ class CalendarAnimatedView : UIView {
                 .install()
             
             leaf.index = numberOfLeaves - index - 1
+            
+            if leaf.index == 0 {
+                leaf.day = "\(day)"
+            }
+            leaf.isFront = leaf.index == 0
         }
         
         layout(button).matchParent(self).install()
@@ -102,15 +106,18 @@ class CalendarAnimatedView : UIView {
     private func updateDay() {
         let day = self.day
         for leaf in leafs {
-            leaf.day = day
+            if leaf.index == 0 {
+                leaf.day = "\(day)"
+            }
         }
     }
     
     private class LeafView : UIView {
 
-        var day = 1 { didSet { updateDay() } }
-        var delta : Float = 0 { didSet { updateDelta() }}
+        var day = "" { didSet { updateDay() } }
+        var delta : Float = 0 { didSet { updateDelta() } }
         var index = 0
+        var isFront = false { didSet { updateImage() } }
 
         private var loaded = false
         private let imageView = UIImageView()
@@ -127,21 +134,31 @@ class CalendarAnimatedView : UIView {
         }
         
         private func loadView() {
-            imageView.image = Images.cal
             layout(imageView).matchParent(self).install()
             layout(label).parent(self).horizontal(.center).pinBottom(1.5).install()
             
             label.font = Fonts.fontMedium
             label.textColor = Colors.accent
             updateDay()
+            updateImage()
+            self.layer.shouldRasterize = true
         }
         
+        private func updateImage() {
+            if isFront {
+                imageView.image = Images.cal
+            } else {
+                imageView.image = Images.calLeaf
+            }
+        }
+
         private func updateDay() {
-            label.text = "\(day)"
+            label.text = day
         }
         
         private func updateDelta() {
             let offset = CGFloat(1) - CGFloat(index) / 3.0
+            
             if index > 0 {
                 let maxTilt = CGFloat(-20) * .pi / 180.0
                 var amount = CGFloat(delta) / CGFloat(800)
@@ -156,6 +173,8 @@ class CalendarAnimatedView : UIView {
                 }
                 
                 amount = amount.truncatingRemainder(dividingBy: 1.0)
+                
+                self.layer.zPosition = -abs(amount * 1000.0)
                 
                 amount = pow(amount, 2.0) * sign
                 
