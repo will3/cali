@@ -14,7 +14,10 @@ class NavigationBars {
         case white
     }
     
-    /// Style a navigation bar
+    /** Style a navigation bar
+     *  - parameter navigationBar: Navigation bar to style
+     *  - parameter style: Style to apply
+     */
     static func style(navigationBar: UINavigationBar, _ style: Style) {
         switch style {
         case .white:

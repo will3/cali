@@ -17,7 +17,9 @@ class EventMap {
         map.removeAll()
     }
     
-    /// Add event
+    /** Add event
+     * - parameter event: Event to add
+     */
     func addEvent(_ event: Event) {
         guard let startDay = event.startDay else { return }
         if map[startDay] == nil {
@@ -27,13 +29,18 @@ class EventMap {
         map[startDay]?.insert(event)
     }
     
-    /// Remove event
+    /** Remove event
+     * - parameter event: Event to remove
+     */
     func removeEvent(_ event: Event) {
         guard let startDay = event.startDay else { return }
         map[startDay]?.remove(event)
     }
     
-    /// Find events in day
+    /** Find events in day
+     * - parameter startDay: day
+     * - returns: Events sorted by start time
+     */
     func find(startDay: Date) -> [Event] {
         let result = map[startDay] ?? []
         return result.sorted(by: { (a, b) -> Bool in

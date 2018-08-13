@@ -11,7 +11,7 @@ import Layouts
 import CoreLocation
 
 /// Main view controller
-class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventListViewDelegate, CalendarViewDelegate, LayoutSelectorViewDelegate {
+class MainViewController: UIViewController {
     /// Week day bar
     private let weekdayBar = WeekdayBar()
     /// Calendar view
@@ -304,32 +304,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         isCalendarViewExpanded = false
     }
     
-    // MARK: UIGestureRecognizerDelegate
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    // MARK: EventListViewDelegate
-    
-    func eventListViewDidScrollToDay(eventListView: EventListView) {
-        self.selectedDate = eventListView.firstDay
-        calendarView.scrollToSelectedDate()
-    }
-    
-    func eventListViewDidScroll(eventListView: EventListView) {
-        if let offset = eventListView.offset {
-            todayButton.offset = offset
-        }
-    }
-    
-    // MARK: CalendarViewDelegate
-
-    func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
-        self.selectedDate = calendarView.selectedDate
-        eventListView.scrollToSelectedDate()
-    }
-    
     // MARK: Layout selector
     
     private func showLayoutSelector() {
@@ -369,15 +343,6 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     @objc private func layoutSelectorBackgroundViewTapped() {
         hideLayoutSelector()
-    }
-    
-    // MARK: LayoutSelectorViewDelegate
-    
-    func layoutSelectorViewDidChange(_ view: LayoutSelectorView) {
-        hideLayoutSelector()
-        if (self.layoutType != layoutSelector.selectedType) {
-            self.layoutType = layoutSelector.selectedType
-        }
     }
     
     // MARK: Private
@@ -429,3 +394,37 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     }
 }
 
+extension MainViewController : UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
+extension MainViewController : EventListViewDelegate {
+    func eventListViewDidScrollToDay(eventListView: EventListView) {
+        self.selectedDate = eventListView.firstDay
+        calendarView.scrollToSelectedDate()
+    }
+    
+    func eventListViewDidScroll(eventListView: EventListView) {
+        if let offset = eventListView.offset {
+            todayButton.offset = offset
+        }
+    }
+}
+
+extension MainViewController : CalendarViewDelegate {
+    func calendarViewDidChangeSelectedDate(_ calendarView: CalendarView) {
+        self.selectedDate = calendarView.selectedDate
+        eventListView.scrollToSelectedDate()
+    }
+}
+
+extension MainViewController : LayoutSelectorViewDelegate {
+    func layoutSelectorViewDidChange(_ view: LayoutSelectorView) {
+        hideLayoutSelector()
+        if (self.layoutType != layoutSelector.selectedType) {
+            self.layoutType = layoutSelector.selectedType
+        }
+    }
+}

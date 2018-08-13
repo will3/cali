@@ -109,6 +109,21 @@ class EventFormatter {
         }
     }
     
+    /**
+     * Format start time to end time
+     *
+     * - parameter start: Start time
+     * - parameter end: End time
+     * - returns: Formatted string
+     */
+    static func formatTimes(start: Date, end: Date) -> String {
+        let startTimeText = DateFormatters.hmmaFormatter.string(from: start)
+        let endTimeText = DateFormatters.hmmaFormatter.string(from: end)
+        return String(format:NSLocalizedString("%1$@ → %2$@", comment: "Create event start time to end time"), startTimeText, endTimeText)
+    }
+    
+    // MARK: Private -
+    
     private static func formatDuration(from: Date, to: Date, minFormat: String, hourFormat: String, separator: String) -> String {
         
         let dateComponents = calendar.dateComponents([.hour, .minute], from: from, to: to)
@@ -159,18 +174,5 @@ class EventFormatter {
             minFormat: NSLocalizedString("%dm", comment: ""),
             hourFormat: NSLocalizedString("%dh", comment: ""),
             separator: " ")
-    }
-    
-    /**
-     * Format start time to end time
-     *
-     * - parameter start: Start time
-     * - parameter end: End time
-     * - returns: Formatted string
-     */
-    static func formatTimes(start: Date, end: Date) -> String {
-        let startTimeText = DateFormatters.hmmaFormatter.string(from: start)
-        let endTimeText = DateFormatters.hmmaFormatter.string(from: end)
-        return String(format:NSLocalizedString("%1$@ → %2$@", comment: "Create event start time to end time"), startTimeText, endTimeText)
     }
 }

@@ -11,7 +11,7 @@ import CoreLocation
 import UIKit
 
 /// Location service
-class LocationServiceImpl : NSObject, LocationService, CLLocationManagerDelegate {
+class LocationServiceImpl : NSObject, LocationService {
     /// Location manager
     private let locationManager = CLLocationManager()
     
@@ -39,27 +39,7 @@ class LocationServiceImpl : NSObject, LocationService, CLLocationManagerDelegate
         }
     }
     
-    // MARK: CLLocationManagerDelegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.location = locations[locations.count - 1]
-        NotificationCenter.default.post(name: LocationServiceNotifications.didUpdate, object: nil)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            self.locationManager.requestLocation()
-        default:
-            break
-        }
-    }
-    
-    // MARK: Private
+    // MARK: - Private
     
     /// Show location permission prompt
     private func showLocationPermission(from: UIViewController) {
@@ -99,6 +79,26 @@ class LocationServiceImpl : NSObject, LocationService, CLLocationManagerDelegate
                 // If general location settings are enabled then open location settings for the app
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
+        }
+    }
+}
+
+extension LocationServiceImpl : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.location = locations[locations.count - 1]
+        NotificationCenter.default.post(name: LocationServiceNotifications.didUpdate, object: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.locationManager.requestLocation()
+        default:
+            break
         }
     }
 }
