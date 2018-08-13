@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: cali/EventService.swift at 2018-08-13 09:13:27 +0000
+// MARK: - Mocks generated from file: cali/EventService.swift at 2018-08-13 09:20:15 +0000
 
 //
 //  EventsService.swift
@@ -171,7 +171,7 @@ class MockEventService: EventService, Cuckoo.ProtocolMock {
 }
 
 
-// MARK: - Mocks generated from file: cali/LocationService.swift at 2018-08-13 09:13:27 +0000
+// MARK: - Mocks generated from file: cali/LocationService.swift at 2018-08-13 09:20:15 +0000
 
 //
 //  LocationService.swift
@@ -365,7 +365,7 @@ class MockLocationService: LocationService, Cuckoo.ProtocolMock {
 }
 
 
-// MARK: - Mocks generated from file: cali/Storage.swift at 2018-08-13 09:13:27 +0000
+// MARK: - Mocks generated from file: cali/Storage.swift at 2018-08-13 09:20:15 +0000
 
 //
 //  Storage.swift
@@ -509,7 +509,7 @@ class MockStorage: Storage, Cuckoo.ProtocolMock {
 }
 
 
-// MARK: - Mocks generated from file: cali/WeatherService.swift at 2018-08-13 09:13:27 +0000
+// MARK: - Mocks generated from file: cali/WeatherService.swift at 2018-08-13 09:20:15 +0000
 
 //
 //  WeatherService.swift
