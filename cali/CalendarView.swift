@@ -274,7 +274,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         calendarCell.shouldShowCircle = selected
         calendarCell.numEvents = eventService.find(startDay: date.date).count
         
-        if let weatherData = weatherForecast?.getForecast(dateUTC: date.dateUTC) {
+        if let weatherData = weatherForecast?.getWeather(dateUTC: date.dateUTC) {
             calendarCell.weatherIcon = weatherData.icon
         } else {
             calendarCell.weatherIcon = nil

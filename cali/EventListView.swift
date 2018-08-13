@@ -148,7 +148,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: EventListHeaderView.identifier) as! EventListHeaderView
         guard let date = dates?.getDate(index: section) else { return UITableViewCell() }
         headerView.date = date.date
-        headerView.weatherIcon = weatherForecast?.getForecast(dateUTC: date.dateUTC)?.icon
+        headerView.weather = weatherForecast?.getWeather(dateUTC: date.dateUTC)
         return headerView
     }
     

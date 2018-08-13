@@ -19,6 +19,7 @@ extension UIView : LayoutWrapper {
     }
 }
 
+/// Fluent interface for Layout
 public class LayoutBuilder : LayoutWrapper {
     let layout: Layout
     
@@ -30,6 +31,7 @@ public class LayoutBuilder : LayoutWrapper {
         return layout
     }
     
+    /// Stack vertically
     public func stack(_ wrappers: [LayoutWrapper]) -> Self {
         layout.stackChildren = true
         for wrapper in wrappers {
@@ -38,79 +40,95 @@ public class LayoutBuilder : LayoutWrapper {
         return self
     }
     
+    /// Stack horizontally
     public func stackHorizontal(_ wrappers: [LayoutWrapper]) -> Self {
         return stack(wrappers).direction(.horizontal)
     }
     
+    /// Stack vertically
     public func stackVertical(_ wrappers: [LayoutWrapper]) -> Self {
         return stack(wrappers)
     }
     
+    /// Set width
     public func width(_ width: LayoutSize) -> Self {
         layout.width = width
         return self
     }
     
+    /// Set width
     public func width(_ width: Float) -> Self {
         layout.width = .value(width)
         return self
     }
     
+    /// Set min width
     public func minWidth(_ minWidth: LayoutSize) -> Self {
         layout.minWidth = minWidth
         return self
     }
     
+    /// Set min width
     public func minWidth(_ minWidth: Float) -> Self {
         layout.minWidth = .value(minWidth)
         return self
     }
     
+    /// Set max width
     public func maxWidth(_ maxWidth: LayoutSize) -> Self {
         layout.maxWidth = maxWidth
         return self
     }
     
+    /// Set max width
     public func maxWidth(_ maxWidth: Float) -> Self {
         layout.maxWidth = .value(maxWidth)
         return self
     }
     
+    /// Set height
     public func height(_ height: LayoutSize) -> Self {
         layout.height = height
         return self
     }
     
+    /// Set height
     public func height(_ height: Float) -> Self {
         layout.height = .value(height)
         return self
     }
     
+    /// Set min height
     public func minHeight(_ minHeight: LayoutSize) -> Self {
         layout.minHeight = minHeight
         return self
     }
     
+    /// Set min height
     public func minHeight(_ minHeight: Float) -> Self {
         layout.minHeight = .value(minHeight)
         return self
     }
     
+    /// Set max height
     public func maxHeight(_ maxHeight: LayoutSize) -> Self {
         layout.maxHeight = maxHeight
         return self
     }
     
+    /// Set max height
     public func maxHeight(_ maxHeight: Float) -> Self {
         layout.maxHeight = .value(maxHeight)
         return self
     }
     
+    /// Set stack direction
     public func direction(_ direction: LayoutDirection) -> Self {
         layout.direction = direction
         return self
     }
     
+    /// Set 
     public func alignItems(_ alignItems: LayoutFit) -> Self {
         layout.alignItems = alignItems
         return self

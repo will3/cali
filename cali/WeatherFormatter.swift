@@ -15,9 +15,20 @@ class WeatherFormatter {
     }
     
     static func formatFahrenheit(_ fahrenheit: Double) -> String {
-        var measurement = Measurement(value: fahrenheit, unit: UnitTemperature.fahrenheit)
-        measurement.convert(to: UnitTemperature.celsius)
+        var measurement = fahrenheitToCelsius(fahrenheit)
         measurement.value = round(measurement.value)
         return measurementFormatter.string(from: measurement)
+    }
+    
+    static func formatTempRange(fahrenheitA: Double, fahrenheitB: Double) -> String {
+        let a = Int(floor(fahrenheitToCelsius(fahrenheitA).value))
+        let b = Int(floor(fahrenheitToCelsius(fahrenheitB).value))
+        return "\(a) - \(b)"
+    }
+    
+    private static func fahrenheitToCelsius(_ fahrenheit: Double) -> Measurement<UnitTemperature> {
+        var measurement = Measurement(value: fahrenheit, unit: UnitTemperature.fahrenheit)
+        measurement.convert(to: UnitTemperature.celsius)
+        return measurement
     }
 }

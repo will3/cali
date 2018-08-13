@@ -14,8 +14,10 @@ class EventListHeaderView: UITableViewHeaderFooterView {
     static let identifier = "EventListHeaderView"
     
     private let weatherIconView = WeatherIconView()
+    private let weatherContainer = UIView()
+    private let weatherLabel = UILabel()
     
-    var weatherIcon : String? { didSet { updateWeatherIcon() } }
+    var weather: WeatherData? { didSet { updateWeather() } }
     
     private static var dayWeekMonthFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -40,9 +42,8 @@ class EventListHeaderView: UITableViewHeaderFooterView {
     private var didLoad = false
     
     var date: Date? { didSet { updateLabel() } }
-    var calendar = Injection.defaultContainer.calendar
-    
-    var label: UILabel?
+    let calendar = Injection.defaultContainer.calendar
+    let label = UILabel()
     
     override func didMoveToSuperview() {
         if (!didLoad) {
@@ -52,8 +53,6 @@ class EventListHeaderView: UITableViewHeaderFooterView {
     }
     
     func loadView() {
-        let label = UILabel()
-        self.label = label
         contentView.addSubview(label)
         
         layout(label)
@@ -63,14 +62,22 @@ class EventListHeaderView: UITableViewHeaderFooterView {
             .vertical(.center)
             .install()
         
-        updateLabel()
+        weatherLabel.font = Fonts.fontSmall
+        weatherLabel.textColor = Colors.primary
         
-        layout(weatherIconView)
+        layout(weatherContainer)
             .parent(self)
-            .width(12)
-            .height(12)
+            .vertical(.center)
             .pinRight(6)
-            .vertical(.center).install()
+            .stackHorizontal([
+            layout(weatherIconView)
+                .width(12)
+                .height(12)
+                .right(6),
+            layout(weatherLabel).right(6)
+            ]).install()
+        
+        updateLabel()
     }
     
     func updateLabel() {
@@ -112,23 +119,29 @@ class EventListHeaderView: UITableViewHeaderFooterView {
                     NSAttributedStringKey.font : Fonts.headerFont
                 ]))
         
-        label?.attributedText = string
+        label.attributedText = string
 
         if isToday {
             contentView.backgroundColor = Colors.lightAccent
-            label?.textColor = Colors.accent
+            label.textColor = Colors.accent
         } else {
             contentView.backgroundColor = Colors.dimBackground
-            label?.textColor = Colors.primary
+            label.textColor = Colors.primary
         }
     }
     
-    private func updateWeatherIcon() {
-        if weatherIcon == nil {
-            weatherIconView.isHidden = true
-        } else {
-            weatherIconView.icon = weatherIcon
+    private func updateWeather() {
+        if let weather = self.weather {
+            weatherIconView.icon = weather.icon
+            if let temperatureLow = weather.temperatureLow, let temperatureHigh = weather.temperatureHigh {
+                weatherLabel.text = WeatherFormatter.formatTempRange(fahrenheitA: temperatureLow, fahrenheitB: temperatureHigh)
+            } else {
+                weatherLabel.text = ""
+            }
             weatherIconView.isHidden = false
+        } else {
+            weatherLabel.text = ""
+            weatherIconView.isHidden = true
         }
     }
 }

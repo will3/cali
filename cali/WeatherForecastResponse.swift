@@ -63,6 +63,7 @@ class weatherForecastResponse : Deserializable {
         }
     }
     
+    /// Init hour map
     private func initHourMap() {
         guard let offset = self.offset else { return }
         guard let hourly = self.hourly else { return }
@@ -76,8 +77,8 @@ class weatherForecastResponse : Deserializable {
         }
     }
     
-    /// Get forecast by UTC date 
-    func getForecast(dateUTC: Date) -> WeatherData? {
+    /// Get weather by UTC date 
+    func getWeather(dateUTC: Date) -> WeatherData? {
         return dayMap[dateUTC]
     }
     
