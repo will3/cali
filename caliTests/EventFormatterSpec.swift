@@ -30,7 +30,7 @@ class Dates {
 class EventFormatterSpec: QuickSpec {
     override func spec() {
         describe("Event formatter") {
-            describe("Format relative future") {
+            describe("Format relative") {
                 it("formats years") {
                     let start = Dates.date(year: 2025, month: 1, day: 1, hour: 1, minute: 1, second: 1)
                     let end = Dates.date(year: 2025 + 2, month: 1, day: 1, hour: 1, minute: 1, second: 1)
@@ -107,9 +107,7 @@ class EventFormatterSpec: QuickSpec {
                     let text = EventFormatter.formatRelative(from: start, to: end)
                     expect(text).to(equal("Now"))
                 }
-            }
-            
-            describe("Format relative past") {
+
                 it("formats years") {
                     let start = Dates.date(year: 2025 + 2, month: 1, day: 1, hour: 1, minute: 1, second: 1)
                     let end = Dates.date(year: 2025 , month: 1, day: 1, hour: 1, minute: 1, second: 1)

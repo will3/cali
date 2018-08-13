@@ -9,39 +9,74 @@
 import Foundation
 import UIKit
 
+/// Layout, when layout is created, it's added to LayoutRegistry, 
+/// it's released automatically when it's view is released in LayoutRunner
 public class Layout {
     let id : UUID = UUID()
-    weak var view: UIView?
+    
+    /// Child layout
     private var children: [Layout] = []
+
+    /// List of constraints
     private var constraints: [NSLayoutConstraint] = []
-    weak var parent : Layout?
+
+    /// View
+    public weak var view: UIView?
+
+    /// Parent layout
+    public weak var parent : Layout?
     
-    var direction = LayoutDirection.vertical
-    var alignItems = LayoutFit.stretch
-    var justifyItems = LayoutJustify.stretch
-    var useTopMarginGuide = false
-    var useBottomMarginGuide = false
-    var width = LayoutSize.none
-    var height = LayoutSize.none
-    var fitHorizontal = LayoutFit.none
-    var fitVertical = LayoutFit.none
-    var aspect: Float?
-    var insets = UIEdgeInsets.zero
-    var translatesAutoresizingMaskIntoConstraints = false
-    var stackChildren = false
-    var minWidth = LayoutSize.none
-    var maxWidth = LayoutSize.none
-    var minHeight = LayoutSize.none
-    var maxHeight = LayoutSize.none
-    var hug = LayoutPriority.none
-    var resist = LayoutPriority.none
-    var originalHugHorizontal: UILayoutPriority?
-    var originalHugVertical: UILayoutPriority?
-    var originalResistHorizontal: UILayoutPriority?
-    var originalResistVertical: UILayoutPriority?
-    var parentView: UIView?
-    var priority = UILayoutPriority.required
-    
+    /// Direction
+    public var direction = LayoutDirection.vertical
+    /// Align items
+    public var alignItems = LayoutFit.stretch
+    /// Justify items
+    public var justifyItems = LayoutJustify.stretch
+    /// If true, use top margin guide, only used for containers
+    public var useTopMarginGuide = false
+    /// If true, use bottom margin guide, only used for containers
+    public var useBottomMarginGuide = false
+    /// Width constraint
+    public var width = LayoutSize.none
+    /// Height constraint
+    public var height = LayoutSize.none
+    /// Horizontal fit
+    public var fitHorizontal = LayoutFit.none
+    /// Vertical fit
+    public var fitVertical = LayoutFit.none
+    /// Aspect ratio
+    public var aspect: Float?
+    /// Insets, works kind of like CSS margins
+    public var insets = UIEdgeInsets.zero
+    /// By default, set it's view's translatesAutoresizingMaskIntoConstraints to this value when installed
+    public var translatesAutoresizingMaskIntoConstraints = false
+    /// If true, stack children
+    public var stackChildren = false
+    /// Min width
+    public var minWidth = LayoutSize.none
+    /// Max width
+    public var maxWidth = LayoutSize.none
+    /// Min height
+    public var minHeight = LayoutSize.none
+    /// Max height
+    public var maxHeight = LayoutSize.none
+    /// Content hugging layout
+    public var hug = LayoutPriority.none
+    /// Content resist layout
+    public var resist = LayoutPriority.none
+    /// original hug horizontal
+    private var originalHugHorizontal: UILayoutPriority?
+    /// original hug vertical
+    private var originalHugVertical: UILayoutPriority?
+    /// original resist horizontal
+    private var originalResistHorizontal: UILayoutPriority?
+    /// original resist vertical
+    private var originalResistVertical: UILayoutPriority?
+    /// parent view
+    public var parentView: UIView?
+    /// priority to install constraints with
+    public var priority = UILayoutPriority.required
+    /// Installed
     private(set) var installed = false
     
     init (view: UIView) {
@@ -51,11 +86,13 @@ public class Layout {
         LayoutRunner.instance.startIfNeeded()
     }
     
+    /// Add child layout
     func addChild(child: Layout) {
         child.parent = self
         children.append(child)
     }
     
+    /// Install width
     private func installWidth() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
@@ -73,6 +110,7 @@ public class Layout {
         }
     }
     
+    /// Install min width
     private func installMinWidth() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
@@ -90,6 +128,7 @@ public class Layout {
         }
     }
     
+    /// Install max width
     private func installMaxWidth() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
@@ -107,6 +146,7 @@ public class Layout {
         }
     }
     
+    /// Install height
     private func installHeight() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
@@ -124,6 +164,7 @@ public class Layout {
         }
     }
     
+    /// Install min height
     private func installMinHeight() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
@@ -141,6 +182,7 @@ public class Layout {
         }
     }
     
+    /// Install max height
     private func installMaxHeight() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
@@ -158,6 +200,7 @@ public class Layout {
         }
     }
     
+    /// Install item
     private func installItem() {
         guard let view = self.view else { return }
         view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
@@ -167,11 +210,12 @@ public class Layout {
         installHeight()
         installMinHeight()
         installMaxHeight()
-        intallFitHorizontal()
+        installFitHorizontal()
         installFitVertical()
         installAspect()
     }
     
+    /// Install aspect
     private func installAspect() {
         guard let view = self.view else { return }
         guard let aspect = self.aspect else { return }
@@ -180,7 +224,8 @@ public class Layout {
             view.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: CGFloat(aspect)))
     }
     
-    private func intallFitHorizontal() {
+    /// Install fit horizontal
+    private func installFitHorizontal() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
             return
@@ -206,6 +251,7 @@ public class Layout {
         }
     }
     
+    /// Install fit vertical
     private func installFitVertical() {
         guard let view = self.view else { return }
         guard let superview = view.superview else {
@@ -232,6 +278,7 @@ public class Layout {
         }
     }
     
+    /// Install stack
     private func installStack() {
         guard let view = self.view else { return }
         view.translatesAutoresizingMaskIntoConstraints = translatesAutoresizingMaskIntoConstraints
@@ -251,6 +298,7 @@ public class Layout {
         }
     }
     
+    /// Install child hug
     func installChildHug(child: Layout) {
         guard let childView = child.view else { return }
         initOriginalLayoutPriorities()
@@ -267,6 +315,7 @@ public class Layout {
         }
     }
     
+    /// Install child resist
     func installChildResist(child: Layout) {
         guard let childView = child.view else { return }
         initOriginalLayoutPriorities()
@@ -283,6 +332,7 @@ public class Layout {
         }
     }
     
+    /// initialize original content hugging and content compression
     func initOriginalLayoutPriorities() {
         guard let view = self.view else { return }
         if originalHugHorizontal == nil {
@@ -303,6 +353,7 @@ public class Layout {
         }
     }
     
+    /// Install stack
     private func installStack(child: Layout, index: Int) {
         guard let childView = child.view else { return }
         guard let view = self.view else { return }
@@ -360,6 +411,7 @@ public class Layout {
         }
     }
     
+    /// Install align items
     private func installAlignItems(child: Layout) {
         guard let view = self.view else { return }
         guard let childView = child.view else { return }
@@ -402,6 +454,7 @@ public class Layout {
         }
     }
     
+    /// Install a constraint
     private func install(constraint: NSLayoutConstraint) {
         constraint.priority = priority
         constraint.isActive = true
@@ -434,7 +487,8 @@ public class Layout {
         installed = true
     }
     
-    func installParentView() {
+    /// Install super view
+    private func installParentView() {
         guard let view = self.view else { return }
         if view.superview == nil {
             if let parentView = self.parentView {
@@ -443,7 +497,8 @@ public class Layout {
         }
     }
     
-    func addSubviewsIfNeeded() {
+    /// Install subviews
+    private func addSubviewsIfNeeded() {
         for child in children {
             guard let view = child.view else { continue }
             guard let parentView = self.view else { continue }

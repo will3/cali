@@ -8,10 +8,13 @@
 
 import Foundation
 
-/// Main loop for all layouts
+/// Main loop for layouts, mostly to release layouts
 class LayoutRunner {
+    /// Shared instance
     static let instance = LayoutRunner()
+    /// Timer
     private var timer : Timer?;
+    /// Started
     var started = false
     
     func startIfNeeded() {

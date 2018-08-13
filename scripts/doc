@@ -1,2 +1,5 @@
 cd ..
 jazzy --min-acl private
+
+cd layouts
+jazzy --min-acl private

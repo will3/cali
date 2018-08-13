@@ -382,6 +382,7 @@ public class LayoutBuilder : LayoutWrapper {
         return self
     }
     
+    /// Install the layout
     @discardableResult
     public func install() -> Self {
         updatePins()
@@ -389,12 +390,14 @@ public class LayoutBuilder : LayoutWrapper {
         return self
     }
     
+    /// Reinstall the layout
     @discardableResult
     public func reinstall() -> Self {
         install()
         return self
     }
     
+    /// uninstall the layout
     @discardableResult
     public func uninstall() -> Self {
         layout.uninstall()
