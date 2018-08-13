@@ -71,15 +71,6 @@ class DayView : UIView, DraggableEventViewDelegate {
     let graphRightPadding : Float = 6
     var didScrollToFirstEvent = false
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if !didScrollToFirstEvent && eventViewMap.count > 0 {
-            scrollToFirstEvent()
-            didScrollToFirstEvent = true
-        }
-    }
-    
     /// Update labels
     private func updateLabels() {
         if labels.count == 0 {
@@ -112,6 +103,15 @@ class DayView : UIView, DraggableEventViewDelegate {
         }
     }
     
+    private func scrollToFirstEventIfNeeded() {
+        if !didScrollToFirstEvent &&
+            eventViewMap.count > 0 &&
+            scrollView.contentSize.height > 0 {
+            scrollToFirstEvent()
+            didScrollToFirstEvent = true
+        }
+    }
+    
     private func scrollToFirstEvent() {
         if let eventView = eventViewMap.values.first {
             scrollToEventView(eventView)
@@ -119,11 +119,19 @@ class DayView : UIView, DraggableEventViewDelegate {
     }
     
     private func scrollToEventView(_ eventView: DraggableEventView) {
-        scrollView.scrollRectToVisible(eventView.frame, animated: true)
+        let y = eventView.frame.origin.y + eventView.bounds.height / 2 - scrollView.bounds.height / 2
+        let frame = CGRect(x: eventView.frame.origin.x,
+                           y: y,
+                           width: scrollView.bounds.width,
+                           height: scrollView.bounds.height)
+        
+        scrollView.scrollRectToVisible(frame, animated: true)
     }
     
     /// Add event view
     private func addEventView(event: Event) {
+        scrollToFirstEventIfNeeded()
+        
         guard let id = event.id  else { return }
         if eventViewMap[id] == nil {
             let eventView = DraggableEventView()
@@ -179,11 +187,18 @@ class DayView : UIView, DraggableEventViewDelegate {
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.layoutIfNeeded()
+        scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: CGFloat(totalHeight))
+        scrollToFirstEventIfNeeded()
+    }
+    
     private func loadView() {
         scrollView.showsVerticalScrollIndicator = false
         layout(scrollView).matchParent(self).install()
         layout(contentView).matchParent(scrollView).install()
-        
         layout(contentView).width(.ratio(1)).height(totalHeight).install()
         
         for i in 0...hours {
