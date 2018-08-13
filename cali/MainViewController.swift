@@ -44,6 +44,8 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     let weatherService = Injection.defaultContainer.weatherService
     /// Calendar
     let calendar = Injection.defaultContainer.calendar
+    var lastWeatherUpdateTime : Date?
+    let nowProvider = Injection.defaultContainer.nowProvider
 
     /// Location
     private var location: CLLocation? {
@@ -162,15 +164,22 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         AccessibilityIdentifier.set(viewController: self, identifier: AccessibilityIdentifier.mainView)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
     }
-
+        
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         eventListView.reloadData()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    @objc func didBecomeActive() {
+        updateWeatherHourly()
+        updateToday()
     }
     
     @objc private func didUpdateLocation() {
@@ -387,19 +396,34 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             break
         }
     }
-
+    
+    private func updateWeatherHourly() {
+        if lastWeatherUpdateTime == nil ||
+            nowProvider.now.timeIntervalSince(lastWeatherUpdateTime!) > TimeIntervals.hour {
+            updateWeather()
+            lastWeatherUpdateTime = nowProvider.now
+        }
+    }
+    
     private func updateWeather() {
         if let location = self.location {
             if weatherForecast == nil {
                 weatherService.getWeather(location: location) { (err, response) in
                     if err != nil {
-                        // swallow
+                        // Reset update timer
+                        self.lastWeatherUpdateTime = nil
                         return
                     }
                     
                     self.weatherForecast = response
                 }
             }
+        }
+    }
+    
+    private func updateToday() {
+        if dates.stale {
+            dates = CalendarDates()
         }
     }
 }

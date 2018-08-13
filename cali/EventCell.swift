@@ -25,11 +25,21 @@ class EventCell : UITableViewCell {
     private let left = UIView()
     /// Right
     private let right = UIView()
-
+    /// Weather hour view
+    private let weatherHourView = WeatherHourView()
+    /// Weather hour view layout
+    private var weatherHourViewLayout: LayoutBuilder?
+    
     /// Event
     var event: Event? {
         didSet {
             updateEvent()
+        }
+    }
+    
+    var weatherData: WeatherData? {
+        didSet {
+            updateWeather()
         }
     }
     
@@ -46,6 +56,8 @@ class EventCell : UITableViewCell {
     
     private func loadView() {
         titleLabel.numberOfLines = 3
+        let weatherHourViewLayout = layout(weatherHourView).width(0.0)
+        self.weatherHourViewLayout = weatherHourViewLayout
         
         layout(contentView)
             .translatesAutoresizingMaskIntoConstraints()
@@ -62,7 +74,8 @@ class EventCell : UITableViewCell {
                 .justifyItems(.leading)
                 .stack([
                      layout(titleLabel).left(18).top(12).right(18)
-                    ])
+                    ]),
+            weatherHourViewLayout
             ]).install()
         
         timeLabel.font = Fonts.fontSmall
@@ -77,12 +90,26 @@ class EventCell : UITableViewCell {
         self.isAccessibilityElement = true
     }
     
-    func updateEvent() {
+    private func updateEvent() {
         guard let event = self.event else { return }
         guard let start = event.start else { return }
         guard let end = event.end else { return }
         timeLabel.text = DateFormatters.hmmaFormatter.string(from: start)
         durationLabel.text = EventFormatter.formatDuration(from: start, to: end, style: .short)
         titleLabel.text = event.displayTitle
+    }
+    
+    private func updateWeather() {
+        if weatherData == nil {
+            weatherHourViewLayout?
+                .width(0.0).reinstall()
+            weatherHourView.isHidden = true
+        } else {
+            weatherHourViewLayout?
+                .width(weatherHourView.preferredWidth).reinstall()
+            weatherHourView.isHidden = false
+            
+            weatherHourView.weatherData = weatherData
+        }
     }
 }

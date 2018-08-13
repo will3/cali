@@ -22,6 +22,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     private enum RowType {
         case title
         case dateTime
+        case planForWeather
         
         var cellIdentifier: String {
             switch self {
@@ -29,6 +30,8 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
                 return EventTitleCell.identifier
             case .dateTime:
                 return EventDateTimeCell.identifier
+            case .planForWeather:
+                return EventToggleCell.identifier
             }
         }
     }
@@ -47,6 +50,8 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     private let eventSerivce = Injection.defaultContainer.eventService
     /// Event title cell
     var eventTitleCell : EventTitleCell?
+    /// Keyboard frame
+    var keyboardFrame: CGRect?
     
     // MARK: Public
 
@@ -109,6 +114,35 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         updateLeftBarButtons()
         
         AccessibilityIdentifier.set(viewController: self, identifier: AccessibilityIdentifier.createEventView)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateEventViewController.keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateEventViewController.keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateEventViewController.keyboardWillChangeFrame(notification:)), name: .UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow() {
+        updateTableViewInsets()
+    }
+    
+    @objc func keyboardWillHide() {
+        updateTableViewInsets()
+    }
+    
+    /// Update talbe view insets
+    private func updateTableViewInsets() {
+        let inset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame?.size.height ?? 0, right: 0)
+        tableView.contentInset = inset
+        tableView.scrollIndicatorInsets = inset
+    }
+    
+    @objc func keyboardWillChangeFrame(notification: NSNotification) {
+        keyboardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
     }
     
     override func viewDidLayoutSubviews() {
@@ -136,6 +170,8 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
             return UITableViewCell()
         }
         
+        guard let event = self.event else { return UITableViewCell() }
+        
         switch rowType {
         case .title:
             guard let titleCell = cell as? EventTitleCell else { break }
@@ -145,9 +181,20 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
             guard let dateTimeCell = cell as? EventDateTimeCell else { break }
             dateTimeCell.event = event
             dateTimeCell.delegate = self
+        case .planForWeather:
+            guard let toggleCell = cell as? EventToggleCell else { break }
+            toggleCell.titleLabel.text = NSLocalizedString("Plan for weather", comment: "")
+            toggleCell.toggle.setOn(event.planForWeather, animated: false)
+            toggleCell.toggle.addTarget(self, action: #selector(CreateEventViewController.planForWeatherChanged(sender:)), for: .valueChanged)
         }
         
         return cell
+    }
+    
+    @objc func planForWeatherChanged(sender: UISwitch) {
+        guard let event = self.event else { return }
+        event.planForWeather = !event.planForWeather
+        try? event.managedObjectContext?.save()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -185,12 +232,8 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     private func updateSections() {
         sections = [
             [ .title ],
-//            [ .people ],
-//            [ .allday, .dateTime ],
             [ .dateTime ],
-//            [ .location, .skypeCall ],
-//            [ .desc ],
-//            [ .alert, .isPrivate, .showAs ]
+            [ .planForWeather ]
         ]
     }
     

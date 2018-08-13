@@ -1,8 +1,8 @@
 //
-//  CreateEventCell.swift
+//  EventToggleCell.swift
 //  cali
 //
-//  Created by will3 on 5/08/18.
+//  Created by will3 on 13/08/18.
 //  Copyright © 2018 will3. All rights reserved.
 //
 
@@ -11,19 +11,15 @@ import UIKit
 import Layouts
 
 class EventToggleCell : UITableViewCell {
+    var loaded = false
+    let titleLabel = UILabel()
+    let toggle = UISwitch()
     static let identifier = "EventToggleCell"
-    private let label = UILabel()
-    private let iconImageView = UIImageView()
-    private let wrapper = UIView()
-    private var loaded = false
     
-    var title = "" { didSet { updateTitle() } }
-    var icon: UIImage? { didSet { updateIcon() }}
-
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
-        if self.superview != nil {
+        if superview != nil {
             if !loaded {
                 loadView()
                 loaded = true
@@ -31,32 +27,23 @@ class EventToggleCell : UITableViewCell {
         }
     }
     
-    func loadView() {
-        contentView.addSubview(wrapper)
-        wrapper.addSubview(label)
-        wrapper.addSubview(iconImageView)
-        
-        layout(wrapper)
-            .direction(.horizontal)
-            .alignItems(.center)
-            .stack([
-                layout(label),
-                layout(iconImageView)
-                ]).install()
-        
-        layout(wrapper)
+    private func loadView() {
+        layout(titleLabel)
+            .parent(contentView)
             .height(42)
-            .left(12)
-            .right(12)
-            .matchParent()
+            .pinLeft(12)
+            .vertical(.stretch)
             .install()
-    }
-    
-    func updateTitle() {
-        label.text = title
-    }
-    
-    func updateIcon() {
-        iconImageView.image = icon
+        
+        layout(toggle)
+            .parent(contentView)
+            .pinRight(12)
+            .vertical(.center)
+            .install()
+        
+        toggle.tintColor = Colors.primary
+        toggle.onTintColor = Colors.accent
+        
+        selectionStyle = .none
     }
 }

@@ -135,7 +135,9 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
             return tableView.dequeueReusableCell(withIdentifier: EventEmptyCell.identifier, for: indexPath)
         } else {
             let eventCell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as! EventCell
-            eventCell.event = events[indexPath.row]
+            let event = events[indexPath.row]
+            eventCell.event = event
+            eventCell.weatherData = weatherForecast?.getWeather(event: event)
             return eventCell
         }
     }
@@ -147,12 +149,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         guard let date = dates?.getDate(index: section) else { return UITableViewCell() }
         headerView.date = date.date
         headerView.weatherIcon = weatherForecast?.getForecast(dateUTC: date.dateUTC)?.icon
-        headerView.weatherButton.addTarget(self, action: #selector(EventListView.didPressWeatherButton(sender:)), for: .touchUpInside)
         return headerView
-    }
-    
-    @objc func didPressWeatherButton(sender: EventListHeaderView) {
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

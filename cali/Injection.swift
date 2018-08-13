@@ -32,7 +32,7 @@ protocol Container {
 class DefaultContainer : Container {
     /// Calendar
     lazy var calendar = {
-        Calendar.current
+        Calendar.autoupdatingCurrent
     }()
     
     // Now provider

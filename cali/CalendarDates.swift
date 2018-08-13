@@ -27,6 +27,13 @@ class CalendarDates {
     /// Index, from start date, of today
     let indexForToday: Int
     
+    /// Stale if today is now longer today
+    var stale: Bool {
+        let now = Injection.defaultContainer.nowProvider.now
+        let todayNow = calendar.startOfDay(for: now)
+        return todayNow != today
+    }
+    
     init() {
         let now = Injection.defaultContainer.nowProvider.now
         today = calendar.startOfDay(for: now)

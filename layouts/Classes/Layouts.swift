@@ -20,17 +20,20 @@ public class Layouts {
     }
 }
 
+/// Layout direction
 public enum LayoutDirection {
     case vertical
     case horizontal
 }
 
+/// Layout size
 public enum LayoutSize {
     case none
     case value(Float)
     case ratio(Float)
 }
 
+/// Layout fit
 public enum LayoutFit {
     case none
     case leading
@@ -39,6 +42,7 @@ public enum LayoutFit {
     case stretch
 }
 
+/// Layout priority
 public enum LayoutPriority {
     case none
     case more(Float)
@@ -46,6 +50,7 @@ public enum LayoutPriority {
     case value(Float)
 }
 
+/// Layout justify
 public enum LayoutJustify {
     case stretch
     case leading

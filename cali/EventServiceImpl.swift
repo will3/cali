@@ -25,6 +25,7 @@ class EventServiceImpl : EventService {
         event.id = NSUUID().uuidString
         event.start = start
         event.duration = duration
+        
         map.addEvent(event)
         
         try? context.save()

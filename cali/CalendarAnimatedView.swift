@@ -142,6 +142,7 @@ class TodayButton : UIView {
             updateDay()
             updateImage()
             self.layer.shouldRasterize = true
+            self.layer.rasterizationScale = UIScreen.main.scale
         }
         
         private func updateImage() {

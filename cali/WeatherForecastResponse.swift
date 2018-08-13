@@ -27,7 +27,7 @@ class weatherForecastResponse : Deserializable {
     /// Forecast daily
     var daily: WeatherDataMultiple?
     /// Offset
-    var offset: Double?
+    private var offset: Double?
     
     func deserialize(json: [String : Any]) {
         latitude = json["latitude"] as? Double
@@ -39,29 +39,56 @@ class weatherForecastResponse : Deserializable {
         daily = Deserializer.deserialize(json: json["daily"])
         offset = json["offset"] as? Double
         
-        initMap()
+        initDayMap()
+        initHourMap()
     }
     
     /// Map of weather data, by UTC Date
-    private var map: [ Date: WeatherData ] = [:]
+    private var dayMap: [ Date: WeatherData ] = [:]
+    /// Map of weather data, by UTC Date
+    private var hourMap: [ Date: WeatherData ] = [:]
     
-    /// Init map
-    private func initMap() {
+    /// Init day map
+    private func initDayMap() {
         guard let offset = self.offset else { return }
         guard let daily = self.daily else { return }
         
-        map.removeAll()
+        dayMap.removeAll()
         
         for data in daily.data ?? [] {
             guard let time = data.time else { continue }
             // Note date is UTC, and CalendarDates dates are localized by calendar timezone
             let date = Date(timeIntervalSince1970: time + offset * TimeIntervals.hour)
-            map[date] = data
+            dayMap[date] = data
+        }
+    }
+    
+    private func initHourMap() {
+        guard let offset = self.offset else { return }
+        guard let hourly = self.hourly else { return }
+        
+        hourMap.removeAll()
+        
+        for data in hourly.data ?? [] {
+            guard let time = data.time else { continue }
+            let date = Date(timeIntervalSince1970: time + offset * TimeIntervals.hour)
+            hourMap[date] = data
         }
     }
     
     /// Get forecast by UTC date 
     func getForecast(dateUTC: Date) -> WeatherData? {
-        return map[dateUTC]
+        return dayMap[dateUTC]
+    }
+    
+    /// Get weather for event
+    func getWeather(event: Event) -> WeatherData? {
+        guard let start = event.start else { return nil }
+        let startUTC = Dates.localToUTC(date: start)
+        let calendar = Injection.defaultContainer.calendar
+        let components = calendar.dateComponents([.year,.month,.day,.hour], from: startUTC)
+        guard let hour = calendar.date(from: components) else { return nil }
+        
+        return hourMap[hour]
     }
 }
