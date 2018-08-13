@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Main loop for all layouts
 class LayoutRunner {
     static let instance = LayoutRunner()
     private var timer : Timer?;
@@ -28,6 +29,7 @@ class LayoutRunner {
         started = true
     }
     
+    /// Release layout if view is released
     func checkViewReleased() {
         let keys = LayoutRegistry.layouts.keys
         for key in keys {
