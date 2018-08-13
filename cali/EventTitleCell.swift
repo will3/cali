@@ -14,7 +14,6 @@ class EventTitleCell: UITableViewCell, UITextFieldDelegate {
     static let identifier = "EventTitleCell"
     
     private let textField = UITextField()
-    private let iconImageView = UIImageView()
     private let wrapper = UIView()
     
     var event: Event? { didSet { textField.text = event?.title ?? "" } }
@@ -33,24 +32,24 @@ class EventTitleCell: UITableViewCell, UITextFieldDelegate {
         loadView()
     }
     
+    func focus() {
+        textField.becomeFirstResponder()
+    }
+    
     func loadView() {
         textField.returnKeyType = .done
         textField.delegate = self
         textField.textColor = Colors.black
         textField.font = Fonts.fontNormal
         
-        wrapper.addSubview(iconImageView)
         wrapper.addSubview(textField)
         contentView.addSubview(wrapper)
-        
-        iconImageView.backgroundColor = Colors.accent
         
         layout(wrapper)
             .direction(.horizontal)
             .alignItems(.center)
             .stack([
-                layout(iconImageView).width(24).height(24),
-                layout(textField).left(12)
+                layout(textField)
                 ])
             .install()
         

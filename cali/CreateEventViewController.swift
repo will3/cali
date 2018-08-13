@@ -45,6 +45,8 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     private let deleteButton = DeleteEventButton()
     /// Event service
     private let eventSerivce = Injection.defaultContainer.eventService
+    /// Event title cell
+    var eventTitleCell : EventTitleCell?
     
     // MARK: Public
 
@@ -109,6 +111,14 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         AccessibilityIdentifier.createEventView.set(viewController: self)        
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if viewType == .create {
+            self.eventTitleCell?.focus()
+        }
+    }
+    
     private func updateNavigationItemTitle() {
         switch viewType {
         case .create:
@@ -128,12 +138,13 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         
         switch rowType {
         case .title:
-            guard let inputCell = cell as? EventTitleCell else { break }
-            inputCell.event = event
+            guard let titleCell = cell as? EventTitleCell else { break }
+            self.eventTitleCell = titleCell
+            titleCell.event = event
         case .dateTime:
-            guard let inputCell = cell as? EventDateTimeCell else { break }
-            inputCell.event = event
-            inputCell.delegate = self
+            guard let dateTimeCell = cell as? EventDateTimeCell else { break }
+            dateTimeCell.event = event
+            dateTimeCell.delegate = self
         }
         
         return cell
