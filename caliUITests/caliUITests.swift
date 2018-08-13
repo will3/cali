@@ -57,7 +57,7 @@ class caliUITests: XCTestCase {
             .openEvent()
     }
     
-    func testAnimatedCalendarView() {
+    func testAnimatedTodayButton() {
         let app = XCUIApplication()
         
         let _ = MainView(app: app)
