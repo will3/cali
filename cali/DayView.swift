@@ -241,6 +241,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         let timeInterval = Double(translation.y) / Double(hourHeight) * TimeIntervals.hour
         view.draggedStart = event.start?.addingTimeInterval(timeInterval)
         view.dirty = true
+        
         placeEventView(view)
     }
     
@@ -250,6 +251,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         let timeInterval = Double(translation.y) / Double(hourHeight) * TimeIntervals.hour
         view.draggedStart = event.start?.addingTimeInterval(timeInterval)
         view.draggedDuration = duration - timeInterval
+        
         placeEventView(view)
     }
     
@@ -258,6 +260,7 @@ class DayView : UIView, DraggableEventViewDelegate {
         guard let duration = event.duration else { return }
         let timeInterval = Double(translation.y) / Double(hourHeight) * TimeIntervals.hour
         view.draggedDuration = duration + timeInterval
+        
         placeEventView(view)
     }
     
@@ -265,14 +268,28 @@ class DayView : UIView, DraggableEventViewDelegate {
         guard let event = view.event else { return }
         
         if let draggedStart = view.draggedStart {
-            event.start = draggedStart
+            event.start = snapDate(draggedStart)
         }
+        
         if let draggedDuration = view.draggedDuration {
-            event.duration = draggedDuration
+            event.duration = snapTimeInterval(draggedDuration)
         }
+        
+        try? event.managedObjectContext?.save()
+        
         view.event = event
+        
         placeEventView(view)
         
         delegate?.dayViewDidChangeEvent(event)
+    }
+    
+    private func snapDate(_ date: Date) -> Date {
+        let timeInterval = snapTimeInterval(date.timeIntervalSince1970)
+        return Date(timeIntervalSince1970: timeInterval)
+    }
+    
+    private func snapTimeInterval(_ timeInterval: TimeInterval) -> TimeInterval {
+        return floor(timeInterval / TimeIntervals.quarter) * TimeIntervals.quarter
     }
 }

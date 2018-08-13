@@ -39,7 +39,7 @@ class EventMap {
         return result.sorted(by: { (a, b) -> Bool in
             if a.start == nil { return true }
             if b.start == nil { return false }
-            return a.start! > b.start!
+            return a.start! < b.start!
         })
     }
 }

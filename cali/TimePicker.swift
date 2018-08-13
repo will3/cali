@@ -30,6 +30,8 @@ class TimePicker: UIView, DayViewDelegate {
     private var loaded = false
     /// Bar
     private let bar = UIView()
+    // Separator
+    private let separator = UIView()
     /// Day view
     private let dayView = DayView()
     /// Title label
@@ -64,6 +66,9 @@ class TimePicker: UIView, DayViewDelegate {
         
         layout(self).stack([ layout(bar), layout(dayView) ]).install()
         layout(bar).height(44).install()
+        
+        separator.backgroundColor = Colors.separator
+        layout(separator).parent(bar).pinLeft().pinRight().pinBottom().height(1).install()
         
         layer.cornerRadius = 8.0
         clipsToBounds = true

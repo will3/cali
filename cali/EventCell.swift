@@ -82,7 +82,7 @@ class EventCell : UITableViewCell {
         guard let start = event.start else { return }
         guard let end = event.end else { return }
         timeLabel.text = DateFormatters.hmmaFormatter.string(from: start)
-        durationLabel.text = EventFormatter.formatDuration(from: start, to: end, durationTag: false)
+        durationLabel.text = EventFormatter.formatDuration(from: start, to: end, style: .short)
         titleLabel.text = event.displayTitle
     }
 }

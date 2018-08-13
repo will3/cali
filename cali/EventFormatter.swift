@@ -84,14 +84,33 @@ class EventFormatter {
         return NSLocalizedString("Now", comment: "")
     }
     
+    enum DurationStyle {
+        case normal
+        case withTag
+        case short
+    }
+    
     /**
      * Format meeting duration
      * - parameter from: From date
      * - parameter to: To date
-     * - parameter durationTag: If true, format with duration tag
+     * - parameter style: Style
      * - returns: Formatted string
      */
-    static func formatDuration(from: Date, to: Date, durationTag: Bool) -> String {
+    static func formatDuration(from: Date, to: Date, style: DurationStyle) -> String {
+        switch style {
+        case .normal:
+            return formatDurationNormal(from: from, to: to)
+        case .withTag:
+            let text = formatDurationNormal(from: from, to: to)
+            return String(format: NSLocalizedString("Duration: %@", comment: ""), text)
+        case .short:
+            return formatDurationShort(from: from, to: to)
+        }
+    }
+    
+    private static func formatDuration(from: Date, to: Date, minFormat: String, hourFormat: String, separator: String) -> String {
+        
         let dateComponents = calendar.dateComponents([.hour, .minute], from: from, to: to)
         
         let hour = dateComponents.hour ?? 0
@@ -101,27 +120,45 @@ class EventFormatter {
         if hour == 1 {
             hourText = NSLocalizedString("1 hr", comment: "")
         } else if hour > 1 {
-            hourText = String(format: NSLocalizedString("%d hrs", comment: ""), hour)
+            hourText = String(format: hourFormat, hour)
         }
         
         var minuteText = ""
         if minute > 0 {
-            minuteText = String(format: NSLocalizedString("%d min", comment: ""), minute)
+            minuteText = String(format: minFormat, minute)
         }
         
-        if durationTag {
-            if minuteText.isEmpty {
-                return String(format: NSLocalizedString("Duration: %1$@", comment: ""), hourText)
-            } else {
-                return String(format: NSLocalizedString("Duration: %1$@, %2$@", comment:""), hourText, minuteText)
-            }
-        } else {
-            if minuteText.isEmpty {
-                return String(format: NSLocalizedString("%1$@", comment: ""), hourText)
-            } else {
-                return String(format: NSLocalizedString("%1$@, %2$@", comment:""), hourText, minuteText)
-            }
+        var components : [ String ] = [ ]
+        
+        if !hourText.isEmpty {
+            components.append(hourText)
         }
+        
+        if !minuteText.isEmpty {
+            components.append(minuteText)
+        }
+        
+        let text = components.joined(separator: separator)
+        
+        return text
+    }
+    
+    private static func formatDurationNormal(from: Date, to: Date) -> String {
+        return formatDuration(
+            from: from,
+            to: to,
+            minFormat: NSLocalizedString("%d min", comment: ""),
+            hourFormat: NSLocalizedString("%d hrs", comment: ""),
+            separator: ", ")
+    }
+    
+    private static func formatDurationShort(from: Date, to: Date) -> String {
+        return formatDuration(
+            from: from,
+            to: to,
+            minFormat: NSLocalizedString("%dm", comment: ""),
+            hourFormat: NSLocalizedString("%dh", comment: ""),
+            separator: " ")
     }
     
     /**

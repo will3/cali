@@ -26,9 +26,9 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
     /// Event
     var event : Event? { didSet { updateEvent() } }
     /// Dragged start
-    var draggedStart: Date?
+    var draggedStart: Date? { didSet { updateEvent() } }
     /// Dragged duration
-    var draggedDuration: TimeInterval?
+    var draggedDuration: TimeInterval? { didSet { updateEvent() } }
     /// Dirty
     var dirty = false
     
@@ -51,7 +51,10 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
     /// Title label
     private let titleLabel = UILabel()
     /// Is dragging
-    private var isDragging = false { didSet { updateShadow() } }
+    private var isDragging = false { didSet {
+        updateShadow()
+        updateEvent()
+        } }
     
     /// Padding vertical
     var paddingVertical: Float {
@@ -69,6 +72,7 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    /// Update draggable
     private func updateDraggable() {
         if isDraggable {
             mainHandle.backgroundColor = Colors.accent.withAlphaComponent(Colors.draggableAlpha)
@@ -104,16 +108,47 @@ class DraggableEventView : UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    private var startToDraw : Date? {
+        if isDragging {
+            if let ds = draggedStart {
+               return ds
+            }
+        }
+        
+        return event?.start
+    }
+    
+    private var durationToDraw: TimeInterval? {
+        if isDragging {
+            if let d = draggedDuration {
+                return d
+            }
+        }
+        
+        return event?.duration
+    }
+    
+    private var endToDraw : Date? {
+        guard let durationToDraw = self.durationToDraw else { return nil }
+        return startToDraw?.addingTimeInterval(durationToDraw)
+    }
+    
+    /// Update event labels
     private func updateEvent() {
         guard let event = self.event else { return }
-        guard let start = event.start else { return }
-        guard let end = event.end else { return }
+        guard let start = startToDraw else { return }
+        guard let end = endToDraw else { return }
+        
         timeLabel.text = EventFormatter.formatTimes(start: start, end: end)
-        durationLabel.text = EventFormatter.formatDuration(from: start, to: end, durationTag: false)
+        durationLabel.text = EventFormatter.formatDuration(
+            from: start,
+            to: end,
+            style: .normal)
+        
         titleLabel.text = event.displayTitle
     }
     
-    func loadView() {
+    private func loadView() {
         let halfHandleSize = CGFloat(handleSize / 2)
         mainHandle.backgroundColor = Colors.accent
         mainHandle.layer.cornerRadius = 2
