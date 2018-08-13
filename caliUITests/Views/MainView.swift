@@ -20,19 +20,19 @@ class MainView {
     }
     
     var plusButton : XCUIElement {
-        return app.buttons.matching(identifier: AccessibilityIdentifier.plusButton.rawValue).firstMatch
+        return app.buttons.matching(identifier: AccessibilityIdentifier.plusButton).firstMatch
     }
     
     var eventCell : XCUIElement {
-        return app.tables.cells.matching(identifier: AccessibilityIdentifier.eventCell.rawValue).firstMatch
+        return app.tables.cells.matching(identifier: AccessibilityIdentifier.eventCell).firstMatch
     }
     
     var eventTableView : XCUIElement {
-        return app.tables.matching(identifier: AccessibilityIdentifier.eventTableView.rawValue).firstMatch
+        return app.tables.matching(identifier: AccessibilityIdentifier.eventTableView).firstMatch
     }
     
     var calendarButton : XCUIElement {
-        return app.buttons.matching(identifier: AccessibilityIdentifier.calendarButton.rawValue).firstMatch
+        return app.buttons.matching(identifier: AccessibilityIdentifier.calendarButton).firstMatch
     }
     
     func createEvent() -> CreateEventView {

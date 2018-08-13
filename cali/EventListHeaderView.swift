@@ -13,6 +13,12 @@ import Layouts
 class EventListHeaderView: UITableViewHeaderFooterView {
     static let identifier = "EventListHeaderView"
     
+    private let weatherIconView = WeatherIconView()
+    
+    var weatherIcon : String? { didSet { updateWeatherIcon() } }
+    
+    let weatherButton = UIButton()
+    
     private static var dayWeekMonthFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("EEEEddMMMM")
@@ -60,6 +66,17 @@ class EventListHeaderView: UITableViewHeaderFooterView {
             .install()
         
         updateLabel()
+        
+        layout(weatherIconView)
+            .parent(self)
+            .width(12)
+            .height(12)
+            .pinRight(0)
+            .vertical(.center).install()
+        
+        layout(weatherButton)
+            .parent(self)
+            .pinRight(18).pinTop().pinBottom().width(44).install()
     }
     
     func updateLabel() {
@@ -109,6 +126,17 @@ class EventListHeaderView: UITableViewHeaderFooterView {
         } else {
             contentView.backgroundColor = Colors.dimBackground
             label?.textColor = Colors.primary
+        }
+    }
+    
+    private func updateWeatherIcon() {
+        if weatherIcon == nil {
+            weatherIconView.isHidden = true
+            weatherButton.isUserInteractionEnabled = false
+        } else {
+            weatherIconView.icon = weatherIcon
+            weatherIconView.isHidden = false
+            weatherButton.isUserInteractionEnabled = true
         }
     }
 }

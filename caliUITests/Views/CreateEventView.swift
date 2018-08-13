@@ -13,15 +13,15 @@ class CreateEventView {
     var app: XCUIApplication
     init(app: XCUIApplication) {
         self.app = app
-        XCTAssert(app.otherElements.matching(identifier: AccessibilityIdentifier.createEventView.rawValue).count > 0)
+        XCTAssert(app.otherElements.matching(identifier: AccessibilityIdentifier.createEventView).count > 0)
     }
     
     var tickButton : XCUIElement {
-        return app.buttons.matching(identifier: AccessibilityIdentifier.tickButton.rawValue).firstMatch
+        return app.buttons.matching(identifier: AccessibilityIdentifier.tickButton).firstMatch
     }
     
     var crossButton : XCUIElement {
-        return app.buttons.matching(identifier: AccessibilityIdentifier.crossButton.rawValue).firstMatch
+        return app.buttons.matching(identifier: AccessibilityIdentifier.crossButton).firstMatch
     }
     
     func save() -> MainView {

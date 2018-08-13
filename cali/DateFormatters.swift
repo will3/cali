@@ -72,4 +72,18 @@ class DateFormatters {
         formatter.dateFormat = "MMMM"
         return formatter
     }()
+    
+    /// Formatter with format: EEEEhhmma
+    static let EEEEhhmmaFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("EEEEhhmma")
+        return formatter
+    }()
+    
+    /// Formatter with format: EEEE
+    static let EEEEFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("EEEE")
+        return formatter
+    }()
 }

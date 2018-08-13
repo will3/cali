@@ -43,4 +43,8 @@ open class Event: _Event {
         
         return NSLocalizedString("Untitled", comment: "")
     }
+    
+    var planForWeather: Bool {
+        return planforw
+    }
 }

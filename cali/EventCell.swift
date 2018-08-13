@@ -73,7 +73,7 @@ class EventCell : UITableViewCell {
         durationLabel.textColor = Colors.primary
         titleLabel.textColor = Colors.black
     
-        self.accessibilityLabel = AccessibilityIdentifier.eventCell.rawValue
+        self.accessibilityLabel = AccessibilityIdentifier.eventCell
         self.isAccessibilityElement = true
     }
     

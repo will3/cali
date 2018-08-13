@@ -9,26 +9,26 @@
 import Foundation
 import UIKit
 
-enum AccessibilityIdentifier : String {
-    case mainView = "mainView"
-    case createEventView = "createEventView"
+class AccessibilityIdentifier {
+    static let mainView = "mainView"
+    static let createEventView = "createEventView"
     
-    case plusButton = "plusButton"
-    case titleInput = "titleInput"
-    case tickButton = "tickButton"
-    case crossButton = "crossButton"
-    case eventCell = "eventCell"
-    case eventListView = "eventListView"
-    case eventTableView = "eventTableView"
-    case calendarButton = "calendarButton"
+    static let plusButton = "plusButton"
+    static let titleInput = "titleInput"
+    static let tickButton = "tickButton"
+    static let crossButton = "crossButton"
+    static let eventCell = "eventCell"
+    static let eventListView = "eventListView"
+    static let eventTableView = "eventTableView"
+    static let todayButton = "todayButton"
     
     /// Add accessibility identifier to view controller
-    func set(viewController: UIViewController) {
+    static func set(viewController: UIViewController, identifier: String) {
         let accessibilityView = UIView()
         accessibilityView.backgroundColor = UIColor.white
         viewController.view.addSubview(accessibilityView)
         accessibilityView.isAccessibilityElement = true
-        accessibilityView.accessibilityIdentifier = rawValue
+        accessibilityView.accessibilityIdentifier = identifier
         
         accessibilityView.frame = viewController.view.bounds
         accessibilityView.translatesAutoresizingMaskIntoConstraints = true

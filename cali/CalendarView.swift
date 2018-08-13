@@ -30,9 +30,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     /// Event service
     private let eventService = Injection.defaultContainer.eventService
     /// Weather forecast, set this to show weather forecasts
-    var weatherForcast: WeatherForcastResponse? { didSet { updateWeather() } }
-    /// Map of weather data, by UTC Date
-    var weatherDataMap: [ Date: WeatherData ] = [:]
+    var weatherForecast: weatherForecastResponse? { didSet { updateWeather() } }
     /// Dates to display
     var dates = CalendarDates() {
         didSet {
@@ -276,7 +274,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         calendarCell.shouldShowCircle = selected
         calendarCell.numEvents = eventService.find(startDay: date.date).count
         
-        if let weatherData = weatherDataMap[date.dateUTC] {
+        if let weatherData = weatherForecast?.getForecast(dateUTC: date.dateUTC) {
             calendarCell.weatherIcon = weatherData.icon
         } else {
             calendarCell.weatherIcon = nil
@@ -301,18 +299,9 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
 
+    
     /// Update weather
     private func updateWeather() {
-        guard let offset = self.weatherForcast?.offset else { return }
-        guard let daily = self.weatherForcast?.daily else { return }
-        
-        for data in daily.data ?? [] {
-            guard let time = data.time else { continue }
-            // Note date is UTC, and CalendarDates dates are localized by calendar timezone
-            let date = Date(timeIntervalSince1970: time + offset * TimeIntervals.hour)
-            weatherDataMap[date] = data
-        }
-        
         reloadData()
     }
 }

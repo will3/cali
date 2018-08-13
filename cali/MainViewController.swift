@@ -53,9 +53,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     }
 
     /// Weather forecast
-    private var weatherForcast: WeatherForcastResponse? {
+    
+    private var weatherForecast: weatherForecastResponse? {
         didSet {
-            calendarView.weatherForcast = weatherForcast
+            calendarView.weatherForecast = weatherForecast
+            eventListView.weatherForecast = weatherForecast
         }
     }
 
@@ -159,7 +161,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        AccessibilityIdentifier.mainView.set(viewController: self)
+        AccessibilityIdentifier.set(viewController: self, identifier: AccessibilityIdentifier.mainView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -188,7 +190,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             UIBarButtonItem(image: layoutTypeImage, style: .plain, target: self, action: #selector(MainViewController.layoutPressed))
         ]
         
-        plusButton.accessibilityIdentifier = AccessibilityIdentifier.plusButton.rawValue
+        plusButton.accessibilityIdentifier = AccessibilityIdentifier.plusButton
         
         navigationItem.rightBarButtonItems = rightButtons
     }
@@ -201,7 +203,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
             todayButton.button
         ]
         
-        todayButton.button.accessibilityIdentifier = AccessibilityIdentifier.calendarButton.rawValue
+        todayButton.button.accessibilityIdentifier = AccessibilityIdentifier.todayButton
         
         navigationItem.leftBarButtonItem = leftItem
     }
@@ -388,14 +390,14 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
 
     private func updateWeather() {
         if let location = self.location {
-            if weatherForcast == nil {
+            if weatherForecast == nil {
                 weatherService.getWeather(location: location) { (err, response) in
                     if err != nil {
                         // swallow
                         return
                     }
                     
-                    self.weatherForcast = response
+                    self.weatherForecast = response
                 }
             }
         }

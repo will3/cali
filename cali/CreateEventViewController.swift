@@ -101,14 +101,14 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         let tickButton = UIBarButtonItem(image: Images.tick, style: .plain, target: self, action: #selector(CreateEventViewController.tickPressed))
         navigationItem.rightBarButtonItem = tickButton
         tickButton.tintColor = Colors.accent
-        tickButton.accessibilityIdentifier = AccessibilityIdentifier.tickButton.rawValue
+        tickButton.accessibilityIdentifier = AccessibilityIdentifier.tickButton
         
         layout(deleteButton).parent(view).pinBottom(20).horizontal(.center).install()
         deleteButton.button.addTarget(self, action: #selector(CreateEventViewController.deletePressed), for: .touchUpInside)
         
         updateLeftBarButtons()
         
-        AccessibilityIdentifier.createEventView.set(viewController: self)        
+        AccessibilityIdentifier.set(viewController: self, identifier: AccessibilityIdentifier.createEventView)
     }
     
     override func viewDidLayoutSubviews() {
@@ -211,7 +211,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         case .create:
             let crossButton = UIBarButtonItem(image: Images.cross, style: .plain, target: self, action: #selector(CreateEventViewController.crossPressed))
             navigationItem.leftBarButtonItem = crossButton
-            crossButton.accessibilityIdentifier = AccessibilityIdentifier.crossButton.rawValue
+            crossButton.accessibilityIdentifier = AccessibilityIdentifier.crossButton
         case .edit:
             navigationItem.leftBarButtonItem = nil
         }

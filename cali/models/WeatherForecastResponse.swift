@@ -9,7 +9,7 @@
 import Foundation
 
 /// Weather forcast response object, full documentation on https://darksky.net/dev
-class WeatherForcastResponse : Deserializable {
+class weatherForecastResponse : Deserializable {
     required init() { }
     
     /// Latitude
@@ -38,5 +38,30 @@ class WeatherForcastResponse : Deserializable {
         hourly = Deserializer.deserialize(json: json["hourly"])
         daily = Deserializer.deserialize(json: json["daily"])
         offset = json["offset"] as? Double
+        
+        initMap()
+    }
+    
+    /// Map of weather data, by UTC Date
+    private var map: [ Date: WeatherData ] = [:]
+    
+    /// Init map
+    private func initMap() {
+        guard let offset = self.offset else { return }
+        guard let daily = self.daily else { return }
+        
+        map.removeAll()
+        
+        for data in daily.data ?? [] {
+            guard let time = data.time else { continue }
+            // Note date is UTC, and CalendarDates dates are localized by calendar timezone
+            let date = Date(timeIntervalSince1970: time + offset * TimeIntervals.hour)
+            map[date] = data
+        }
+    }
+    
+    /// Get forecast by UTC date 
+    func getForecast(dateUTC: Date) -> WeatherData? {
+        return map[dateUTC]
     }
 }

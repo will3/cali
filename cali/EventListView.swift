@@ -36,7 +36,8 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     weak var delegate: EventListViewDelegate?
     /// Event service
     private let eventService = Injection.defaultContainer.eventService
-    
+    /// Weather forecast
+    var weatherForecast : weatherForecastResponse? { didSet { updateWeather() } }
     /// Is scrolling to selected date
     private(set) var isScrollingToSelectedDate = false
     
@@ -94,9 +95,9 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.showsVerticalScrollIndicator = false
         
         self.isAccessibilityElement = true
-        self.accessibilityIdentifier = AccessibilityIdentifier.eventListView.rawValue
+        self.accessibilityIdentifier = AccessibilityIdentifier.eventListView
         
-        tableView.accessibilityIdentifier = AccessibilityIdentifier.eventTableView.rawValue
+        tableView.accessibilityIdentifier = AccessibilityIdentifier.eventTableView
     }
     
     private func scrollToTodayIfNeeded() {
@@ -140,11 +141,18 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     // MARK: UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: EventListHeaderView.identifier) as! EventListHeaderView
         guard let date = dates?.getDate(index: section) else { return UITableViewCell() }
         headerView.date = date.date
+        headerView.weatherIcon = weatherForecast?.getForecast(dateUTC: date.dateUTC)?.icon
+        headerView.weatherButton.addTarget(self, action: #selector(EventListView.didPressWeatherButton(sender:)), for: .touchUpInside)
         return headerView
+    }
+    
+    @objc func didPressWeatherButton(sender: EventListHeaderView) {
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -193,6 +201,9 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         isScrollingToSelectedDate = false
     }
-    
+
+    func updateWeather() {
+        tableView.reloadData()
+    }
     
 }
