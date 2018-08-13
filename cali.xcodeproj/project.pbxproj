@@ -25,6 +25,8 @@
 		6F346856211E73420005D5C7 /* NowProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F346855211E73420005D5C7 /* NowProvider.swift */; };
 		6F47EAFF21224CA3004B8B96 /* Faker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66866C2115147A0047D752 /* Faker.swift */; };
 		6F47EB0021224CA3004B8B96 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F66866E211514AF0047D752 /* Random.swift */; };
+		6F47EB0221225041004B8B96 /* MainViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47EB0121225041004B8B96 /* MainViewControllerSpec.swift */; };
+		6F47EB04212250B1004B8B96 /* TestContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F47EB03212250B1004B8B96 /* TestContainer.swift */; };
 		6F4EA6A42113E3860096B9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */; };
 		6F4EA6A62113E3860096B9E9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4EA6A52113E3860096B9E9 /* MainViewController.swift */; };
 		6F4EA6AB2113E3860096B9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4EA6AA2113E3860096B9E9 /* Assets.xcassets */; };
@@ -60,6 +62,7 @@
 		6F71BD61211AA6B30094FCD6 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD60211AA6B30094FCD6 /* EventCell.swift */; };
 		6F71BD63211BA3E70094FCD6 /* LayoutSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD62211BA3E70094FCD6 /* LayoutSelectorView.swift */; };
 		6F71BD68211C44770094FCD6 /* CalendarAnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD67211C44770094FCD6 /* CalendarAnimatedView.swift */; };
+		6F782C6F212251AB0007E566 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F782C6E212251AB0007E566 /* GeneratedMocks.swift */; };
 		6F995D8D211A982300629C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F995D8C211A982300629C0C /* Storage.swift */; };
 		6F9EE10D2121451000F69C60 /* WeatherForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9EE1092121451000F69C60 /* WeatherForecastResponse.swift */; };
 		6F9EE10E2121451000F69C60 /* EventMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9EE10A2121451000F69C60 /* EventMap.swift */; };
@@ -127,6 +130,8 @@
 		6F34684D211E72D80005D5C7 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		6F346855211E73420005D5C7 /* NowProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowProvider.swift; sourceTree = "<group>"; };
 		6F46FB36211FAA2C000DBBCB /* Accessability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessability.swift; sourceTree = "<group>"; };
+		6F47EB0121225041004B8B96 /* MainViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerSpec.swift; sourceTree = "<group>"; };
+		6F47EB03212250B1004B8B96 /* TestContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestContainer.swift; sourceTree = "<group>"; };
 		6F4EA6A02113E3860096B9E9 /* cali.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cali.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4EA6A32113E3860096B9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F4EA6A52113E3860096B9E9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +175,7 @@
 		6F71BD60211AA6B30094FCD6 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		6F71BD62211BA3E70094FCD6 /* LayoutSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSelectorView.swift; sourceTree = "<group>"; };
 		6F71BD67211C44770094FCD6 /* CalendarAnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAnimatedView.swift; sourceTree = "<group>"; };
+		6F782C6E212251AB0007E566 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		6F995D8C211A982300629C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		6F9EE1092121451000F69C60 /* WeatherForecastResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherForecastResponse.swift; sourceTree = "<group>"; };
 		6F9EE10A2121451000F69C60 /* EventMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMap.swift; sourceTree = "<group>"; };
@@ -299,10 +305,13 @@
 		6F4EA6B72113E3860096B9E9 /* caliTests */ = {
 			isa = PBXGroup;
 			children = (
+				6F782C6E212251AB0007E566 /* GeneratedMocks.swift */,
 				6F66866C2115147A0047D752 /* Faker.swift */,
 				6F66866E211514AF0047D752 /* Random.swift */,
 				6F4EA6B82113E3860096B9E9 /* EventFormatterSpec.swift */,
+				6F47EB0121225041004B8B96 /* MainViewControllerSpec.swift */,
 				6F4EA6BA2113E3860096B9E9 /* Info.plist */,
+				6F47EB03212250B1004B8B96 /* TestContainer.swift */,
 			);
 			path = caliTests;
 			sourceTree = "<group>";
@@ -349,7 +358,6 @@
 		6F668664211513A70047D752 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				6F6686752115665D0047D752 /* Models */,
 				6F668666211513B30047D752 /* Views */,
 				6F668665211513AD0047D752 /* Cells */,
 				6F4EA6A52113E3860096B9E9 /* MainViewController.swift */,
@@ -413,15 +421,6 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		6F6686752115665D0047D752 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				6F668676211566750047D752 /* CalendarDate.swift */,
-				6F6686782115667F0047D752 /* CalendarDates.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		6F6686842116835A0047D752 /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +455,8 @@
 		6F9EE108212144D300F69C60 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6F668676211566750047D752 /* CalendarDate.swift */,
+				6F6686782115667F0047D752 /* CalendarDates.swift */,
 				6F9EE10A2121451000F69C60 /* EventMap.swift */,
 				6F9EE10B2121451000F69C60 /* WeatherData.swift */,
 				6F9EE10C2121451000F69C60 /* WeatherDataMultiple.swift */,
@@ -858,8 +859,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F4EA6B92113E3860096B9E9 /* EventFormatterSpec.swift in Sources */,
+				6F782C6F212251AB0007E566 /* GeneratedMocks.swift in Sources */,
 				6F47EAFF21224CA3004B8B96 /* Faker.swift in Sources */,
+				6F47EB0221225041004B8B96 /* MainViewControllerSpec.swift in Sources */,
 				6F47EB0021224CA3004B8B96 /* Random.swift in Sources */,
+				6F47EB04212250B1004B8B96 /* TestContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@ import CoreData
 
 /// Storage
 class StorageImpl : Storage {
-    /// Persistent container
+    
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "cali")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

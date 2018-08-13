@@ -9,11 +9,15 @@
 import Foundation
 import CoreData
 
+/// Storage provides an interface to Core data storage
 protocol Storage {
+    
     /// Save context
     func saveContext ()
-    /// Context
+    
+    /// Context, used in main thread
     var context : NSManagedObjectContext { get }
+    
     /// Remove everything, should only used in UI Tests
     func clear ()
 }

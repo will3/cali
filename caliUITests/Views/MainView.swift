@@ -31,8 +31,8 @@ class MainView {
         return app.tables.matching(identifier: AccessibilityIdentifier.eventTableView).firstMatch
     }
     
-    var calendarButton : XCUIElement {
-        return app.buttons.matching(identifier: AccessibilityIdentifier.calendarButton).firstMatch
+    var todayButton : XCUIElement {
+        return app.buttons.matching(identifier: AccessibilityIdentifier.todayButton).firstMatch
     }
     
     func createEvent() -> CreateEventView {
@@ -51,8 +51,8 @@ class MainView {
         return self
     }
     
-    func pressCalendarButton() -> Self {
-        calendarButton.tap()
+    func pressTodayButton() -> Self {
+        todayButton.tap()
         return self
     }
 }

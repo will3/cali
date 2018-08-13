@@ -11,10 +11,12 @@ import UIKit
 import Layouts
 
 /// View controller to create event
-class CreateEventViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, EventDateTimeCellDelegate {
-
+class CreateEventViewController : UIViewController {
+    /// Type of view controler
     private enum ViewType {
+        /// Creating an event
         case create
+        /// Editing an event
         case edit
     }
     
@@ -53,7 +55,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
     /// Keyboard frame
     var keyboardFrame: CGRect?
     
-    // MARK: Public
+    // MARK: - Public
 
     /**
      * Create event
@@ -76,7 +78,7 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
         self.viewType = .edit
     }
     
-    // MARK: UIViewController
+    // MARK: - UIViewController
 
     override func viewDidLoad() {
         view.addSubview(tableView)
@@ -161,65 +163,8 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
             navigationItem.title = NSLocalizedString("Edit Event", comment: "")
         }
     }
-    
-    // MARK: UITableViewDataSource
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let rowType = sections[indexPath.section][indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: rowType.cellIdentifier) else {
-            return UITableViewCell()
-        }
-        
-        guard let event = self.event else { return UITableViewCell() }
-        
-        switch rowType {
-        case .title:
-            guard let titleCell = cell as? EventTitleCell else { break }
-            self.eventTitleCell = titleCell
-            titleCell.event = event
-        case .dateTime:
-            guard let dateTimeCell = cell as? EventDateTimeCell else { break }
-            dateTimeCell.event = event
-            dateTimeCell.delegate = self
-        case .planForWeather:
-            guard let toggleCell = cell as? EventToggleCell else { break }
-            toggleCell.titleLabel.text = NSLocalizedString("Plan for weather", comment: "")
-            toggleCell.toggle.setOn(event.planForWeather, animated: false)
-            toggleCell.toggle.addTarget(self, action: #selector(CreateEventViewController.planForWeatherChanged(sender:)), for: .valueChanged)
-        }
-        
-        return cell
-    }
-    
-    @objc func planForWeatherChanged(sender: UISwitch) {
-        guard let event = self.event else { return }
-        event.planForWeather = !event.planForWeather
-        try? event.managedObjectContext?.save()
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].count
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-
-    // MARK: UITableViewDelegate
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    // MARK: EventDateTimeCellDelegate
-    
-    func eventDateTimeCellDidChange(_ view: EventDateTimeCell) {
-        if let event = view.event {
-            self.event = event
-        }
-    }
-
-    // MARK: Private
+    // MARK: - Private
 
     @objc private func crossPressed() {
         confirmDeleteEvent(word: NSLocalizedString("Discard Event", comment: ""))
@@ -285,6 +230,61 @@ class CreateEventViewController : UIViewController, UITableViewDataSource, UITab
             self.dismiss(animated: true, completion: nil)
         } else {
             self.navigationController?.popViewController(animated: true)
+        }
+    }
+}
+
+extension CreateEventViewController : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rowType = sections[indexPath.section][indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: rowType.cellIdentifier) else {
+            return UITableViewCell()
+        }
+        
+        guard let event = self.event else { return UITableViewCell() }
+        
+        switch rowType {
+        case .title:
+            guard let titleCell = cell as? EventTitleCell else { break }
+            self.eventTitleCell = titleCell
+            titleCell.event = event
+        case .dateTime:
+            guard let dateTimeCell = cell as? EventDateTimeCell else { break }
+            dateTimeCell.event = event
+            dateTimeCell.delegate = self
+        case .planForWeather:
+            guard let toggleCell = cell as? EventToggleCell else { break }
+            toggleCell.titleLabel.text = NSLocalizedString("Plan for weather", comment: "")
+            toggleCell.toggle.setOn(event.planForWeather, animated: false)
+            toggleCell.toggle.addTarget(self, action: #selector(CreateEventViewController.planForWeatherChanged(sender:)), for: .valueChanged)
+        }
+        
+        return cell
+    }
+    
+    @objc func planForWeatherChanged(sender: UISwitch) {
+        guard let event = self.event else { return }
+        event.planForWeather = !event.planForWeather
+        try? event.managedObjectContext?.save()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sections[section].count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+}
+
+extension CreateEventViewController : EventDateTimeCellDelegate {
+    func eventDateTimeCellDidChange(_ view: EventDateTimeCell) {
+        if let event = view.event {
+            self.event = event
         }
     }
 }

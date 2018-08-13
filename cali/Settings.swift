@@ -8,7 +8,9 @@
 
 import UIKit
 
+/// Settings
 class Settings {
+    /// Shared instance
     static let instance = Settings()
     
     /// Number of weeks to show backwards, in calendar

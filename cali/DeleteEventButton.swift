@@ -10,11 +10,14 @@ import Foundation
 import UIKit
 import Layouts
 
+/// Delete event button
 class DeleteEventButton : UIView {
     let preferredHeight: Float = 44
     let button = UIButton()
     
+    /// View loaded
     private var loaded = false
+    /// Label
     private let label = UILabel()
     
     override func didMoveToSuperview() {

@@ -62,6 +62,6 @@ class caliUITests: XCTestCase {
         
         let _ = MainView(app: app)
             .scrollDownEvents()
-            .pressCalendarButton()
+            .pressTodayButton()
     }
 }
