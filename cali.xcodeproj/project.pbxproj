@@ -66,6 +66,7 @@
 		6F71BD63211BA3E70094FCD6 /* LayoutSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD62211BA3E70094FCD6 /* LayoutSelectorView.swift */; };
 		6F71BD68211C44770094FCD6 /* CalendarAnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD67211C44770094FCD6 /* CalendarAnimatedView.swift */; };
 		6F995D8D211A982300629C0C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F995D8C211A982300629C0C /* Storage.swift */; };
+		6F9EE1002121273E00F69C60 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9EE0FF2121273E00F69C60 /* WeatherView.swift */; };
 		6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2C62117C2D8004570ED /* TimeIntervals.swift */; };
 		6FACC2CA2117D620004570ED /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2C92117D620004570ED /* DatePicker.swift */; };
 		6FACC2CC2117D870004570ED /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FACC2CB2117D870004570ED /* DateTimePicker.swift */; };
@@ -173,6 +174,7 @@
 		6F71BD62211BA3E70094FCD6 /* LayoutSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSelectorView.swift; sourceTree = "<group>"; };
 		6F71BD67211C44770094FCD6 /* CalendarAnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAnimatedView.swift; sourceTree = "<group>"; };
 		6F995D8C211A982300629C0C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		6F9EE0FF2121273E00F69C60 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		6FACC2C62117C2D8004570ED /* TimeIntervals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervals.swift; sourceTree = "<group>"; };
 		6FACC2C92117D620004570ED /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		6FACC2CB2117D870004570ED /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				6F668680211581960047D752 /* MonthOverlayView.swift */,
 				6F71BD62211BA3E70094FCD6 /* LayoutSelectorView.swift */,
 				6F34683E211D93B20005D5C7 /* WeatherIconView.swift */,
+				6F9EE0FF2121273E00F69C60 /* WeatherView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				6F346841211E60C20005D5C7 /* EventMap.swift in Sources */,
 				6FACC2C72117C2D8004570ED /* TimeIntervals.swift in Sources */,
 				6FAF59D9211FCCC90041BC17 /* WeatherServiceImpl.swift in Sources */,
+				6F9EE1002121273E00F69C60 /* WeatherView.swift in Sources */,
 				6FACC2D1211800D5004570ED /* TimePicker.swift in Sources */,
 				6FAF59EB211FD1460041BC17 /* UITestStorage.swift in Sources */,
 				6F66867D2115689A0047D752 /* EventListHeaderView.swift in Sources */,

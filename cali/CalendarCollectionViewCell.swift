@@ -158,8 +158,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         view.addSubview(monthLabel)
         contentView.addSubview(view)
         
-        leftBorder.backgroundColor = Colors.primary
-        botBorder.backgroundColor = Colors.primary
+        leftBorder.backgroundColor = Colors.separator
+        botBorder.backgroundColor = Colors.separator
         separator.backgroundColor = Colors.separator
         
         layout(view)
@@ -200,12 +200,12 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         layout(leftBorder)
             .parent(contentView)
             .pinLeft().pinTop().pinBottom()
-            .width(1).install()
+            .width(2).install()
         
         layout(botBorder)
             .parent(contentView)
             .pinBottom().pinLeft().pinRight()
-            .height(1).install()
+            .height(2).install()
         
         contentView.addSubview(dot)
     }
