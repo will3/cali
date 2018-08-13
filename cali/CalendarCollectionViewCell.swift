@@ -9,21 +9,33 @@
 import UIKit
 import Layouts
 
+/// Calendar collection view cell
 class CalendarCollectionViewCell: UICollectionViewCell {
     enum Background {
         case white
         case grey
         case today
     }
+    /// Identifier
     static let identifier = "CalendarCollectionViewCell"
+    /// Label
     private let label = UILabel()
+    /// Month label
     private let monthLabel = UILabel()
+    /// View
     private let view = UIView()
+    /// Circle view
     private let circleView = UIView()
+    /// Left border
     private let leftBorder = UIView()
+    /// Bottom border
     private let botBorder = UIView()
+    /// Dot view
     private let dot = UIView()
+    /// Weather icon view
     private let weatherIconView = WeatherIconView()
+    /// Separator view
+    private let separator = UIView()
     
     override var bounds: CGRect {
         didSet {
@@ -32,6 +44,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /// Should show circle
     var shouldShowCircle: Bool = false { didSet {
         updateCircle()
         updateDot()
@@ -39,23 +52,43 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         updateBackground()
         } }
     
+    /// Background
     var background: Background = .white { didSet { updateBackground() } }
-    var drawLeftBorder = false { didSet { updateLeftBorder() } }
-    var drawBotBorder = false { didSet { updateBotBorder() }}
+    /// Should draw left border
+    var shouldDrawLeftBorder = false { didSet { updateLeftBorder() } }
+    /// Should draw bottom border
+    var shouldDrawBotBorder = false { didSet { updateBotBorder() } }
+    /// Month
     var month: String = "" { didSet {
         updateLabels()
         updateDot() } }
+    /// Day
     var day: String = "" { didSet { updateLabels() } }
+    /// Weather icon
     var weatherIcon: String? { didSet { weatherIconView.icon = weatherIcon } }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updateDotPosition()
+    }
+
+    /// Update left border
     func updateLeftBorder() {
-        leftBorder.isHidden = !drawLeftBorder
+        leftBorder.isHidden = !shouldDrawLeftBorder
     }
     
+    /// Update bottom border
     func updateBotBorder() {
-        botBorder.isHidden = drawBotBorder
+        botBorder.isHidden = !shouldDrawBotBorder
     }
     
+    /// Number of events
+    var numEvents = 0 {
+        didSet { updateDot() }
+    }
+    
+    /// Update circle
     func updateCircle() {
         if shouldShowCircle {
             circleView.backgroundColor = Colors.accent
@@ -71,6 +104,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /// Update background
     func updateBackground() {
         switch background {
         case .white:
@@ -86,18 +120,14 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /// Update labels
     func updateLabels() {
         monthLabel.text = month
         label.text = day
         layoutIfNeeded()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        updateDotPosition()
-    }
-    
+    /// Update dot position
     private func updateDotPosition() {
         let dotWidth : CGFloat = CGFloat(3)
         let labelEndY = view.bounds.height + view.frame.origin.y
@@ -128,8 +158,9 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         view.addSubview(monthLabel)
         contentView.addSubview(view)
         
-        botBorder.backgroundColor = Colors.separator
-        contentView.addSubview(botBorder)
+        leftBorder.backgroundColor = Colors.primary
+        botBorder.backgroundColor = Colors.primary
+        separator.backgroundColor = Colors.separator
         
         layout(view)
             .alignItems(.center)
@@ -161,19 +192,25 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             .pinBottom(2)
             .install()
         
+        layout(separator)
+            .parent(contentView)
+            .pinBottom().pinLeft().pinRight()
+            .height(1).install()
+        
+        layout(leftBorder)
+            .parent(contentView)
+            .pinLeft().pinTop().pinBottom()
+            .width(1).install()
+        
         layout(botBorder)
-            .horizontal(.stretch)
-            .vertical(.trailing)
-            .height(1.0)
-            .install()
+            .parent(contentView)
+            .pinBottom().pinLeft().pinRight()
+            .height(1).install()
         
         contentView.addSubview(dot)
     }
     
-    var numEvents = 0 {
-        didSet { updateDot() }
-    }
-    
+    /// Update dot
     private func updateDot() {
         let shouldShowDot = month.isEmpty && !shouldShowCircle
         if shouldShowDot {

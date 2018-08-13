@@ -281,6 +281,24 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         } else {
             calendarCell.weatherIcon = nil
         }
+        
+        let todayIndex = dates.indexForToday
+        let index = indexPath.row
+        
+        if index == todayIndex {
+            calendarCell.shouldDrawLeftBorder = true
+        }
+        
+        let lastWeekToday = todayIndex - 7
+        
+        calendarCell.shouldDrawBotBorder = false
+        calendarCell.shouldDrawLeftBorder = false
+        
+        if index >= lastWeekToday && index < todayIndex {
+            calendarCell.shouldDrawBotBorder = true
+        } else if index == todayIndex {
+            calendarCell.shouldDrawLeftBorder = true
+        }
     }
 
     /// Update weather

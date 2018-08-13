@@ -8,7 +8,9 @@
 
 import Foundation
 
+/// Now provider
 protocol NowProvider {
+    /// Now
     var now: Date { get }
 }
 

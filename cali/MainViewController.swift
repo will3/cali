@@ -27,7 +27,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     /// Day view
     private let dayView = DayView()
     /// Calendar animated
-    private let calendarAnimatedView = CalendarAnimatedView()
+    private let todayButton = TodayButton()
     /// Layout for layout selector
     private var layoutSelectorLayout : LayoutBuilder?
     /// Layout selector shown
@@ -63,7 +63,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     private var dates = CalendarDates() { didSet {
         calendarView.dates = dates
         eventListView.dates = dates
-        calendarAnimatedView.today = dates.today
+        todayButton.today = dates.today
         } }
     
     /// Selected date
@@ -151,7 +151,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
         
         updateLeftBarButtons()
         
-        calendarAnimatedView.button.addTarget(self, action: #selector(MainViewController.didTapCalendar), for: .touchUpInside)
+        todayButton.button.addTarget(self, action: #selector(MainViewController.didTapCalendar), for: .touchUpInside)
 
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.didUpdateLocation), name: LocationServiceNotifications.didUpdate, object: nil)
         
@@ -194,14 +194,14 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     }
     
     private func updateLeftBarButtons() {
-        calendarAnimatedView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-        let leftItem = UIBarButtonItem(customView: calendarAnimatedView)
+        todayButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        let leftItem = UIBarButtonItem(customView: todayButton)
         
         leftItem.accessibilityElements = [
-            calendarAnimatedView.button
+            todayButton.button
         ]
         
-        calendarAnimatedView.button.accessibilityIdentifier = AccessibilityIdentifier.calendarButton.rawValue
+        todayButton.button.accessibilityIdentifier = AccessibilityIdentifier.calendarButton.rawValue
         
         navigationItem.leftBarButtonItem = leftItem
     }
@@ -307,7 +307,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate, EventLi
     
     func eventListViewDidScroll(eventListView: EventListView) {
         if let offset = eventListView.offset {
-            calendarAnimatedView.offset = offset
+            todayButton.offset = offset
         }
     }
     

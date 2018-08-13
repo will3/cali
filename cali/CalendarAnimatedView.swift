@@ -1,5 +1,5 @@
 //
-//  CalendarAnimatedView.swift
+//  TodayButton.swift
 //  cali
 //
 //  Created by will3 on 9/08/18.
@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import Layouts
 
-/// Animates calendar movement
-class CalendarAnimatedView : UIView {
+/// Today button
+class TodayButton : UIView {
     /// Today, setting this updates the view
     var today : Date = {
         let now = Injection.defaultContainer.nowProvider.now

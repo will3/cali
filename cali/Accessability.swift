@@ -22,6 +22,7 @@ enum AccessibilityIdentifier : String {
     case eventTableView = "eventTableView"
     case calendarButton = "calendarButton"
     
+    /// Add accessibility identifier to view controller
     func set(viewController: UIViewController) {
         let accessibilityView = UIView()
         accessibilityView.backgroundColor = UIColor.white
