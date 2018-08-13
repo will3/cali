@@ -163,7 +163,7 @@ class TodayButton : UIView {
             if index > 0 {
                 let maxTilt = CGFloat(-20) * .pi / 180.0
                 var amount = CGFloat(delta) / CGFloat(800)
-                let ratio = pow(abs(amount), 0.5)
+                let ratio = pow(abs(amount), 0.8)
                 
                 amount += offset
                 
