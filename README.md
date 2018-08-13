@@ -2,8 +2,8 @@ Hi,
 My name is Will, I'm an iOS developer based in Auckland. 
 I've had lots of fun working on this project, I think the App is well made, and it has lots of interesting features to replicate.
 
-![gif 1](https://raw.githubusercontent.com/will3/cali/master/ms1.gif)
-![gif 2](https://raw.githubusercontent.com/will3/cali/master/ms3.gif)
+![gif 1](https://github.com/will3/cali/blob/master/ms1.gif?raw=true)
+![gif 2](https://github.com/will3/cali/blob/master/ms3.gif?raw=true)
 
 - Custom layout library  
 I made my own layout library Layouts to help me programmatically layout views
