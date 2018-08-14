@@ -310,14 +310,14 @@
     },
     {
       "file": "/Users/will3/cali/cali/Colors.swift",
-      "line": 31,
+      "line": 32,
       "symbol": "UIColor.init(red:green:blue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/Colors.swift",
-      "line": 39,
+      "line": 40,
       "symbol": "UIColor.init(rgb:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

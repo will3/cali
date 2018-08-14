@@ -51,8 +51,11 @@ I've written some tests around formatters, and included examples on how I would 
 - More unit and UI test coverage  
   Due to time constraints, I've only wrote a few tests
 - Geocoding weather location
-	currently, it's only based on user location
+	Currently, it's only based on user location
 - Adding location to events
   No way of adding a location when creating events
 - Local notifications
 	Ability to configure and show notifications as reminders
+- Handle major location changes
+- Clean up submodules
+	Move calidoc, layouts, layoutdoc to submodules

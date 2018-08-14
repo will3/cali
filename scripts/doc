@@ -2,3 +2,7 @@
 # Otherwise the docs would include README
 cd ..
 jazzy --min-acl private --readme fakepath
+cd docs
+git add .
+git commit -m 'MINOR'
+git push

@@ -351,43 +351,58 @@
         <section>
           <section class="section">
             
-            <p>Hi,<br>
-I&rsquo;m Will, am a developer based in Auckland. 
-I&rsquo;ve had lots of fun working on the project.</p>
+            <h2 id='cali' class='heading'>Cali</h2>
+
+<p><img src="https://github.com/will3/cali/blob/master/icon.png" width="60"><br>
+an Outlook Calendar clone  </p>
+
+<p>Hi, my name is Will. I&rsquo;m an iOS developer based in Auckland.<br>
+Over the last two weeks, I&rsquo;ve been working on a clone of the Outlook Calendar App. I think Outlook has many well made features, and I had lots of fun working on this project. :]</p>
 
 <p><span><img src="https://github.com/will3/cali/blob/master/ms1.gif" width="200"></span>
 <span><img src="https://github.com/will3/cali/blob/master/ms3.gif" width="200"></span></p>
+<h2 id='custom-layout-library' class='heading'>Custom layout library</h2>
 
-<ul>
-<li>Custom layout library<br></li>
-</ul>
-
-<p>I&rsquo;ve written a custom layout library Layouts to help me layout views
+<p>I&rsquo;ve written a custom layout library to help me layout custom views:<br>
+<a href="https://github.com/will3/layouts">Layouts</a><br>
+<a href="https://will3.github.io/layoutsdoc/Classes/LayoutBuilder.html">Layouts Documentation</a><br>
 It&rsquo;s a convention over configuration, CSS inspired framework with a chainable interface</p>
+<h2 id='browsable-internal-documentation' class='heading'>Browsable internal documentation</h2>
 
-<ul>
-<li>Browsable internal documentation<br>
-<a href="http://will3.github.io/calidoc">link</a><br></li>
-</ul>
+<p>Documentation generation is fully automated and extracted from file
+<a href="http://will3.github.io/calidoc">link</a>  </p>
 
 <p><img src="https://github.com/will3/cali/blob/master/doc.png" width="400"></p>
+<h2 id='dependency-injection' class='heading'>Dependency injection</h2>
+
+<p>I&rsquo;ve implemented a DI container to control dependencies injected
+UI Tests for e.g., will always run on the same date, which reduces side effects and false positives
+Unit tests uses a container that returns mock objects</p>
+<h2 id='ui-tests' class='heading'>UI tests</h2>
+
+<p>UI Tests are written using the page pattern<br>
+for e.g.</p>
+<pre class="highlight plaintext"><code>// Test create event and open
+    MainView(app: app)
+        .createEvent()
+        .save()
+        .openEvent()
+        .assertEventOpened()
+</code></pre>
+<h2 id='unit-tests' class='heading'>Unit tests</h2>
+
+<p>I&rsquo;ve written some tests around formatters, and included examples on how I would write tests for View Controllers.</p>
+<h2 id='if-i-had-more-time' class='heading'>If I had more time&hellip;</h2>
 
 <ul>
-<li><p>Dependency injection
-DI is implement to enable different containers to be written for tests
-Unit tests uses a container that returns mock objects,
-UI Tests uses a different container, so they always run at the same date, and never makes any service calls.</p></li>
-<li><p>UI tests<br>
-UI Tests are written using the page pattern:
-for e.g.</p>
-<pre class="highlight plaintext"><code>MainView(app: app)
-    .createEvent()
-    .save()
-    .openEvent()
-</code></pre></li>
-<li><p>Unit tests
-I used Cuckoo to generate mock classes, Quick for creating specs
-If I had more time, I would improve test coverage</p></li>
+<li>More unit and UI test coverage<br>
+Due to time constraints, I&rsquo;ve only wrote a few tests</li>
+<li>Geocoding weather location
+currently, it&rsquo;s only based on user location</li>
+<li>Adding location to events
+No way of adding a location when creating events</li>
+<li>Local notifications
+Ability to configure and show notifications as reminders</li>
 </ul>
 
           </section>

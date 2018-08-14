@@ -1,2 +1,6 @@
 cd ../Layouts
 jazzy
+cd doc
+git add .
+git commit -m 'MINOR'
+git push
