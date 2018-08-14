@@ -61,7 +61,7 @@
 		6F6686A72116F27A0047D752 /* EventFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6686A62116F27A0047D752 /* EventFormatter.swift */; };
 		6F71BD61211AA6B30094FCD6 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD60211AA6B30094FCD6 /* EventCell.swift */; };
 		6F71BD63211BA3E70094FCD6 /* LayoutSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD62211BA3E70094FCD6 /* LayoutSelectorView.swift */; };
-		6F71BD68211C44770094FCD6 /* CalendarAnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD67211C44770094FCD6 /* CalendarAnimatedView.swift */; };
+		6F71BD68211C44770094FCD6 /* TodayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F71BD67211C44770094FCD6 /* TodayButton.swift */; };
 		6F782C6F212251AB0007E566 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F782C6E212251AB0007E566 /* GeneratedMocks.swift */; };
 		6F782C7121226DFD0007E566 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F782C7021226DFD0007E566 /* Promise.swift */; };
 		6F782C74212291130007E566 /* WeatherFormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F782C73212291130007E566 /* WeatherFormatterSpec.swift */; };
@@ -176,7 +176,7 @@
 		6F6686A62116F27A0047D752 /* EventFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormatter.swift; sourceTree = "<group>"; };
 		6F71BD60211AA6B30094FCD6 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		6F71BD62211BA3E70094FCD6 /* LayoutSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSelectorView.swift; sourceTree = "<group>"; };
-		6F71BD67211C44770094FCD6 /* CalendarAnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAnimatedView.swift; sourceTree = "<group>"; };
+		6F71BD67211C44770094FCD6 /* TodayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayButton.swift; sourceTree = "<group>"; };
 		6F782C6E212251AB0007E566 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		6F782C7021226DFD0007E566 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		6F782C73212291130007E566 /* WeatherFormatterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFormatterSpec.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 				6F0E3BB62119728A003E5E00 /* DayView */,
 				6F6686842116835A0047D752 /* CreateEvent */,
 				6F668664211513A70047D752 /* Main */,
-				6F71BD67211C44770094FCD6 /* CalendarAnimatedView.swift */,
+				6F71BD67211C44770094FCD6 /* TodayButton.swift */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -856,7 +856,7 @@
 				6F346845211E68020005D5C7 /* DeleteEventButton.swift in Sources */,
 				6FAF59E9211FD13C0041BC17 /* UITestEventService.swift in Sources */,
 				6FACC2CA2117D620004570ED /* DatePicker.swift in Sources */,
-				6F71BD68211C44770094FCD6 /* CalendarAnimatedView.swift in Sources */,
+				6F71BD68211C44770094FCD6 /* TodayButton.swift in Sources */,
 				6F9EE1102121451000F69C60 /* WeatherDataMultiple.swift in Sources */,
 				6F0E3BBA2119787E003E5E00 /* EventHandleView.swift in Sources */,
 				6F66867B211566A20047D752 /* DateFormatters.swift in Sources */,

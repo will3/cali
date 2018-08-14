@@ -11,9 +11,13 @@ import Layouts
 
 /// Calendar collection view cell
 class CalendarCollectionViewCell: UICollectionViewCell {
+    /// Background style, for CalendarCollectionViewCell
     enum Background {
+        /// White background
         case white
+        /// Grey background
         case grey
+        /// Background for today
         case today
     }
     /// Identifier

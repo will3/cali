@@ -42,6 +42,7 @@ class TodayButton : UIView {
     /// Preferred height
     private let preferredHeight : Float = 24
     
+    /// Update delta
     private func updateDelta() {
         let delta = Float(offset)
         var index = 0
@@ -103,6 +104,7 @@ class TodayButton : UIView {
         layoutIfNeeded()
     }
     
+    /// Update day
     private func updateDay() {
         let day = self.day
         for leaf in leafs {
@@ -113,14 +115,20 @@ class TodayButton : UIView {
     }
     
     private class LeafView : UIView {
-
+        /// Day
         var day = "" { didSet { updateDay() } }
+        /// Delta
         var delta : Float = 0 { didSet { updateDelta() } }
+        /// Index
         var index = 0
+        /// Is front
         var isFront = false { didSet { updateImage() } }
 
+        /// View loaded
         private var loaded = false
+        /// Image view
         private let imageView = UIImageView()
+        /// label
         private let label = UILabel()
         
         override func didMoveToSuperview() {
@@ -145,6 +153,7 @@ class TodayButton : UIView {
             self.layer.rasterizationScale = UIScreen.main.scale
         }
         
+        /// Update image
         private func updateImage() {
             if isFront {
                 imageView.image = Images.cal
@@ -153,10 +162,12 @@ class TodayButton : UIView {
             }
         }
 
+        /// Update day
         private func updateDay() {
             label.text = day
         }
         
+        /// Update delta
         private func updateDelta() {
             let offset = CGFloat(1) - CGFloat(index) / 3.0
             

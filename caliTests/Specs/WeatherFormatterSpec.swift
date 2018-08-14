@@ -29,3 +29,5 @@ class WeatherFormatterSpec: QuickSpec {
         }
     }
 }
+
+class 

@@ -9,26 +9,37 @@
 import Foundation
 import UIKit
 
+/// Accessibility identifier
 class AccessibilityIdentifier {
 
+    /// Main view
     static let mainView = "mainView"
 
+    /// Create event view
     static let createEventView = "createEventView"
     
+    /// Plus button
     static let plusButton = "plusButton"
 
+    /// Title input
     static let titleInput = "titleInput"
 
+    /// Tick button
     static let tickButton = "tickButton"
 
+    /// Cross button
     static let crossButton = "crossButton"
 
+    /// Event cell
     static let eventCell = "eventCell"
 
+    /// Event list view
     static let eventListView = "eventListView"
 
+    /// Event table view
     static let eventTableView = "eventTableView"
 
+    /// Today button
     static let todayButton = "todayButton"
 
     /// Add accessibility identifier to view controller

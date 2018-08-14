@@ -2,442 +2,85 @@
   "warnings": [
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 13,
+      "line": 15,
       "symbol": "AppDelegate",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 14,
+      "line": 16,
       "symbol": "AppDelegate.instance",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 16,
+      "line": 18,
       "symbol": "AppDelegate.window",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 18,
+      "line": 20,
       "symbol": "AppDelegate.application(_:didFinishLaunchingWithOptions:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 37,
+      "line": 49,
       "symbol": "AppDelegate.applicationWillResignActive(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 42,
+      "line": 54,
       "symbol": "AppDelegate.applicationDidEnterBackground(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 47,
+      "line": 59,
       "symbol": "AppDelegate.applicationWillEnterForeground(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 51,
+      "line": 63,
       "symbol": "AppDelegate.applicationDidBecomeActive(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/AppDelegate.swift",
-      "line": 55,
+      "line": 67,
       "symbol": "AppDelegate.applicationWillTerminate(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 22,
-      "symbol": "CalendarAnimatedView.loaded",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 24,
-      "symbol": "CalendarAnimatedView.numberOfLeaves",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 26,
-      "symbol": "CalendarAnimatedView.leafs",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 28,
-      "symbol": "CalendarAnimatedView.day",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 35,
-      "symbol": "CalendarAnimatedView.preferredWidth",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 37,
-      "symbol": "CalendarAnimatedView.preferredHeight",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 39,
-      "symbol": "CalendarAnimatedView.updateDelta()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 63,
-      "symbol": "CalendarAnimatedView.didMoveToSuperview()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 73,
-      "symbol": "CalendarAnimatedView.loadView()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 89,
-      "symbol": "CalendarAnimatedView.layoutSubviews()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 103,
-      "symbol": "CalendarAnimatedView.updateDay()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 110,
-      "symbol": "CalendarAnimatedView.LeafView",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 112,
-      "symbol": "CalendarAnimatedView.LeafView.day",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 113,
-      "symbol": "CalendarAnimatedView.LeafView.delta",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 114,
-      "symbol": "CalendarAnimatedView.LeafView.index",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 116,
-      "symbol": "CalendarAnimatedView.LeafView.loaded",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 117,
-      "symbol": "CalendarAnimatedView.LeafView.imageView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 118,
-      "symbol": "CalendarAnimatedView.LeafView.label",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 120,
-      "symbol": "CalendarAnimatedView.LeafView.didMoveToSuperview()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 130,
-      "symbol": "CalendarAnimatedView.LeafView.loadView()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 140,
-      "symbol": "CalendarAnimatedView.LeafView.updateDay()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarAnimatedView.swift",
-      "line": 144,
-      "symbol": "CalendarAnimatedView.LeafView.updateDelta()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 12,
-      "symbol": "CalendarCollectionViewCell",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 13,
-      "symbol": "CalendarCollectionViewCell.Background",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 14,
-      "symbol": "CalendarCollectionViewCell.Background.white",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 15,
-      "symbol": "CalendarCollectionViewCell.Background.grey",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 16,
-      "symbol": "CalendarCollectionViewCell.Background.today",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 18,
-      "symbol": "CalendarCollectionViewCell.identifier",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 19,
-      "symbol": "CalendarCollectionViewCell.label",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 20,
-      "symbol": "CalendarCollectionViewCell.monthLabel",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 21,
-      "symbol": "CalendarCollectionViewCell.view",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 22,
-      "symbol": "CalendarCollectionViewCell.circleView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 23,
-      "symbol": "CalendarCollectionViewCell.leftBorder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 24,
-      "symbol": "CalendarCollectionViewCell.botBorder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 25,
-      "symbol": "CalendarCollectionViewCell.dot",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 26,
-      "symbol": "CalendarCollectionViewCell.weatherIconView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 28,
+      "line": 44,
       "symbol": "CalendarCollectionViewCell.bounds",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 35,
-      "symbol": "CalendarCollectionViewCell.shouldShowCircle",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 40,
-      "symbol": "CalendarCollectionViewCell.background",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 41,
-      "symbol": "CalendarCollectionViewCell.drawLeftBorder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 42,
-      "symbol": "CalendarCollectionViewCell.drawBotBorder",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 43,
-      "symbol": "CalendarCollectionViewCell.month",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 46,
-      "symbol": "CalendarCollectionViewCell.day",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 47,
-      "symbol": "CalendarCollectionViewCell.weatherIcon",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 49,
-      "symbol": "CalendarCollectionViewCell.updateLeftBorder()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 53,
-      "symbol": "CalendarCollectionViewCell.updateBotBorder()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 57,
-      "symbol": "CalendarCollectionViewCell.updateCircle()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 72,
-      "symbol": "CalendarCollectionViewCell.updateBackground()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 83,
-      "symbol": "CalendarCollectionViewCell.updateLabels()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 89,
+      "line": 74,
       "symbol": "CalendarCollectionViewCell.layoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 95,
-      "symbol": "CalendarCollectionViewCell.updateDotPosition()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 108,
+      "line": 148,
       "symbol": "CalendarCollectionViewCell.awakeFromNib()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 167,
-      "symbol": "CalendarCollectionViewCell.numEvents",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/CalendarCollectionViewCell.swift",
-      "line": 171,
-      "symbol": "CalendarCollectionViewCell.updateDot()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -450,7 +93,7 @@
     },
     {
       "file": "/Users/will3/cali/cali/CalendarDates.swift",
-      "line": 30,
+      "line": 37,
       "symbol": "CalendarDates.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -471,98 +114,98 @@
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 82,
+      "line": 80,
       "symbol": "CalendarView.observeValue(forKeyPath:of:change:context:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 93,
+      "line": 91,
       "symbol": "CalendarView.didMoveToSuperview()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 106,
+      "line": 104,
       "symbol": "CalendarView.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 157,
+      "line": 155,
       "symbol": "CalendarView.layoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 177,
+      "line": 175,
       "symbol": "CalendarView.collectionView(_:cellForItemAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 185,
+      "line": 183,
       "symbol": "CalendarView.collectionView(_:didSelectItemAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 192,
+      "line": 190,
       "symbol": "CalendarView.collectionView(_:numberOfItemsInSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 196,
+      "line": 194,
       "symbol": "CalendarView.collectionView(_:willDisplay:forItemAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 202,
+      "line": 200,
       "symbol": "CalendarView.collectionView(_:layout:sizeForItemAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 214,
+      "line": 212,
       "symbol": "CalendarView.scrollViewWillBeginDragging(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 218,
+      "line": 216,
       "symbol": "CalendarView.scrollViewWillEndDragging(_:withVelocity:targetContentOffset:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 233,
+      "line": 231,
       "symbol": "CalendarView.scrollViewDidEndDecelerating(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 239,
+      "line": 237,
       "symbol": "CalendarView.showOverlay()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CalendarView.swift",
-      "line": 245,
+      "line": 243,
       "symbol": "CalendarView.hideOverlay()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -660,112 +303,231 @@
     },
     {
       "file": "/Users/will3/cali/cali/Colors.swift",
-      "line": 30,
+      "line": 27,
+      "symbol": "Colors.red",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Colors.swift",
+      "line": 31,
       "symbol": "UIColor.init(red:green:blue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/Colors.swift",
-      "line": 38,
+      "line": 39,
       "symbol": "UIColor.init(rgb:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 18,
+      "line": 25,
       "symbol": "CreateEventViewController.RowType.title",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 19,
+      "line": 26,
       "symbol": "CreateEventViewController.RowType.dateTime",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 21,
+      "line": 27,
+      "symbol": "CreateEventViewController.RowType.planForWeather",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 29,
       "symbol": "CreateEventViewController.RowType.cellIdentifier",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 61,
+      "line": 83,
       "symbol": "CreateEventViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 93,
-      "symbol": "CreateEventViewController.tableView(_:cellForRowAt:)",
+      "line": 127,
+      "symbol": "CreateEventViewController.deinit",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 112,
-      "symbol": "CreateEventViewController.tableView(_:numberOfRowsInSection:)",
+      "line": 131,
+      "symbol": "CreateEventViewController.keyboardWillShow()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 116,
-      "symbol": "CreateEventViewController.numberOfSections(in:)",
+      "line": 135,
+      "symbol": "CreateEventViewController.keyboardWillHide()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 122,
-      "symbol": "CreateEventViewController.tableView(_:heightForRowAt:)",
+      "line": 146,
+      "symbol": "CreateEventViewController.keyboardWillChangeFrame(notification:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 128,
-      "symbol": "CreateEventViewController.eventDateTimeCellDidChange(_:)",
+      "line": 150,
+      "symbol": "CreateEventViewController.viewDidLayoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 136,
+      "line": 158,
+      "symbol": "CreateEventViewController.updateNavigationItemTitle()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 169,
       "symbol": "CreateEventViewController.crossPressed()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 152,
+      "line": 173,
       "symbol": "CreateEventViewController.tickPressed()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
-      "line": 157,
+      "line": 177,
       "symbol": "CreateEventViewController.updateSections()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 185,
+      "symbol": "CreateEventViewController.updateViewType()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 197,
+      "symbol": "CreateEventViewController.updateLeftBarButtons()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 208,
+      "symbol": "CreateEventViewController.deletePressed()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 212,
+      "symbol": "CreateEventViewController.confirmDeleteEvent(word:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 228,
+      "symbol": "CreateEventViewController.backOrDismiss()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 238,
+      "symbol": "CreateEventViewController.tableView(_:cellForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 265,
+      "symbol": "CreateEventViewController.planForWeatherChanged(sender:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 271,
+      "symbol": "CreateEventViewController.tableView(_:numberOfRowsInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 275,
+      "symbol": "CreateEventViewController.numberOfSections(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 279,
+      "symbol": "CreateEventViewController.tableView(_:heightForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/CreateEventViewController.swift",
+      "line": 285,
+      "symbol": "CreateEventViewController.eventDateTimeCellDidChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/Curl.swift",
       "line": 11,
-      "symbol": "CurlError",
+      "symbol": "ServiceError",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/Curl.swift",
       "line": 12,
+      "symbol": "ServiceError.curlError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Curl.swift",
+      "line": 13,
+      "symbol": "ServiceError.badData",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Curl.swift",
+      "line": 16,
+      "symbol": "CurlError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Curl.swift",
+      "line": 17,
       "symbol": "CurlError.string",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -939,6 +701,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/will3/cali/cali/Dates.swift",
+      "line": 11,
+      "symbol": "Dates",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/will3/cali/cali/DayView.swift",
       "line": 13,
       "symbol": "DayViewDelegate",
@@ -961,148 +730,183 @@
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 43,
-      "symbol": "DayView.map",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 45,
-      "symbol": "DayView.layouts",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 47,
-      "symbol": "DayView.draggableEventView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 61,
+      "line": 64,
       "symbol": "DayView.hours",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 62,
+      "line": 65,
       "symbol": "DayView.labelHalfHeight",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 63,
+      "line": 66,
       "symbol": "DayView.hourHeight",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 64,
+      "line": 67,
       "symbol": "DayView.botPadding",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 65,
+      "line": 68,
       "symbol": "DayView.totalHeight",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 68,
+      "line": 71,
       "symbol": "DayView.labelWidth",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 69,
+      "line": 72,
       "symbol": "DayView.graphStartX",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 70,
+      "line": 73,
       "symbol": "DayView.graphRightPadding",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 72,
-      "symbol": "DayView.updateLabels()",
+      "line": 74,
+      "symbol": "DayView.didScrollToFirstEvent",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DayView.swift",
+      "line": 110,
+      "symbol": "DayView.scrollToFirstEventIfNeeded()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 84,
-      "symbol": "DayView.updateEvents()",
+      "line": 119,
+      "symbol": "DayView.scrollToFirstEvent()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 102,
-      "symbol": "DayView.addEventView(event:)",
+      "line": 125,
+      "symbol": "DayView.scrollToEventView(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 123,
+      "line": 187,
       "symbol": "DayView.didTapEvent(tap:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 134,
-      "symbol": "DayView.placeEventView(_:)",
+      "line": 197,
+      "symbol": "DayView.layoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 158,
+      "line": 205,
       "symbol": "DayView.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 200,
+      "line": 246,
       "symbol": "DayView.draggableEventViewDidDrag(_:translation:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 208,
+      "line": 255,
       "symbol": "DayView.draggableEventViewDidDragTop(_:translation:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 217,
+      "line": 265,
       "symbol": "DayView.draggableEventViewDidDragBot(_:translation:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DayView.swift",
-      "line": 225,
+      "line": 274,
       "symbol": "DayView.draggableEventViewDidEndDrag(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DayView.swift",
+      "line": 294,
+      "symbol": "DayView.snapDate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DayView.swift",
+      "line": 299,
+      "symbol": "DayView.snapTimeInterval(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DayView.swift",
+      "line": 303,
+      "symbol": "DayView.updateWeather()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DeleteEventButton.swift",
+      "line": 15,
+      "symbol": "DeleteEventButton.preferredHeight",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DeleteEventButton.swift",
+      "line": 16,
+      "symbol": "DeleteEventButton.button",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DeleteEventButton.swift",
+      "line": 23,
+      "symbol": "DeleteEventButton.didMoveToSuperview()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DeleteEventButton.swift",
+      "line": 32,
+      "symbol": "DeleteEventButton.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -1143,169 +947,106 @@
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 27,
-      "symbol": "DraggableEventView.event",
+      "line": 58,
+      "symbol": "DraggableEventView.weatherHourView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 29,
-      "symbol": "DraggableEventView.draggedStart",
+      "line": 59,
+      "symbol": "DraggableEventView.weather",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 30,
-      "symbol": "DraggableEventView.draggedDuration",
+      "line": 62,
+      "symbol": "DraggableEventView.weatherHourViewLayout",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 32,
-      "symbol": "DraggableEventView.didLoad",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 33,
-      "symbol": "DraggableEventView.mainHandle",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 34,
-      "symbol": "DraggableEventView.topHandle",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 35,
-      "symbol": "DraggableEventView.bottomHandle",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 36,
-      "symbol": "DraggableEventView.handleSize",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 37,
-      "symbol": "DraggableEventView.dirty",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 38,
-      "symbol": "DraggableEventView.timeLabel",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 39,
-      "symbol": "DraggableEventView.durationLabel",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 40,
-      "symbol": "DraggableEventView.labelContainer",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 41,
-      "symbol": "DraggableEventView.titleLabel",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 43,
-      "symbol": "DraggableEventView.paddingVertical",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 47,
-      "symbol": "DraggableEventView.opacityOnTap",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 57,
-      "symbol": "DraggableEventView.updateDraggable()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 84,
+      "line": 108,
       "symbol": "DraggableEventView.didMoveToSuperview()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 92,
-      "symbol": "DraggableEventView.updateEvent()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "line": 116,
+      "symbol": "DraggableEventView.startToDraw",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 101,
+      "line": 126,
+      "symbol": "DraggableEventView.durationToDraw",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
+      "line": 136,
+      "symbol": "DraggableEventView.endToDraw",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
+      "line": 156,
       "symbol": "DraggableEventView.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 153,
+      "line": 219,
       "symbol": "DraggableEventView.mainDragged(pan:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 163,
+      "line": 232,
       "symbol": "DraggableEventView.topDragged(pan:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 172,
+      "line": 245,
       "symbol": "DraggableEventView.botDragged(pan:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 181,
+      "line": 258,
       "symbol": "DraggableEventView.mainTapped(tap:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/DraggableEventView.swift",
-      "line": 201,
+      "line": 278,
       "symbol": "DraggableEventView.gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
+      "line": 284,
+      "symbol": "DraggableEventView.updateShadow()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/DraggableEventView.swift",
+      "line": 295,
+      "symbol": "DraggableEventView.updateWeather()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -1325,71 +1066,36 @@
     },
     {
       "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 16,
-      "symbol": "EventCell.didLoad",
+      "line": 40,
+      "symbol": "EventCell.weatherData",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 18,
-      "symbol": "EventCell.timeLabel",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 19,
-      "symbol": "EventCell.durationLabel",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 20,
-      "symbol": "EventCell.titleLabel",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 21,
-      "symbol": "EventCell.left",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 22,
-      "symbol": "EventCell.right",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 24,
-      "symbol": "EventCell.event",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 30,
+      "line": 46,
       "symbol": "EventCell.didMoveToSuperview()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 41,
+      "line": 57,
       "symbol": "EventCell.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventCell.swift",
-      "line": 63,
+      "line": 93,
       "symbol": "EventCell.updateEvent()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventCell.swift",
+      "line": 102,
+      "symbol": "EventCell.updateWeather()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -1514,35 +1220,35 @@
     },
     {
       "file": "/Users/will3/cali/cali/EventDateTimeCell.swift",
-      "line": 94,
+      "line": 104,
       "symbol": "EventDateTimeCell.didPressLeft()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventDateTimeCell.swift",
-      "line": 98,
+      "line": 108,
       "symbol": "EventDateTimeCell.didPressRight()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventDateTimeCell.swift",
-      "line": 102,
+      "line": 112,
       "symbol": "EventDateTimeCell.showDateTimePicker(page:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventDateTimeCell.swift",
-      "line": 112,
+      "line": 122,
       "symbol": "EventDateTimeCell.updateEvent()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventDateTimeCell.swift",
-      "line": 151,
+      "line": 164,
       "symbol": "EventDateTimeCell.dateTimePickerDidFinish(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -1667,6 +1373,55 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/will3/cali/cali/EventFormatter.swift",
+      "line": 87,
+      "symbol": "EventFormatter.DurationStyle",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventFormatter.swift",
+      "line": 88,
+      "symbol": "EventFormatter.DurationStyle.normal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventFormatter.swift",
+      "line": 89,
+      "symbol": "EventFormatter.DurationStyle.withTag",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventFormatter.swift",
+      "line": 90,
+      "symbol": "EventFormatter.DurationStyle.short",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventFormatter.swift",
+      "line": 127,
+      "symbol": "EventFormatter.formatDuration(from:to:minFormat:hourFormat:separator:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventFormatter.swift",
+      "line": 161,
+      "symbol": "EventFormatter.formatDurationNormal(from:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventFormatter.swift",
+      "line": 170,
+      "symbol": "EventFormatter.formatDurationShort(from:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/will3/cali/cali/EventHandleView.swift",
       "line": 13,
       "symbol": "EventHandleView",
@@ -1703,14 +1458,7 @@
     },
     {
       "file": "/Users/will3/cali/cali/EventHandleView.swift",
-      "line": 30,
-      "symbol": "EventHandleView.circle",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventHandleView.swift",
-      "line": 31,
+      "line": 33,
       "symbol": "EventHandleView.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -1732,77 +1480,112 @@
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
       "line": 16,
+      "symbol": "EventListHeaderView.weatherIconView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
+      "line": 17,
+      "symbol": "EventListHeaderView.weatherContainer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
+      "line": 18,
+      "symbol": "EventListHeaderView.weatherLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
+      "line": 20,
+      "symbol": "EventListHeaderView.weather",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
+      "line": 22,
       "symbol": "EventListHeaderView.dayWeekMonthFormatter",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 22,
+      "line": 28,
       "symbol": "EventListHeaderView.dayWeekMonthYearFormatter",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 28,
+      "line": 34,
       "symbol": "EventListHeaderView.init(reuseIdentifier:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 32,
+      "line": 38,
       "symbol": "EventListHeaderView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 36,
+      "line": 42,
       "symbol": "EventListHeaderView.didLoad",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 38,
+      "line": 44,
       "symbol": "EventListHeaderView.date",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 39,
+      "line": 45,
       "symbol": "EventListHeaderView.calendar",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 41,
+      "line": 46,
       "symbol": "EventListHeaderView.label",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 43,
+      "line": 48,
       "symbol": "EventListHeaderView.didMoveToSuperview()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 50,
+      "line": 55,
       "symbol": "EventListHeaderView.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
-      "line": 65,
+      "line": 83,
       "symbol": "EventListHeaderView.updateLabel()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventListHeaderView.swift",
+      "line": 133,
+      "symbol": "EventListHeaderView.updateWeather()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -1829,204 +1612,134 @@
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 17,
-      "symbol": "EventListView",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 18,
-      "symbol": "EventListView.didLoad",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 19,
-      "symbol": "EventListView.tableView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 20,
-      "symbol": "EventListView.dates",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 21,
-      "symbol": "EventListView.selectedDate",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 22,
-      "symbol": "EventListView.calendar",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 23,
-      "symbol": "EventListView.hasScrolledToToday",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 24,
-      "symbol": "EventListView.firstDay",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 25,
-      "symbol": "EventListView.delegate",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 26,
-      "symbol": "EventListView.eventService",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 27,
-      "symbol": "EventListView.scrollingToSelectedDate",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 29,
+      "line": 44,
       "symbol": "EventListView.offset",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 36,
+      "line": 51,
       "symbol": "EventListView.scrollView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 40,
+      "line": 55,
       "symbol": "EventListView.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 44,
+      "line": 59,
       "symbol": "EventListView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 48,
+      "line": 63,
       "symbol": "EventListView.reloadData()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 53,
+      "line": 68,
       "symbol": "EventListView.layoutSubviews()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 59,
+      "line": 74,
       "symbol": "EventListView.didMoveToSuperview()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 66,
+      "line": 81,
       "symbol": "EventListView.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 83,
+      "line": 103,
       "symbol": "EventListView.scrollToTodayIfNeeded()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 96,
+      "line": 116,
       "symbol": "EventListView.numberOfSections(in:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 100,
+      "line": 120,
       "symbol": "EventListView.tableView(_:numberOfRowsInSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 110,
+      "line": 130,
       "symbol": "EventListView.tableView(_:cellForRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 124,
+      "line": 147,
       "symbol": "EventListView.tableView(_:viewForHeaderInSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 131,
+      "line": 155,
       "symbol": "EventListView.tableView(_:didSelectRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 135,
+      "line": 170,
       "symbol": "EventListView.tableView(_:heightForRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 139,
+      "line": 174,
       "symbol": "EventListView.scrollViewDidScroll(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 153,
+      "line": 188,
       "symbol": "EventListView.scrollToSelectedDate()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventListView.swift",
-      "line": 163,
+      "line": 198,
       "symbol": "EventListView.scrollViewDidEndScrollingAnimation(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventListView.swift",
+      "line": 202,
+      "symbol": "EventListView.updateWeather()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -2063,6 +1776,13 @@
       "line": 24,
       "symbol": "EventLocationCell.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventMap.swift",
+      "line": 13,
+      "symbol": "EventMap.map",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -2104,83 +1824,118 @@
       "file": "/Users/will3/cali/cali/EventService.swift",
       "line": 12,
       "symbol": "EventService",
-      "symbol_kind": "source.lang.swift.decl.class",
+      "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventService.swift",
       "line": 13,
-      "symbol": "EventService.instance",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 14,
-      "symbol": "EventService.context",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 15,
-      "symbol": "EventService.map",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 16,
-      "symbol": "EventService.hasInitEventMap",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 18,
       "symbol": "EventService.find(startDay:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 23,
+      "line": 14,
       "symbol": "EventService.createEvent(start:duration:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 35,
+      "line": 15,
       "symbol": "EventService.changeDay(event:day:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 56,
+      "line": 16,
       "symbol": "EventService.discardEvent(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 64,
-      "symbol": "EventService.initEventMapIfNeeded()",
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 12,
+      "symbol": "EventServiceImpl",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 13,
+      "symbol": "EventServiceImpl.context",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 14,
+      "symbol": "EventServiceImpl.map",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 15,
+      "symbol": "EventServiceImpl.hasInitEventMap",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 16,
+      "symbol": "EventServiceImpl.calendar",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 18,
+      "symbol": "EventServiceImpl.find(startDay:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 71,
-      "symbol": "EventService.initEventMap()",
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 23,
+      "symbol": "EventServiceImpl.createEvent(start:duration:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/EventService.swift",
-      "line": 80,
-      "symbol": "EventService.findAll()",
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 37,
+      "symbol": "EventServiceImpl.changeDay(event:day:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 58,
+      "symbol": "EventServiceImpl.discardEvent(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 66,
+      "symbol": "EventServiceImpl.initEventMapIfNeeded()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 73,
+      "symbol": "EventServiceImpl.initEventMap()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventServiceImpl.swift",
+      "line": 82,
+      "symbol": "EventServiceImpl.findAll()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -2208,48 +1963,48 @@
     {
       "file": "/Users/will3/cali/cali/EventTitleCell.swift",
       "line": 17,
-      "symbol": "EventTitleCell.iconImageView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventTitleCell.swift",
-      "line": 18,
       "symbol": "EventTitleCell.wrapper",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventTitleCell.swift",
-      "line": 20,
+      "line": 19,
       "symbol": "EventTitleCell.event",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventTitleCell.swift",
-      "line": 22,
+      "line": 21,
       "symbol": "EventTitleCell.placeholder",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventTitleCell.swift",
-      "line": 26,
+      "line": 25,
       "symbol": "EventTitleCell.init(style:reuseIdentifier:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventTitleCell.swift",
-      "line": 31,
+      "line": 30,
       "symbol": "EventTitleCell.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventTitleCell.swift",
-      "line": 36,
+      "line": 35,
+      "symbol": "EventTitleCell.focus()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventTitleCell.swift",
+      "line": 39,
       "symbol": "EventTitleCell.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -2278,176 +2033,43 @@
     {
       "file": "/Users/will3/cali/cali/EventToggleCell.swift",
       "line": 14,
-      "symbol": "EventToggleCell.identifier",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 15,
-      "symbol": "EventToggleCell.label",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 16,
-      "symbol": "EventToggleCell.iconImageView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 17,
-      "symbol": "EventToggleCell.wrapper",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 18,
       "symbol": "EventToggleCell.loaded",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 20,
-      "symbol": "EventToggleCell.title",
+      "line": 15,
+      "symbol": "EventToggleCell.titleLabel",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 21,
-      "symbol": "EventToggleCell.icon",
+      "line": 16,
+      "symbol": "EventToggleCell.toggle",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 23,
+      "line": 17,
+      "symbol": "EventToggleCell.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/EventToggleCell.swift",
+      "line": 19,
       "symbol": "EventToggleCell.didMoveToSuperview()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 34,
+      "line": 30,
       "symbol": "EventToggleCell.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 55,
-      "symbol": "EventToggleCell.updateTitle()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/EventToggleCell.swift",
-      "line": 59,
-      "symbol": "EventToggleCell.updateIcon()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 12,
-      "symbol": "Faker",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 13,
-      "symbol": "Faker.random",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 15,
-      "symbol": "Faker.firstName",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 19,
-      "symbol": "Faker.lastName",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 23,
-      "symbol": "Faker.startTime",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 27,
-      "symbol": "Faker.duration",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 31,
-      "symbol": "Faker.randomItem(array:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 45,
-      "symbol": "FakerPool",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 46,
-      "symbol": "FakerPool.halfHours",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 71,
-      "symbol": "FakerPool.durations",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 79,
-      "symbol": "FakerPool.firstNames",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 82,
-      "symbol": "FakerPool.lastNames",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 84,
-      "symbol": "FakerPool.eventNames",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Faker.swift",
-      "line": 98,
-      "symbol": "FakerPool.places",
-      "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
@@ -2521,6 +2143,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/will3/cali/cali/Fonts.swift",
+      "line": 28,
+      "symbol": "Fonts.fontNormal",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/will3/cali/cali/Images.swift",
       "line": 14,
       "symbol": "Images.plus",
@@ -2560,6 +2189,97 @@
       "line": 19,
       "symbol": "Images.cal",
       "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Images.swift",
+      "line": 20,
+      "symbol": "Images.calLeaf",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 19,
+      "symbol": "Container.calendar",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 21,
+      "symbol": "Container.nowProvider",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 23,
+      "symbol": "Container.weatherService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 25,
+      "symbol": "Container.locationService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 27,
+      "symbol": "Container.eventService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 29,
+      "symbol": "Container.storage",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 32,
+      "symbol": "DefaultContainer",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 39,
+      "symbol": "DefaultContainer.nowProvider",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 44,
+      "symbol": "DefaultContainer.weatherService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 49,
+      "symbol": "DefaultContainer.locationService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 54,
+      "symbol": "DefaultContainer.eventService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Injection.swift",
+      "line": 59,
+      "symbol": "DefaultContainer.storage",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -2774,211 +2494,232 @@
     },
     {
       "file": "/Users/will3/cali/cali/LocationService.swift",
-      "line": 22,
-      "symbol": "LocationService.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "line": 17,
+      "symbol": "LocationServiceNotifications",
+      "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/LocationService.swift",
-      "line": 60,
-      "symbol": "LocationService.locationManager(_:didUpdateLocations:)",
+      "line": 28,
+      "symbol": "LocationService.location",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/LocationServiceImpl.swift",
+      "line": 21,
+      "symbol": "LocationServiceImpl.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/LocationService.swift",
-      "line": 65,
-      "symbol": "LocationService.locationManager(_:didFailWithError:)",
+      "file": "/Users/will3/cali/cali/LocationServiceImpl.swift",
+      "line": 87,
+      "symbol": "LocationServiceImpl.locationManager(_:didUpdateLocations:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/LocationService.swift",
-      "line": 69,
-      "symbol": "LocationService.locationManager(_:didChangeAuthorization:)",
+      "file": "/Users/will3/cali/cali/LocationServiceImpl.swift",
+      "line": 92,
+      "symbol": "LocationServiceImpl.locationManager(_:didFailWithError:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/LocationServiceImpl.swift",
+      "line": 96,
+      "symbol": "LocationServiceImpl.locationManager(_:didChangeAuthorization:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 80,
+      "line": 48,
+      "symbol": "MainViewController.nowProvider",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/MainViewController.swift",
+      "line": 50,
+      "symbol": "MainViewController.lastWeatherUpdateTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/MainViewController.swift",
+      "line": 91,
       "symbol": "MainViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 155,
-      "symbol": "MainViewController.viewWillAppear(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 160,
+      "line": 172,
       "symbol": "MainViewController.deinit",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 164,
+      "line": 176,
+      "symbol": "MainViewController.viewWillAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/MainViewController.swift",
+      "line": 181,
+      "symbol": "MainViewController.didBecomeActive()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/MainViewController.swift",
+      "line": 186,
       "symbol": "MainViewController.didUpdateLocation()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 168,
+      "line": 190,
       "symbol": "MainViewController.didTapCalendar()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 174,
+      "line": 196,
       "symbol": "MainViewController.updateRightBarButtons()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 183,
+      "line": 208,
       "symbol": "MainViewController.updateLeftBarButtons()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 189,
+      "line": 221,
       "symbol": "MainViewController.layoutTypeImage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 200,
+      "line": 232,
       "symbol": "MainViewController.layoutPressed()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 208,
+      "line": 240,
       "symbol": "MainViewController.plusPressed()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 219,
+      "line": 251,
       "symbol": "MainViewController.updateNavigationItemTitle()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 233,
+      "line": 265,
       "symbol": "MainViewController.didPanCalendar()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 237,
+      "line": 269,
       "symbol": "MainViewController.didPanEvents()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 241,
+      "line": 273,
       "symbol": "MainViewController.didPanDayView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 247,
+      "line": 279,
       "symbol": "MainViewController.expandCalendarView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 260,
+      "line": 292,
       "symbol": "MainViewController.collapseCalendarView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 277,
-      "symbol": "MainViewController.gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 283,
-      "symbol": "MainViewController.eventListViewDidScrollToDay(eventListView:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 288,
-      "symbol": "MainViewController.eventListViewDidScroll(eventListView:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 296,
-      "symbol": "MainViewController.calendarViewDidChangeSelectedDate(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 303,
+      "line": 309,
       "symbol": "MainViewController.showLayoutSelector()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 320,
+      "line": 326,
       "symbol": "MainViewController.hideLayoutSelector()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 338,
+      "line": 344,
       "symbol": "MainViewController.layoutSelectorBackgroundViewTapped()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 344,
+      "line": 396,
+      "symbol": "MainViewController.gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/MainViewController.swift",
+      "line": 402,
+      "symbol": "MainViewController.eventListViewDidScrollToDay(eventListView:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/MainViewController.swift",
+      "line": 407,
+      "symbol": "MainViewController.eventListViewDidScroll(eventListView:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/MainViewController.swift",
+      "line": 415,
+      "symbol": "MainViewController.calendarViewDidChangeSelectedDate(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/MainViewController.swift",
+      "line": 422,
       "symbol": "MainViewController.layoutSelectorViewDidChange(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 353,
-      "symbol": "MainViewController.updateLayout()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/MainViewController.swift",
-      "line": 367,
-      "symbol": "MainViewController.updateWeather()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -3109,16 +2850,121 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/Random.swift",
+      "file": "/Users/will3/cali/cali/NowProvider.swift",
+      "line": 17,
+      "symbol": "NowProviderImpl",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 11,
+      "symbol": "NoError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
       "line": 13,
-      "symbol": "Random.seed",
+      "symbol": "PromiseState",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 14,
+      "symbol": "PromiseState.pending",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 15,
+      "symbol": "PromiseState.success",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 16,
+      "symbol": "PromiseState.error",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 24,
+      "symbol": "Promise.thenBlock",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/Random.swift",
-      "line": 15,
-      "symbol": "Random.init(seed:)",
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 25,
+      "symbol": "Promise.catchBlock",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 26,
+      "symbol": "Promise.state",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 27,
+      "symbol": "Promise.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 28,
+      "symbol": "Promise.err",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 30,
+      "symbol": "Promise.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 32,
+      "symbol": "Promise.init(value:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 37,
+      "symbol": "Promise.resolve(value:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 44,
+      "symbol": "Promise.reject(err:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 52,
+      "symbol": "Promise.then(block:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/Promise.swift",
+      "line": 64,
+      "symbol": "Promise.catch(block:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -3137,31 +2983,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/Settings.swift",
-      "line": 11,
-      "symbol": "Settings",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Settings.swift",
-      "line": 12,
-      "symbol": "Settings.instance",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Settings.swift",
-      "line": 20,
-      "symbol": "Settings.darkSkyApiKey",
+      "file": "/Users/will3/cali/cali/StorageImpl.swift",
+      "line": 15,
+      "symbol": "StorageImpl.persistentContainer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/Storage.swift",
-      "line": 14,
-      "symbol": "Storage.instance",
-      "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
@@ -3193,6 +3018,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/will3/cali/cali/TimeIntervals.swift",
+      "line": 14,
+      "symbol": "TimeIntervals.quarter",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/will3/cali/cali/TimePicker.swift",
       "line": 13,
       "symbol": "TimePickerDelegate",
@@ -3215,36 +3047,505 @@
     },
     {
       "file": "/Users/will3/cali/cali/TimePicker.swift",
-      "line": 38,
+      "line": 34,
+      "symbol": "TimePicker.separator",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/TimePicker.swift",
+      "line": 40,
       "symbol": "TimePicker.didMoveToSuperview()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/TimePicker.swift",
-      "line": 45,
+      "line": 47,
       "symbol": "TimePicker.loadView()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/TimePicker.swift",
-      "line": 72,
+      "line": 77,
       "symbol": "TimePicker.donePressed()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/TimePicker.swift",
-      "line": 76,
+      "line": 81,
       "symbol": "TimePicker.updateEvent()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/will3/cali/cali/TimePicker.swift",
-      "line": 84,
+      "line": 89,
       "symbol": "TimePicker.dayViewDidChangeEvent(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/TodayButton.swift",
+      "line": 70,
+      "symbol": "TodayButton.didMoveToSuperview()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/TodayButton.swift",
+      "line": 80,
+      "symbol": "TodayButton.loadView()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/TodayButton.swift",
+      "line": 117,
+      "symbol": "TodayButton.LeafView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/TodayButton.swift",
+      "line": 134,
+      "symbol": "TodayButton.LeafView.didMoveToSuperview()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/TodayButton.swift",
+      "line": 144,
+      "symbol": "TodayButton.LeafView.loadView()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestContainer.swift",
+      "line": 12,
+      "symbol": "UITestContainer",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestContainer.swift",
+      "line": 13,
+      "symbol": "UITestContainer.calendar",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestContainer.swift",
+      "line": 21,
+      "symbol": "UITestContainer.nowProvider",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestContainer.swift",
+      "line": 25,
+      "symbol": "UITestContainer.weatherService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestContainer.swift",
+      "line": 29,
+      "symbol": "UITestContainer.locationService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestContainer.swift",
+      "line": 33,
+      "symbol": "UITestContainer.eventService",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestContainer.swift",
+      "line": 37,
+      "symbol": "UITestContainer.storage",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestEventService.swift",
+      "line": 11,
+      "symbol": "UITestEventService",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestEventService.swift",
+      "line": 12,
+      "symbol": "UITestEventService.context",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestEventService.swift",
+      "line": 14,
+      "symbol": "UITestEventService.find(startDay:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestEventService.swift",
+      "line": 18,
+      "symbol": "UITestEventService.createEvent(start:duration:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestEventService.swift",
+      "line": 26,
+      "symbol": "UITestEventService.changeDay(event:day:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestEventService.swift",
+      "line": 30,
+      "symbol": "UITestEventService.discardEvent(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestLocationService.swift",
+      "line": 13,
+      "symbol": "UITestLocationService",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestLocationService.swift",
+      "line": 14,
+      "symbol": "UITestLocationService.location",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestNowProvider.swift",
+      "line": 11,
+      "symbol": "UITestNowProvider",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestNowProvider.swift",
+      "line": 14,
+      "symbol": "UITestNowProvider.init(now:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestStorage.swift",
+      "line": 12,
+      "symbol": "UITestStorage",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestStorage.swift",
+      "line": 13,
+      "symbol": "UITestStorage.persistentContainer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestStorage.swift",
+      "line": 35,
+      "symbol": "UITestStorage.deleteAllData(type:entity:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/UITestWeatherService.swift",
+      "line": 12,
+      "symbol": "UITestWeatherService",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 13,
+      "symbol": "WeatherData.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 70,
+      "symbol": "WeatherData.sunriseTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 72,
+      "symbol": "WeatherData.sunsetTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 74,
+      "symbol": "WeatherData.moonPhase",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 76,
+      "symbol": "WeatherData.precipIntensityMax",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 78,
+      "symbol": "WeatherData.temperatureHigh",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 80,
+      "symbol": "WeatherData.temperatureHighTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 82,
+      "symbol": "WeatherData.temperatureLow",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 84,
+      "symbol": "WeatherData.temperatureLowTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 86,
+      "symbol": "WeatherData.apparentTemperatureHigh",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 88,
+      "symbol": "WeatherData.apparentTemperatureHighTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 90,
+      "symbol": "WeatherData.apparentTemperatureLow",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 92,
+      "symbol": "WeatherData.apparentTemperatureLowTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 94,
+      "symbol": "WeatherData.windGustTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 96,
+      "symbol": "WeatherData.uvIndexTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 98,
+      "symbol": "WeatherData.temperatureMin",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 100,
+      "symbol": "WeatherData.temperatureMinTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 102,
+      "symbol": "WeatherData.temperatureMax",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 104,
+      "symbol": "WeatherData.temperatureMaxTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 106,
+      "symbol": "WeatherData.apparentTemperatureMin",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 108,
+      "symbol": "WeatherData.apparentTemperatureMinTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 110,
+      "symbol": "WeatherData.apparentTemperatureMax",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 112,
+      "symbol": "WeatherData.apparentTemperatureMaxTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherData.swift",
+      "line": 114,
+      "symbol": "WeatherData.deserialize(json:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherDataMultiple.swift",
+      "line": 20,
+      "symbol": "WeatherDataMultiple.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherDataMultiple.swift",
+      "line": 22,
+      "symbol": "WeatherDataMultiple.deserialize(json:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherForecastResponse.swift",
+      "line": 13,
+      "symbol": "WeatherForecastResponse.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherForecastResponse.swift",
+      "line": 32,
+      "symbol": "WeatherForecastResponse.deserialize(json:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherFormatter.swift",
+      "line": 13,
+      "symbol": "WeatherFormatter.measurementFormatter",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 13,
+      "symbol": "WeatherHourView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 14,
+      "symbol": "WeatherHourView.loaded",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 15,
+      "symbol": "WeatherHourView.iconView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 16,
+      "symbol": "WeatherHourView.tempLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 17,
+      "symbol": "WeatherHourView.percentageLabel",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 18,
+      "symbol": "WeatherHourView.container",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 19,
+      "symbol": "WeatherHourView.preferredWidth",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 20,
+      "symbol": "WeatherHourView.weatherData",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 22,
+      "symbol": "WeatherHourView.didMoveToSuperview()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 31,
+      "symbol": "WeatherHourView.loadView()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/WeatherHourView.swift",
+      "line": 53,
+      "symbol": "WeatherHourView.updateWeather()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -3298,10 +3599,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/WeatherService.swift",
-      "line": 15,
-      "symbol": "WeatherService.instance",
-      "symbol_kind": "source.lang.swift.decl.var.static",
+      "file": "/Users/will3/cali/cali/WeatherServiceImpl.swift",
+      "line": 12,
+      "symbol": "WeatherServiceImpl",
+      "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
@@ -3326,155 +3627,120 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/EventMap.swift",
-      "line": 13,
-      "symbol": "EventMap.map",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/models/WeatherData.swift",
-      "line": 13,
-      "symbol": "WeatherData.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/models/WeatherData.swift",
-      "line": 69,
-      "symbol": "WeatherData.deserialize(json:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/models/WeatherDataMultiple.swift",
-      "line": 20,
-      "symbol": "WeatherDataMultiple.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/models/WeatherDataMultiple.swift",
-      "line": 22,
-      "symbol": "WeatherDataMultiple.deserialize(json:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/models/WeatherForecastResponse.swift",
-      "line": 13,
-      "symbol": "WeatherForcastResponse.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/models/WeatherForecastResponse.swift",
-      "line": 32,
-      "symbol": "WeatherForcastResponse.deserialize(json:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/will3/cali/cali/models/persistent/Event.swift",
+      "file": "/Users/will3/cali/cali/coredatamodels/Event.swift",
       "line": 4,
       "symbol": "Event",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
       "line": 7,
       "symbol": "EventAttributes",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
       "line": 8,
       "symbol": "EventAttributes.durationNumber",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
       "line": 9,
       "symbol": "EventAttributes.id",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
       "line": 10,
+      "symbol": "EventAttributes.planForWeatherNumber",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 11,
       "symbol": "EventAttributes.start",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 11,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 12,
       "symbol": "EventAttributes.title",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 14,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 15,
       "symbol": "_Event",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 18,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 19,
       "symbol": "_Event.entityName()",
       "symbol_kind": "source.lang.swift.decl.function.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 22,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 23,
       "symbol": "_Event.entity(managedObjectContext:)",
       "symbol_kind": "source.lang.swift.decl.function.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 28,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 29,
       "symbol": "_Event.init(entity:insertInto:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 32,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 33,
       "symbol": "_Event.init(managedObjectContext:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 40,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 41,
       "symbol": "_Event.durationNumber",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 43,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 44,
       "symbol": "_Event.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 46,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 47,
+      "symbol": "_Event.planForWeatherNumber",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 50,
       "symbol": "_Event.start",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/will3/cali/cali/models/persistent/generated/_Event.swift",
-      "line": 49,
+      "file": "/Users/will3/cali/cali/coredatamodels/generated/_Event.swift",
+      "line": 53,
       "symbol": "_Event.title",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
