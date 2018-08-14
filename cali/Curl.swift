@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum ServiceError : Error {
+    case curlError(CurlError)
+    case badData
+}
+
 enum CurlError : Error {
     case string(String)
 }
@@ -34,7 +39,8 @@ class Curl {
                 let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                 if let responseJSON = responseJSON as? [String: Any] {
                     block(nil, responseJSON)
-                    return
+                } else {
+                    block(nil, nil)
                 }
             }
         }

@@ -16,7 +16,7 @@ protocol WeatherService {
      * Get weather
      * 
      * - parameter location: location
-     * - parameter block: return block
+     * - returns: Promise of WeatherForecastResponse or CurlError
      */
-    func getWeather(location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void)
+    func getWeather(location: CLLocation) -> Promise<WeatherForecastResponse, ServiceError>
 }

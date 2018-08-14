@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: cali/EventService.swift at 2018-08-13 23:56:52 +0000
+// MARK: - Mocks generated from file: cali/EventService.swift at 2018-08-14 03:13:47 +0000
 
 //
 //  EventsService.swift
@@ -171,7 +171,7 @@ class MockEventService: EventService, Cuckoo.ProtocolMock {
 }
 
 
-// MARK: - Mocks generated from file: cali/LocationService.swift at 2018-08-13 23:56:52 +0000
+// MARK: - Mocks generated from file: cali/LocationService.swift at 2018-08-14 03:13:47 +0000
 
 //
 //  LocationService.swift
@@ -365,7 +365,7 @@ class MockLocationService: LocationService, Cuckoo.ProtocolMock {
 }
 
 
-// MARK: - Mocks generated from file: cali/Storage.swift at 2018-08-13 23:56:52 +0000
+// MARK: - Mocks generated from file: cali/Storage.swift at 2018-08-14 03:13:47 +0000
 
 //
 //  Storage.swift
@@ -509,7 +509,7 @@ class MockStorage: Storage, Cuckoo.ProtocolMock {
 }
 
 
-// MARK: - Mocks generated from file: cali/WeatherService.swift at 2018-08-13 23:56:52 +0000
+// MARK: - Mocks generated from file: cali/WeatherService.swift at 2018-08-14 03:13:47 +0000
 
 //
 //  WeatherService.swift
@@ -537,11 +537,11 @@ class MockWeatherService: WeatherService, Cuckoo.ProtocolMock {
     
 
     
-    // ["name": "getWeather", "returnSignature": "", "fullyQualifiedName": "getWeather(location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void)", "parameterSignature": "location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void", "parameterSignatureWithoutNames": "location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void", "inputTypes": "CLLocation, (CurlError?, weatherForecastResponse?) -> Void", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": true, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "location, block", "call": "location: location, block: block", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("location"), name: "location", type: "CLLocation", range: CountableRange(366..<386), nameRange: CountableRange(366..<374)), CuckooGeneratorFramework.MethodParameter(label: Optional("block"), name: "block", type: "@escaping(CurlError?, weatherForecastResponse?) -> Void", range: CountableRange(388..<450), nameRange: CountableRange(388..<393))], "returnType": "Void", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubNoReturnFunction"]
-     func getWeather(location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void)  {
+    // ["name": "getWeather", "returnSignature": " -> Promise<WeatherForecastResponse, ServiceError>", "fullyQualifiedName": "getWeather(location: CLLocation) -> Promise<WeatherForecastResponse, ServiceError>", "parameterSignature": "location: CLLocation", "parameterSignatureWithoutNames": "location: CLLocation", "inputTypes": "CLLocation", "isThrowing": false, "isInit": false, "isOverriding": false, "hasClosureParams": false, "@type": "ProtocolMethod", "accessibility": "", "parameterNames": "location", "call": "location: location", "parameters": [CuckooGeneratorFramework.MethodParameter(label: Optional("location"), name: "location", type: "CLLocation", range: CountableRange(393..<413), nameRange: CountableRange(393..<401))], "returnType": "Promise<WeatherForecastResponse, ServiceError>", "isOptional": false, "stubFunction": "Cuckoo.ProtocolStubFunction"]
+     func getWeather(location: CLLocation)  -> Promise<WeatherForecastResponse, ServiceError> {
         
-            return cuckoo_manager.call("getWeather(location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void)",
-                parameters: (location, block),
+            return cuckoo_manager.call("getWeather(location: CLLocation) -> Promise<WeatherForecastResponse, ServiceError>",
+                parameters: (location),
                 superclassCall:
                     
                     Cuckoo.MockManager.crashOnProtocolSuperclassCall()
@@ -558,9 +558,9 @@ class MockWeatherService: WeatherService, Cuckoo.ProtocolMock {
 	    }
 	    
 	    
-	    func getWeather<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(location: M1, block: M2) -> Cuckoo.ProtocolStubNoReturnFunction<(CLLocation, (CurlError?, weatherForecastResponse?) -> Void)> where M1.MatchedType == CLLocation, M2.MatchedType == (CurlError?, weatherForecastResponse?) -> Void {
-	        let matchers: [Cuckoo.ParameterMatcher<(CLLocation, (CurlError?, weatherForecastResponse?) -> Void)>] = [wrap(matchable: location) { $0.0 }, wrap(matchable: block) { $0.1 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockWeatherService.self, method: "getWeather(location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void)", parameterMatchers: matchers))
+	    func getWeather<M1: Cuckoo.Matchable>(location: M1) -> Cuckoo.ProtocolStubFunction<(CLLocation), Promise<WeatherForecastResponse, ServiceError>> where M1.MatchedType == CLLocation {
+	        let matchers: [Cuckoo.ParameterMatcher<(CLLocation)>] = [wrap(matchable: location) { $0 }]
+	        return .init(stub: cuckoo_manager.createStub(for: MockWeatherService.self, method: "getWeather(location: CLLocation) -> Promise<WeatherForecastResponse, ServiceError>", parameterMatchers: matchers))
 	    }
 	    
 	}
@@ -580,9 +580,9 @@ class MockWeatherService: WeatherService, Cuckoo.ProtocolMock {
 	
 	    
 	    @discardableResult
-	    func getWeather<M1: Cuckoo.Matchable, M2: Cuckoo.Matchable>(location: M1, block: M2) -> Cuckoo.__DoNotUse<Void> where M1.MatchedType == CLLocation, M2.MatchedType == (CurlError?, weatherForecastResponse?) -> Void {
-	        let matchers: [Cuckoo.ParameterMatcher<(CLLocation, (CurlError?, weatherForecastResponse?) -> Void)>] = [wrap(matchable: location) { $0.0 }, wrap(matchable: block) { $0.1 }]
-	        return cuckoo_manager.verify("getWeather(location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void)", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    func getWeather<M1: Cuckoo.Matchable>(location: M1) -> Cuckoo.__DoNotUse<Promise<WeatherForecastResponse, ServiceError>> where M1.MatchedType == CLLocation {
+	        let matchers: [Cuckoo.ParameterMatcher<(CLLocation)>] = [wrap(matchable: location) { $0 }]
+	        return cuckoo_manager.verify("getWeather(location: CLLocation) -> Promise<WeatherForecastResponse, ServiceError>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
 	    }
 	    
 	}
@@ -595,8 +595,8 @@ class MockWeatherService: WeatherService, Cuckoo.ProtocolMock {
     
 
     
-     func getWeather(location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void)  {
-        return DefaultValueRegistry.defaultValue(for: Void.self)
+     func getWeather(location: CLLocation)  -> Promise<WeatherForecastResponse, ServiceError> {
+        return DefaultValueRegistry.defaultValue(for: Promise<WeatherForecastResponse, ServiceError>.self)
     }
     
 }

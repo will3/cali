@@ -30,7 +30,7 @@ class CalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     /// Event service
     private let eventService = Injection.defaultContainer.eventService
     /// Weather forecast, set this to show weather forecasts
-    var weatherForecast: weatherForecastResponse? { didSet { updateWeather() } }
+    var weatherForecast: WeatherForecastResponse? { didSet { updateWeather() } }
     /// Dates to display
     var dates = CalendarDates() {
         didSet {

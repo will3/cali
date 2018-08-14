@@ -9,7 +9,7 @@
 import Foundation
 
 /// Weather forcast response object, full documentation on https://darksky.net/dev
-class weatherForecastResponse : Deserializable {
+class WeatherForecastResponse : Deserializable {
     required init() { }
     
     /// Latitude

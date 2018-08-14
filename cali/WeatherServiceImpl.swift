@@ -10,16 +10,23 @@ import Foundation
 import CoreLocation
 
 class WeatherServiceImpl : WeatherService {
-    func getWeather(location: CLLocation, block: @escaping(CurlError?, weatherForecastResponse?) -> Void) {
+    func getWeather(location: CLLocation) -> Promise<WeatherForecastResponse, ServiceError> {
         let url = URL(string: "https://api.darksky.net/forecast/\(Settings.instance.darkSkyApiKey)/\(location.coordinate.latitude),\(location.coordinate.longitude)")!
         
+        let promise = Promise<WeatherForecastResponse, ServiceError>()
+        
         Curl.get(url: url) { (err, json) in
-            if err != nil {
-                block(err, nil)
+            if let err = err {
+                promise.reject(err: .curlError(err))
             } else {
-                let response : weatherForecastResponse? = Deserializer.deserialize(json: json)
-                block(nil, response)
+                if let response : WeatherForecastResponse = Deserializer.deserialize(json: json) {
+                    promise.resolve(value: response)
+                } else {
+                    promise.reject(err: .badData)
+                }
             }
         }
+        
+        return promise
     }
 }

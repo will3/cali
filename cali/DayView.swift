@@ -31,7 +31,7 @@ class DayView : UIView, DraggableEventViewDelegate {
     /// Scroll view
     let scrollView = UIScrollView()
     /// Weather Forecast
-    var weatherForecast : weatherForecastResponse? { didSet { updateWeather() } }
+    var weatherForecast : WeatherForecastResponse? { didSet { updateWeather() } }
     
     /// Content view
     private let contentView = UIView()

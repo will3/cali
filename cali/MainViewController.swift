@@ -44,19 +44,21 @@ class MainViewController: UIViewController {
     let weatherService = Injection.defaultContainer.weatherService
     /// Calendar
     let calendar = Injection.defaultContainer.calendar
-    var lastWeatherUpdateTime : Date?
+    
     let nowProvider = Injection.defaultContainer.nowProvider
+    
+    private var lastWeatherUpdateTime : Date?
 
     /// Location
-    private var location: CLLocation? {
+    var location: CLLocation? {
         didSet {
-            updateWeather()
+            updateWeatherHourly()
         }
     }
 
     /// Weather forecast
     
-    private var weatherForecast: weatherForecastResponse? {
+    private(set) var weatherForecast: WeatherForecastResponse? {
         didSet {
             calendarView.weatherForecast = weatherForecast
             eventListView.weatherForecast = weatherForecast
@@ -88,19 +90,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        /// Init view
-        view.backgroundColor = UIColor.white
-
-        layout(view)
-            .translatesAutoresizingMaskIntoConstraints()
-            .useTopMarginGuide()
-            .useBottomMarginGuide()
-            .stack(
-                [ layout(weekdayBar),
-                  calendarLayout,
-                  layout(contentView) ]
-            ).install()
 
         /// Init layout selector
         layoutSelector.delegate = self
@@ -165,6 +154,19 @@ class MainViewController: UIViewController {
         AccessibilityIdentifier.set(viewController: self, identifier: AccessibilityIdentifier.mainView)
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+        
+        /// Init view
+        view.backgroundColor = UIColor.white
+        
+        layout(view)
+            .translatesAutoresizingMaskIntoConstraints()
+            .useTopMarginGuide()
+            .useBottomMarginGuide()
+            .stack(
+                [ layout(weekdayBar),
+                  calendarLayout,
+                  layout(contentView) ]
+            ).install()
     }
         
     deinit {
@@ -364,30 +366,24 @@ class MainViewController: UIViewController {
     
     /// Update weather hourly
     private func updateWeatherHourly() {
-        if lastWeatherUpdateTime == nil ||
-            nowProvider.now.timeIntervalSince(lastWeatherUpdateTime!) > TimeIntervals.hour {
-            updateWeather()
-            lastWeatherUpdateTime = nowProvider.now
-        }
-    }
-
-    /// Update weather
-    private func updateWeather() {
         if let location = self.location {
-            if weatherForecast == nil {
-                weatherService.getWeather(location: location) { (err, response) in
-                    if err != nil {
-                        // Reset update timer
+            
+            if lastWeatherUpdateTime == nil ||
+                nowProvider.now.timeIntervalSince(lastWeatherUpdateTime!) > TimeIntervals.hour {
+                
+                lastWeatherUpdateTime = nowProvider.now
+            
+                weatherService
+                    .getWeather(location: location)
+                    .then { response in
+                        self.weatherForecast = response
+                    }.catch { err in
                         self.lastWeatherUpdateTime = nil
-                        return
                     }
-                    
-                    self.weatherForecast = response
-                }
             }
         }
     }
-    
+
     /// Update today
     private func updateToday() {
         if dates.stale {

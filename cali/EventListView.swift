@@ -37,7 +37,7 @@ class EventListView: UIView, UITableViewDataSource, UITableViewDelegate {
     /// Event service
     private let eventService = Injection.defaultContainer.eventService
     /// Weather forecast
-    var weatherForecast : weatherForecastResponse? { didSet { updateWeather() } }
+    var weatherForecast : WeatherForecastResponse? { didSet { updateWeather() } }
     /// Is scrolling to selected date
     private(set) var isScrollingToSelectedDate = false
     

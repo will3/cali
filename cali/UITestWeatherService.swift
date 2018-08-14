@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 class UITestWeatherService : WeatherService {
-    func getWeather(location: CLLocation, block: @escaping (CurlError?, weatherForecastResponse?) -> Void) {
-        
+    func getWeather(location: CLLocation) -> Promise<WeatherForecastResponse, ServiceError> {
+        return Promise()
     }
 }
