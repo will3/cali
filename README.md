@@ -7,15 +7,21 @@ I've had lots of fun working on the project
 
 - Custom layout library  
 
-I made my own layout library Layouts to help me programmatically layout views
-It's a convention over configuration, Flexbox inspired framework with a chainable interface
+I've written a custom layout library Layouts to help me layout views
+It's a convention over configuration, CSS inspired framework with a chainable interface
 
-- Browsable internal documentation: [link](http://will3.github.io/calidoc)  
+- Browsable internal documentation  
+[link](http://will3.github.io/calidoc)  
 
 <img src="https://github.com/will3/cali/blob/master/doc.png" width="400">
 
-- UI Automated tests  
-Dependencies are injected so UI tests always run with the same preconditions, and without any service calls to reduce failure points.
+- Dependency injection
+I've built a simple DI container to support mocks in unit / UI tests  
+UI Tests are always run at the same date at 1970, for e.g.
+
+- UI tests  
+UI tests always run with the same preconditions, with mock dependencies that returns service calls instantly
+
 Tests are written using the page pattern:
 for e.g.
 ```
@@ -26,4 +32,4 @@ for e.g.
 ```
 
 - Unit tests  
-I used Quick to generate specs which makes tests easier to read
+I used Quick to generate test specifications that are easier to read
