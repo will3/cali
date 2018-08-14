@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-/// Layout, when layout is created, it's added to LayoutRegistry, 
-/// it's released automatically when it's view is released in LayoutRunner
+/// Layout
 public class Layout {
     let id : UUID = UUID()
     

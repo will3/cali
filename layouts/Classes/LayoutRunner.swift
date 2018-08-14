@@ -26,10 +26,12 @@ class LayoutRunner {
     }
     
     func start() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1 / 60.0, repeats: true) { timer in
-            self.checkViewReleased()
-        }
+        Timer.scheduledTimer(timeInterval: 1 / 60.0, target: self, selector: #selector(LayoutRunner.tick), userInfo: nil, repeats: true)
         started = true
+    }
+    
+    @objc func tick() {
+        self.checkViewReleased()
     }
     
     /// Release layout if view is released

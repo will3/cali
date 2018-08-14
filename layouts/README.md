@@ -1,6 +1,6 @@
 # Layouts
 
-Layouts is simplier layout library. It's simple like CSS but completely different. It has a fluent, chainable interface. The potential is endless.
+Layouts is light weight layout framework that's built on top of NSLayoutConstraints. It is a convention over configuration library, and has a lot of shorthands built for most layout needs.
 
 For e.g.
 ```
@@ -21,6 +21,7 @@ layout(parent)
 	.alignItems(.center)
 	.install()
 ```
+
 Will add the two labels to parent, and stack them horizontally, like flexbox rows 
 
 To uninstall / animate, simply keep the reference of the LayoutBuilder object: 
@@ -36,16 +37,21 @@ parentLayout.height(200).reinstall()
 parentLayout.uninstall()
 ```
 
-Design Philosophy
+### Why use Layouts
 
-NSLayoutConstraint is very powerful. It is however, overkill for most applications. 
-CSS for e.g. doesn't have nearly as much complexity, yet it works fine.
-Layouts is a convention over configuration layout library
-it implements a flexbox-like interface with .stack, and shorthands for nearly every layout need
+Layouts simplifies layout by sacrificing configurability. NSLayoutConstraint is overkill for most layout needs.
 
-Full documentation here: [link]
+However, there are no shortage of great layout libraries on github, here's just a short list of libraries I took inspirations from:  
+Masonry / SnapKit  
+PureLayout  
+LayoutKit  
 
-RoadMap
+### Documentation
+
+Full documentation here: [link]()
+
+### RoadMap
+
 - Mac support  
 - Backwards support iOS 9  
 - Better documentation, maybe with pictures and stuff  
