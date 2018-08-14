@@ -35,8 +35,8 @@ class WeatherFormatter {
      * - returns: Formatted string
      */
     static func formatTempRange(fahrenheitA: Double, fahrenheitB: Double) -> String {
-        let a = Int(floor(fahrenheitToCelsius(fahrenheitA).value))
-        let b = Int(floor(fahrenheitToCelsius(fahrenheitB).value))
+        let a = Int(round(fahrenheitToCelsius(fahrenheitA).value))
+        let b = Int(round(fahrenheitToCelsius(fahrenheitB).value))
         return "\(a) - \(b)"
     }
     

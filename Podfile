@@ -8,7 +8,9 @@ target 'cali' do
   # Pods for cali
 
   pod 'Layouts', :path => "./layouts/"
-
+  pod 'Fabric'
+  pod 'Crashlytics'
+  
   target 'caliTests' do
     inherit! :search_paths
     # Pods for testing

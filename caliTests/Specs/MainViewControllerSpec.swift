@@ -31,6 +31,8 @@ class MainViewControllerSpec: QuickSpec {
                     .thenReturn(Promise<WeatherForecastResponse, ServiceError>(value: WeatherForecastResponse()))
             }
             
+            expect(mainViewController.weatherForecast).to(beNil())
+            
             mainViewController.location = CLLocation()
             
             expect(mainViewController.weatherForecast).toNot(beNil())

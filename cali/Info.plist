@@ -41,5 +41,21 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use location to provide weather forecasts</string>
+
+	<key>Fabric</key>
+  <dict>
+    <key>APIKey</key>
+    <string>f2b0840528f75e279277f87fccdbd8f90a975999</string>
+    <key>Kits</key>
+    <array>
+      <dict>
+        <key>KitInfo</key>
+        <dict/>
+        <key>KitName</key>
+        <string>Crashlytics</string>
+      </dict>
+    </array>
+  </dict>
+  
 </dict>
 </plist>
