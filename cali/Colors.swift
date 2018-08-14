@@ -26,6 +26,7 @@ class Colors {
     static let dotColorThree = UIColor(rgb:0x8E8D93).withAlphaComponent(1.0)
     static let red = UIColor(rgb:0xDD0023)
 }
+//16
 
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {

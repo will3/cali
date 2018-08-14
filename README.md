@@ -2,6 +2,8 @@ Hi,
 I'm Will, am a developer based in Auckland. 
 I've had lots of fun working on the project.
 
+<img src="https://github.com/will3/cali/blob/master/icon.png" width="60">
+
 <span><img src="https://github.com/will3/cali/blob/master/ms1.gif" width="200"></span>
 <span><img src="https://github.com/will3/cali/blob/master/ms3.gif" width="200"></span>
 
