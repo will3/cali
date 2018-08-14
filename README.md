@@ -1,9 +1,10 @@
 ## Cali
-an Outlook Calendar clone
-<img src="https://github.com/will3/cali/blob/master/icon.png" width="60">
+
+<img src="https://github.com/will3/cali/blob/master/icon.png" width="60">  
+an Outlook Calendar clone  
 
 Hi, my name is Will. I'm an iOS developer based in Auckland.  
-Over the last two weeks, I've been working on a clone of the Outlook Calendar App. I think the App has lots of well made features, and I had lots of fun working on this project. :]
+Over the last two weeks, I've been working on a clone of the Outlook Calendar App. I think Outlook has many well made features, and I had lots of fun working on this project. :]
 
 <span><img src="https://github.com/will3/cali/blob/master/ms1.gif" width="200"></span>
 <span><img src="https://github.com/will3/cali/blob/master/ms3.gif" width="200"></span>
@@ -11,8 +12,8 @@ Over the last two weeks, I've been working on a clone of the Outlook Calendar Ap
 ## Custom layout library  
 
 I've written a custom layout library to help me layout custom views:  
-[Layouts](https://github.com/will3/layouts)
-[Documentation](https://will3.github.io/layoutsdoc/Classes/LayoutBuilder.html)
+[Layouts](https://github.com/will3/layouts)  
+[Layouts Documentation](https://will3.github.io/layoutsdoc/Classes/LayoutBuilder.html)  
 It's a convention over configuration, CSS inspired framework with a chainable interface
 
 
