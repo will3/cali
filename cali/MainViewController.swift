@@ -88,32 +88,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        view.addSubview(calendarView)
-        view.addSubview(contentView)
-        view.addSubview(layoutSelectorBackgroundView)
-        view.addSubview(layoutSelector)
-        view.addSubview(weekdayBar)
-        
-        layoutSelector.delegate = self
-        
-        layoutSelectorBackgroundView.backgroundColor = Colors.fadeBackgroundColor
-        layoutSelectorBackgroundView.alpha = 0.0
-        layout(layoutSelectorBackgroundView).matchParent(view).install()
-        layoutSelectorBackgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(MainViewController.layoutSelectorBackgroundViewTapped)))
-        
+
+        /// Init view
         view.backgroundColor = UIColor.white
-        calendarView.delegate = self
-        
-        eventListView.delegate = self
-        
-        
-        let calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
-        self.calendarLayout = calendarLayout
-        
-        dayView.viewController = self
-        
+
         layout(view)
             .translatesAutoresizingMaskIntoConstraints()
             .useTopMarginGuide()
@@ -123,11 +101,29 @@ class MainViewController: UIViewController {
                   calendarLayout,
                   layout(contentView) ]
             ).install()
-        
+
+        /// Init layout selector
+        layoutSelector.delegate = self
+        layoutSelectorBackgroundView.backgroundColor = Colors.fadeBackgroundColor
+        layoutSelectorBackgroundView.alpha = 0.0
+        layout(layoutSelectorBackgroundView).matchParent(view).install()
+        layoutSelectorBackgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(MainViewController.layoutSelectorBackgroundViewTapped)))
         layoutSelectorLayout = layout(layoutSelector).parent(view).pinLeft().pinRight().pinTop(
             weekdayBar.preferredHeight - layoutSelector.preferredHeight)
         layoutSelectorLayout?.install()
+
+        /// Init calendar view
+        calendarView.delegate = self
+        let calendarLayout = layout(calendarView).height(calendarView.preferredCollapsedHeight)
+        self.calendarLayout = calendarLayout
+
+        /// Init event list view
+        eventListView.delegate = self
         
+        /// Init day view
+        dayView.viewController = self
+
+        /// Init pan
         let calendarPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanCalendar))
         calendarView.addGestureRecognizer(calendarPan)
         calendarPan.delegate = self
@@ -135,19 +131,19 @@ class MainViewController: UIViewController {
         let eventsPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanEvents))
         eventListView.scrollView.addGestureRecognizer(eventsPan)
         eventListView.viewController = self
-        
         eventsPan.delegate = self
         
         let dayViewPan = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.didPanDayView))
         dayView.scrollView.addGestureRecognizer(dayViewPan)
         dayViewPan.delegate = self
         
+        /// Init dates
         self.dates = CalendarDates()
-        
         if selectedDate == nil {
             selectedDate = self.dates.today
         }
         
+        /// Bring week day bar to front
         weekdayBar.superview?.bringSubview(toFront: weekdayBar)
         
         updateLayout()
@@ -156,10 +152,12 @@ class MainViewController: UIViewController {
         
         updateLeftBarButtons()
         
+        /// Init today button
         todayButton.button.addTarget(self, action: #selector(MainViewController.didTapCalendar), for: .touchUpInside)
 
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.didUpdateLocation), name: LocationServiceNotifications.didUpdate, object: nil)
         
+        /// Ensure location
         locationService.ensureLocation(from: self)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -274,7 +272,7 @@ class MainViewController: UIViewController {
         collapseCalendarView()
     }
 
-    // MARK: Calendar view
+    // MARK: - Calendar view
 
     private func expandCalendarView() {
         if (isCalendarViewExpanded) {
@@ -304,7 +302,7 @@ class MainViewController: UIViewController {
         isCalendarViewExpanded = false
     }
     
-    // MARK: Layout selector
+    // MARK: - Layout selector
     
     private func showLayoutSelector() {
         if layoutSelectorShown {
@@ -345,8 +343,9 @@ class MainViewController: UIViewController {
         hideLayoutSelector()
     }
     
-    // MARK: Private
+    // MARK: - Private
 
+    /// Update layout
     private func updateLayout() {
         switch layoutType {
         case .agenda:
@@ -363,6 +362,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    /// Update weather hourly
     private func updateWeatherHourly() {
         if lastWeatherUpdateTime == nil ||
             nowProvider.now.timeIntervalSince(lastWeatherUpdateTime!) > TimeIntervals.hour {
@@ -370,7 +370,8 @@ class MainViewController: UIViewController {
             lastWeatherUpdateTime = nowProvider.now
         }
     }
-    
+
+    /// Update weather
     private func updateWeather() {
         if let location = self.location {
             if weatherForecast == nil {
@@ -387,6 +388,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    /// Update today
     private func updateToday() {
         if dates.stale {
             dates = CalendarDates()
