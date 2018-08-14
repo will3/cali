@@ -20,7 +20,7 @@ It's a convention over configuration, CSS inspired framework with a chainable in
 ## Browsable internal documentation
 
 Documentation generation is fully automated and extracted from file
-[link](http://will3.github.io/calidoc)  
+[link](https://will3.github.io/calidoc/Classes/Curl.html)  
 
 <img src="https://github.com/will3/cali/blob/master/doc.png" width="400">
 
