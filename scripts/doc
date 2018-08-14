@@ -1,4 +1,4 @@
 # Run this scripts from the scripts folder
 # Otherwise the docs would include README
 cd ..
-jazzy --min-acl private
+jazzy --min-acl private --readme fakepath
