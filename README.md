@@ -11,6 +11,7 @@ I think Outlook has many well made features, and I had lots of fun working on th
 
 <span><img src="https://github.com/will3/cali/blob/master/ms1.gif" width="200"></span>
 <span><img src="https://github.com/will3/cali/blob/master/ms3.gif" width="200"></span>
+<img src="https://github.com/will3/cali/blob/master/today.gif" width="32">
 
 ## Custom layout library  
 
