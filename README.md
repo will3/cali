@@ -16,13 +16,13 @@ It's a convention over configuration, CSS inspired framework with a chainable in
 <img src="https://github.com/will3/cali/blob/master/doc.png" width="400">
 
 - Dependency injection
-I've built a simple DI container to support mocks in unit / UI tests  
-UI Tests are always run at the same date at 1970, for e.g.
+DI is implement to enable different containers to be written for tests
+Unit tests uses a container that returns mock objects,
+UI Tests uses a different container, so they always run at the same date, and never makes any service calls.
+
 
 - UI tests  
-UI tests always run with the same preconditions, with mock dependencies that returns service calls instantly
-
-Tests are written using the page pattern:
+UI Tests are written using the page pattern:
 for e.g.
 ```
     MainView(app: app)
@@ -31,5 +31,6 @@ for e.g.
         .openEvent()
 ```
 
-- Unit tests  
-I used Quick to generate test specifications that are easier to read
+- Unit tests
+I used Cuckoo to generate mock classes, Quick for creating specs
+If I had more time, I would improve test coverage
