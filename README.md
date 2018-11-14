@@ -5,10 +5,6 @@ an Outlook Calendar clone
 
 ---
 
-Hi, my name is Will, am an iOS developer based in Auckland.  
-Over the last two weeks, I've been working on a clone of the Outlook Calendar App.  
-I think Outlook has many well made features, and I had lots of fun working on this project. :]
-
 <span><img src="https://github.com/will3/cali/blob/master/ms1.gif" width="200"></span>
 <img src="https://github.com/will3/cali/blob/master/ms3.gif" width="200">
 
